@@ -1,0 +1,235 @@
+\batchmode
+\documentclass[a4paper,]{article}
+\usepackage{calc}
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
+\usepackage[pdfpagelabels]{hyperref}
+\usepackage{bookmark}
+
+% Normal size 1.1, offset=0cm -2cm
+
+\begin{document}
+\renewcommand{\thepage}{\roman{page}}\setcounter{page}{0}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{TOC.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{acknowledgements.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{notation.pdf,-}
+\renewcommand{\thepage}{\arabic{page}}\setcounter{page}{1}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{intro.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{part_basics.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{linear_algebra.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{prob.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{numerical.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{ml.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{part_practical.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{mlp.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{regularization.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{optimization.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{convnets.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{rnn.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{guidelines.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{applications.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{part_research.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{linear_factors.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{autoencoders.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{representation.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{graphical_models.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{monte_carlo.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{partition.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{inference.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{generative_models.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{bib.pdf,-}
+\includepdfmerge[fitpaper=true,rotateoversize=true,scale=1.17,offset=0cm -2cm]{index-.pdf,-}
+
+\bookmark[page=9,view={XYZ 0 \calc{\paperheight} null},level=1]{Website}
+\bookmark[page=10,view={XYZ 0 \calc{\paperheight} null},level=1]{Acknowledgments}
+\bookmark[page=14,view={XYZ 0 \calc{\paperheight} null},level=1]{Notation}
+\bookmark[page=18,view={XYZ 0 \calc{\paperheight} null},level=1]{1 Introduction}
+\bookmark[page=25,view={XYZ 0 \calc{\paperheight} null},level=2]{1.1 Who Should Read This Book?}
+\bookmark[page=29,view={XYZ 0 \calc{\paperheight} null},level=2]{1.2 Historical Trends in Deep Learning}
+\bookmark[page=44,view={XYZ 0 \calc{\paperheight} null},level=1]{I Applied Math and Machine Learning Basics}
+\bookmark[page=46,view={XYZ 0 \calc{\paperheight} null},level=1]{2 Linear Algebra}
+\bookmark[page=46,view={XYZ 0 \calc{\paperheight} null},level=2]{2.1 Scalars, Vectors, Matrices and Tensors}
+\bookmark[page=49,view={XYZ 0 \calc{\paperheight} null},level=2]{2.2 Multiplying Matrices and Vectors}
+\bookmark[page=51,view={XYZ 0 \calc{\paperheight} null},level=2]{2.3 Identity and Inverse Matrices}
+\bookmark[page=52,view={XYZ 0 \calc{\paperheight} null},level=2]{2.4 Linear Dependence and Span}
+\bookmark[page=54,view={XYZ 0 \calc{\paperheight} null},level=2]{2.5 Norms}
+\bookmark[page=55,view={XYZ 0 \calc{\paperheight} null},level=2]{2.6 Special Kinds of Matrices and Vectors}
+\bookmark[page=57,view={XYZ 0 \calc{\paperheight} null},level=2]{2.7 Eigendecomposition}
+\bookmark[page=59,view={XYZ 0 \calc{\paperheight} null},level=2]{2.8 Singular Value Decomposition}
+\bookmark[page=60,view={XYZ 0 \calc{\paperheight} null},level=2]{2.9 The Moore-Penrose Pseudoinverse}
+\bookmark[page=61,view={XYZ 0 \calc{\paperheight} null},level=2]{2.10 The Trace Operator}
+\bookmark[page=62,view={XYZ 0 \calc{\paperheight} null},level=2]{2.11 The Determinant}
+\bookmark[page=62,view={XYZ 0 \calc{\paperheight} null},level=2]{2.12 Example: Principal Components Analysis}
+\bookmark[page=68,view={XYZ 0 \calc{\paperheight} null},level=1]{3 Probability and Information Theory}
+\bookmark[page=69,view={XYZ 0 \calc{\paperheight} null},level=2]{3.1 Why Probability?}
+\bookmark[page=71,view={XYZ 0 \calc{\paperheight} null},level=2]{3.2 Random Variables}
+\bookmark[page=71,view={XYZ 0 \calc{\paperheight} null},level=2]{3.3 Probability Distributions}
+\bookmark[page=73,view={XYZ 0 \calc{\paperheight} null},level=2]{3.4 Marginal Probability}
+\bookmark[page=74,view={XYZ 0 \calc{\paperheight} null},level=2]{3.5 Conditional Probability}
+\bookmark[page=74,view={XYZ 0 \calc{\paperheight} null},level=2]{3.6 The Chain Rule of Conditional Probabilities}
+\bookmark[page=75,view={XYZ 0 \calc{\paperheight} null},level=2]{3.7 Independence and Conditional Independence}
+\bookmark[page=75,view={XYZ 0 \calc{\paperheight} null},level=2]{3.8 Expectation, Variance and Covariance}
+\bookmark[page=77,view={XYZ 0 \calc{\paperheight} null},level=2]{3.9 Common Probability Distributions}
+\bookmark[page=82,view={XYZ 0 \calc{\paperheight} null},level=2]{3.10 Useful Properties of Common Functions}
+\bookmark[page=85,view={XYZ 0 \calc{\paperheight} null},level=2]{3.11 Bayes' Rule}
+\bookmark[page=86,view={XYZ 0 \calc{\paperheight} null},level=2]{3.12 Technical Details of Continuous Variables}
+\bookmark[page=88,view={XYZ 0 \calc{\paperheight} null},level=2]{3.13 Information Theory}
+\bookmark[page=90,view={XYZ 0 \calc{\paperheight} null},level=2]{3.14 Structured Probabilistic Models}
+\bookmark[page=95,view={XYZ 0 \calc{\paperheight} null},level=1]{4 Numerical Computation}
+\bookmark[page=95,view={XYZ 0 \calc{\paperheight} null},level=2]{4.1 Overflow and Underflow}
+\bookmark[page=97,view={XYZ 0 \calc{\paperheight} null},level=2]{4.2 Poor Conditioning}
+\bookmark[page=97,view={XYZ 0 \calc{\paperheight} null},level=2]{4.3 Gradient-Based Optimization}
+\bookmark[page=108,view={XYZ 0 \calc{\paperheight} null},level=2]{4.4 Constrained Optimization}
+\bookmark[page=111,view={XYZ 0 \calc{\paperheight} null},level=2]{4.5 Example: Linear Least Squares}
+\bookmark[page=113,view={XYZ 0 \calc{\paperheight} null},level=1]{5 Machine Learning Basics}
+\bookmark[page=114,view={XYZ 0 \calc{\paperheight} null},level=2]{5.1 Learning Algorithms}
+\bookmark[page=125,view={XYZ 0 \calc{\paperheight} null},level=2]{5.2 Capacity, Overfitting and Underfitting}
+\bookmark[page=135,view={XYZ 0 \calc{\paperheight} null},level=2]{5.3 Hyperparameters and Validation Sets}
+\bookmark[page=137,view={XYZ 0 \calc{\paperheight} null},level=2]{5.4 Estimators, Bias and Variance}
+\bookmark[page=146,view={XYZ 0 \calc{\paperheight} null},level=2]{5.5 Maximum Likelihood Estimation}
+\bookmark[page=150,view={XYZ 0 \calc{\paperheight} null},level=2]{5.6 Bayesian Statistics}
+\bookmark[page=154,view={XYZ 0 \calc{\paperheight} null},level=2]{5.7 Supervised Learning Algorithms}
+\bookmark[page=159,view={XYZ 0 \calc{\paperheight} null},level=2]{5.8 Unsupervised Learning Algorithms}
+\bookmark[page=166,view={XYZ 0 \calc{\paperheight} null},level=2]{5.9 Stochastic Gradient Descent}
+\bookmark[page=168,view={XYZ 0 \calc{\paperheight} null},level=2]{5.10 Building a Machine Learning Algorithm}
+\bookmark[page=169,view={XYZ 0 \calc{\paperheight} null},level=2]{5.11 Challenges Motivating Deep Learning}
+\bookmark[page=179,view={XYZ 0 \calc{\paperheight} null},level=1]{II Deep Networks: Modern Practices}
+\bookmark[page=181,view={XYZ 0 \calc{\paperheight} null},level=1]{6 Deep Feedforward Networks}
+\bookmark[page=184,view={XYZ 0 \calc{\paperheight} null},level=2]{6.1 Example: Learning XOR}
+\bookmark[page=189,view={XYZ 0 \calc{\paperheight} null},level=2]{6.2 Gradient-Based Learning}
+\bookmark[page=204,view={XYZ 0 \calc{\paperheight} null},level=2]{6.3 Hidden Units}
+\bookmark[page=210,view={XYZ 0 \calc{\paperheight} null},level=2]{6.4 Architecture Design}
+\bookmark[page=217,view={XYZ 0 \calc{\paperheight} null},level=2]{6.5 Back-Propagation and Other Differentiation Algorithms}
+\bookmark[page=237,view={XYZ 0 \calc{\paperheight} null},level=2]{6.6 Historical Notes}
+\bookmark[page=241,view={XYZ 0 \calc{\paperheight} null},level=1]{7 Regularization for Deep Learning}
+\bookmark[page=243,view={XYZ 0 \calc{\paperheight} null},level=2]{7.1 Parameter Norm Penalties}
+\bookmark[page=250,view={XYZ 0 \calc{\paperheight} null},level=2]{7.2 Norm Penalties as Constrained Optimization}
+\bookmark[page=252,view={XYZ 0 \calc{\paperheight} null},level=2]{7.3 Regularization and Under-Constrained Problems}
+\bookmark[page=253,view={XYZ 0 \calc{\paperheight} null},level=2]{7.4 Dataset Augmentation}
+\bookmark[page=255,view={XYZ 0 \calc{\paperheight} null},level=2]{7.5 Noise Robustness}
+\bookmark[page=257,view={XYZ 0 \calc{\paperheight} null},level=2]{7.6 Semi-Supervised Learning}
+\bookmark[page=258,view={XYZ 0 \calc{\paperheight} null},level=2]{7.7 Multitask Learning}
+\bookmark[page=258,view={XYZ 0 \calc{\paperheight} null},level=2]{7.8 Early Stopping}
+\bookmark[page=266,view={XYZ 0 \calc{\paperheight} null},level=2]{7.9 Parameter Tying and Parameter Sharing}
+\bookmark[page=268,view={XYZ 0 \calc{\paperheight} null},level=2]{7.10 Sparse Representations}
+\bookmark[page=270,view={XYZ 0 \calc{\paperheight} null},level=2]{7.11 Bagging and Other Ensemble Methods}
+\bookmark[page=272,view={XYZ 0 \calc{\paperheight} null},level=2]{7.12 Dropout}
+\bookmark[page=282,view={XYZ 0 \calc{\paperheight} null},level=2]{7.13 Adversarial Training}
+\bookmark[page=284,view={XYZ 0 \calc{\paperheight} null},level=2]{7.14 Tangent Distance, Tangent Prop and Manifold Tangent Classifier}
+\bookmark[page=288,view={XYZ 0 \calc{\paperheight} null},level=1]{8 Optimization for Training Deep Models}
+\bookmark[page=289,view={XYZ 0 \calc{\paperheight} null},level=2]{8.1 How Learning Differs from Pure Optimization}
+\bookmark[page=296,view={XYZ 0 \calc{\paperheight} null},level=2]{8.2 Challenges in Neural Network Optimization}
+\bookmark[page=307,view={XYZ 0 \calc{\paperheight} null},level=2]{8.3 Basic Algorithms}
+\bookmark[page=313,view={XYZ 0 \calc{\paperheight} null},level=2]{8.4 Parameter Initialization Strategies}
+\bookmark[page=319,view={XYZ 0 \calc{\paperheight} null},level=2]{8.5 Algorithms with Adaptive Learning Rates}
+\bookmark[page=324,view={XYZ 0 \calc{\paperheight} null},level=2]{8.6 Approximate Second-Order Methods}
+\bookmark[page=330,view={XYZ 0 \calc{\paperheight} null},level=2]{8.7 Optimization Strategies and Meta-Algorithms}
+\bookmark[page=343,view={XYZ 0 \calc{\paperheight} null},level=1]{9 Convolutional Networks}
+\bookmark[page=344,view={XYZ 0 \calc{\paperheight} null},level=2]{9.1 The Convolution Operation}
+\bookmark[page=346,view={XYZ 0 \calc{\paperheight} null},level=2]{9.2 Motivation}
+\bookmark[page=352,view={XYZ 0 \calc{\paperheight} null},level=2]{9.3 Pooling}
+\bookmark[page=356,view={XYZ 0 \calc{\paperheight} null},level=2]{9.4 Convolution and Pooling as an Infinitely Strong Prior}
+\bookmark[page=359,view={XYZ 0 \calc{\paperheight} null},level=2]{9.5 Variants of the Basic Convolution Function}
+\bookmark[page=369,view={XYZ 0 \calc{\paperheight} null},level=2]{9.6 Structured Outputs}
+\bookmark[page=371,view={XYZ 0 \calc{\paperheight} null},level=2]{9.7 Data Types}
+\bookmark[page=373,view={XYZ 0 \calc{\paperheight} null},level=2]{9.8 Efficient Convolution Algorithms}
+\bookmark[page=373,view={XYZ 0 \calc{\paperheight} null},level=2]{9.9 Random or Unsupervised Features}
+\bookmark[page=375,view={XYZ 0 \calc{\paperheight} null},level=2]{9.10 The Neuroscientific Basis for Convolutional Networks}
+\bookmark[page=382,view={XYZ 0 \calc{\paperheight} null},level=2]{9.11 Convolutional Networks and the History of Deep Learning}
+\bookmark[page=384,view={XYZ 0 \calc{\paperheight} null},level=1]{10 Sequence Modeling: Recurrent and Recursive Nets}
+\bookmark[page=386,view={XYZ 0 \calc{\paperheight} null},level=2]{10.1 Unfolding Computational Graphs}
+\bookmark[page=389,view={XYZ 0 \calc{\paperheight} null},level=2]{10.2 Recurrent Neural Networks}
+\bookmark[page=405,view={XYZ 0 \calc{\paperheight} null},level=2]{10.3 Bidirectional RNNs}
+\bookmark[page=407,view={XYZ 0 \calc{\paperheight} null},level=2]{10.4 Encoder-Decoder Sequence-to-Sequence Architectures}
+\bookmark[page=409,view={XYZ 0 \calc{\paperheight} null},level=2]{10.5 Deep Recurrent Networks}
+\bookmark[page=411,view={XYZ 0 \calc{\paperheight} null},level=2]{10.6 Recursive Neural Networks}
+\bookmark[page=413,view={XYZ 0 \calc{\paperheight} null},level=2]{10.7 The Challenge of Long-Term Dependencies}
+\bookmark[page=416,view={XYZ 0 \calc{\paperheight} null},level=2]{10.8 Echo State Networks}
+\bookmark[page=419,view={XYZ 0 \calc{\paperheight} null},level=2]{10.9 Leaky Units and Other Strategies for Multiple Time Scales}
+\bookmark[page=421,view={XYZ 0 \calc{\paperheight} null},level=2]{10.10 The Long Short-Term Memory and Other Gated RNNs}
+\bookmark[page=425,view={XYZ 0 \calc{\paperheight} null},level=2]{10.11 Optimization for Long-Term Dependencies}
+\bookmark[page=429,view={XYZ 0 \calc{\paperheight} null},level=2]{10.12 Explicit Memory}
+\bookmark[page=433,view={XYZ 0 \calc{\paperheight} null},level=1]{11 Practical Methodology}
+\bookmark[page=434,view={XYZ 0 \calc{\paperheight} null},level=2]{11.1 Performance Metrics}
+\bookmark[page=437,view={XYZ 0 \calc{\paperheight} null},level=2]{11.2 Default Baseline Models}
+\bookmark[page=438,view={XYZ 0 \calc{\paperheight} null},level=2]{11.3 Determining Whether to Gather More Data}
+\bookmark[page=439,view={XYZ 0 \calc{\paperheight} null},level=2]{11.4 Selecting Hyperparameters}
+\bookmark[page=448,view={XYZ 0 \calc{\paperheight} null},level=2]{11.5 Debugging Strategies}
+\bookmark[page=452,view={XYZ 0 \calc{\paperheight} null},level=2]{11.6 Example: Multi-Digit Number Recognition}
+\bookmark[page=455,view={XYZ 0 \calc{\paperheight} null},level=1]{12 Applications}
+\bookmark[page=455,view={XYZ 0 \calc{\paperheight} null},level=2]{12.1 Large-Scale Deep Learning}
+\bookmark[page=464,view={XYZ 0 \calc{\paperheight} null},level=2]{12.2 Computer Vision}
+\bookmark[page=470,view={XYZ 0 \calc{\paperheight} null},level=2]{12.3 Speech Recognition}
+\bookmark[page=473,view={XYZ 0 \calc{\paperheight} null},level=2]{12.4 Natural Language Processing}
+\bookmark[page=490,view={XYZ 0 \calc{\paperheight} null},level=2]{12.5 Other Applications}
+\bookmark[page=499,view={XYZ 0 \calc{\paperheight} null},level=1]{III Deep Learning Research}
+\bookmark[page=502,view={XYZ 0 \calc{\paperheight} null},level=1]{13 Linear Factor Models}
+\bookmark[page=503,view={XYZ 0 \calc{\paperheight} null},level=2]{13.1 Probabilistic PCA and Factor Analysis}
+\bookmark[page=504,view={XYZ 0 \calc{\paperheight} null},level=2]{13.2 Independent Component Analysis (ICA)}
+\bookmark[page=506,view={XYZ 0 \calc{\paperheight} null},level=2]{13.3 Slow Feature Analysis}
+\bookmark[page=509,view={XYZ 0 \calc{\paperheight} null},level=2]{13.4 Sparse Coding}
+\bookmark[page=513,view={XYZ 0 \calc{\paperheight} null},level=2]{13.5 Manifold Interpretation of PCA}
+\bookmark[page=516,view={XYZ 0 \calc{\paperheight} null},level=1]{14 Autoencoders}
+\bookmark[page=517,view={XYZ 0 \calc{\paperheight} null},level=2]{14.1 Undercomplete Autoencoders}
+\bookmark[page=518,view={XYZ 0 \calc{\paperheight} null},level=2]{14.2 Regularized Autoencoders}
+\bookmark[page=522,view={XYZ 0 \calc{\paperheight} null},level=2]{14.3 Representational Power, Layer Size and Depth}
+\bookmark[page=523,view={XYZ 0 \calc{\paperheight} null},level=2]{14.4 Stochastic Encoders and Decoders}
+\bookmark[page=524,view={XYZ 0 \calc{\paperheight} null},level=2]{14.5 Denoising Autoencoders}
+\bookmark[page=530,view={XYZ 0 \calc{\paperheight} null},level=2]{14.6 Learning Manifolds with Autoencoders}
+\bookmark[page=535,view={XYZ 0 \calc{\paperheight} null},level=2]{14.7 Contractive Autoencoders}
+\bookmark[page=538,view={XYZ 0 \calc{\paperheight} null},level=2]{14.8 Predictive Sparse Decomposition}
+\bookmark[page=539,view={XYZ 0 \calc{\paperheight} null},level=2]{14.9 Applications of Autoencoders}
+\bookmark[page=541,view={XYZ 0 \calc{\paperheight} null},level=1]{15 Representation Learning}
+\bookmark[page=543,view={XYZ 0 \calc{\paperheight} null},level=2]{15.1 Greedy Layer-Wise Unsupervised Pretraining}
+\bookmark[page=551,view={XYZ 0 \calc{\paperheight} null},level=2]{15.2 Transfer Learning and Domain Adaptation}
+\bookmark[page=556,view={XYZ 0 \calc{\paperheight} null},level=2]{15.3 Semi-Supervised Disentangling of Causal Factors}
+\bookmark[page=561,view={XYZ 0 \calc{\paperheight} null},level=2]{15.4 Distributed Representation}
+\bookmark[page=567,view={XYZ 0 \calc{\paperheight} null},level=2]{15.5 Exponential Gains from Depth}
+\bookmark[page=569,view={XYZ 0 \calc{\paperheight} null},level=2]{15.6 Providing Clues to Discover Underlying Causes}
+\bookmark[page=572,view={XYZ 0 \calc{\paperheight} null},level=1]{16 Structured Probabilistic Models for Deep Learning}
+\bookmark[page=573,view={XYZ 0 \calc{\paperheight} null},level=2]{16.1 The Challenge of Unstructured Modeling}
+\bookmark[page=577,view={XYZ 0 \calc{\paperheight} null},level=2]{16.2 Using Graphs to Describe Model Structure}
+\bookmark[page=594,view={XYZ 0 \calc{\paperheight} null},level=2]{16.3 Sampling from Graphical Models}
+\bookmark[page=596,view={XYZ 0 \calc{\paperheight} null},level=2]{16.4 Advantages of Structured Modeling}
+\bookmark[page=596,view={XYZ 0 \calc{\paperheight} null},level=2]{16.5 Learning about Dependencies}
+\bookmark[page=597,view={XYZ 0 \calc{\paperheight} null},level=2]{16.6 Inference and Approximate Inference}
+\bookmark[page=598,view={XYZ 0 \calc{\paperheight} null},level=2]{16.7 The Deep Learning Approach to Structured Probabilistic Models}
+\bookmark[page=604,view={XYZ 0 \calc{\paperheight} null},level=1]{17 Monte Carlo Methods}
+\bookmark[page=604,view={XYZ 0 \calc{\paperheight} null},level=2]{17.1 Sampling and Monte Carlo Methods}
+\bookmark[page=606,view={XYZ 0 \calc{\paperheight} null},level=2]{17.2 Importance Sampling}
+\bookmark[page=609,view={XYZ 0 \calc{\paperheight} null},level=2]{17.3 Markov Chain Monte Carlo Methods}
+\bookmark[page=613,view={XYZ 0 \calc{\paperheight} null},level=2]{17.4 Gibbs Sampling}
+\bookmark[page=614,view={XYZ 0 \calc{\paperheight} null},level=2]{17.5 The Challenge of Mixing between Separated Modes}
+\bookmark[page=620,view={XYZ 0 \calc{\paperheight} null},level=1]{18 Confronting the Partition Function}
+\bookmark[page=621,view={XYZ 0 \calc{\paperheight} null},level=2]{18.1 The Log-Likelihood Gradient}
+\bookmark[page=622,view={XYZ 0 \calc{\paperheight} null},level=2]{18.2 Stochastic Maximum Likelihood and Contrastive Divergence}
+\bookmark[page=630,view={XYZ 0 \calc{\paperheight} null},level=2]{18.3 Pseudolikelihood}
+\bookmark[page=632,view={XYZ 0 \calc{\paperheight} null},level=2]{18.4 Score Matching and Ratio Matching}
+\bookmark[page=634,view={XYZ 0 \calc{\paperheight} null},level=2]{18.5 Denoising Score Matching}
+\bookmark[page=635,view={XYZ 0 \calc{\paperheight} null},level=2]{18.6 Noise-Contrastive Estimation}
+\bookmark[page=638,view={XYZ 0 \calc{\paperheight} null},level=2]{18.7 Estimating the Partition Function}
+\bookmark[page=646,view={XYZ 0 \calc{\paperheight} null},level=1]{19 Approximate Inference}
+\bookmark[page=648,view={XYZ 0 \calc{\paperheight} null},level=2]{19.1 Inference as Optimization}
+\bookmark[page=649,view={XYZ 0 \calc{\paperheight} null},level=2]{19.2 Expectation Maximization}
+\bookmark[page=650,view={XYZ 0 \calc{\paperheight} null},level=2]{19.3 MAP Inference and Sparse Coding}
+\bookmark[page=653,view={XYZ 0 \calc{\paperheight} null},level=2]{19.4 Variational Inference and Learning}
+\bookmark[page=665,view={XYZ 0 \calc{\paperheight} null},level=2]{19.5 Learned Approximate Inference}
+\bookmark[page=668,view={XYZ 0 \calc{\paperheight} null},level=1]{20 Deep Generative Models}
+\bookmark[page=668,view={XYZ 0 \calc{\paperheight} null},level=2]{20.1 Boltzmann Machines}
+\bookmark[page=670,view={XYZ 0 \calc{\paperheight} null},level=2]{20.2 Restricted Boltzmann Machines}
+\bookmark[page=674,view={XYZ 0 \calc{\paperheight} null},level=2]{20.3 Deep Belief Networks}
+\bookmark[page=677,view={XYZ 0 \calc{\paperheight} null},level=2]{20.4 Deep Boltzmann Machines}
+\bookmark[page=690,view={XYZ 0 \calc{\paperheight} null},level=2]{20.5 Boltzmann Machines for Real-Valued Data}
+\bookmark[page=696,view={XYZ 0 \calc{\paperheight} null},level=2]{20.6 Convolutional Boltzmann Machines}
+\bookmark[page=698,view={XYZ 0 \calc{\paperheight} null},level=2]{20.7 Boltzmann Machines for Structured or Sequential Outputs}
+\bookmark[page=700,view={XYZ 0 \calc{\paperheight} null},level=2]{20.8 Other Boltzmann Machines}
+\bookmark[page=701,view={XYZ 0 \calc{\paperheight} null},level=2]{20.9 Back-Propagation through Random Operations}
+\bookmark[page=705,view={XYZ 0 \calc{\paperheight} null},level=2]{20.10 Directed Generative Nets}
+\bookmark[page=724,view={XYZ 0 \calc{\paperheight} null},level=2]{20.11 Drawing Samples from Autoencoders}
+\bookmark[page=727,view={XYZ 0 \calc{\paperheight} null},level=2]{20.12 Generative Stochastic Networks}
+\bookmark[page=729,view={XYZ 0 \calc{\paperheight} null},level=2]{20.13 Other Generation Schemes}
+\bookmark[page=730,view={XYZ 0 \calc{\paperheight} null},level=2]{20.14 Evaluating Generative Models}
+\bookmark[page=733,view={XYZ 0 \calc{\paperheight} null},level=2]{20.15 Conclusion}
+\bookmark[page=734,view={XYZ 0 \calc{\paperheight} null},level=1]{Bibliography}
+\bookmark[page=791,view={XYZ 0 \calc{\paperheight} null},level=1]{Index}
+\end{document}
