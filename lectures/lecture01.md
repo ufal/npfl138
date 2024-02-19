@@ -2,6 +2,7 @@
 #### Date: Feb 19
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?01
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides.pdf/npfl138-2324-01.pdf, PDF Slides
+#### Questions: #lecture_1_questions
 
 - Random variables, probability distributions, expectation, variance, Bernoulli
   distribution, Categorical distribution [Sections 3.2, 3.3, 3.8, 3.9.1 and 3.9.2 of DLB]
