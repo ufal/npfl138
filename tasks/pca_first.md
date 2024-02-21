@@ -3,22 +3,25 @@
 #### Points: 2 points
 #### Tests: pca_first_tests
 
-The goal of this exercise is to familiarize with TensorFlow `tf.Tensor`s,
+The goal of this exercise is to familiarize with PyTorch `torch.Tensor`s,
 shapes and basic tensor manipulation methods. Start with the
-[pca_first.py](https://github.com/ufal/npfl114/tree/master/labs/01/pca_first.py)
-(and you will also need the [mnist.py](https://github.com/ufal/npfl114/tree/master/labs/01/mnist.py)
+[pca_first.py](https://github.com/ufal/npfl138/tree/master/labs/01/pca_first.py)
+(and you will also need the [mnist.py](https://github.com/ufal/npfl138/tree/master/labs/01/mnist.py)
 module).
 
-In this assignment, you will compute the covariance matrix of several examples
-from the MNIST dataset, compute the first principal component and quantify
-the explained variance of it.
+Alternatively, you can instead use the
+[pca_first.keras.py](https://github.com/ufal/npfl138/tree/master/labs/01/pca_first.keras.py)
+template, which uses backend-agnostic `keras.ops` operations instead of PyTorch
+operations – both templates can be used to solve the assignment.
 
-It is fine if you are not familiar with terms like covariance matrix or
-principal component – the template contains a detailed description of what
-you have to do.
+In this assignment, you should compute the covariance matrix of several examples
+from the MNIST dataset, then compute the first principal component, and quantify
+the explained variance of it. It is fine if you are not familiar with terms like
+covariance matrix or principal component – the template contains a detailed
+description of what you have to do.
 
-Finally, it is a good idea to read the
-[TensorFlow guide about `tf.Tensor`s](https://www.tensorflow.org/guide/tensor).
+Finally, you might want to read the [Introduction to PyTorch
+Tensors](https://pytorch.org/tutorials/beginner/introyt/tensors_deeper_tutorial.html).
 
 #### Tests Start: pca_first_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._

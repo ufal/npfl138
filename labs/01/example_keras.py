@@ -29,6 +29,7 @@ def main(args: argparse.Namespace) -> None:
     # Create the model
     model = keras.Sequential([
         keras.layers.Input([MNIST.H, MNIST.W, MNIST.C]),
+        keras.layers.Rescaling(1 / 255),
         keras.layers.Flatten(),
         keras.layers.Dense(args.hidden_layer, activation="relu"),
         keras.layers.Dense(MNIST.LABELS, activation="softmax"),

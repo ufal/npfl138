@@ -17,7 +17,6 @@ class MNIST:
     class Datasplit:
         def __init__(self, data: Dict[str, np.ndarray], shuffle_batches: bool, seed: int = 42) -> None:
             self._data = data
-            self._data["images"] = self._data["images"].astype(np.float32) / 255
             self._size = len(self._data["images"])
 
             self._shuffler = np.random.RandomState(seed) if shuffle_batches else None
