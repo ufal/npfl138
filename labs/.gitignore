@@ -1,0 +1,7 @@
+__pycache__/
+logs/
+*.h5
+*.keras
+*.npz
+*.pickle
+*.zip
