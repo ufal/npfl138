@@ -5,7 +5,7 @@
 - _Installing to central user packages repository_
 
   You can install all required packages to central user packages repository using
-  `python3 -m pip install --user keras~=3.0.5 --extra-index-url=https://download.pytorch.org/whl/cu118 torch~=2.2.0 torchaudio~=2.2.0 torchvision~=0.17.0 torchmetrics~=1.3.1 flashlight-text~=0.0.4 tensorboard~=2.16.2 transformers~=4.37.2 gymnasium~=1.0.0a1 pygame~=2.5.2`.
+  `python3 -m pip install --user keras~=3.0.5 --extra-index-url=https://download.pytorch.org/whl/cu118 torch~=2.2.0 torchaudio~=2.2.0 torchvision~=0.17.0 torchmetrics~=1.3.1 flashlight-text~=0.0.3 tensorboard~=2.16.2 transformers~=4.37.2 gymnasium~=1.0.0a1 pygame~=2.5.2`.
 
   The above command installs CUDA 11.8 PyTorch build, but you can change `cu118` to:
   - `cpu` to get CPU-only (smaller) version,
@@ -17,7 +17,7 @@
   Python supports virtual environments, which are directories containing
   independent sets of installed packages. You can create a virtual environment
   by running `python3 -m venv VENV_DIR` followed by
-  `VENV_DIR/bin/pip install keras~=3.0.5 --extra-index-url=https://download.pytorch.org/whl/cu118 torch~=2.2.0 torchaudio~=2.2.0 torchvision~=0.17.0 torchmetrics~=1.3.1 flashlight-text~=0.0.4 tensorboard~=2.16.2 transformers~=4.37.2 gymnasium~=1.0.0a1 pygame~=2.5.2`.
+  `VENV_DIR/bin/pip install keras~=3.0.5 --extra-index-url=https://download.pytorch.org/whl/cu118 torch~=2.2.0 torchaudio~=2.2.0 torchvision~=0.17.0 torchmetrics~=1.3.1 flashlight-text~=0.0.3 tensorboard~=2.16.2 transformers~=4.37.2 gymnasium~=1.0.0a1 pygame~=2.5.2`.
   (or `VENV_DIR/Scripts/pip` on Windows).
 
   Again, apart from the CUDA 11.8 build, you can change `cu118` to:
