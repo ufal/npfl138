@@ -36,8 +36,11 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
     data = ...
 
     # TODO: Now compute mean of every feature. Use `torch.mean`, and set
-    # `axis` to zero -- therefore, the mean will be computed across the first
-    # dimension, so across examples.
+    # `dim` (or `axis`) argument to zero -- therefore, the mean will be
+    # computed across the first dimension, so across examples.
+    #
+    # Note that for compatibility with Numpy/TF/Keras, all `dim` arguments
+    # in PyTorch can be also called `axis`.
     mean = ...
 
     # TODO: Compute the covariance matrix. The covariance matrix is
