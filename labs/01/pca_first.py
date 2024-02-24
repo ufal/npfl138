@@ -36,7 +36,7 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
     data = ...
 
     # TODO: Now compute mean of every feature. Use `torch.mean`, and set
-    # `axis` to zero -- therefore, the mean will be computed across the first
+    # `dim` to zero -- therefore, the mean will be computed across the first
     # dimension, so across examples.
     mean = ...
 
