@@ -2,6 +2,7 @@
 #### Date: Feb 26
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?02
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides.pdf/npfl138-2324-02.pdf, PDF Slides
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-02-czech.mp4, CZ Lecture
 #### Questions: #lecture_2_questions
 
 - Capacity, overfitting, underfitting, regularization [Section 5.2 of DLB]
