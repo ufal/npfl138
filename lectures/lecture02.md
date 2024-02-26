@@ -1,5 +1,7 @@
 ### Lecture: 2. Training Neural Networks
 #### Date: Feb 26
+#### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?02
+#### Questions: #lecture_2_questions
 
 - Capacity, overfitting, underfitting, regularization [Section 5.2 of DLB]
 - Hyperparameters and validation sets [Section 5.3 of DLB]
