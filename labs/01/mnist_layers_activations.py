@@ -35,9 +35,10 @@ class TorchTensorBoardCallback(keras.callbacks.Callback):
         return self._writers[writer]
 
     def add_logs(self, writer, logs, step):
-        for key, value in logs.items():
-            self.writer(writer).add_scalar(key, value, step)
-        self.writer(writer).flush()
+        if logs:
+            for key, value in logs.items():
+                self.writer(writer).add_scalar(key, value, step)
+            self.writer(writer).flush()
 
     def on_epoch_end(self, epoch, logs=None):
         if logs:
