@@ -47,7 +47,7 @@ class Model(keras.Model):
         # - then divide the tensor by 255 to normalize it to the `[0, 1]` range
         # - then reshape it to the shape `[inputs.shape[0], -1]`.
         #   The -1 is a wildcard which is computed so that the number
-        #   of elements before and after the reshape fits.
+        #   of elements before and after the reshape preserved.
         # - then multiply it by `self._W1` and then add `self._b1`
         # - apply `keras.ops.tanh`
         # - multiply the result by `self._W2` and then add `self._b2`
