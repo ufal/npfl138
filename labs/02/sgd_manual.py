@@ -47,7 +47,7 @@ class Model(keras.Model):
         # - then divide the tensor by 255 to normalize it to the `[0, 1]` range
         # - then reshape it to the shape `[inputs.shape[0], -1]`.
         #   The -1 is a wildcard which is computed so that the number
-        #   of elements before and after the reshape fits.
+        #   of elements before and after the reshape is preserved.
         # - then multiply it by `self._W1` and then add `self._b1`
         # - apply `keras.ops.tanh`
         # - multiply the result by `self._W2` and then add `self._b2`
@@ -82,15 +82,15 @@ class Model(keras.Model):
             # - Finally, compute the average across the batch examples.
             #
             # During the gradient computation, you will need to compute
-            # a batched version of a so-called batched outer product
-            #   `C[a, i, j] = A[a, i] * B[a, j]`
-            # which you can by using for example
+            # a batched version of a so-called outer product
+            #   `C[a, i, j] = A[a, i] * B[a, j]`,
+            # which you can achieve by using for example
             #   `A[:, :, np.newaxis] * B[:, np.newaxis, :]`
             # or with
-            #   `keras.ops.einsum("ai,aj->aij", A, B)`
+            #   `keras.ops.einsum("ai,aj->aij", A, B)`.
 
             # TODO(sgd_backpropagation): Perform the SGD update with learning rate `self._args.learning_rate`
-            # for the variable and computed gradient. You can modify
+            # for the variable and computed gradient. You can modify the
             # variable value with `variable.assign` or in this case the more
             # efficient `variable.assign_sub`.
             ...
