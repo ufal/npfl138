@@ -91,7 +91,7 @@ class Model(keras.Model):
 
             # TODO(sgd_backpropagation): Perform the SGD update with learning rate `self._args.learning_rate`
             # for the variable and computed gradient. You can modify
-            # variable value with `variable.assign` or in this case the more
+            # variable values with `variable.assign` or in this case the more
             # efficient `variable.assign_sub`.
             ...
 
