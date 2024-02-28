@@ -84,7 +84,7 @@ class Model(keras.Model):
             # During the gradient computation, you will need to compute
             # a batched version of a so-called batched outer product
             #   `C[a, i, j] = A[a, i] * B[a, j]`
-            # which you can by using for example
+            # which you can do by using for example
             #   `A[:, :, np.newaxis] * B[:, np.newaxis, :]`
             # or with
             #   `keras.ops.einsum("ai,aj->aij", A, B)`
