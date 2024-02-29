@@ -143,7 +143,7 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
     # TODO: Evaluate the test data using `evaluate` on `mnist.test` dataset
     test_accuracy = ...
     print("Test accuracy after epoch {} is {:.2f}".format(epoch + 1, 100 * test_accuracy), flush=True)
-    writer.add_scalar("test/accuracy", 100 * accuracy, epoch + 1)
+    writer.add_scalar("test/accuracy", 100 * test_accuracy, epoch + 1)
 
     # Return dev and test accuracies for ReCodEx to validate.
     return accuracy, test_accuracy
