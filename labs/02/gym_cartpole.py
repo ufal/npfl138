@@ -41,9 +41,9 @@ class TorchTensorBoardCallback(keras.callbacks.Callback):
 
     def on_epoch_end(self, epoch, logs=None):
         if logs:
-            self.add_logs("train", {k: v for k, v in logs.items() if not k.startswith("val_")}, epoch + 1)
             if isinstance(getattr(self.model, "optimizer", None), keras.optimizers.Optimizer):
-                self.add_logs("train", {"learning_rate": self.model.optimizer.learning_rate.numpy()}, epoch + 1)
+                logs = logs | {"learning_rate": keras.ops.convert_to_numpy(self.model.optimizer.learning_rate)}
+            self.add_logs("train", {k: v for k, v in logs.items() if not k.startswith("val_")}, epoch + 1)
             self.add_logs("val", {k[4:]: v for k, v in logs.items() if k.startswith("val_")}, epoch + 1)
 
 
