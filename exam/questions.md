@@ -25,8 +25,7 @@
 
 - Write down the backpropagation algorithm. [5]
 
-- Write down the mini-batch SGD algorithm with momentum. Then, formulate
-  SGD with Nesterov momentum and show the difference between them. [5]
+- Write down the mini-batch SGD algorithm with momentum. [5]
 
 - Write down the AdaGrad algorithm and show that it tends to internally decay
   learning rate by a factor of $1/\sqrt{t}$ in step $t$. Then write down
