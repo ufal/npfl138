@@ -27,8 +27,8 @@ Use natural logarithms to compute the entropies and the divergence.
 1. `python3 numpy_entropy.py --data_path` [numpy_entropy_data_1.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_data_1.txt) `--model_path` [numpy_entropy_model_1.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_model_1.txt)
 ```
 Entropy: 0.96 nats
-Crossentropy: 1.07 nats
-KL divergence: 0.11 nats
+Crossentropy: 0.99 nats
+KL divergence: 0.03 nats
 ```
 
 2. `python3 numpy_entropy.py --data_path` [numpy_entropy_data_2.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_data_2.txt) `--model_path` [numpy_entropy_model_2.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_model_2.txt)
@@ -51,8 +51,8 @@ _Note that your results may be slightly different, depending on your CPU type an
 - `python3 numpy_entropy.py --data_path` [numpy_entropy_data_1.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_data_1.txt) `--model_path` [numpy_entropy_model_1.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_model_1.txt)
 ```
 Entropy: 0.96 nats
-Crossentropy: 1.07 nats
-KL divergence: 0.11 nats
+Crossentropy: 0.99 nats
+KL divergence: 0.03 nats
 ```
 
 - `python3 numpy_entropy.py --data_path` [numpy_entropy_data_2.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_data_2.txt) `--model_path` [numpy_entropy_model_2.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_model_2.txt)
