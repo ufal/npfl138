@@ -1,5 +1,8 @@
 ### Lecture: 3. Training Neural Networks II
 #### Date: Mar 4
+#### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?03
+#### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides.pdf/npfl138-2324-03.pdf, PDF Slides
+#### Questions: #lecture_3_questions
 
 - Softmax with NLL (negative log likelihood) as a loss function [Section 6.2.2.3 of DLB, notably equation (6.30); plus slides 10-12]
 - Regularization [Chapter 7 until Section 7.1 of DLB]
