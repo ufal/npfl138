@@ -3,6 +3,7 @@
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?03
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides.pdf/npfl138-2324-03.pdf, PDF Slides
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-english.mp4, EN Lecture
 #### Questions: #lecture_3_questions
 
 - Softmax with NLL (negative log likelihood) as a loss function [Section 6.2.2.3 of DLB, notably equation (6.30); plus slides 10-12]
