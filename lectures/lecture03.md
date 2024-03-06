@@ -3,7 +3,12 @@
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?03
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides.pdf/npfl138-2324-03.pdf, PDF Slides
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-czech.convergence.mp4, CZ Convergence
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-czech.practicals.mp4, CZ Practicals
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-english.mp4, EN Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-english.convergence.mp4, EN Convergence
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-english.practicals.mp4, EN Practicals
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-english.gradients.mp4, EN `sgd_manual` Gradients
 #### Questions: #lecture_3_questions
 #### Lecture assignment: mnist_regularization
 #### Lecture assignment: mnist_ensemble
