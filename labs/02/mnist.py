@@ -14,7 +14,7 @@ class MNIST:
 
     _URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/datasets/"
 
-    class Datasplit:
+    class Dataset:
         def __init__(self, data: dict[str, np.ndarray], shuffle_batches: bool, seed: int = 42) -> None:
             self._data = data
             self._size = len(self._data["images"])
@@ -52,8 +52,8 @@ class MNIST:
         for dataset in ["train", "dev", "test"]:
             data = {key[len(dataset) + 1:]: mnist[key][:size.get(dataset, None)]
                     for key in mnist if key.startswith(dataset)}
-            setattr(self, dataset, self.Datasplit(data, shuffle_batches=dataset == "train"))
+            setattr(self, dataset, self.Dataset(data, shuffle_batches=dataset == "train"))
 
-    train: Datasplit
-    dev: Datasplit
-    test: Datasplit
+    train: Dataset
+    dev: Dataset
+    test: Dataset
