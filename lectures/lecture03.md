@@ -8,7 +8,7 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-english.mp4, EN Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-english.convergence.mp4, EN Convergence
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-english.practicals.mp4, EN Practicals
-#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-english.gradients.mp4, EN `sgd_manual` Gradients
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-03-english.gradients.mp4, EN sgd_manual Gradients
 #### Questions: #lecture_3_questions
 #### Lecture assignment: mnist_regularization
 #### Lecture assignment: mnist_ensemble
