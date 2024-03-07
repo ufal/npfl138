@@ -20,7 +20,7 @@ In addition to submitting the task in ReCodEx, also run the following
 variations and observe the results in TensorBoard,
 notably the training, development and test set accuracy and loss:
 - dropout rate `0`, `0.3`, `0.5`, `0.6`, `0.8`;
-- weight decay `0`, `0.1`, `0.3`, `0.5`, `0.1`;
+- weight decay `0`, `0.1`, `0.3`, `0.5`, `1.0`;
 - label smoothing `0`, `0.1`, `0.3`, `0.5`.
 
 #### Tests Start: mnist_regularization_tests
