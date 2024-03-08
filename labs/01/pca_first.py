@@ -20,8 +20,9 @@ parser.add_argument("--threads", default=1, type=int, help="Maximum number of th
 def main(args: argparse.Namespace) -> tuple[float, float]:
     # Set the random seed and the number of threads.
     np.random.seed(args.seed)
-    torch.set_num_threads(args.threads)
-    torch.set_num_interop_threads(args.threads)
+    if args.threads:
+        torch.set_num_threads(args.threads)
+        torch.set_num_interop_threads(args.threads)
 
     # Load data
     mnist = MNIST()
