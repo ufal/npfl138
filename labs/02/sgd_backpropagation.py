@@ -54,7 +54,7 @@ class Model(keras.Model):
         # - finally apply `keras.ops.softmax` and return the result
         return ...
 
-    def train_epoch(self, dataset: MNIST.Datasplit) -> None:
+    def train_epoch(self, dataset: MNIST.Dataset) -> None:
         for batch in dataset.batches(self._args.batch_size):
             # The batch contains
             # - batch["images"] with shape [?, MNIST.H, MNIST.W, MNIST.C]
@@ -93,7 +93,7 @@ class Model(keras.Model):
                     # efficient `variable.assign_sub`.
                     ...
 
-    def evaluate(self, dataset: MNIST.Datasplit) -> float:
+    def evaluate(self, dataset: MNIST.Dataset) -> float:
         # Compute the accuracy of the model prediction
         correct = 0
         for batch in dataset.batches(self._args.batch_size):
