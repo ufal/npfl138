@@ -42,7 +42,15 @@ class UppercaseData:
             # Create alphabet_map
             alphabet_map = {"<pad>": 0, "<unk>": 1}
             if not isinstance(alphabet, int):
-                for index, letter in enumerate(alphabet):
+                # Check that <pad> and <unk> are present at the beginning
+                if alphabet[:2] == ["<pad>", "<unk>"]:
+                    alphabet = alphabet[2:]
+                else:
+                    print("UppercaseData warning: The alphabet should start with <pad> and <unk>, prepending them.")
+
+                for index, letter in enumerate(alphabet, len(alphabet_map)):
+                    if letter in alphabet_map:
+                        raise ValueError("UppercaseData: Duplicated character '{}' in the alphabet.".format(letter))
                     alphabet_map[letter] = index
             else:
                 # Find most frequent characters
