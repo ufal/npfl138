@@ -34,15 +34,19 @@ class UppercaseData:
     _URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/datasets/uppercase_data.zip"
 
     class Dataset:
+        META_ALPHABET = ["<pad>", "<unk>"]
+
         def __init__(self, data: str, window: int, alphabet: int | list[str], seed: int = 42) -> None:
             self._window = window
             self._text = data
             self._size = len(self._text)
 
             # Create alphabet_map
-            alphabet_map = {"<pad>": 0, "<unk>": 1}
+            alphabet_map = {char: index for index, char in enumerate(UppercaseData.Dataset.META_ALPHABET)}
+
+            meta_alphabet_size = len(alphabet_map)
             if not isinstance(alphabet, int):
-                for index, letter in enumerate(alphabet):
+                for index, letter in enumerate(alphabet, meta_alphabet_size):
                     alphabet_map[letter] = index
             else:
                 # Find most frequent characters
@@ -51,7 +55,7 @@ class UppercaseData:
                     freqs[char] = freqs.get(char, 0) + 1
 
                 most_frequent = sorted(freqs.items(), key=lambda item: item[1], reverse=True)
-                for i, (char, freq) in enumerate(most_frequent, len(alphabet_map)):
+                for i, (char, freq) in enumerate(most_frequent, meta_alphabet_size):
                     alphabet_map[char] = i
                     if alphabet and len(alphabet_map) >= alphabet:
                         break
@@ -107,7 +111,12 @@ class UppercaseData:
                 setattr(self, dataset, self.Dataset(
                     data,
                     window,
-                    alphabet=alphabet_size if dataset == "train" else self.train.alphabet,
+                    alphabet=alphabet_size
+                        if dataset == "train"
+                        else [
+                            char for char in self.train.alphabet
+                            if char not in UppercaseData.Dataset.META_ALPHABET
+                        ],
                 ))
 
     train: Dataset
