@@ -41,6 +41,8 @@ class MNIST:
                     batch[key] = self._data[key][batch_perm]
                 yield batch
 
+    Datasplit = Dataset  # Kept for backward compatibility
+
     def __init__(self, dataset: str = "mnist", size: dict[str, int] = {}) -> None:
         path = "{}.npz".format(dataset)
         if not os.path.exists(path):
