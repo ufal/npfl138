@@ -5,7 +5,7 @@
 - _Installing to central user packages repository_
 
   You can install all required packages to central user packages repository using
-  `python3 -m pip install --user keras~=3.0.5 --extra-index-url=https://download.pytorch.org/whl/cu118 torch~=2.2.0 torchaudio~=2.2.0 torchvision~=0.17.0 torchmetrics~=1.3.1 flashlight-text~=0.0.3 tensorboard~=2.16.2 transformers~=4.37.2 gymnasium~=1.0.0a1 pygame~=2.5.2`.
+  `python3 -m pip install --user --no-cache-dir keras~=3.0.5 --extra-index-url=https://download.pytorch.org/whl/cu118 torch~=2.2.0 torchaudio~=2.2.0 torchvision~=0.17.0 torchmetrics~=1.3.1 flashlight-text~=0.0.3 tensorboard~=2.16.2 transformers~=4.37.2 gymnasium~=1.0.0a1 pygame~=2.5.2`.
 
   The above command installs CUDA 11.8 PyTorch build, but you can change `cu118` to:
   - `cpu` to get CPU-only (smaller) version,
@@ -17,7 +17,7 @@
   Python supports virtual environments, which are directories containing
   independent sets of installed packages. You can create a virtual environment
   by running `python3 -m venv VENV_DIR` followed by
-  `VENV_DIR/bin/pip install keras~=3.0.5 --extra-index-url=https://download.pytorch.org/whl/cu118 torch~=2.2.0 torchaudio~=2.2.0 torchvision~=0.17.0 torchmetrics~=1.3.1 flashlight-text~=0.0.3 tensorboard~=2.16.2 transformers~=4.37.2 gymnasium~=1.0.0a1 pygame~=2.5.2`.
+  `VENV_DIR/bin/pip install --no-cache-dir keras~=3.0.5 --extra-index-url=https://download.pytorch.org/whl/cu118 torch~=2.2.0 torchaudio~=2.2.0 torchvision~=0.17.0 torchmetrics~=1.3.1 flashlight-text~=0.0.3 tensorboard~=2.16.2 transformers~=4.37.2 gymnasium~=1.0.0a1 pygame~=2.5.2`.
   (or `VENV_DIR/Scripts/pip` on Windows).
 
   Again, apart from the CUDA 11.8 build, you can change `cu118` to:
@@ -53,6 +53,94 @@
   `tensorflow-metal==1.1.0` works with TensorFlow 2.14, which does not support
   Keras 3.
 
+
+### TOCEntry: MetaCentrum
+
+- _How to activate Python 3.10 on MetaCentrum?_
+
+  On Metacentrum, currently the newest available Python is 3.10, which you need
+  to activate in every session by running the following command:
+  ```
+  module add python/python-3.10.4-intel-19.0.4-sc7snnf
+  ```
+
+- _How to install the required virtual environment on MetaCentrum?_
+
+  To create a virtual environment, you first need to decide where it will
+  reside. Either you can find a permanent storage, where you have large-enough
+  [quota](https://docs.metacentrum.cz/data/quotas/), or you can [use scratch
+  storage for a submitted job](https://docs.metacentrum.cz/computing/scratch-storages/).
+
+  TL;DR:
+  - Run an interactive CPU job, asking for 16GB scratch space:
+    ```
+    qsub -l select=1:ncpus=1:mem=8gb:scratch_local=16gb -I
+    ```
+
+  - In the job, use the allocated scratch space as the temporary directory:
+    ```
+    export TMPDIR=$SCRATCHDIR
+    ```
+
+  - Finally, create the virtual environment and install PyTorch in it:
+    ```
+    module add python/python-3.10.4-intel-19.0.4-sc7snnf
+    python3 -m venv CHOSEN_VENV_DIR
+    CHOSEN_VENV_DIR/bin/pip install --no-cache-dir --upgrade pip setuptools
+    CHOSEN_VENV_DIR/bin/pip install --no-cache-dir keras~=3.0.5 --extra-index-url=https://download.pytorch.org/whl/cu118 torch~=2.2.0 torchaudio~=2.2.0 torchvision~=0.17.0 torchmetrics~=1.3.1 flashlight-text~=0.0.3 tensorboard~=2.16.2 transformers~=4.37.2 gymnasium~=1.0.0a1 pygame~=2.5.2
+    ```
+
+- _How to run a GPU computation on MetaCentrum?_
+
+  First, read the official MetaCentrum documentation:
+  [Basic terms](https://docs.metacentrum.cz/computing/concepts/),
+  [Run simple job](https://docs.metacentrum.cz/computing/run-basic-job/),
+  [GPU computing](https://docs.metacentrum.cz/computing/gpu-comput/),
+  [GPU clusters](https://docs.metacentrum.cz/computing/gpu-clusters/).
+
+  TL;DR: To run an interactive GPU job with 1 CPU, 1 GPU, 8GB RAM, and 16GB scatch
+  space, run:
+  ```
+  qsub -q gpu -l select=1:ncpus=1:ngpus=1:mem=8gb:scratch_local=16gb -I
+  ```
+
+  To run a script in a non-interactive way, replace the `-I` option with the script to be executed.
+
+  If you want to run a CPU-only computation, remove the `-q gpu` and `ngpus=1:`
+  from the above commands.
+
+### TOCEntry: AIC
+
+- _How to install required packages on [AIC](https://aic.ufal.mff.cuni.cz)?_
+
+  The Python 3.11.7 is available `/opt/python/3.11.7/bin/python3`, so you should
+  start by creating a virtual environment using
+  ```
+  /opt/python/3.11.7/bin/python3 -m venv VENV_DIR
+  ```
+  and then install the required packages in it using
+  ```
+  VENV_DIR/bin/pip install --no-cache-dir keras~=3.0.5 --extra-index-url=https://download.pytorch.org/whl/cu118 torch~=2.2.0 torchaudio~=2.2.0 torchvision~=0.17.0 torchmetrics~=1.3.1 flashlight-text~=0.0.3 tensorboard~=2.16.2 transformers~=4.37.2 gymnasium~=1.0.0a1 pygame~=2.5.2
+  ```
+
+- _How to run a GPU computation on AIC?_
+
+  First, read the official AIC documentation:
+  [Submitting CPU Jobs](https://aic.ufal.mff.cuni.cz/index.php/Submitting_CPU_Jobs),
+  [Submitting GPU Jobs](https://aic.ufal.mff.cuni.cz/index.php/Submitting_GPU_Jobs).
+
+  TL;DR: To run an interactive GPU job with 1 CPU, 1 GPU, and 16GB RAM, run:
+  ```
+  srun -p gpu -c1 -G1 --mem=16G --pty bash
+  ```
+
+  To run a shell script requiring a GPU in a non-interactive way, use
+  ```
+  sbatch -p gpu -c1 -G1 --mem=16G SCRIPT_PATH
+  ```
+
+  If you want to run a CPU-only computation, remove the `-p gpu` and `-G1`
+  from the above commands.
 
 ### TOCEntry: Git
 
@@ -138,7 +226,6 @@
 
   The memory limit during evaluation is **1.5GB**. The time limit varies, but it should
   be at least 10 seconds and at least twice the running time of my solution.
-
 
 ### TOCEntry: Finetuning
 
