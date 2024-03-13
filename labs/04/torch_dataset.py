@@ -17,7 +17,7 @@ parser.add_argument("--batch_size", default=50, type=int, help="Batch size.")
 parser.add_argument("--epochs", default=5, type=int, help="Number of epochs.")
 parser.add_argument("--recodex", default=False, action="store_true", help="Evaluation in ReCodEx.")
 parser.add_argument("--seed", default=42, type=int, help="Random seed.")
-parser.add_argument("--show_images", default=False, action="store_true", help="Show augmented images.")
+parser.add_argument("--show_images", default=None, const=10, type=int, nargs="?", help="Show augmented images.")
 parser.add_argument("--threads", default=1, type=int, help="Maximum number of threads to use.")
 # If you add more arguments, ReCodEx will keep them with your default values.
 
@@ -103,13 +103,15 @@ def main(args: argparse.Namespace) -> dict[str, float]:
 
     if args.show_images:
         from torch.utils import tensorboard
+        GRID, REPEATS, TAG = args.show_images, 5, "augmented" if args.augment else "original"
         tb_writer = tensorboard.SummaryWriter(os.path.join("logs", "augmentations"))
-        for step in range(5):
-            images = torch.stack([train[i][0] for i in range(100)], axis=0)
-            images = images.reshape(10, 10 * images.shape[1], *images.shape[2:]).permute(0, 2, 1, 3)
-            images = images.reshape(1, 10 * images.shape[1], *images.shape[2:]).permute(0, 2, 1, 3)
-            tb_writer.add_images("augmentations", images, step, dataformats="NHWC")
+        for step in range(REPEATS):
+            images = keras.ops.stack([train[i][0] for i in range(GRID * GRID)], axis=0)
+            images = images.reshape(GRID, GRID * images.shape[1], *images.shape[2:]).permute(0, 2, 1, 3)
+            images = images.reshape(1, GRID * images.shape[1], *images.shape[2:]).permute(0, 2, 1, 3)
+            tb_writer.add_images(TAG, images, step, dataformats="NHWC")
         tb_writer.close()
+        print("Saved first {} training imaged to logs/{}".format(GRID * GRID, TAG))
 
     # TODO: Create `train` and `dev` instances of `torch.utils.data.DataLoader` from
     # the datasets, using the given `args.batch_size` and shuffling the training dataset.
