@@ -53,7 +53,6 @@
   `tensorflow-metal==1.1.0` works with TensorFlow 2.14, which does not support
   Keras 3.
 
-
 ### TOCEntry: MetaCentrum
 
 - _How to activate Python 3.10 on MetaCentrum?_
