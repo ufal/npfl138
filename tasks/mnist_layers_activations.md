@@ -6,7 +6,7 @@
 
 Before solving the assignment, start by playing with
 [example_keras_tensorboard.py](https://github.com/ufal/npfl138/tree/master/labs/01/example_keras_tensorboard.py),
-in order to familiarize with TensorFlow and TensorBoard.
+in order to familiarize with Keras and TensorBoard.
 Run it, and when it finishes, run TensorBoard using `tensorboard --logdir logs`.
 Then open <http://localhost:6006> in a browser and explore the active tabs.
 
