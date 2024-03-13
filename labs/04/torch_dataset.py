@@ -92,6 +92,8 @@ def main(args: argparse.Namespace) -> dict[str, float]:
             # the image as an argument), and finally permute the axes back to
             # the original order.
             return ...
+    else:
+        augmentation_fn = None
 
     # TODO: Create `train` and `dev` instances of `TorchDataset` from the corresponding
     # `cifar` datasets. Limit their sizes to 5_000 and 1_000 examples, respectively,
