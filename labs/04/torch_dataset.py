@@ -54,7 +54,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
     )
 
     # TODO: Create a Torch dataset constructible from the given `CIFAR10.Dataset`.
-    # The size of the dataset should be set to the given `size`, and an optional
+    # You should use only the first `size` examples of the dataset, and optional
     # augmentation function `augmentation_fn` may be applied to the images.
     class TorchDataset(torch.utils.data.Dataset):
         def __init__(self, cifar: CIFAR10.Dataset, size: int, augmentation_fn=None) -> None:
