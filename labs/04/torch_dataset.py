@@ -85,7 +85,8 @@ def main(args: argparse.Namespace) -> dict[str, float]:
         ])
 
         def augmentation_fn(image: np.ndarray) -> torch.Tensor:
-            # TODO: First, create a torch Tensor from the given image.
+            # TODO: First, convert the numpy `images` to a PyTorch tensor of uint8s,
+            # for example by using `torch.from_numpy` or `torch.as_tensor`.
             # Then, because of the channels-position mismatch, permute the axes
             # in the image to change the order of the axes from HWC to CHW.
             # Next, apply the `transformation` to the image (by calling it with
