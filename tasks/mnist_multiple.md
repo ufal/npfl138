@@ -11,7 +11,7 @@ template and:
 
 - The goal is to create a model, which given two input MNIST images, compares if the
   digit on the first one is greater than on the second one.
-- We perform this this comparison in two different ways:
+- We perform this comparison in two different ways:
   - first by directly predicting the comparison by the network (_direct comparison_),
   - then by first classifying the images into digits and then comparing these predictions (_indirect comparison_).
 - The model has four outputs:
