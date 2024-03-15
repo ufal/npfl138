@@ -23,7 +23,7 @@ argument, which contains comma-separated specifications of the following layers:
 - `R-[layers]`: Add a residual connection. The `layers` contain a specification
   of at least one convolutional layer (but not a recursive residual connection `R`).
   The input to the `R` layer should be processed sequentially by `layers`, and the
-  produced output (after the ReLU nonlinearty of the last layer) should be added
+  produced output (after the ReLU nonlinearity of the last layer) should be added
   to the input (of this `R` layer).
   Example: `R-[C-16-3-1-same,C-16-3-1-same]`
 - `F`: Flatten inputs. Must appear exactly once in the architecture.
