@@ -29,6 +29,6 @@ to load the data, generate an alphabet of given size containing most frequent
 characters, and generate sliding window view on the data. The template also
 comments on possibilities of character representation.
 
-**Do not use RNNs, CNNs, or Transformer in this task (if you have doubts, contact me); only
-fully connected layers with any activations, residual connections, and any regularization
-layers are allowed.**
+**Do not use RNNs, CNNs, or Transformer** in this task (if you have doubts, contact me);
+fully connected layers (and therefore also embedding layers), any activations,
+residual connections, and any regularization layers are fine.
