@@ -48,7 +48,7 @@ class Model(keras.Model):
         #   the same layer (identical, i.e., with shared weights) into 10 classes;
         # - finally, compute _indirect comparison_ whether the first digit
         #   is greater than second, by comparing the predictions from the above
-        #   two outputs and converting them to "float32" using `keras.ops.cast`.
+        #   two outputs; convert the comparison to "float32" using `keras.ops.cast`.
         outputs = {
             "direct_comparison": ...,
             "digit_1": ...,
