@@ -43,6 +43,9 @@
   PyTorch supports NVIDIA GPU or AMD GPU out of the box, you just need to select
   appropriate `--extra-index-url` when installing the packages.
 
+  If you encounter problems loading CUDA or cuDNN libraries, make sure your
+  `LD_LIBRARY_PATH` does not contain paths to older CUDA/cuDNN libraries.
+
 - _**GPU** support on macOS_
 
   The support for Apple Silicon GPUs in PyTorch+Keras is currently not great.
