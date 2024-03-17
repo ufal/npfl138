@@ -86,6 +86,12 @@
     export TMPDIR=$SCRATCHDIR
     ```
 
+  - You should clear the scratch space before you exit using the `clean_scratch`
+    command. You can instruct the shell to call it automatically by running:
+    ```
+    trap 'clean_scratch' TERM EXIT
+    ```
+
   - Finally, create the virtual environment and install PyTorch in it:
     ```
     module add python/python-3.10.4-intel-19.0.4-sc7snnf
