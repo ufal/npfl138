@@ -63,6 +63,9 @@
   After reading the [Terms and conditions](https://docs.metacentrum.cz/access/terms/),
   you can [apply for an account here](https://docs.metacentrum.cz/access/account/).
 
+  After your account is created, please make sure that the directories
+  containing your solutions are always **private**.
+
 - _How to activate Python 3.10 on MetaCentrum?_
 
   On Metacentrum, currently the newest available Python is 3.10, which you need
