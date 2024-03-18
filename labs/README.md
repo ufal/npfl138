@@ -24,4 +24,5 @@ each team must complete the assignments **themselves**, without using code they 
 write (unless explicitly allowed). Of course, inside a team you are allowed to
 share code and submit identical solutions. Note that **all students involved**
 in cheating will be punished, so if you share your source code with a friend,
-both you and your friend will be punished.
+both you and your friend will be punished. That also means that you should **never
+publish** your solutions.
