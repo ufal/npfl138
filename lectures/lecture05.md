@@ -2,6 +2,7 @@
 #### Date: Mar 18
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?05
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides.pdf/npfl138-2324-05.pdf, PDF Slides
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-05-czech.mp4, CZ Lecture
 #### Questions: #lecture_5_questions
 
 - Residual CNN Networks
