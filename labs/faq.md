@@ -52,9 +52,9 @@
   Apple is working on `mlx` backend for Keras, which might improve the situation
   in the future.
 
-  One could in theory use the TensorFlow backend, but the latest release of
-  `tensorflow-metal==1.1.0` works with TensorFlow 2.14, which does not support
-  Keras 3.
+  You can instead use the TensorFlow backend – just install `tensorflow~=2.16.1` and
+  `tensorflow-metal` packages from PyPI, and run `export KERAS_BACKEND=tensorflow`
+  in every terminal before running assignment scripts.
 
 ### TOCEntry: MetaCentrum
 
