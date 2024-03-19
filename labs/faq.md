@@ -56,6 +56,17 @@
   `tensorflow-metal` packages from PyPI, and run `export KERAS_BACKEND=tensorflow`
   in every terminal before running assignment scripts.
 
+- _How to install TensorFlow_
+
+  If you would like to install also TensorFlow, run `pip install tensorflow-cpu`
+  for CPU-only support, and `pip install tensorflow[and-cuda]` for Linux/WSL2
+  GPU support. However, the paths to the CUDA libraries seem not to be detected
+  correctly, so I had to run
+  ```sh
+  export LD_LIBRARY_PATH=$(echo VENV_DIR/lib/python*/site-packages/nvidia/*/lib | tr " " ":")
+  ```
+  in the terminal for the GPU support to work.
+
 ### TOCEntry: MetaCentrum
 
 - _How to apply for MetaCentrum account?_
