@@ -16,3 +16,5 @@ set to score 70% on the test set.
 You may want to start with the
 [cifar_competition.py](https://github.com/ufal/npfl138/tree/master/labs/04/cifar_competition.py)
 template which generates the test set annotation in the required format.
+
+Note that in this assignment, you **cannot use** the `keras.applications` module.
