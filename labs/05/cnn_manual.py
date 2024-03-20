@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+import argparse
+import os
+os.environ.setdefault("KERAS_BACKEND", "torch")  # Use PyTorch backend unless specified otherwise
+
+import numpy as np
+import keras
+import torch
+
+from mnist import MNIST
+
+parser = argparse.ArgumentParser()
+# These arguments will be set appropriately by ReCodEx, even if you change them.
+parser.add_argument("--batch_size", default=50, type=int, help="Batch size.")
+parser.add_argument("--cnn", default="5-3-2,10-3-2", type=str, help="CNN architecture.")
+parser.add_argument("--epochs", default=5, type=int, help="Number of epochs.")
+parser.add_argument("--learning_rate", default=0.01, type=float, help="Learning rate.")
+parser.add_argument("--recodex", default=False, action="store_true", help="Evaluation in ReCodEx.")
+parser.add_argument("--seed", default=42, type=int, help="Random seed.")
+parser.add_argument("--threads", default=1, type=int, help="Maximum number of threads to use.")
+parser.add_argument("--verify", default=False, action="store_true", help="Verify the implementation.")
+# If you add more arguments, ReCodEx will keep them with your default values.
+
+
+class Convolution:
+    def __init__(
+        self, filters: int, kernel_size: int, stride: int, input_shape: list[int], seed: int, verify: bool,
+    ) -> None:
+        # Create a convolutional layer with the given arguments
+        # and given input shape (e.g., [28, 28, 1]).
+        self._filters = filters
+        self._kernel_size = kernel_size
+        self._stride = stride
+        self._verify = verify
+
+        # Here the kernel and bias variables are created
+        self._kernel = keras.Variable(keras.initializers.GlorotUniform(seed=seed)(
+            [kernel_size, kernel_size, input_shape[2], filters]))
+
+        self._bias = keras.Variable(keras.initializers.Zeros()([filters]))
+
+    def forward(self, inputs: torch.Tensor) -> torch.Tensor:
+        # TODO: Compute the forward propagation through the convolution
+        # with ReLU activation, and return the result.
+        #
+        # In order for the computation to be reasonably fast, you cannot
+        # manually iterate through the individual pixels, batch examples,
+        # input filters, or output filters. However, you can manually
+        # iterate through the kernel size.
+        output = ...
+
+        # If requested, verify that `output` contains a correct value.
+        if self._verify:
+            reference = keras.ops.relu(keras.ops.conv(inputs, self._kernel, self._stride) + self._bias)
+            np.testing.assert_allclose(keras.ops.convert_to_numpy(output), keras.ops.convert_to_numpy(reference),
+                                       atol=1e-4, err_msg="Forward pass differs!")
+
+        return output
+
+    def backward(
+        self, inputs: torch.Tensor, outputs: torch.Tensor, outputs_gradient: torch.Tensor
+    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+        # TODO: Given this layer's inputs, this layer's outputs,
+        # and the gradient with respect to the layer's outputs,
+        # compute the derivatives of the loss with respect to
+        # - the `inputs` layer,
+        # - `self._kernel`,
+        # - `self._bias`.
+        inputs_gradient, kernel_gradient, bias_gradient = ..., ..., ...
+
+        # If requested, verify that the three computed gradients are correct.
+        if self._verify:
+            inputs.requires_grad = True
+            inputs.grad = self._kernel.value.grad = self._bias.value.grad = None
+            reference = keras.ops.relu(keras.ops.conv(inputs, self._kernel, self._stride) + self._bias)
+            reference.backward(gradient=outputs_gradient, inputs=[inputs, self._kernel.value, self._bias.value])
+            for name, computed, reference in zip(
+                    ["Inputs", "Kernel", "Bias"], [inputs_gradient, kernel_gradient, bias_gradient],
+                    [inputs.grad, self._kernel.value.grad, self._bias.value.grad]):
+                np.testing.assert_allclose(keras.ops.convert_to_numpy(computed), keras.ops.convert_to_numpy(reference),
+                                           atol=1e-4, err_msg=name + " gradient differs!")
+
+        # Return the inputs gradient, the layer variables, and their gradients.
+        return inputs_gradient, [self._kernel, self._bias], [kernel_gradient, bias_gradient]
+
+
+class Model:
+    def __init__(self, args: argparse.Namespace) -> None:
+        self._args = args
+
+        # Create the convolutional layers according to `args.cnn`.
+        input_shape = [MNIST.H, MNIST.W, MNIST.C]
+        self._convs = []
+        for layer in args.cnn.split(","):
+            filters, kernel_size, stride = map(int, layer.split("-"))
+            self._convs.append(Convolution(filters, kernel_size, stride, input_shape, args.seed, args.verify))
+            input_shape = [(input_shape[0] - kernel_size) // stride + 1,
+                           (input_shape[1] - kernel_size) // stride + 1, filters]
+
+        # Create the classification head
+        self._rescaling = keras.layers.Rescaling(1 / 255)
+        self._flatten = keras.layers.Flatten()
+        self._classifier = keras.layers.Dense(MNIST.LABELS, activation="softmax")
+
+        # Create the metric and the optimizer
+        self._accuracy = keras.metrics.SparseCategoricalAccuracy()
+        self._optimizer = keras.optimizers.Adam(args.learning_rate)
+
+    def train_epoch(self, dataset: MNIST.Dataset) -> None:
+        for batch in dataset.batches(self._args.batch_size):
+            # Forward pass through the convolutions
+            hidden = keras.ops.convert_to_tensor(batch["images"])
+            hidden = self._rescaling(hidden)
+            conv_values = [hidden]
+            for conv in self._convs:
+                hidden = conv.forward(hidden)
+                conv_values.append(hidden)
+
+            # Run the classification head
+            hidden_flat = self._flatten(hidden)
+            predictions = self._classifier(hidden_flat)
+
+            # Compute the gradients of the classifier and the convolution output
+            d_logits = (predictions - keras.ops.one_hot(batch["labels"], MNIST.LABELS)) / len(batch["images"])
+            variables = [self._classifier.bias, self._classifier.kernel]
+            gradients = [keras.ops.sum(d_logits, axis=0), keras.ops.transpose(hidden_flat) @ d_logits]
+            hidden_gradient = keras.ops.reshape(d_logits @ keras.ops.transpose(self._classifier.kernel), hidden.shape)
+
+            # Backpropagate the gradient through the convolutions
+            for conv, inputs, outputs in reversed(list(zip(self._convs, conv_values[:-1], conv_values[1:]))):
+                hidden_gradient, conv_variables, conv_gradients = conv.backward(inputs, outputs, hidden_gradient)
+                variables.extend(conv_variables)
+                gradients.extend(conv_gradients)
+
+            # Update the weights
+            self._optimizer.apply(gradients, variables)
+
+    def evaluate(self, dataset: MNIST.Dataset) -> float:
+        self._accuracy.reset_state()
+        for batch in dataset.batches(self._args.batch_size):
+            hidden = keras.ops.convert_to_tensor(batch["images"])
+            hidden = self._rescaling(hidden)
+            for conv in self._convs:
+                hidden = conv.forward(hidden)
+            hidden = self._flatten(hidden)
+            predictions = self._classifier(hidden)
+            self._accuracy(batch["labels"], predictions)
+        return self._accuracy.result()
+
+
+def main(args: argparse.Namespace) -> float:
+    # Set the random seed and the number of threads.
+    keras.utils.set_random_seed(args.seed)
+    if args.threads:
+        torch.set_num_threads(args.threads)
+        torch.set_num_interop_threads(args.threads)
+
+    # Load data, using only 5 000 training images
+    mnist = MNIST(size={"train": 5_000})
+
+    # Create the model
+    model = Model(args)
+
+    for epoch in range(args.epochs):
+        model.train_epoch(mnist.train)
+
+        dev_accuracy = model.evaluate(mnist.dev)
+        print("Dev accuracy after epoch {} is {:.2f}".format(epoch + 1, 100 * dev_accuracy))
+
+    test_accuracy = model.evaluate(mnist.test)
+    print("Test accuracy after epoch {} is {:.2f}".format(epoch + 1, 100 * test_accuracy))
+
+    # Return dev and test accuracies for ReCodEx to validate.
+    return dev_accuracy, test_accuracy
+
+
+if __name__ == "__main__":
+    args = parser.parse_args([] if "__file__" not in globals() else None)
+    main(args)
