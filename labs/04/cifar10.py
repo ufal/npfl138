@@ -30,17 +30,21 @@ class CIFAR10:
             return self._size
 
         def dataset(self, transform: Callable[[dict[str, np.ndarray]], Any] | None = None) -> torch.utils.data.Dataset:
-            class TorchDataset(torch.utils.data.Dataset):
-                def __len__(this) -> int:
-                    return self._size
+            return CIFAR10.TorchDataset(self, transform)
 
-                def __getitem__(this, index: int) -> tuple[torch.Tensor, int]:
-                    item = {key: value[index] for key, value in self._data.items()}
-                    if transform is not None:
-                        item = transform(item)
-                    return item
+    class TorchDataset(torch.utils.data.Dataset):
+        def __init__(self, dataset: "Dataset", transform: Callable[[dict[str, np.ndarray]], Any] | None) -> None:
+            self._dataset = dataset
+            self._transform = transform
 
-            return TorchDataset()
+        def __len__(self) -> int:
+            return self._dataset.size
+
+        def __getitem__(self, index: int) -> Any:
+            item = {key: value[index] for key, value in self._dataset.data.items()}
+            if self._transform is not None:
+                item = self._transform(item)
+            return item
 
     def __init__(self, size: dict[str, int] = {}) -> None:
         path = os.path.basename(self._URL)
