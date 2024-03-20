@@ -30,8 +30,6 @@ class CIFAR10:
             return self._size
 
         def dataset(self, transform: Callable[[dict[str, np.ndarray]], Any] | None = None) -> torch.utils.data.Dataset:
-            import torch
-
             class TorchDataset(torch.utils.data.Dataset):
                 def __len__(this) -> int:
                     return self._size
