@@ -3,7 +3,10 @@
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?05
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides.pdf/npfl138-2324-05.pdf, PDF Slides
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-05-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-05-czech.practicals.mp4, CZ Practicals
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-05-english.mp4, EN Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-05-english.transposed-conv.mp4, EN Transposed Convolution
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-05-english.practicals.mp4, EN Practicals
 #### Questions: #lecture_5_questions
 #### Lecture assignment: cnn_manual
 #### Lecture assignment: cags_classification
