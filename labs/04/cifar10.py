@@ -16,7 +16,7 @@ class CIFAR10:
     _URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/datasets/cifar10_competition.npz"
 
     class Dataset:
-        def __init__(self, data: dict[str, np.ndarray], seed: int = 42) -> None:
+        def __init__(self, data: dict[str, np.ndarray]) -> None:
             self._data = data
             self._data["labels"] = self._data["labels"].ravel()
             self._size = len(self._data["images"])
