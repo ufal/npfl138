@@ -70,7 +70,7 @@ class Convolution:
 
         # If requested, verify that the three computed gradients are correct.
         if self._verify:
-            inputs.requires_grad = True
+            inputs.requires_grad_(True)
             inputs.grad = self._kernel.value.grad = self._bias.value.grad = None
             reference = keras.ops.relu(keras.ops.conv(inputs, self._kernel, self._stride) + self._bias)
             reference.backward(gradient=outputs_gradient, inputs=[inputs, self._kernel.value, self._bias.value])
