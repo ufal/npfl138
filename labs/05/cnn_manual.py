@@ -158,17 +158,19 @@ def main(args: argparse.Namespace) -> float:
     # Load data, using only 5 000 training images
     mnist = MNIST(size={"train": 5_000})
 
-    # Create the model
-    model = Model(args)
+    # Run on CPUs to avoid lower precision on GPUs (for example TF32 on NVIDIA).
+    with keras.device("cpu"):
+        # Create the model
+        model = Model(args)
 
-    for epoch in range(args.epochs):
-        model.train_epoch(mnist.train)
+        for epoch in range(args.epochs):
+            model.train_epoch(mnist.train)
 
-        dev_accuracy = model.evaluate(mnist.dev)
-        print("Dev accuracy after epoch {} is {:.2f}".format(epoch + 1, 100 * dev_accuracy))
+            dev_accuracy = model.evaluate(mnist.dev)
+            print("Dev accuracy after epoch {} is {:.2f}".format(epoch + 1, 100 * dev_accuracy))
 
-    test_accuracy = model.evaluate(mnist.test)
-    print("Test accuracy after epoch {} is {:.2f}".format(epoch + 1, 100 * test_accuracy))
+        test_accuracy = model.evaluate(mnist.test)
+        print("Test accuracy after epoch {} is {:.2f}".format(epoch + 1, 100 * test_accuracy))
 
     # Return dev and test accuracies for ReCodEx to validate.
     return dev_accuracy, test_accuracy
