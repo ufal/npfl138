@@ -85,7 +85,7 @@ class CAGS:
     def _load_data(path: str, items: int) -> list[dict[str, Any]]:
         def get_value() -> int:
             nonlocal data, offset
-            value = data[offset] & 0x7F; start = offset; offset += 1
+            value = np.int64(data[offset] & 0x7F); start = offset; offset += 1
             while data[offset - 1] & 0x80:
                 value |= (data[offset] & 0x7F) << (7 * (offset - start)); offset += 1
             return value
