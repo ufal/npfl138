@@ -17,7 +17,7 @@ Start with the
 [sgd_manual.py](https://github.com/ufal/npfl138/tree/master/labs/02/sgd_manual.py)
 template, which is based on
 [sgd_backpropagation.py](https://github.com/ufal/npfl138/tree/master/labs/02/sgd_backpropagation.py)
-one. Be aware that these templates generates each a different output file.
+one. Be aware that each of these templates generate a different output file.
 
 Note that ReCodEx disables the PyTorch automatic differentiation during
 evaluation.
