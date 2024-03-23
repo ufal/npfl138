@@ -34,7 +34,7 @@ class CIFAR10:
             return CIFAR10.TorchDataset(self, transform)
 
     class TorchDataset(torch.utils.data.Dataset):
-        def __init__(self, dataset: "Dataset", transform: Callable[[dict[str, np.ndarray]], Any] | None) -> None:
+        def __init__(self, dataset: "CIFAR10.Dataset", transform: Callable[[dict[str, np.ndarray]], Any] | None) -> None:
             self._dataset = dataset
             self._transform = transform
 
