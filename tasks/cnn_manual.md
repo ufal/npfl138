@@ -12,9 +12,9 @@ activation and `valid` padding, specified in the `args.cnn` option.
 The `args.cnn` contains comma-separated layer specifications in the format
 `filters-kernel_size-stride`.
 
-Of course, you cannot use any TensorFlow convolutional operation (instead,
+Of course, you cannot use any PyTorch convolutional operation (instead,
 implement the forward and backward pass using matrix multiplication and other
-operations), nor the `tf.GradientTape` for gradient computation.
+operations), nor the `.backward()` for gradient computation.
 
 To make debugging easier, the template supports a `--verify` option, which
 allows comparing the forward pass and the three gradients you compute in the
