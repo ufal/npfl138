@@ -108,6 +108,8 @@
 
 - Compare Cutout and DropBlock. [5]
 
+- Describe in detail how is CutMix performed. [5]
+
 - Describe Squeeze and Excitation applied to a ResNet block. [5]
 
 - Draw the Mobile inverted bottleneck block (including explanation of separable
