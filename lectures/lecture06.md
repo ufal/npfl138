@@ -5,7 +5,7 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-06-czech.mp4, CZ Lecture
 #### Questions: #lecture_6_questions
 
-- R-CNN [[R-CNN](https://arxiv.org/abs/1504.08083)]
+- R-CNN [[R-CNN](https://arxiv.org/abs/1311.2524)]
 - Fast R-CNN [[Fast R-CNN](https://arxiv.org/abs/1504.08083)]
 - Proposing RoIs using Faster R-CNN [[Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](https://arxiv.org/abs/1506.01497)]
 - Mask R-CNN [[Mask R-CNN](https://arxiv.org/abs/1703.06870)]
