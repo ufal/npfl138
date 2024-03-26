@@ -8,7 +8,7 @@ Your goal in this assignment is to implement model ensembling.
 The [mnist_ensemble.py](https://github.com/ufal/npfl138/tree/master/labs/03/mnist_ensemble.py)
 template trains `args.models` individual models, and your goal is to perform
 an ensemble of the first model, first two models, first three models, …, all
-models, and evaluate their accuracy on the test set.
+models, and evaluate their accuracy on the development set.
 
 #### Tests Start: mnist_ensemble_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._
