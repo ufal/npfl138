@@ -119,19 +119,16 @@ class CAGS:
 
                     get_value_of_kind(0x12)
                     if data[offset] == 0x0A:
-                        get_value_of_kind(0x0A)
-                        length = get_value_of_kind(0x0A)
+                        length = get_value_of_kind(0x0A) and get_value_of_kind(0x0A)
                         entries[-1][key] = np.frombuffer(data, np.uint8, length, offset).copy(); offset += length
                     elif data[offset] == 0x1A:
-                        get_value_of_kind(0x1A)
-                        length = get_value_of_kind(0x0A)
+                        length = get_value_of_kind(0x1A) and get_value_of_kind(0x0A)
                         values, target_offset = [], offset + length
                         while offset < target_offset:
                             values.append(get_value())
                         entries[-1][key] = np.array(values, dtype=np.int64)
                     elif data[offset] == 0x12:
-                        get_value_of_kind(0x12)
-                        length = get_value_of_kind(0x0A)
+                        length = get_value_of_kind(0x12) and get_value_of_kind(0x0A)
                         entries[-1][key] = np.frombuffer(
                             data, np.dtype("<f4"), length >> 2, offset).astype(np.float32).copy(); offset += length
                     else:
