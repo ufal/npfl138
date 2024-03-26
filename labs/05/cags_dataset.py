@@ -66,6 +66,9 @@ class CAGS:
         def __getitem__(self, index: int) -> Any:
             return self._transform(self._dataset[index])
 
+        def transform(self, transform: Callable[[dict[str, torch.Tensor]], Any]) -> torch.utils.data.Dataset:
+            return CAGS.TransformedDataset(self, transform)
+
     def __init__(self) -> None:
         for dataset, size in [("train", 2_142), ("dev", 306), ("test", 612)]:
             path = "cags.{}.tfrecord".format(dataset)
