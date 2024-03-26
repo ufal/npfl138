@@ -56,7 +56,7 @@ class CAGS:
             return CAGS.TransformedDataset(self, transform)
 
     class TransformedDataset(torch.utils.data.Dataset):
-        def __init__(self, dataset: "Dataset", transform: Callable[[dict[str, torch.Tensor]], Any]) -> None:
+        def __init__(self, dataset: "CAGS.Dataset", transform: Callable[[dict[str, torch.Tensor]], Any]) -> None:
             self._dataset = dataset
             self._transform = transform
 
