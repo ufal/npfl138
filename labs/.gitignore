@@ -3,5 +3,5 @@ logs/
 *.h5
 *.keras
 *.npz
-*.pickle
+*.tfrecord
 *.zip
