@@ -26,8 +26,8 @@ module, either by running with `--evaluate=path` arguments, or using its
 `evaluate_file` method.
 
 The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2324-summer#competitions).
-Everyone who submits a solution which achieves at least _20%_ test set accuracy gets
-5 points; the rest 5 points will be distributed depending on relative ordering
+Everyone who submits a solution achieving at least _20%_ test set accuracy gets
+5 points; the remaining 5 bonus points are distributed depending on relative ordering
 of your solutions. Note that I usually need at least _35%_ development set
 accuracy to achieve the required test set performance.
 

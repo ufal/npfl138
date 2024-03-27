@@ -31,8 +31,8 @@ estimates on the batch) or in inference regime. There is one exception though
 inference regime even when `training == True`._
 
 The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2324-summer#competitions). Everyone who submits a solution
-which achieves at least _93%_ test set accuracy will get 4 points; the rest
-5 points will be distributed depending on relative ordering of your solutions.
+achieving at least _93%_ test set accuracy gets 4 points; the remaining
+5 bonus points are distributed depending on relative ordering of your solutions.
 
 You may want to start with the
 [cags_classification.py](https://github.com/ufal/npfl138/tree/master/labs/05/cags_classification.py)

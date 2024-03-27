@@ -15,8 +15,8 @@ only used to understand the approach you took, and to indicate teams).
 Explicitly, submit **exactly one .txt file** and **at least one .py/ipynb file**.
 
 The task is also a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2324-summer#competitions). Everyone who submits
-a solution which achieves at least _98.5%_ accuracy will get 4 basic points; the
-5 bonus points will be distributed depending on relative ordering of your
+a solution achieving at least _98.5%_ accuracy gets 4 basic points; the
+remaining 5 bonus points are distributed depending on relative ordering of your
 solutions. The accuracy is computed per-character and can be evaluated
 by running [uppercase_data.py](https://github.com/ufal/npfl138/tree/master/labs/03/uppercase_data.py)
 with `--evaluate` argument, or using its `evaluate_file` method.

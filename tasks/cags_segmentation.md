@@ -18,8 +18,8 @@ module, which can also evaluate your predictions (either by running with
 `evaluate_segmentation_file` method).
 
 The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2324-summer#competitions). Everyone who submits a solution
-which achieves at least _87%_ test set IoU gets 4 points; the rest
-5 points will be distributed depending on relative ordering of your solutions.
+achieving at least _87%_ test set IoU gets 4 points; the remaining
+5 bonus points are distributed depending on relative ordering of your solutions.
 
 You may want to start with the
 [cags_segmentation.py](https://github.com/ufal/npfl138/tree/master/labs/05/cags_segmentation.py)

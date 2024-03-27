@@ -8,8 +8,9 @@ You can load the data using the
 module. Note that the test set is different than that of official CIFAR-10.
 
 The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2324-summer#competitions). Everyone who submits a solution
-which achieves at least _70%_ test set accuracy will get 4 points; the rest
-5 points will be distributed depending on relative ordering of your solutions.
+achieving at least _70%_ test set accuracy gets 4 points; the remaining
+5 bonus points are distributed depending on relative ordering of your solutions.
+
 Note that my solutions usually need to achieve around ~85% on the development
 set to score 70% on the test set.
 
