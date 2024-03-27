@@ -7,10 +7,10 @@ import numpy as np
 
 matplotlib.rcParams["mathtext.fontset"] = "cm"
 
-xs = np.linspace(-2.5, 2.5, 51)
+xs = np.linspace(-3, 3, 51)
 l2 = xs * xs / 2
 huber = np.where(np.abs(xs) <= 1, xs * xs / 2, np.abs(xs) - 0.5)
-d_huber = np.where(np.abs(xs) <= 1, np.abs(xs), 1)
+d_huber = np.where(np.abs(xs) <= 1, xs, np.sign(xs))
 
 plt.figure(figsize=(5, 3.5))
 plt.plot(xs, l2, label="L2 loss $\\frac{1}{2} x^2$")
