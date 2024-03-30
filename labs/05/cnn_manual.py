@@ -69,16 +69,26 @@ class Convolution:
         inputs_gradient, kernel_gradient, bias_gradient = ..., ..., ...
 
         # If requested, verify that the three computed gradients are correct.
+        failed_verification = False
         if self._verify:
             inputs.requires_grad_(True)
             inputs.grad = self._kernel.value.grad = self._bias.value.grad = None
             reference = keras.ops.relu(keras.ops.conv(inputs, self._kernel, self._stride) + self._bias)
             reference.backward(gradient=outputs_gradient, inputs=[inputs, self._kernel.value, self._bias.value])
+            check_mark, cross_mark = "\u2705", "\u274c"
             for name, computed, reference in zip(
                     ["Inputs", "Kernel", "Bias"], [inputs_gradient, kernel_gradient, bias_gradient],
                     [inputs.grad, self._kernel.value.grad, self._bias.value.grad]):
-                np.testing.assert_allclose(keras.ops.convert_to_numpy(computed), keras.ops.convert_to_numpy(reference),
+                try:
+                    np.testing.assert_allclose(keras.ops.convert_to_numpy(computed), keras.ops.convert_to_numpy(reference),
                                            atol=1e-4, err_msg=name + " gradient differs!")
+                    print(f'{name} {check_mark}')
+                except AssertionError as e:
+                    print(f'{name} {cross_mark}')
+                    failed_verification = True
+                    print(e, "\n========\n")
+        if failed_verification:
+            exit(1)
 
         # Return the inputs gradient, the layer variables, and their gradients.
         return inputs_gradient, [self._kernel, self._bias], [kernel_gradient, bias_gradient]
