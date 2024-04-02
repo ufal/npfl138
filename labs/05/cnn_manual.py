@@ -75,8 +75,8 @@ class Convolution:
             reference = keras.ops.relu(keras.ops.conv(inputs, self._kernel, self._stride) + self._bias)
             reference.backward(gradient=outputs_gradient, inputs=[inputs, self._kernel.value, self._bias.value])
             for name, computed, reference in zip(
-                    ["Inputs", "Kernel", "Bias"], [inputs_gradient, kernel_gradient, bias_gradient],
-                    [inputs.grad, self._kernel.value.grad, self._bias.value.grad]):
+                    ["Bias", "Kernel", "Inputs"], [bias_gradient, kernel_gradient, inputs_gradient],
+                    [self._bias.value.grad, self._kernel.value.grad, inputs.grad]):
                 np.testing.assert_allclose(keras.ops.convert_to_numpy(computed), keras.ops.convert_to_numpy(reference),
                                            atol=1e-4, err_msg=name + " gradient differs!")
 
