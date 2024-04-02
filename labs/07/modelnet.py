@@ -1,6 +1,6 @@
 import os
 import sys
-from typing import Any, Callable, Sequence, TypedDict, TextIO
+from typing import Any, Callable, Sequence, TextIO, TypedDict
 import urllib.request
 
 import numpy as np
