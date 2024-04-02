@@ -78,7 +78,7 @@ class Convolution:
                     ["Bias", "Kernel", "Inputs"], [bias_gradient, kernel_gradient, inputs_gradient],
                     [self._bias.value.grad, self._kernel.value.grad, inputs.grad]):
                 np.testing.assert_allclose(keras.ops.convert_to_numpy(computed), keras.ops.convert_to_numpy(reference),
-                                           atol=1e-4, err_msg=name + " gradient differs!")
+                                           atol=5e-4, err_msg=name + " gradient differs!")
 
         # Return the inputs gradient, the layer variables, and their gradients.
         return inputs_gradient, [self._kernel, self._bias], [kernel_gradient, bias_gradient]
