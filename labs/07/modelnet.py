@@ -50,7 +50,7 @@ class ModelNet:
         def __getitem__(self, index: int) -> Any:
             return self._transform(self._dataset[index])
 
-        def transform(self, transform: Callable[[Any], Any]) -> "MomdelNet.TransformedDataset":
+        def transform(self, transform: Callable[[Any], Any]) -> "ModelNet.TransformedDataset":
             return ModelNet.TransformedDataset(self, transform)
 
     # The resolution parameter can be either 20 or 32.
