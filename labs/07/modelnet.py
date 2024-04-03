@@ -48,7 +48,8 @@ class ModelNet:
             return len(self._dataset)
 
         def __getitem__(self, index: int) -> Any:
-            return self._transform(self._dataset[index])
+            item = self._dataset[index]
+            return self._transform(*item) if isinstance(item, tuple) else self._transform(item)
 
         def transform(self, transform: Callable[Any, Any]) -> "ModelNet.TransformedDataset":
             return ModelNet.TransformedDataset(self, transform)
