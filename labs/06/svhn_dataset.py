@@ -3,9 +3,7 @@ import sys
 import struct
 from typing import Any, Callable, Sequence, TextIO
 import urllib.request
-os.environ.setdefault("KERAS_BACKEND", "torch")  # Use PyTorch backend unless specified otherwise
 
-import keras
 import numpy as np
 import torch
 import torchvision
