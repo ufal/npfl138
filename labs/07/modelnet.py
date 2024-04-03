@@ -67,7 +67,7 @@ class ModelNet:
             os.rename("{}.tmp".format(path), path)
 
         modelnet = np.load(path)
-        for dataset in ["train", "dev", "test"]:
+        for dataset, _size in [("train", 3_718), ("dev", 273), ("test", 908)]:
             data = dict((key[len(dataset) + 1:], modelnet[key]) for key in modelnet if key.startswith(dataset))
             setattr(self, dataset, self.Dataset(data))
 
