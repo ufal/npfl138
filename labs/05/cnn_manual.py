@@ -72,13 +72,13 @@ class Convolution:
         if self._verify:
             inputs.requires_grad_(True)
             inputs.grad = self._kernel.value.grad = self._bias.value.grad = None
-            reference = keras.ops.relu(keras.ops.conv(inputs, self._kernel, self._stride) + self._bias)
+            reference = (outputs > 0) * (keras.ops.conv(inputs, self._kernel, self._stride) + self._bias)
             reference.backward(gradient=outputs_gradient, inputs=[inputs, self._kernel.value, self._bias.value])
             for name, computed, reference in zip(
                     ["Bias", "Kernel", "Inputs"], [bias_gradient, kernel_gradient, inputs_gradient],
                     [self._bias.value.grad, self._kernel.value.grad, inputs.grad]):
                 np.testing.assert_allclose(keras.ops.convert_to_numpy(computed), keras.ops.convert_to_numpy(reference),
-                                           atol=5e-4, err_msg=name + " gradient differs!")
+                                           atol=2e-4, err_msg=name + " gradient differs!")
 
         # Return the inputs gradient, the layer variables, and their gradients.
         return inputs_gradient, [self._kernel, self._bias], [kernel_gradient, bias_gradient]
