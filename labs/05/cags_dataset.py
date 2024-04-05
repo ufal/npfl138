@@ -1,7 +1,8 @@
+import array
 import os
 import sys
 import struct
-from typing import Any, Callable, Sequence, TextIO
+from typing import Any, Callable, Sequence, TextIO, TypedDict
 import urllib.request
 os.environ.setdefault("KERAS_BACKEND", "torch")  # Use PyTorch backend unless specified otherwise
 
@@ -28,48 +29,60 @@ class CAGS:
         "scottish_terrier", "shiba_inu", "staffordshire_bull_terrier",
         "wheaten_terrier", "yorkshire_terrier",
     ]
+    Element = TypedDict("Element", {"image": torch.Tensor, "mask": torch.Tensor, "label": torch.Tensor})
 
     _URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/datasets/"
 
     class Dataset(torch.utils.data.Dataset):
-        def __init__(self, path: str, size: int) -> None:
-            self._path = path
-            self._data = None
+        def __init__(self, path: str, size: int, decode_on_demand: bool) -> None:
             self._size = size
+
+            arrays, indices = CAGS._load_data(path, size)
+            if decode_on_demand:
+                self._data, self._arrays, self._indices = None, arrays, indices
+            else:
+                self._data = [self._decode(arrays, indices, i) for i in range(size)]
 
         def __len__(self) -> int:
             return self._size
 
-        def __getitem__(self, index: int) -> dict[str, torch.Tensor]:
-            if self._data is None:
-                self._data = []
-                for entry in CAGS._load_data(self._path, self._size):
-                    entry["image"] = torchvision.io.decode_image(
-                        torch.from_numpy(entry["image"]), torchvision.io.ImageReadMode.RGB).permute(1, 2, 0)
-                    entry["mask"] = (torchvision.io.decode_image(torch.from_numpy(entry["mask"])).to(
-                        dtype=torch.float32) / 255).permute(1, 2, 0)
-                    entry["label"] = torch.tensor(entry["label"][0])
-                    self._data.append(entry)
-            return self._data[index]
+        def __getitem__(self, index: int) -> "CAGS.Element":
+            if self._data:
+                return self._data[index]
+            return self._decode(self._arrays, self._indices, index)
 
-        def transform(self, transform: Callable[[dict[str, torch.Tensor]], Any]) -> torch.utils.data.Dataset:
+        def transform(self, transform: Callable[["CAGS.Element"], Any]) -> "CAGS.TransformedDataset":
             return CAGS.TransformedDataset(self, transform)
 
+        def _decode(self, data: dict, indices: dict, index: int) -> "CAGS.Element":
+            return {
+                "image": torchvision.io.decode_image(
+                    torch.frombuffer(data["image"], dtype=torch.uint8, offset=indices["image"][:-1][index],
+                                     count=indices["image"][1:][index] - indices["image"][:-1][index]),
+                    torchvision.io.ImageReadMode.RGB).permute(1, 2, 0),
+                "mask": torchvision.io.decode_image(
+                    torch.frombuffer(data["mask"], dtype=torch.uint8, offset=indices["mask"][:-1][index],
+                                     count=indices["mask"][1:][index] - indices["mask"][:-1][index]),
+                    torchvision.io.ImageReadMode.GRAY).to(dtype=torch.float32).div(255).permute(1, 2, 0),
+                "label": torch.tensor(data["label"][index]),
+            }
+
     class TransformedDataset(torch.utils.data.Dataset):
-        def __init__(self, dataset: "CAGS.Dataset", transform: Callable[[dict[str, torch.Tensor]], Any]) -> None:
+        def __init__(self, dataset: torch.utils.data.Dataset, transform: Callable[Any, Any]) -> None:
             self._dataset = dataset
             self._transform = transform
 
         def __len__(self) -> int:
-            return self._dataset._size
+            return len(self._dataset)
 
         def __getitem__(self, index: int) -> Any:
-            return self._transform(self._dataset[index])
+            item = self._dataset[index]
+            return self._transform(*item) if isinstance(item, tuple) else self._transform(item)
 
-        def transform(self, transform: Callable[[dict[str, torch.Tensor]], Any]) -> torch.utils.data.Dataset:
+        def transform(self, transform: Callable[Any, Any]) -> "CAGS.TransformedDataset":
             return CAGS.TransformedDataset(self, transform)
 
-    def __init__(self) -> None:
+    def __init__(self, decode_on_demand: bool = False) -> None:
         for dataset, size in [("train", 2_142), ("dev", 306), ("test", 612)]:
             path = "cags.{}.tfrecord".format(dataset)
             if not os.path.exists(path):
@@ -77,7 +90,7 @@ class CAGS:
                 urllib.request.urlretrieve("{}/{}".format(self._URL, path), filename="{}.tmp".format(path))
                 os.rename("{}.tmp".format(path), path)
 
-            setattr(self, dataset, self.Dataset(path, size))
+            setattr(self, dataset, self.Dataset(path, size, decode_on_demand))
 
     train: Dataset
     dev: Dataset
@@ -85,7 +98,7 @@ class CAGS:
 
     # TFRecord loading
     @staticmethod
-    def _load_data(path: str, items: int) -> list[dict[str, Any]]:
+    def _load_data(path: str, items: int) -> tuple[dict[str, array.array], dict[str, array.array]]:
         def get_value() -> int:
             nonlocal data, offset
             value = np.int64(data[offset] & 0x7F); start = offset; offset += 1
@@ -98,11 +111,9 @@ class CAGS:
             assert data[offset] == kind; offset += 1
             return get_value()
 
-        entries = []
+        arrays, indices = {}, {}
         with open(path, "rb") as file:
-            while len(entries) < items:
-                entries.append({})
-
+            for _ in range(items):
                 length = file.read(8); assert len(length) == 8
                 length, = struct.unpack("<Q", length)
                 assert len(file.read(4)) == 4
@@ -116,24 +127,27 @@ class CAGS:
                     get_value_of_kind(0x0A)
                     length = get_value_of_kind(0x0A)
                     key = data[offset:offset + length].decode("utf-8"); offset += length
-
                     get_value_of_kind(0x12)
+                    if key not in arrays:
+                        arrays[key] = array.array({0x0A: "B", 0x1A: "Q", 0x12: "f"}.get(data[offset], "B"))
+                        indices[key] = array.array("L", [0])
+
                     if data[offset] == 0x0A:
                         length = get_value_of_kind(0x0A) and get_value_of_kind(0x0A)
-                        entries[-1][key] = np.frombuffer(data, np.uint8, length, offset).copy(); offset += length
+                        arrays[key].frombytes(data[offset:offset + length]); offset += length
                     elif data[offset] == 0x1A:
                         length = get_value_of_kind(0x1A) and get_value_of_kind(0x0A)
-                        values, target_offset = [], offset + length
+                        target_offset = offset + length
                         while offset < target_offset:
-                            values.append(get_value())
-                        entries[-1][key] = np.array(values, dtype=np.int64)
+                            arrays[key].append(get_value())
                     elif data[offset] == 0x12:
                         length = get_value_of_kind(0x12) and get_value_of_kind(0x0A)
-                        entries[-1][key] = np.frombuffer(
-                            data, np.dtype("<f4"), length >> 2, offset).astype(np.float32).copy(); offset += length
+                        arrays[key].frombytes(np.frombuffer(
+                            data, np.dtype("<f4"), length >> 2, offset).astype(np.float32).tobytes()); offset += length
                     else:
                         raise ValueError("Unsupported data tag {}".format(data[offset]))
-        return entries
+                    indices[key].append(len(arrays[key]))
+        return arrays, indices
 
     # Keras IoU metric
     class MaskIoUMetric(keras.metrics.Mean):
@@ -203,18 +217,20 @@ class CAGS:
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--evaluate", default=None, type=str, help="Prediction file to evaluate")
     parser.add_argument("--dataset", default="dev", type=str, help="Gold dataset to evaluate")
+    parser.add_argument("--evaluate", default=None, type=str, help="Prediction file to evaluate")
     parser.add_argument("--task", default="classification", type=str, help="Task to evaluate")
     args = parser.parse_args()
 
     if args.evaluate:
+        gold_dataset = getattr(CAGS(decode_on_demand=True), args.dataset)
+
         if args.task == "classification":
             with open(args.evaluate, "r", encoding="utf-8-sig") as predictions_file:
-                accuracy = CAGS.evaluate_classification_file(getattr(CAGS(), args.dataset), predictions_file)
+                accuracy = CAGS.evaluate_classification_file(gold_dataset, predictions_file)
             print("CAGS accuracy: {:.2f}%".format(accuracy))
 
         if args.task == "segmentation":
             with open(args.evaluate, "r", encoding="utf-8-sig") as predictions_file:
-                iou = CAGS.evaluate_segmentation_file(getattr(CAGS(), args.dataset), predictions_file)
+                iou = CAGS.evaluate_segmentation_file(gold_dataset, predictions_file)
             print("CAGS IoU: {:.2f}%".format(iou))
