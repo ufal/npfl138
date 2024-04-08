@@ -68,7 +68,7 @@ class CAGS:
             }
 
     class TransformedDataset(torch.utils.data.Dataset):
-        def __init__(self, dataset: torch.utils.data.Dataset, transform: Callable[Any, Any]) -> None:
+        def __init__(self, dataset: torch.utils.data.Dataset, transform: Callable[..., Any]) -> None:
             self._dataset = dataset
             self._transform = transform
 
@@ -79,7 +79,7 @@ class CAGS:
             item = self._dataset[index]
             return self._transform(*item) if isinstance(item, tuple) else self._transform(item)
 
-        def transform(self, transform: Callable[Any, Any]) -> "CAGS.TransformedDataset":
+        def transform(self, transform: Callable[..., Any]) -> "CAGS.TransformedDataset":
             return CAGS.TransformedDataset(self, transform)
 
     def __init__(self, decode_on_demand: bool = False) -> None:

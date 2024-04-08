@@ -40,7 +40,7 @@ class ModelNet:
             return ModelNet.TransformedDataset(self, transform)
 
     class TransformedDataset(torch.utils.data.Dataset):
-        def __init__(self, dataset: torch.utils.data.Dataset, transform: Callable[Any, Any]) -> None:
+        def __init__(self, dataset: torch.utils.data.Dataset, transform: Callable[..., Any]) -> None:
             self._dataset = dataset
             self._transform = transform
 
@@ -51,7 +51,7 @@ class ModelNet:
             item = self._dataset[index]
             return self._transform(*item) if isinstance(item, tuple) else self._transform(item)
 
-        def transform(self, transform: Callable[Any, Any]) -> "ModelNet.TransformedDataset":
+        def transform(self, transform: Callable[..., Any]) -> "ModelNet.TransformedDataset":
             return ModelNet.TransformedDataset(self, transform)
 
     # The resolution parameter can be either 20 or 32.

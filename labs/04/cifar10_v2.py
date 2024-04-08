@@ -37,7 +37,7 @@ class CIFAR10:
             return CIFAR10.TransformedDataset(self, transform)
 
     class TransformedDataset(torch.utils.data.Dataset):
-        def __init__(self, dataset: torch.utils.data.Dataset, transform: Callable[Any, Any]) -> None:
+        def __init__(self, dataset: torch.utils.data.Dataset, transform: Callable[..., Any]) -> None:
             self._dataset = dataset
             self._transform = transform
 
@@ -48,7 +48,7 @@ class CIFAR10:
             item = self._dataset[index]
             return self._transform(*item) if isinstance(item, tuple) else self._transform(item)
 
-        def transform(self, transform: Callable[Any, Any]) -> "CIFAR10.TransformedDataset":
+        def transform(self, transform: Callable[..., Any]) -> "CIFAR10.TransformedDataset":
             return CIFAR10.TransformedDataset(self, transform)
 
     def __init__(self, size: dict[str, int] = {}) -> None:

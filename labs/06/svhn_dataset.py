@@ -62,7 +62,7 @@ class SVHN:
             }
 
     class TransformedDataset(torch.utils.data.Dataset):
-        def __init__(self, dataset: torch.utils.data.Dataset, transform: Callable[Any, Any]) -> None:
+        def __init__(self, dataset: torch.utils.data.Dataset, transform: Callable[..., Any]) -> None:
             self._dataset = dataset
             self._transform = transform
 
@@ -73,7 +73,7 @@ class SVHN:
             item = self._dataset[index]
             return self._transform(*item) if isinstance(item, tuple) else self._transform(item)
 
-        def transform(self, transform: Callable[Any, Any]) -> "SVHN.TransformedDataset":
+        def transform(self, transform: Callable[..., Any]) -> "SVHN.TransformedDataset":
             return SVHN.TransformedDataset(self, transform)
 
     def __init__(self, decode_on_demand: bool = False) -> None:
