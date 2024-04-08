@@ -99,14 +99,14 @@ class CAGS:
     # TFRecord loading
     @staticmethod
     def _load_data(path: str, items: int) -> tuple[dict[str, array.array], dict[str, array.array]]:
-        def get_value() -> int:
+        def get_value() -> np.int64:
             nonlocal data, offset
             value = np.int64(data[offset] & 0x7F); start = offset; offset += 1
             while data[offset - 1] & 0x80:
                 value |= (data[offset] & 0x7F) << (7 * (offset - start)); offset += 1
             return value
 
-        def get_value_of_kind(kind: int) -> int:
+        def get_value_of_kind(kind: int) -> np.int64:
             nonlocal data, offset
             assert data[offset] == kind; offset += 1
             return get_value()
