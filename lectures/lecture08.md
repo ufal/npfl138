@@ -5,6 +5,10 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-08-czech.mp4, CZ Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-08-english.mp4, EN Lecture
 #### Questions: #lecture_8_questions
+#### Lecture assignment: sequence_classification
+#### Lecture assignment: tagger_we
+#### Lecture assignment: tagger_cle
+#### Lecture assignment: tagger_competition
 
 - Sequence modelling using Recurrent Neural Networks (RNN) [Chapter 10 until Section 10.2.1 (excluding) of DLB]
 - The challenge of long-term dependencies [Section 10.7 of DLB]
