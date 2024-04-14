@@ -376,7 +376,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
         # TODO(tagger_we): Use `torch.nn.CrossEntropyLoss` to instantiate the loss function.
         # Pass `ignore_index=morpho.PAD` to the constructor so that the padded
         # tags are ignored during the loss computation. Note that the loss
-        # expects the input to e of shape `[batch_size, num_tags, sequence_length]`.
+        # expects the input to be of shape `[batch_size, num_tags, sequence_length]`.
         loss=...,
         # TODO(tagger_we): Create a `torchmetrics.Accuracy` metric, passing "multiclass" as
         # the first argument, `num_classes` set to the number of unique tags, and
