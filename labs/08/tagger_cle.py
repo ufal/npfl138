@@ -220,6 +220,7 @@ class Model(TrainableModule):
                 # Then replace the inputs elements whose mask value is less than
                 # `self._mask_probability` with the value of `self._mask_value`.
                 inputs = ...
+            return inputs
 
     def __init__(self, args: argparse.Namespace, train: MorphoDataset.Dataset) -> None:
         super().__init__()
