@@ -274,7 +274,7 @@ class Model(TrainableModule):
 
         # Pass the `PackedSequence` through the character RNN. Note that this time
         # we are interested only in the second output (the last hidden state of the RNN).
-        _, cle = self._char_rnn(cle)
+        _, cle = self._char_rnn(packed)
 
         # TODO: Concatenate the states of the forward and backward directions.
         cle = ...

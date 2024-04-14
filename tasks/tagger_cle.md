@@ -19,12 +19,12 @@ _Note that your results may be slightly different, depending on your CPU type an
 
 1. `python3 tagger_cle.py --epochs=1 --max_sentences=1000 --rnn=LSTM --rnn_dim=16 --cle_dim=16`
 ```
-Epoch=1/1 4.0s loss=2.3186 accuracy=0.2965 dev_loss=2.0280 dev_accuracy=0.3561
+Epoch=1/1 4.0s loss=2.2871 accuracy=0.2909 dev_loss=1.8784 dev_accuracy=0.4275
 ```
 
 2. `python3 tagger_cle.py --epochs=1 --max_sentences=1000 --rnn=LSTM --rnn_dim=16 --cle_dim=16 --word_masking=0.1`
 ```
-Epoch=1/1 4.0s loss=2.3164 accuracy=0.2849 dev_loss=2.0473 dev_accuracy=0.3582
+Epoch=1/1 4.4s loss=2.2846 accuracy=0.2875 dev_loss=1.8835 dev_accuracy=0.4289
 ```
 #### Tests End:
 #### Examples Start: tagger_cle_examples
@@ -32,19 +32,19 @@ _Note that your results may be slightly different, depending on your CPU type an
 
 - `python3 tagger_cle.py --epochs=5 --max_sentences=5000 --rnn=LSTM --rnn_dim=32 --cle_dim=32`
 ```
-Epoch=1/5 22.3s loss=1.0977 accuracy=0.6714 dev_loss=0.3817 dev_accuracy=0.8926
-Epoch=2/5 21.4s loss=0.1437 accuracy=0.9687 dev_loss=0.1959 dev_accuracy=0.9401
-Epoch=3/5 21.4s loss=0.0453 accuracy=0.9888 dev_loss=0.1739 dev_accuracy=0.9447
-Epoch=4/5 21.5s loss=0.0295 accuracy=0.9915 dev_loss=0.1722 dev_accuracy=0.9463
-Epoch=5/5 21.5s loss=0.0210 accuracy=0.9940 dev_loss=0.1741 dev_accuracy=0.9447
+Epoch=1/5 22.6s loss=1.0757 accuracy=0.6784 dev_loss=0.3678 dev_accuracy=0.8969
+Epoch=2/5 21.5s loss=0.1476 accuracy=0.9684 dev_loss=0.1978 dev_accuracy=0.9375
+Epoch=3/5 22.1s loss=0.0490 accuracy=0.9881 dev_loss=0.1722 dev_accuracy=0.9488
+Epoch=4/5 21.3s loss=0.0303 accuracy=0.9912 dev_loss=0.1651 dev_accuracy=0.9470
+Epoch=5/5 21.1s loss=0.0201 accuracy=0.9942 dev_loss=0.1630 dev_accuracy=0.9479
 ```
 
 - `python3 tagger_cle.py --epochs=5 --max_sentences=5000 --rnn=LSTM --rnn_dim=32 --cle_dim=32 --word_masking=0.1`
 ```
-Epoch=1/5 22.5s loss=1.1478 accuracy=0.6509 dev_loss=0.4230 dev_accuracy=0.8815
-Epoch=2/5 21.8s loss=0.2436 accuracy=0.9356 dev_loss=0.2128 dev_accuracy=0.9356
-Epoch=3/5 21.9s loss=0.1193 accuracy=0.9669 dev_loss=0.1819 dev_accuracy=0.9428
-Epoch=4/5 21.9s loss=0.0905 accuracy=0.9729 dev_loss=0.1630 dev_accuracy=0.9491
-Epoch=5/5 21.8s loss=0.0754 accuracy=0.9765 dev_loss=0.1549 dev_accuracy=0.9548
+Epoch=1/5 22.2s loss=1.1264 accuracy=0.6594 dev_loss=0.3980 dev_accuracy=0.8977
+Epoch=2/5 21.4s loss=0.2340 accuracy=0.9408 dev_loss=0.2175 dev_accuracy=0.9377
+Epoch=3/5 24.1s loss=0.1163 accuracy=0.9690 dev_loss=0.1624 dev_accuracy=0.9525
+Epoch=4/5 26.6s loss=0.0852 accuracy=0.9745 dev_loss=0.1493 dev_accuracy=0.9560
+Epoch=5/5 24.9s loss=0.0718 accuracy=0.9778 dev_loss=0.1450 dev_accuracy=0.9563
 ```
 #### Examples End:
