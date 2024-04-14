@@ -16,6 +16,7 @@ template and implement the following:
 - Use the specified RNN type (`SimpleRNN`, `GRU`, and `LSTM`) and dimensionality.
 - Process the sequence using the required RNN.
 - Use additional hidden layer on the RNN outputs if requested.
+- Implement gradient clipping if requested.
 
 In addition to submitting the task in ReCodEx, please also run the following
 variations and observe the results in TensorBoard.

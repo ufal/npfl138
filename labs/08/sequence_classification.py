@@ -99,7 +99,9 @@ class Model(keras.Model):
         super().__init__(inputs=sequences, outputs=predictions)
 
         self.compile(
-            optimizer=keras.optimizers.Adam(clipnorm=args.clip_gradient),
+            # TODO: Create an Adam optimizer, passing the option `clipnorm=args.clip_gradient`
+            # to clip the gradient, with `None` representing no clipping (the default).
+            optimizer=...,
             loss=keras.losses.BinaryCrossentropy(),
             metrics=[keras.metrics.BinaryAccuracy("accuracy")],
         )
