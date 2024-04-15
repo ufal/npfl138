@@ -2,6 +2,7 @@
 #### Date: Apr 15
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?09
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides.pdf/npfl138-2324-09.pdf, PDF Slides
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-09-czech.mp4, CZ Lecture
 #### Questions: #lecture_9_questions
 
 - Structured prediction
