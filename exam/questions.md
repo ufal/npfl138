@@ -199,6 +199,7 @@
 - Describe the negative sampling proposed in `word2vec`, including
   the choice of distribution of negative samples. [5]
 
+#### Questions@:, Lecture 10 Questions
 - Write down why are subword units used in text processing, and describe the BPE
   algorithm for constructing a subword dictionary from a large corpus. [5]
 
