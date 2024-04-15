@@ -1,4 +1,4 @@
-### Lecture: 9. Structured Prediction, CTC, Word2Vec, Subwords
+### Lecture: 9. Structured Prediction, CTC, Word2Vec
 #### Date: Apr 15
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?09
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides.pdf/npfl138-2324-09.pdf, PDF Slides
