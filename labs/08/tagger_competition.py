@@ -200,7 +200,8 @@ class TrainableModule(torch.nn.Module):
 
 def main(args: argparse.Namespace) -> None:
     # Set the random seed and the number of threads.
-    keras.utils.set_random_seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
     if args.threads:
         torch.set_num_threads(args.threads)
         torch.set_num_interop_threads(args.threads)
