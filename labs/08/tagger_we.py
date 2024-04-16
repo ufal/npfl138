@@ -233,7 +233,7 @@ class Model(TrainableModule):
         # TODO: Process the embedded forms through the RNN layer. Because the sentences
         # have different length, you have to use `torch.nn.utils.rnn.pack_padded_sequence`
         # to construct a variable-length `PackedSequence` from the input. You need to compute
-        # the length of each sentence in the batch (by counting non-`MorhoDataset.PAD` tokens);
+        # the length of each sentence in the batch (by counting non-`MorphoDataset.PAD` tokens);
         # note that these lengths must be on CPU, so you might need to use the `.cpu()` method.
         # Finally, also pass `batch_first=True` and `enforce_sorted=False` to the call.
         packed = ...
