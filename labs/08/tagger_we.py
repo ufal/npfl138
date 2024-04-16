@@ -219,7 +219,7 @@ class Model(TrainableModule):
         self._word_rnn = ...
 
         # TODO: Create an output linear layer (`torch.nn.Linear`) processing the RNN output,
-        # logits for tag prediction; `train.tags.word_vocab` is the tag vocabulary.
+        # producing logits for tag prediction; `train.tags.word_vocab` is the tag vocabulary.
         self._output_layer = ...
 
         # Initialize the layers using the Keras-inspired initialization. You can try
