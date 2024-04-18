@@ -146,7 +146,7 @@ class SVHN:
     # Evaluation infrastructure.
     @staticmethod
     def evaluate(
-        gold_dataset: "SVHN.Dataset", predictions: Sequence[tuple[list[int], list[BBox]]], iou_threshold: float = 0.5,
+        gold_dataset: Dataset, predictions: Sequence[tuple[list[int], list[BBox]]], iou_threshold: float = 0.5,
     ) -> float:
         def bbox_iou(x: SVHN.BBox, y: SVHN.BBox) -> float:
             def area(bbox: SVHN.BBox) -> float:
