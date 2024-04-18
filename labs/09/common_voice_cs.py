@@ -198,6 +198,7 @@ class CommonVoiceCs:
             )
         # Compute MFCCs of shape `[sequence_length, CommonVoiceCs.MFCC_DIM=13]`.
         mfccs = self._mfcc_fn(audio).permute(1, 0)
+        mfccs[:, 0] *= 2**0.5  # Scale the first coefficient for consistency with the dataset
         return mfccs
 
     # Torchmetric for computing mean edit distance
