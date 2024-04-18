@@ -110,16 +110,24 @@ class TrainableModule(torch.nn.Module):
         A dictionary with the loss and metrics should be returned."""
         self.zero_grad()
         y_pred = self.forward(*xs)
-        loss = self.loss(y_pred, y)
+        loss = self.compute_loss(y_pred, y, *xs)
         loss.backward()
         with torch.no_grad():
             self.optimizer.step()
             self.schedule is not None and self.schedule.step()
             self.loss_metric.update(loss)
-            self.metrics.update(y_pred, y)
             return {"loss": self.loss_metric.compute()} \
                 | ({"lr": self.schedule.get_last_lr()[0]} if self.schedule else {}) \
-                | self.metrics.compute()
+                | self.compute_metrics(y_pred, y, *xs, training=True)
+
+    def compute_loss(self, y_pred, y, *xs):
+        """Compute the loss of the model given the inputs, predictions, and target outputs."""
+        return self.loss(y_pred, y)
+
+    def compute_metrics(self, y_pred, y, *xs, training):
+        """Compute and return metrics given the inputs, predictions, and target outputs."""
+        self.metrics.update(y_pred, y)
+        return self.metrics.compute()
 
     def evaluate(self, dataloader, verbose=1):
         """An evaluation of the model on the given dataset.
@@ -142,9 +150,8 @@ class TrainableModule(torch.nn.Module):
         A dictionary with the loss and metrics should be returned."""
         with torch.no_grad():
             y_pred = self.forward(*xs)
-            self.loss_metric.update(self.loss(y_pred, y))
-            self.metrics.update(y_pred, y)
-            return {"loss": self.loss_metric.compute()} | self.metrics.compute()
+            self.loss_metric.update(self.compute_loss(y_pred, y, *xs))
+            return {"loss": self.loss_metric.compute()} | self.compute_metrics(y_pred, y, *xs, training=False)
 
     def predict(self, dataloader, as_numpy=True):
         """Compute predictions for the given dataset.
@@ -163,14 +170,14 @@ class TrainableModule(torch.nn.Module):
         for batch in dataloader:
             xs = batch[0] if isinstance(batch, tuple) else batch
             xs = tuple(x.to(self.device) for x in (xs if isinstance(xs, tuple) else (xs,)))
-            batch = self.predict_step(xs)
-            predictions.extend(batch.numpy(force=True) if as_numpy else batch)
+            predictions.extend(self.predict_step(xs, as_numpy=as_numpy))
         return predictions
 
-    def predict_step(self, xs):
+    def predict_step(self, xs, as_numpy=True):
         """An overridable method performing a single prediction step."""
         with torch.no_grad():
-            return self.forward(*xs)
+            batch = self.forward(*xs)
+            return batch.numpy(force=True) if as_numpy else batch
 
     def writer(self, writer):
         """Possibly create and return a TensorBoard writer for the given name."""
