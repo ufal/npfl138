@@ -197,7 +197,7 @@ class CommonVoiceCs:
             # `CommonVoiceCs.MFCC_DIM=13` of them.
             self._mfcc_fn = torchaudio.transforms.MFCC(
                 sample_rate=16_000, n_mfcc=self.MFCC_DIM, log_mels=True,
-                melkwargs={"n_fft":1024, "win_length":1024, "hop_length":256,
+                melkwargs={"n_fft": 1024, "win_length": 1024, "hop_length": 256,
                            "f_min": 80., "f_max": 7600., "n_mels": 80, "center": False}
             )
         # Compute MFCCs of shape `[sequence_length, CommonVoiceCs.MFCC_DIM=13]`.
