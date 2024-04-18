@@ -1,7 +1,7 @@
 import array
 import os
-import sys
 import struct
+import sys
 from typing import Any, Callable, Sequence, TextIO, TypedDict
 import urllib.request
 
