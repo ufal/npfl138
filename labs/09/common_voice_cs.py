@@ -14,6 +14,7 @@ import torchmetrics
 # A class for managing mapping between strings and indices.
 # It provides:
 # - `__len__`: number of strings in the vocabulary
+# - `__iter__`: iterator over strings in the vocabulary
 # - `string(index: int) -> str`: string for a given index to the vocabulary
 # - `strings(indices: Sequence[int]) -> list[str]`: list of strings for given indices
 # - `index(string: str) -> int`: index of a given string in the vocabulary
@@ -25,6 +26,9 @@ class Vocabulary:
 
     def __len__(self) -> int:
         return len(self._strings)
+
+    def __iter__(self) -> Iterable[str]:
+        return iter(self._strings)
 
     def string(self, index: int) -> str:
         return self._strings[index]
