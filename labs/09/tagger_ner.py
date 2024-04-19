@@ -242,8 +242,8 @@ class Model(TrainableModule):
     def __init__(self, args: argparse.Namespace, train: MorphoDataset.Dataset) -> None:
         super().__init__()
         # TODO: Compute the transition matrix `A` of shape `[num_tags, num_tags]`, so
-        # that `A[i, j]` is 0/1 depending on whether the tag `j` is allowed to
-        # follow the tag `i` (in principle; not necessarily in the data).
+        # that `A[i, j]` is 0/1 depending on whether the tag `j` is allowed to follow
+        # the tag `i` (according to our BIO encoding; not necessarily in the data).
         # The tag strings can be obtained by calling `list(train.tags.word_vocab)`.
         A = ...
 
