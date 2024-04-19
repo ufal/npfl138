@@ -210,7 +210,7 @@ class CommonVoiceCs:
         def update(self, pred: Sequence[Sequence[Any]], true: Sequence[Sequence[Any]]) -> None:
             edit_distances = []
             for y_pred, y_true in zip(pred, true):
-                edit_distances.append(torchaudio.functional.edit_distance(y_pred, y_true) / len(y_true))
+                edit_distances.append(torchaudio.functional.edit_distance(y_pred, y_true) / (len(y_true) or 1))
             return super().update(edit_distances)
 
     # Evaluation infrastructure
