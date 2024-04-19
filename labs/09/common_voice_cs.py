@@ -2,7 +2,7 @@ import array
 import os
 import struct
 import sys
-from typing import Any, Callable, Sequence, TextIO, TypedDict
+from typing import Any, Callable, Iterable, Sequence, TextIO, TypedDict
 import urllib.request
 
 import numpy as np
