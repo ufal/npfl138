@@ -7,7 +7,8 @@
 This assignment is an extension of `tagger_we` task. Using the
 [tagger_ner.py](https://github.com/ufal/npfl138/tree/master/labs/09/tagger_ner.py)
 template, implement optimal decoding of named entity spans from
-BIO-encoded tags.
+BIO-encoded tags. In a valid sequence, the `I-TYPE` tag must follow either
+`B-TYPE` or `I-TYPE` tags.
 
 The evaluation is performed using the provided metric computing F1 score of the
 span prediction (i.e., a recognized possibly-multiword named entity is true
