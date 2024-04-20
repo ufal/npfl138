@@ -381,7 +381,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
 
     model.configure(
         # TODO(tagger_we): Create the optimizer by creating an instance of
-        # `torch.optim.Adam`which will train the `model.parameters()`.
+        # `torch.optim.Adam` which will train the `model.parameters()`.
         optimizer=...,
         # TODO: Use `torch.nn.CrossEntropyLoss` to instantiate the loss function.
         # Pass `ignore_index=morpho.PAD` to the constructor to ignore padding tags
