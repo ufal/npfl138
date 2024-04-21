@@ -207,9 +207,16 @@ class CommonVoiceCs:
 
     # Torchmetric for computing mean edit distance
     class EditDistanceMetric(torchmetrics.MeanMetric):
-        def update(self, pred: Sequence[Sequence[Any]], true: Sequence[Sequence[Any]]) -> None:
+        def __init__(self, ignore_index: int | None = None):
+            super().__init__()
+            self._ignore_index = ignore_index
+
+        def update(self, y_preds: Sequence[Sequence[Any]], y_trues: Sequence[Sequence[Any]]) -> None:
             edit_distances = []
-            for y_pred, y_true in zip(pred, true):
+            for y_pred, y_true in zip(y_preds, y_trues):
+                if self._ignore_index is not None:
+                    y_true = [y for y in y_true if y != self._ignore_index]
+                    y_pred = [y for y in y_pred if y != self._ignore_index]
                 edit_distances.append(torchaudio.functional.edit_distance(y_pred, y_true) / (len(y_true) or 1))
             return super().update(edit_distances)
 
