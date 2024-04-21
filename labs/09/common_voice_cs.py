@@ -81,7 +81,7 @@ class CommonVoiceCs:
         def _decode(self, data: dict, indices: dict, index: int) -> "CommonVoiceCs.Element":
             return {
                 "mfccs": torch.frombuffer(
-                    data["mfccs"], dtype=torch.float32, offset=indices["mfccs"][:-1][index],
+                    data["mfccs"], dtype=torch.float32, offset=indices["mfccs"][:-1][index] << 2,
                     count=indices["mfccs"][1:][index] - indices["mfccs"][:-1][index]).view(-1, CommonVoiceCs.MFCC_DIM),
                 "sentence": data["sentence"][
                     indices["sentence"][index]:indices["sentence"][index + 1]].tobytes().decode("utf-8"),
