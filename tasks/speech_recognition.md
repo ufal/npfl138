@@ -2,8 +2,6 @@
 #### Date: Deadline: Apr 30, 22:00
 #### Points: 5 points+5 bonus
 
-**The template is being finalized, final version will be released shortly.**
-
 This assignment is a competition task in speech recognition area. Specifically,
 your goal is to predict a sequence of letters given a spoken utterance.
 We will be using Czech recordings from the [Common Voice](https://commonvoice.mozilla.org/),
@@ -38,5 +36,8 @@ module, either by running with `--evaluate=path` arguments, or using its
 `evaluate_file` method.
 
 Start with the `speech_recognition.py`
-template which contains instructions for using the CTC loss and the CTC decoder,
-and it generates the test set annotation in the required format.
+template containing a structure suitable for computing the CTC loss and perform
+CTC decoding. You can use [torch.nn.CTCLoss](https://pytorch.org/docs/stable/generated/torch.nn.CTCLoss.html)
+to compute the loss and you can use
+[torchaudio.models.decoder.CTCDecoder](https://pytorch.org/audio/main/generated/torchaudio.models.decoder.CTCDecoder.html)/[torchaudio.models.decoder.CUCTCDecoder](https://pytorch.org/audio/main/generated/torchaudio.models.decoder.CUCTCDecoder.html)
+to perform beam-search decoding.
