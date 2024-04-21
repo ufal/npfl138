@@ -35,7 +35,7 @@ you can evaluate the predictions as usual using the [common_voice_cs.py](https:/
 module, either by running with `--evaluate=path` arguments, or using its
 `evaluate_file` method.
 
-Start with the `speech_recognition.py`
+Start with the [speech_recognition.py](https://github.com/ufal/npfl138/tree/master/labs/09/speech_recognition.py)
 template containing a structure suitable for computing the CTC loss and perform
 CTC decoding. You can use [torch.nn.CTCLoss](https://pytorch.org/docs/stable/generated/torch.nn.CTCLoss.html)
 to compute the loss and you can use
