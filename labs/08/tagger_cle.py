@@ -246,7 +246,7 @@ class Model(TrainableModule):
         # outputs of forward and backward directions. Also pass `batch_first=True`.
         self._char_rnn = ...
 
-        # TODO:(tagger_we) Create a `torch.nn.Embedding` layer, embedding the form ids
+        # TODO(tagger_we): Create a `torch.nn.Embedding` layer, embedding the form ids
         # from `train.forms.word_vocab` to dimensionality `args.we_dim`.
         self._word_embedding = ...
 
