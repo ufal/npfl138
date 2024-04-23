@@ -303,7 +303,7 @@ class Model(TrainableModule):
         #   (with `reduction="none"` you can compare individual batch examples; in that case,
         #   the normalization by the target sequence lengths is not performed).  However, in ReCodEx,
         #   `torch.nn.CTCLoss` is not available.
-        # raise NotImplementedError()
+        raise NotImplementedError()
 
     def ctc_decoding(self, logits: torch.Tensor, form_ids: torch.Tensor) -> list[torch.Tensor]:
         # TODO: Implement greedy CTC decoding algorithm. The result should be a list of
