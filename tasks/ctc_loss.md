@@ -13,15 +13,14 @@ it is not available during ReCodEx evaluation.
 #### Tests Start: ctc_loss_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._
 
-1. `python3 ctc_loss.py --epochs=1 --max_sentences=1000`
+1. `python3 ctc_loss.py --epochs=1 --max_sentences=30`
 ```
-Epoch=1/1 8.0s loss=6.5798 edit_distance=0.6902 dev_loss=2.3089 dev_edit_distance=0.5864
+Epoch=1/1 0.4s loss=27.2595 edit_distance=2.3694 dev_loss=17.1484 dev_edit_distance=0.6000
 ```
 
-2. `python3 ctc_loss.py --epochs=2 --max_sentences=2000`
+2. `python3 ctc_loss.py --epochs=1 --max_sentences=1000`
 ```
-Epoch=1/2 16.1s loss=3.6885 edit_distance=0.6559 dev_loss=1.9355 dev_edit_distance=0.5864
-Epoch=2/2 15.2s loss=1.6520 edit_distance=0.6317 dev_loss=1.8746 dev_edit_distance=0.5833
+Epoch=1/1 8.0s loss=6.5798 edit_distance=0.6902 dev_loss=2.3089 dev_edit_distance=0.5864
 ```
 #### Tests End:
 #### Examples Start: ctc_loss_examples
