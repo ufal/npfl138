@@ -276,8 +276,8 @@ class Model(TrainableModule):
             self._target_embedding = ...
         else:
             # TODO(lemmatizer_noattn): Create a function `self._target_embedding` computing the embedding of given
-            # target characters. When called, use `torch.nn.functional.embedding` do index the
-            # transposition of the shared embedding matrix `self._target_output_layer.weight`
+            # target characters. When called, use `torch.nn.functional.embedding` to suitably
+            # index the shared embedding matrix `self._target_output_layer.weight`
             # multiplied by the square root of `args.rnn_dim`.
             self._target_embedding = ...
 
