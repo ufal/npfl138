@@ -5,7 +5,7 @@ import os
 import re
 
 import numpy as np
-import tensorflow as tf
+import torch
 import torchmetrics
 
 from morpho_analyzer import MorphoAnalyzer
