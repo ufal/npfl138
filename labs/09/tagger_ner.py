@@ -329,7 +329,7 @@ class Model(TrainableModule):
             batch = self.constrained_decoding(self.forward(*xs), *xs)
             # If `as_numpy==True`, trim the padding tags from the predictions.
             if as_numpy:
-                batch = [np.trim_zeros(example, trim="b") for example in batch.numpy(force=True)]
+                batch = [example[example != MorphoDataset.PAD] for example in batch.numpy(force=True)]
             return batch
 
 
