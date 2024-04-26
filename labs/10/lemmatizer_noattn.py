@@ -288,7 +288,7 @@ class Model(TrainableModule):
         # - `index`: the time index, initialized to 0;
         # - `inputs`: a tensor of shape `[batch_size]` containing the `MorphoDataset.BOW` symbols,
         # - `states`: initial RNN state from the encoder, i.e., `encoded`.
-        # - `results`: an empty list, where generated outputs will be stores;
+        # - `results`: an empty list, where generated outputs will be stored;
         # - `result_lengths`: a tensor of shape `[batch_size]` filled with `max_length`,
         index = ...
         inputs = ...
