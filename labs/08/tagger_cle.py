@@ -268,9 +268,9 @@ class Model(TrainableModule):
 
     def forward(self, form_ids: torch.Tensor, unique_forms: torch.Tensor, form_indices: torch.Tensor) -> torch.Tensor:
         # TODO: Mask the input `form_ids` using the `self._word_masking` layer.
-        form_ids = ...
+        hidden = ...
 
-        # TODO(tagger_we): Embed the masked `form_ids` using the word embedding layer.
+        # TODO: Embed the masked form IDs in `hidden` using the word embedding layer.
         hidden = ...
 
         # TODO: Embed the `unique_forms` using the character embedding layer.
