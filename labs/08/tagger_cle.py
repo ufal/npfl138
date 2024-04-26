@@ -284,7 +284,7 @@ class Model(TrainableModule):
         # we are interested only in the second output (the last hidden state of the RNN).
         _, cle = self._char_rnn(packed)
 
-        # TODO: Concatenate the states of the forward and backward directions.
+        # TODO: Concatenate the states of the forward and backward directions (in this order).
         cle = ...
 
         # TODO: With `cle` being the character-level embeddings of the unique forms
