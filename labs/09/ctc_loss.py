@@ -295,7 +295,7 @@ class Model(TrainableModule):
         # - With a slight abuse of notation, use `MorhoDataset.PAD` as the blank label in the CTC algorithm
         #   because `MorhoDataset.PAD` is never a valid output tag.
         # - During the computation, I use `-1e9` as the representation of negative infinity; using
-        #   `-float("inf")` did not work for me because some operations were not well defined.
+        #   `-torch.inf` did not work for me because some operations were not well defined.
         # - During the loss computation, in some cases the target sequence cannot be produced at all.
         #   In that case return 0 as the loss (the same behaviour as passing `zero_infinity=True`
         #   to `torch.nn.CTCLoss`).
