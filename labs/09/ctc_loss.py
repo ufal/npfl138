@@ -292,8 +292,8 @@ class Model(TrainableModule):
         #
         # Several comments:
         # - You can add numbers represented in log space using `torch.logsumexp`.
-        # - With a slight abuse of notation, use `MorhoDataset.PAD` as the blank label in the CTC algorithm
-        #   because `MorhoDataset.PAD` is never a valid output tag.
+        # - With a slight abuse of notation, use `MorphoDataset.PAD` as the blank label in the CTC algorithm
+        #   because `MorphoDataset.PAD` is never a valid output tag.
         # - During the computation, I use `-1e9` as the representation of negative infinity; using
         #   `-torch.inf` did not work for me because some operations were not well defined.
         # - During the loss computation, in some cases the target sequence cannot be produced at all.
