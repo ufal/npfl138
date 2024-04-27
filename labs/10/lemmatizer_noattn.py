@@ -268,7 +268,7 @@ class Model(TrainableModule):
         return ...
 
     def decoder_training(self, encoded: torch.Tensor, targets: torch.Tensor) -> torch.Tensor:
-        # TODO: Generate inputs for the decoder, which is obtained from `targets` by
+        # TODO: Generate inputs for the decoder, which are obtained from `targets` by
         # - prepending `MorphoDataset.BOW` as the first element of every batch example,
         # - dropping the last element of `targets`.
 
