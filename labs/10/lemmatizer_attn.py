@@ -433,6 +433,14 @@ def main(args: argparse.Namespace) -> dict[str, float]:
         # TODO(lemmatizer_noattn): Process `lemmas` analogously to `forms`, but use `morpho.train.lemmas.char_vocab`,
         # and additionally, append `MorphoDataset.EOW` to the end of each lemma.
         lemmas = ...
+        # In the training regime, we pass `lemmas` also as inputs.
+        return ((forms, lemmas) if training else forms), lemmas
+    def prepare_training_batch(data):
+        return prepare_batch(data, training=True)
+    def prepare_dev_batch(data):
+        return prepare_batch(data, training=False)
+    train = torch.utils.data.DataLoader(train, args.batch_size, collate_fn=prepare_training_batch, shuffle=True)
+    dev = torch.utils.data.DataLoader(dev, args.batch_size, collate_fn=prepare_dev_batch)
 
     model.configure(
         # TODO(lemmatizer_noattn): Create the optimizer by creating an instance of
