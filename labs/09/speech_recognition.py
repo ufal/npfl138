@@ -268,7 +268,7 @@ def main(args: argparse.Namespace) -> None:
     def prepare_single_example(example):
         # TODO: Prepare a single example. The structure of the inputs then has to be reflected
         # in the `forward`, `compute_loss`, and `compute_metrics` methods; right now, there are
-        # just `...` there instead of the input arguments.
+        # just `...` instead of the input arguments in the definition of the mentioned methods.
         #
         # Note that `CommonVoiceCs.LETTERS` contains neither padding nor blank symbols, so you
         # need to address it.
