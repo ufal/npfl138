@@ -2,6 +2,7 @@
 #### Date: Apr 29
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?11
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides.pdf/npfl138-2324-11.pdf, PDF Slides
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-11-czech.mp4, CZ Lecture
 #### Questions: #lecture_11_questions
 
 - Transformer architecture [[Attention Is All You Need](https://arxiv.org/abs/1706.03762)]
