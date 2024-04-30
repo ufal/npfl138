@@ -274,8 +274,9 @@ class Model(TrainableModule):
 
         # TODO: Process the generated inputs by
         # - the `self._target_embedding` layer to obtain embeddings,
-        # - the `self._target_rnn` layer, passing an additional parameter `initial_state=[encoded]`,
-        #   and again correctly handling padding,
+        # - the `self._target_rnn` layer,  additionally passing the encoder
+        #   output (`encoded`) as the initial state to the GRU (the second argument);
+        #   again correctly handle the padding of the inputs,
         # - the `self._target_output_layer` to obtain logits,
         # - finally, permute dimensions so that the logits are in the dimension 1,
         # and return the result.
