@@ -307,7 +307,7 @@ class Model(TrainableModule):
             # - Generate the most probable prediction for every batch example.
             predictions = ...
 
-            # Store the predictions in the `result` and update the `result_lengths`
+            # Store the predictions in the `results` and update the `result_lengths`
             # by setting it to current `index` if an EOW was generated for the first time.
             results.append(predictions)
             result_lengths[(predictions == MorphoDataset.EOW) & (result_lengths > index)] = index + 1
