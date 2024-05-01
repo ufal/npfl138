@@ -191,8 +191,7 @@ class MorphoDataset:
             for dataset in ["train", "dev", "test"]:
                 with zip_file.open("{}_{}.txt".format(os.path.splitext(path)[0], dataset), "r") as dataset_file:
                     setattr(self, dataset, self.Dataset(
-                        dataset_file, train=self.train if dataset != "train" else None,
-                        max_sentences=max_sentences))
+                        dataset_file, train=getattr(self, "train", None), max_sentences=max_sentences))
 
     train: Dataset
     dev: Dataset
