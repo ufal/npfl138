@@ -44,8 +44,9 @@ class Model(TrainableModule):
         def __init__(self, dim, heads):
             super().__init__()
             self.dim, self.heads = dim, heads
-            # TODO: Create weight matrices W_Q, W_K, W_V, and W_O; specific instructions
-            # how to create them will be added later.
+            # TODO: Create weight matrices W_Q, W_K, W_V, and W_O; each a module parameter
+            # `torch.nn.Parameter` of shape `[dim, dim]`. The weights should be initialized
+            # using the `torch.nn.init.xavier_uniform_`.
             raise NotImplementedError()
 
         def forward(self, inputs, mask):
@@ -87,8 +88,8 @@ class Model(TrainableModule):
             raise NotImplementedError()
 
     class Transformer(torch.nn.Module):
-        def __init__(self, layers, dim, expansion, heads, dropout, *args, **kwargs):
-            super().__init__(*args, **kwargs)
+        def __init__(self, layers, dim, expansion, heads, dropout):
+            super().__init__()
             # TODO: Create:
             # - the positional embedding layer;
             # - the required number of transformer layers, each consisting of
