@@ -71,7 +71,7 @@ class TrainableModule(torch.nn.Module):
             for xs, y in data_and_progress:
                 xs, y = tuple(x.to(self.device) for x in (xs if isinstance(xs, tuple) else (xs,))), y.to(self.device)
                 logs = self.train_step(xs, y)
-                message = [epoch_message] + [f"{k}={v:.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()]
+                message = [epoch_message] + [f"{k}={v:#.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()]
                 data_and_progress.set_description(" ".join(message), refresh=False)
             if dev is not None:
                 logs |= {"dev_" + k: v for k, v in self.evaluate(dev, verbose=0).items()}
@@ -80,7 +80,7 @@ class TrainableModule(torch.nn.Module):
             self.add_logs("train", {k: v for k, v in logs.items() if not k.startswith("dev_")}, epoch + 1)
             self.add_logs("dev", {k[4:]: v for k, v in logs.items() if k.startswith("dev_")}, epoch + 1)
             verbose and print(epoch_message, "{:.1f}s".format(self._time() - start),
-                              *[f"{k}={v:.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()])
+                              *[f"{k}={v:#.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()])
         return logs
 
     def train_step(self, xs, y):
@@ -120,7 +120,7 @@ class TrainableModule(torch.nn.Module):
         for xs, y in dataloader:
             xs, y = tuple(x.to(self.device) for x in (xs if isinstance(xs, tuple) else (xs,))), y.to(self.device)
             logs = self.test_step(xs, y)
-        verbose and print("Evaluation", *[f"{k}={v:.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()])
+        verbose and print("Evaluation", *[f"{k}={v:#.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()])
         return logs
 
     def test_step(self, xs, y):
