@@ -342,7 +342,7 @@ class Model(TrainableModule):
         while index < max_length and torch.any(result_lengths == max_length):
             # TODO(lemmatizer_noattn):
             # - First embed the `inputs` using the `self._target_embedding` layer.
-            # - Then call `self._target_rnn.cell` using two arguments, the embedded `inputs`
+            # - Then call `self._target_rnn_cell` using two arguments, the embedded `inputs`
             #   and the current `states`. The call returns a single tensor, which you should
             #   store as both a new `hidden` and a new `states`.
             # - Pass the outputs through the `self._target_output_layer`.
