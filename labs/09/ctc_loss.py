@@ -291,7 +291,7 @@ class Model(TrainableModule):
         # - Finally, return the mean of the resulting losses.
         #
         # Several comments:
-        # - You can add numbers represented in log space using `torch.logsumexp`.
+        # - You can add numbers represented in log space using `torch.logsumexp`/`torch.logaddexp`.
         # - With a slight abuse of notation, use `MorphoDataset.PAD` as the blank label in the CTC algorithm
         #   because `MorphoDataset.PAD` is never a valid output tag.
         # - During the computation, I use `-1e9` as the representation of negative infinity; using
