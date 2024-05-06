@@ -1,5 +1,5 @@
 ### Lecture: 12. Deep Reinforcement Learning, VAE
-#### Date: May 07
+#### Date: May 6
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?12
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides.pdf/npfl138-2324-12.pdf, PDF Slides
 #### Questions: #lecture_12_questions
