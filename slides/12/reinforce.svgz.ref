@@ -1,0 +1,1 @@
+Modified from Algorithm 13.3 of "Reinforcement Learning: An Introduction", http://www.incompleteideas.net/book/the-book-2nd.html by removing γ^t from the update of θ
