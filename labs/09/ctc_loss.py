@@ -361,8 +361,8 @@ def main(args: argparse.Namespace) -> dict[str, float]:
         # - a PyTorch tensor of integer ids of input forms as input,
         # - a PyTorch tensor of integer tag ids as targets.
         # To create the ids, use `word_vocab` of `morpho.train.forms` and `morpho.train.tags`.
-        # TODO: However, compared to tagger_we, keep only the tags starting with "B-"
-        # in the target sequence.
+        # TODO: However, compared to tagger_we, keep in the target sequence only the tags
+        # starting (before remapping to ids) with "B-".
         form_ids = ...
         tag_ids = ...
         return form_ids, tag_ids
