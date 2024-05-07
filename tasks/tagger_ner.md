@@ -20,16 +20,22 @@ would be used to obtain superior results.
 #### Tests Start: tagger_ner_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._
 
-1. `python3 tagger_ner.py --epochs=2 --max_sentences=2000`
+1. `python3 tagger_ner.py --epochs=2 --max_sentences=10 --seed=52`
+```
+Epoch=1/2 0.1s loss=2.2081 accuracy=0.0286 dev_loss=2.1559 dev_accuracy=0.3208 dev_f1_constrained=0.0268 dev_f1_greedy=0.0292
+Epoch=2/2 0.1s loss=2.1068 accuracy=0.9029 dev_loss=2.0630 dev_accuracy=0.7264 dev_f1_constrained=0.0364 dev_f1_greedy=0.0392
+```
+
+2. `python3 tagger_ner.py --epochs=2 --max_sentences=2000`
 ```
 Epoch=1/2 10.3s loss=1.0373 accuracy=0.8046 dev_loss=0.7787 dev_accuracy=0.8225 dev_f1_constrained=0.0067 dev_f1_greedy=0.0057
 Epoch=2/2 9.3s loss=0.6481 accuracy=0.8179 dev_loss=0.6709 dev_accuracy=0.8331 dev_f1_constrained=0.0910 dev_f1_greedy=0.0834
 ```
 
-2. `python3 tagger_ner.py --epochs=2 --max_sentences=2000 --label_smoothing=0.3`
+3. `python3 tagger_ner.py --epochs=2 --max_sentences=2000 --label_smoothing=0.3 --seed=44`
 ```
-Epoch=1/2 10.2s loss=1.8772 accuracy=0.8045 dev_loss=1.7571 dev_accuracy=0.8224 dev_f1_constrained=0.0039 dev_f1_greedy=0.0039
-Epoch=2/2 9.3s loss=1.7125 accuracy=0.8181 dev_loss=1.7097 dev_accuracy=0.8308 dev_f1_constrained=0.0546 dev_f1_greedy=0.0413
+Epoch=1/2 10.2s loss=1.8852 accuracy=0.8049 dev_loss=1.7517 dev_accuracy=0.8229 dev_f1_constrained=0.0030 dev_f1_greedy=0.0029
+Epoch=2/2 9.3s loss=1.7039 accuracy=0.8162 dev_loss=1.7273 dev_accuracy=0.8329 dev_f1_constrained=0.0710 dev_f1_greedy=0.0562
 ```
 #### Tests End:
 #### Examples Start: tagger_ner_examples
@@ -44,12 +50,12 @@ Epoch=4/5 49.4s loss=0.0852 accuracy=0.9755 dev_loss=0.4318 dev_accuracy=0.8877 
 Epoch=5/5 49.0s loss=0.0490 accuracy=0.9860 dev_loss=0.4354 dev_accuracy=0.8948 dev_f1_constrained=0.5214 dev_f1_greedy=0.4909
 ```
 
-- `python3 tagger_ner.py --epochs=5 --label_smoothing=0.3`
+- `python3 tagger_ner.py --epochs=5 --label_smoothing=0.3 --seed=44`
 ```
-Epoch=1/5 48.6s loss=1.7265 accuracy=0.8357 dev_loss=1.6516 dev_accuracy=0.8541 dev_f1_constrained=0.2550 dev_f1_greedy=0.2130
-Epoch=2/5 49.5s loss=1.5508 accuracy=0.9061 dev_loss=1.6000 dev_accuracy=0.8925 dev_f1_constrained=0.4974 dev_f1_greedy=0.4591
-Epoch=3/5 50.4s loss=1.4624 accuracy=0.9618 dev_loss=1.5795 dev_accuracy=0.8993 dev_f1_constrained=0.5369 dev_f1_greedy=0.5035
-Epoch=4/5 50.4s loss=1.4269 accuracy=0.9806 dev_loss=1.5778 dev_accuracy=0.9003 dev_f1_constrained=0.5475 dev_f1_greedy=0.5202
-Epoch=5/5 50.0s loss=1.4109 accuracy=0.9890 dev_loss=1.5757 dev_accuracy=0.9026 dev_f1_constrained=0.5546 dev_f1_greedy=0.5368
+Epoch=1/5 48.6s loss=1.7328 accuracy=0.8357 dev_loss=1.6601 dev_accuracy=0.8523 dev_f1_constrained=0.2548 dev_f1_greedy=0.2299
+Epoch=2/5 49.5s loss=1.5568 accuracy=0.9017 dev_loss=1.6025 dev_accuracy=0.8890 dev_f1_constrained=0.4885 dev_f1_greedy=0.4546
+Epoch=3/5 50.4s loss=1.4650 accuracy=0.9605 dev_loss=1.5766 dev_accuracy=0.8989 dev_f1_constrained=0.5366 dev_f1_greedy=0.5149
+Epoch=4/5 50.4s loss=1.4272 accuracy=0.9806 dev_loss=1.5724 dev_accuracy=0.9011 dev_f1_constrained=0.5513 dev_f1_greedy=0.5249
+Epoch=5/5 50.0s loss=1.4109 accuracy=0.9894 dev_loss=1.5728 dev_accuracy=0.9026 dev_f1_constrained=0.5533 dev_f1_greedy=0.5274
 ```
 #### Examples End:
