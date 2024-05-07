@@ -17,6 +17,9 @@ positive if both the entity type and the span exactly match).
 In practice, character-level embeddings (and also pre-trained word embeddings)
 would be used to obtain superior results.
 
+To make debugging easier, the first test below includes a link to tag sequences
+predicted on the development set using the optimal decoding.
+
 #### Tests Start: tagger_ner_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._
 
@@ -25,6 +28,7 @@ _Note that your results may be slightly different, depending on your CPU type an
 Epoch=1/2 0.1s loss=2.2081 accuracy=0.0286 dev_loss=2.1559 dev_accuracy=0.3208 dev_f1_constrained=0.0268 dev_f1_greedy=0.0292
 Epoch=2/2 0.1s loss=2.1068 accuracy=0.9029 dev_loss=2.0630 dev_accuracy=0.7264 dev_f1_constrained=0.0364 dev_f1_greedy=0.0392
 ```
+[The optimally decoded tag sequences on the development set](//ufal.mff.cuni.cz/~straka/courses/npfl138/2324/tasks/figures/tagger_ner.test-1.txt)
 
 2. `python3 tagger_ner.py --epochs=2 --max_sentences=2000`
 ```
