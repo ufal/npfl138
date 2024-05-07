@@ -11,7 +11,7 @@ decoding. You can use `torch.nn.CTCLoss` during development as a reference, but
 it is not available during ReCodEx evaluation.
 
 To make debugging easier, the first test below includes a link to all
-$α_-$ and $a_*$, final $α$, and loss for all `compute_loss` calls.
+$α_-$ and $α_*$, final $α$, and loss for all `compute_loss` calls.
 
 #### Tests Start: ctc_loss_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._
@@ -20,7 +20,7 @@ _Note that your results may be slightly different, depending on your CPU type an
 ```
 Epoch=1/1 0.4s loss=27.2595 edit_distance=2.3694 dev_loss=17.1484 dev_edit_distance=0.6000
 ```
-[The detailed output of $α_-$ and $a_*$, final $α$, and loss for all `compute_loss`
+[The detailed output of $α_-$ and $α_*$, final $α$, and loss for all `compute_loss`
 calls](//ufal.mff.cuni.cz/~straka/courses/npfl138/2324/tasks/figures/ctc_loss.test-1.txt)
 
 2. `python3 ctc_loss.py --epochs=1 --max_sentences=1000`
