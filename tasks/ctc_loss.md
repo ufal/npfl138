@@ -29,7 +29,7 @@ you can find for every example in every batch its:
 
 2. `python3 ctc_loss.py --epochs=1 --max_sentences=1000`
 ```
-Epoch=1/1 8.0s loss=6.5798 edit_distance=0.6902 dev_loss=2.3089 dev_edit_distance=0.5864
+Epoch=1/1 8.0s loss=6.5798 edit_distance=0.6844 dev_loss=2.3089 dev_edit_distance=0.5864
 ```
 #### Tests End:
 #### Examples Start: ctc_loss_examples
@@ -37,7 +37,7 @@ _Note that your results may be slightly different, depending on your CPU type an
 
 - `python3 ctc_loss.py --epochs=5`
 ```
-Epoch=1/5 67.0s loss=2.4850 edit_distance=0.6043 dev_loss=1.6261 dev_edit_distance=0.5635
+Epoch=1/5 67.0s loss=2.4850 edit_distance=0.6036 dev_loss=1.6261 dev_edit_distance=0.5635
 Epoch=2/5 67.6s loss=1.2934 edit_distance=0.4832 dev_loss=1.3653 dev_edit_distance=0.4375
 Epoch=3/5 68.0s loss=0.7368 edit_distance=0.3033 dev_loss=1.2962 dev_edit_distance=0.3980
 Epoch=4/5 68.4s loss=0.4250 edit_distance=0.1754 dev_loss=1.5679 dev_edit_distance=0.3999
