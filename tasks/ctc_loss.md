@@ -1,5 +1,5 @@
 ### Assignment: ctc_loss
-#### Date: Deadline: ~~Apr 30~~ May 7, 22:00
+#### Date: Deadline: ~~Apr 30~~ ~~May 7~~ May 14, 22:00
 #### Points: 2 points
 #### Tests: ctc_loss_tests
 #### Examples: ctc_loss_examples
