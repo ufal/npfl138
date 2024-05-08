@@ -5,6 +5,7 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-12-czech.mp4, CZ Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-12-english.mp4, EN Lecture
 #### Questions: #lecture_12_questions
+#### Lecture assignment: homr_competition
 #### Lecture assignment: reinforce
 #### Lecture assignment: reinforce_baseline
 #### Lecture assignment: reinforce_pixels
