@@ -315,7 +315,7 @@ class Model(TrainableModule):
         # - compute the most probable extended label for every one of them;
         # - remove repeated labels;
         # - finally remove the blank labels (which are `MorphoDataset.PAD` in our case).
-        raise NotImplementedError
+        raise NotImplementedError()
 
     def compute_metrics(
         self, y_pred: torch.Tensor, y_true: torch.Tensor, form_ids: torch.Tensor, training: bool

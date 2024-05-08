@@ -306,7 +306,7 @@ class Model(TrainableModule):
         # sequence cannot start with an "I-" tag -- a possible solution is to consider
         # a tag sequence to be prefixed by a virtual "O" tag during decoding.
         # Finally, the tags for padding tokens must be `MorphoDataset.PAD`s.
-        raise NotImplementedError
+        raise NotImplementedError()
 
     def compute_metrics(self, y_pred, y, form_ids, training):
         self.metrics["accuracy"].update(y_pred, y)
