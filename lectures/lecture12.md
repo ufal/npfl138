@@ -9,6 +9,7 @@
 #### Lecture assignment: reinforce
 #### Lecture assignment: reinforce_baseline
 #### Lecture assignment: reinforce_pixels
+#### Lecture assignment: vae
 
 Study material for Reinforcement Learning is the [Reinforcement Learning: An Introduction; second edition
 by Richard S. Sutton and Andrew G. Barto](http://incompleteideas.net/book/the-book-2nd.html)
