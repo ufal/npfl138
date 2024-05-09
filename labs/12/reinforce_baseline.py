@@ -94,7 +94,7 @@ def main(env: rl_utils.EvaluationEnv, args: argparse.Namespace) -> None:
 
                 state = next_state
 
-            # TODO(reinforce): Compute returns by summing rewards (with discounting)
+            # TODO(reinforce): Compute returns by summing rewards.
 
             # TODO(reinforce): Add states, actions and returns to the training batch
 
