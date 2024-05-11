@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import os
 
 import gymnasium as gym
 import numpy as np
@@ -27,7 +28,7 @@ def main(env: rl_utils.EvaluationEnv, args: argparse.Namespace) -> None:
     torch.set_num_interop_threads(args.threads)
 
     # Assuming you have pre-trained your agent locally, perform only evaluation in ReCodEx
-    if False and args.recodex:
+    if args.recodex:
         # TODO: Load the agent
 
         # Final evaluation
