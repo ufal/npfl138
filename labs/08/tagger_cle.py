@@ -81,6 +81,7 @@ class TrainableModule(torch.nn.Module):
         - `verbose` controls the verbosity: 0 for silent, 1 for persistent progress bar,
           2 for a progress bar only when writing to a console.
         """
+        logs = {}
         for epoch in range(epochs):
             self.train()
             self.loss_metric.reset()
