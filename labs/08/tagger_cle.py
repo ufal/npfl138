@@ -242,8 +242,8 @@ class Model(TrainableModule):
         # from `train.forms.char_vocab` to dimensionality `args.cle_dim`.
         self._char_embedding = ...
 
-        # TODO: Create a `torch.nn.GRU` layer processing the character embeddings,
-        # producing output of dimensionality `args.cle_dim`; again, also pass
+        # TODO: Create a bidirectional `torch.nn.GRU` layer processing the character
+        # embeddings, producing output of dimensionality `args.cle_dim`; again, also pass
         # `batch_first=True` to the constructor.
         self._char_rnn = ...
 
