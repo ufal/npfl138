@@ -258,7 +258,7 @@ class Model(TrainableModule):
         if targets is not None:
             return self.decoder_training(encoded, targets)
         else:
-            return self.decoder_prediction(encoded, max_length=encoded.shape[1] + 10)
+            return self.decoder_prediction(encoded, max_length=forms.shape[1] + 10)
 
     def encoder(self, forms: torch.Tensor) -> torch.Tensor:
         # TODO: Embed the inputs using `self._source_embedding`.
