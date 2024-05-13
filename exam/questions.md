@@ -303,3 +303,41 @@
   activation functions), and show how to perform latent variable sampling so
   that it is differentiable with respect to the encoder parameters (the
   reparametrization trick). [10]
+
+#### Questions@:, Lecture 13 Questions
+- Write down the min-max formulation of generative adversarial network (GAN)
+  objective. Then describe what loss is actually used for training the generator
+  in order to avoid vanishing gradients at the beginning of the training. [5]
+
+- Write down the training algorithm of generative adversarial networks (GAN),
+  including the losses minimized by the discriminator and the generator. Be sure
+  to use the version of generator loss which avoids vanishing gradients at the
+  beginning of the training. [10]
+
+- Explain how the class label is used when training a conditional generative
+  adversarial network (CGAN). [5]
+
+- Illustrate that alternating SGD steps are not guaranteed to converge for
+  a min-max problem. [5]
+
+- Assuming a data point $\boldsymbol x_0$ and a variance schedule
+  $\beta_1, \ldots, \beta_T$, define the forward diffusion process $q$. [5]
+
+- Assuming a variance schedule $\beta_1, \ldots, \beta_T$, prove how the forward
+  diffusion marginal $q(\boldsymbol x_t | \boldsymbol x_0)$ looks like. [10]
+
+- Write down the diffusion marginal $q(\boldsymbol x_t | \boldsymbol x_0)$ and
+  the formulas of the cosine schedule of the signal rate and the noise rate. [5]
+
+- Write down the DDPM training algorithm, including the formula of the loss. [5]
+
+- Specify the inputs and outputs of the DDPM model, and describe its
+  architecture – what the overall structure looks like (ResNet blocks,
+  downsampling and upsampling, self-attention blocks), how the time is
+  represented, and how the conditioning on an input image and an input text
+  looks like. [10]
+
+- Define the forward DDIM process, and show how its
+  forward diffusion marginal $q_0(\boldsymbol x_t | \boldsymbol x_0)$ looks like. [5]
+
+- Write down the DDIM sampling algorithm. [5]
