@@ -2,6 +2,7 @@
 #### Date: May 13
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides/?13
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/slides.pdf/npfl138-2324-13.pdf, PDF Slides
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-13-czech.mp4, CZ Lecture
 #### Questions: #lecture_13_questions
 
 - Generative Adversarial Networks
