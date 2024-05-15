@@ -7,6 +7,9 @@
 #### Questions: #lecture_13_questions
 #### Lecture assignment: gan
 #### Lecture assignment: dcgan
+#### Lecture assignment: ddim
+#### Lecture assignment: ddim_attention
+#### Lecture assignment: ddim_conditional
 
 - Generative Adversarial Networks
   - GAN [Section 20.10.4 of DLB, [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)]
