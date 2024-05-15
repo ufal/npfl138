@@ -5,6 +5,8 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-13-czech.mp4, CZ Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2324/npfl138-2324-13-english.mp4, EN Lecture
 #### Questions: #lecture_13_questions
+#### Lecture assignment: gan
+#### Lecture assignment: dcgan
 
 - Generative Adversarial Networks
   - GAN [Section 20.10.4 of DLB, [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)]
