@@ -64,7 +64,7 @@ class GAN(keras.Model):
         # - applies batch normalized dense layer with `MNIST.H // 4 * MNIST.W // 4 * 64` units and ReLU
         # - reshapes the current hidden output to `[MNIST.H // 4, MNIST.W // 4, 64]`
         # - applies batch normalized transposed convolution with 32 filters, kernel size 4,
-        #   stride 2, same padding, and ReLU activation (again `use_bias=False`)
+        #   stride 2, same padding, and ReLU activation
         # - applies transposed convolution with `MNIST.C` filters, kernel size 4,
         #   stride 2, same padding, and a suitable output activation
         # Note that on the lecture, we discusses that layers before batch normalization should
