@@ -115,7 +115,7 @@ class GAN(keras.Model):
         # Do not forget that we created `discriminator_optimizer` in the `compile` override.
 
         # TODO: Update the discriminator accuracy metric -- call the
-        # `self.metrics.update_state` twice, with the same arguments the `self.loss`
+        # `self.metric` twice, with the same arguments the `self.loss`
         # was called during discriminator loss computation.
 
         self._loss_tracker.update_state(discriminator_loss + generator_loss)
