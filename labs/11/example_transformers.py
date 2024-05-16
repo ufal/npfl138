@@ -24,6 +24,7 @@ print("Token 2 to chars: {}".format(encoded.token_to_chars(2)))
 print("Word 1 to chars: {}".format(encoded.word_to_chars(1)))
 print("Word 1 to tokens: {}".format(encoded.word_to_tokens(1)))
 print("Char 12 to token: {}".format(encoded.char_to_token(12)))
+print("Decoded text: {}".format(tokenizer.decode(encoded.input_ids)))
 
 print("---Running the model---")
 batch = tokenizer(dataset, padding="longest")
