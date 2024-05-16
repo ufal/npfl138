@@ -67,7 +67,7 @@ class GAN(keras.Model):
         #   stride 2, same padding, and ReLU activation
         # - applies transposed convolution with `MNIST.C` filters, kernel size 4,
         #   stride 2, same padding, and a suitable output activation
-        # Note that on the lecture, we discusses that layers before batch normalization should
+        # Note that on the lecture, we discussed that layers before batch normalization should
         # not use bias -- but for simplicity, do not do it here (so do not set `use_bias=False`).
         self.generator = ...
 
