@@ -99,7 +99,7 @@ class GAN(keras.Model):
         self.built = True
 
     def train_step(self, images: torch.Tensor) -> dict[str, torch.Tensor]:
-        # TODO(gan): Generator training.
+        # TODO(gan): Train the generator:
         # - generate as many random latent samples as there are `images`, by a single call
         #   to `self._z_prior.sample`;
         # - pass the samples through a generator; do not forget about `training=True`
@@ -110,7 +110,7 @@ class GAN(keras.Model):
         # Then, run an optimizer step with respect to generator trainable variables.
         # Do not forget that we created `generator_optimizer` in the `compile` override.
 
-        # TODO(gan): Discriminator training. Using a Gradient tape:
+        # TODO(gan): Train the discriminator:
         # - discriminate `images` with `training=True`, storing
         #   results in `discriminated_real`
         # - discriminate images generated in generator training with `training=True`,
