@@ -45,8 +45,8 @@ class Model(TrainableModule):
             super().__init__()
             self.dim, self.heads = dim, heads
             # TODO: Create weight matrices W_Q, W_K, W_V, and W_O; each a module parameter
-            # `torch.nn.Parameter` of shape `[dim, dim]`. The weights should be initialized
-            # using the `torch.nn.init.xavier_uniform_`.
+            # `torch.nn.Parameter` of shape `[dim, dim]`. The weights should be initialized using
+            # the `torch.nn.init.xavier_uniform_` in the same order the matrices are listed above.
             raise NotImplementedError()
 
         def forward(self, inputs, mask):
@@ -95,6 +95,9 @@ class Model(TrainableModule):
             # - the required number of transformer layers, each consisting of
             #   - a layer normalization and a self-attention layer followed by a dropout layer,
             #   - a layer normalization and a FFN layer followed by a dropout layer.
+            # During ReCodEx evaluation, the order of layer creation is not important,
+            # but if you want to get the same results as on the course website, create
+            # the layers in the order they are called in the `forward` method.
 
         def forward(self, inputs, mask):
             # TODO: First compute the positional embeddings.
