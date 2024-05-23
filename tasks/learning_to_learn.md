@@ -33,16 +33,16 @@ _Note that your results may be slightly different, depending on your CPU type an
 
 1. `python3 learning_to_learn.py --train_episodes=160 --test_episodes=160 --epochs=3 --classes=2`
 ```
-Epoch 1/3 acc: 0.5001 - acc01: 0.4920 - acc02: 0.5172 - acc05: 0.4828 - acc10: 0.4844 - loss: 0.8351 - val_acc: 0.5409 - val_acc01: 0.7469 - val_acc02: 0.6438 - val_acc05: 0.4563 - val_acc10: 0.4719 - val_loss: 0.6917
-Epoch 2/3 acc: 0.5116 - acc01: 0.5288 - acc02: 0.5545 - acc05: 0.5041 - acc10: 0.4829 - loss: 0.6987 - val_acc: 0.5516 - val_acc01: 0.7281 - val_acc02: 0.6281 - val_acc05: 0.5281 - val_acc10: 0.4812 - val_loss: 0.6911
+Epoch 1/3 acc: 0.5001 - acc01: 0.4920 - acc02: 0.5172 - acc05: 0.4828 - acc10: 0.4844 - loss: 0.8351 - val_acc: 0.5406 - val_acc01: 0.7469 - val_acc02: 0.6406 - val_acc05: 0.4563 - val_acc10: 0.4719 - val_loss: 0.6917
+Epoch 2/3 acc: 0.5116 - acc01: 0.5288 - acc02: 0.5545 - acc05: 0.5041 - acc10: 0.4829 - loss: 0.6987 - val_acc: 0.5516 - val_acc01: 0.7250 - val_acc02: 0.6281 - val_acc05: 0.5281 - val_acc10: 0.4812 - val_loss: 0.6911
 Epoch 3/3 acc: 0.5074 - acc01: 0.5530 - acc02: 0.4786 - acc05: 0.5309 - acc10: 0.5526 - loss: 0.6969 - val_acc: 0.5544 - val_acc01: 0.7500 - val_acc02: 0.6187 - val_acc05: 0.5250 - val_acc10: 0.5312 - val_loss: 0.6903
 ```
 
 2. `python3 learning_to_learn.py --train_episodes=160 --test_episodes=160 --epochs=3 --read_heads=2 --classes=5`
 ```
 Epoch 1/3 acc: 0.2060 - acc01: 0.2127 - acc02: 0.2062 - acc05: 0.2097 - acc10: 0.1997 - loss: 1.6998 - val_acc: 0.2165 - val_acc01: 0.2750 - val_acc02: 0.2338 - val_acc05: 0.2100 - val_acc10: 0.2062 - val_loss: 1.6089
-Epoch 2/3 acc: 0.2090 - acc01: 0.1978 - acc02: 0.2225 - acc05: 0.2155 - acc10: 0.2173 - loss: 1.6191 - val_acc: 0.2170 - val_acc01: 0.2675 - val_acc02: 0.2362 - val_acc05: 0.2125 - val_acc10: 0.2075 - val_loss: 1.6082
-Epoch 3/3 acc: 0.2068 - acc01: 0.2096 - acc02: 0.2122 - acc05: 0.2125 - acc10: 0.2114 - loss: 1.6121 - val_acc: 0.2170 - val_acc01: 0.3375 - val_acc02: 0.2425 - val_acc05: 0.2025 - val_acc10: 0.1850 - val_loss: 1.6073
+Epoch 2/3 acc: 0.2088 - acc01: 0.1978 - acc02: 0.2190 - acc05: 0.2155 - acc10: 0.2173 - loss: 1.6191 - val_acc: 0.2176 - val_acc01: 0.2663 - val_acc02: 0.2362 - val_acc05: 0.2125 - val_acc10: 0.2100 - val_loss: 1.6082
+Epoch 3/3 acc: 0.2067 - acc01: 0.2096 - acc02: 0.2122 - acc05: 0.2125 - acc10: 0.2114 - loss: 1.6121 - val_acc: 0.2171 - val_acc01: 0.3375 - val_acc02: 0.2425 - val_acc05: 0.2025 - val_acc10: 0.1850 - val_loss: 1.6073
 ```
 #### Tests End:
 #### Examples Start: learning_to_learn_examples

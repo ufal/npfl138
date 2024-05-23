@@ -196,7 +196,7 @@ class Model(keras.Model):
         # - convolutional layer with 32 filters, 3x3 kernel, stride 2, valid padding; BatchNorm; ReLU;
         # - flatten each image into a vector;
         # - finally, reshape the batch back into a sequence of image representations.
-        # Use `use_bias=False` in every convolution before batch normalization.
+        # As in the `gan` assignment, for simplicity do not pass the `use_bias=False` argument.
 
         # TODO: To create the input for the `MemoryAugmentedLSTMCell`, concatenate (in this order)
         # each computed image representation with the one-hot representation (with `args.classes` classes)
