@@ -14,7 +14,7 @@ module, with the following datasets being available:
 - `lsun_bedrooms`: 15k [images of bedrooms](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/demos/lsun_bedrooms.jpg), 109MB,
 - `ffhq`: 70k [images of Flickr faces](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/demos/ffhq.jpg), 529MB.
 
-Start with the [ddim.py](https://github.com/ufal/npfl138/tree/master/labs/14/ddim.py)
+Start with the [ddim.py](https://github.com/ufal/npfl138/tree/master/labs/13/ddim.py)
 template, which contains extensive comments indicating how the architecture
 should like and how the training and sampling should be performed. Note that the
 template generate images to TensorBoard (after the whole training and optionally
