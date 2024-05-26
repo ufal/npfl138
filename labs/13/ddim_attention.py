@@ -13,6 +13,8 @@ from image64_dataset import Image64Dataset
 
 parser = argparse.ArgumentParser()
 # These arguments will be set appropriately by ReCodEx, even if you change them.
+parser.add_argument("--attention_heads", default=8, type=int, help="Self-attention heads.")
+parser.add_argument("--attention_stages", default=2, type=int, help="Stages with self-attention.")
 parser.add_argument("--batch_size", default=64, type=int, help="Batch size.")
 parser.add_argument("--channels", default=32, type=int, help="CNN channels in the first stage.")
 parser.add_argument("--dataset", default="oxford_flowers102", type=str, help="Image64 dataset to use.")
@@ -56,6 +58,7 @@ class TorchTensorBoardCallback(keras.callbacks.Callback):
 
 
 # The diffusion model architecture building blocks.
+@keras.saving.register_keras_serializable()
 class SinusoidalEmbedding(keras.layers.Layer):
     """Sinusoidal embeddings used to embed the current noise rate."""
     def __init__(self, dim, *args, **kwargs):
@@ -64,7 +67,7 @@ class SinusoidalEmbedding(keras.layers.Layer):
         self.dim = dim
 
     def call(self, inputs):
-        # TODO: Compute the sinusoidal embeddings of the inputs in `[0, 1]` range.
+        # TODO(ddim): Compute the sinusoidal embeddings of the inputs in `[0, 1]` range.
         # The `inputs` have shape `[..., 1]`, and the embeddings should have
         # a shape `[..., self.dim]`, where for `0 <= i < self.dim/2`,
         # - the value on index `[..., i]` should be
@@ -76,20 +79,20 @@ class SinusoidalEmbedding(keras.layers.Layer):
 
 def ResidualBlock(inputs, width, noise_embeddings):
     """A residual block with two BN+Swish+3x3Conv, adding noise embeddings in the middle."""
-    # TODO: Compute the residual connection. If the number of filters
+    # TODO(ddim): Compute the residual connection. If the number of filters
     # in the input is the same as `width`, use unmodified `inputs`; otherwise,
     # pass it through a 1x1 convolution with `width` filters.
     residual = ...
 
-    # TODO: Pass `inputs` through a BatchNormalization, Swish activation, and 3x3 convolution
+    # TODO(ddim): Pass `inputs` through a BatchNormalization, Swish activation, and 3x3 convolution
     # with "same" padding. As in the `gan` assignment, for simplicity ignore `use_bias=False`.
     hidden = ...
 
-    # TODO: Pass `noise_embeddings` through a dense layer with `width` outputs and Swish
+    # TODO(ddim): Pass `noise_embeddings` through a dense layer with `width` outputs and Swish
     # activation, and add it to `hidden`.
     hidden += ...
 
-    # TODO: Pass `hidden` through another BatchNormalization, Swish activation, and 3x3 convolution
+    # TODO(ddim): Pass `hidden` through another BatchNormalization, Swish activation, and 3x3 convolution
     # with "same" padding. Furthermore, initialize the kernel of the convolution to all
     # zeros, so that after initialization, the whole residual block is an identity.
     hidden = ...
@@ -98,7 +101,28 @@ def ResidualBlock(inputs, width, noise_embeddings):
     return hidden
 
 
+def SelfAttention(inputs, heads):
+    """A multi-head self-attention executed on all spatial positions of the inputs."""
+    # TODO: Pass the `inputs` through a batch normalization.
+    hidden = ...
+
+    # TODO: Considering a single image a 2D collection of feature vectors, reshape `hidden`
+    # so that every image is just a linear sequence of feature vectors.
+    hidden = ...
+
+    # TODO: Pass `hidden` through a multi-head attention. Use the `keras.layers.MultiHeadAttention`
+    # with `heads` heads and a key dimensionality of `inputs.shape[3] // heads`.
+    hidden = ...
+
+    # TODO: Reshape the result so that each image is again a 2D collection of feature vectors.
+    hidden = ...
+
+    hidden += inputs
+    return hidden
+
+
 # The DDIM model
+@keras.saving.register_keras_serializable()
 class DDIM(keras.Model):
     def __init__(self, args: argparse.Namespace, data: torch.utils.data.Dataset) -> None:
         super().__init__()
@@ -108,44 +132,55 @@ class DDIM(keras.Model):
         images = keras.Input([Image64Dataset.H, Image64Dataset.W, Image64Dataset.C])
         noise_rates = keras.Input([1, 1, 1])
 
-        # TODO: Embed noise rates using the `SinusoidalEmbedding` with `args.channels` dimensions.
+        # TODO(ddim): Embed noise rates using the `SinusoidalEmbedding` with `args.channels` dimensions.
         noise_embedding = ...
 
-        # TODO: Process `images` using an initial 3x3 convolution with `args.channels` filters
+        # TODO(ddim): Process `images` using an initial 3x3 convolution with `args.channels` filters
         # and "same" padding.
         hidden = ...
 
         # Downscaling stages
         outputs = []
         for i in range(args.stages):
-            # TODO: For `args.stage_blocks` times, pass the `hidden` through a `ResidualBlock`
+            # TODO(ddim): For `args.stage_blocks` times, pass the `hidden` through a `ResidualBlock`
             # with `args.channels << i` filters and with the `noise_embedding`, and append
             # every result to the `outputs` array.
             ...
 
-            # TODO: Downscale `hidden` with a 3x3 convolution with stride 2,
+            # TODO: For the last `args.attention_stages` stages, pass `hidden` through
+            # a `SelfAttention`.
+            ...
+
+            # TODO(ddim): Downscale `hidden` with a 3x3 convolution with stride 2,
             # `args.channels << (i + 1)` filters, and "same" padding.
             hidden = ...
 
         # Middle block
-        # TODO: For `args.stage_blocks` times, pass the `hidden` through a `ResidualBlock`
+        # TODO(ddim): For `args.stage_blocks` times, pass the `hidden` through a `ResidualBlock`
         # with `args.channels << args.stages` filters.
         ...
 
+        # TODO: Pass `hidden` through a `SelfAttention` block.
+        hidden = ...
+
         # Upscaling stages
         for i in reversed(range(args.stages)):
-            # TODO: Upscale `hidden` with a 4x4 transposed convolution with stride 2,
+            # TODO(ddim): Upscale `hidden` with a 4x4 transposed convolution with stride 2,
             # `args.channels << i` filters, and "same" padding.
             hidden = ...
 
-            # TODO: For `args.stage_blocks` times, concatenate `hidden` and `outputs.pop()`,
+            # TODO(ddim): For `args.stage_blocks` times, concatenate `hidden` and `outputs.pop()`,
             # and pass the result through a `ResidualBlock` with `args.channels << i` filters.
+            ...
+
+            # TODO: For the first `args.attention_stages` stages (the ones with the smallest
+            # spatial resolution), pass `hidden` through a `SelfAttention`.
             ...
 
         # Verify that all outputs have been used.
         assert len(outputs) == 0
 
-        # TODO: Compute the final output by passing `hidden` through a
+        # TODO(ddim): Compute the final output by passing `hidden` through a
         # BatchNormalization, Swish activation, and a 3x3 convolution with
         # `Image64Dataset.C` channels and "same" padding, with kernel of
         # the convolution initialized to all zeros.
@@ -155,16 +190,17 @@ class DDIM(keras.Model):
 
         # Create the EMA network, which will be updated by exponential moving averaging.
         self._ema_network = keras.models.clone_model(self._network)
+        self._ema_network.trainable = False
 
         # Compute image normalization statistics.
         first_moment, second_moment, count = 0, 0, 0
         for image in data:
-            image = image.to(torch.float32)
-            first_moment += torch.sum(image)
-            second_moment += torch.sum(image * image)
-            count += image.numel()
+            image = keras.ops.convert_to_numpy(image).astype(np.float32)
+            first_moment += np.sum(image)
+            second_moment += np.sum(image * image)
+            count += image.size
         self._image_normalization_mean = first_moment / count
-        self._image_normalization_sd = torch.sqrt(second_moment / count - self._image_normalization_mean ** 2)
+        self._image_normalization_sd = np.sqrt(second_moment / count - self._image_normalization_mean ** 2)
 
         # Store required arguments for later usage.
         self._ema_momentum = args.ema
@@ -174,19 +210,19 @@ class DDIM(keras.Model):
 
     def _image_normalization(self, images):
         """Normalize the images to have zero mean and unit variance."""
-        images = (images.to(torch.float32) - self._image_normalization_mean) / self._image_normalization_sd
+        images = (keras.ops.cast(images, "float32") - self._image_normalization_mean) / self._image_normalization_sd
         return images
 
     def _image_denormalization(self, images):
         """Invert the `self._image_normalization`, returning an image represented using bytes."""
         images = self._image_normalization_mean + images * self._image_normalization_sd
-        images = torch.clamp(torch.round(images), 0, 255).to(torch.uint8)
+        images = keras.ops.cast(keras.ops.clip(keras.ops.round(images), 0, 255), "uint8")
         return images
 
     def _diffusion_rates(self, times):
         """Compute signal and noise rates for the given times."""
         starting_angle, final_angle = 0.025, np.pi / 2 - 0.025
-        # TODO: For a vector of `times` in [0, 1] range, return a pair of corresponding
+        # TODO(ddim): For a vector of `times` in [0, 1] range, return a pair of corresponding
         # `(signal_rates, noise_rates)`. The signal and noise rates are computed as
         # cosine and sine of an angle which is a linear interpolation from `starting_angle`
         # of 0.025 rad (for time 0) to `final_angle` of pi/2 - 0.025 rad (for time 1).
@@ -199,24 +235,24 @@ class DDIM(keras.Model):
     def train_step(self, images: torch.Tensor) -> dict[str, torch.Tensor]:
         """Perform a training step."""
         # Normalize the images so have on average zero mean and unit variance.
-        images = self._image_normalization(images)
+        images = self._image_normalization(keras.ops.convert_to_tensor(images))
         # Generate a random noise of the same shape as the `images`.
-        noises = torch.randn(images.shape)
+        noises = keras.random.normal(images.shape)
         # Generate a batch of times when to perform the loss computation in.
-        times = torch.rand(images.shape[:1])
+        times = keras.random.uniform(images.shape[:1])
 
-        # TODO: Compute the signal and noise rates using the sampled `times`.
+        # TODO(ddim): Compute the signal and noise rates using the sampled `times`.
         signal_rates, noise_rates = ...
 
-        # TODO: Compute the noisy images utilizing the computed signal and noise rates.
+        # TODO(ddim): Compute the noisy images utilizing the computed signal and noise rates.
         noisy_images = ...
 
-        # TODO: Predict the noise by running the `self._network` on the noisy images
+        # TODO(ddim): Predict the noise by running the `self._network` on the noisy images
         # and the noise rates. Do not forget to also pass the `training=True` argument
         # (to run batch normalizations in training regime).
         predicted_noises = ...
 
-        # TODO: Compute loss using the `self.compute_loss`.
+        # TODO(ddim): Compute loss using the `self.compute_loss`.
         loss = ...
 
         # Perform an update step.
@@ -228,40 +264,44 @@ class DDIM(keras.Model):
         for ema_variable, variable in zip(self._ema_network.variables, self._network.variables):
             ema_variable.assign(self._ema_momentum * ema_variable + (1 - self._ema_momentum) * variable)
 
-        return {metric.name: metric.result() for metric in self.metrics}
+        self._loss_tracker.update_state(loss)
+        return self.get_metrics_result()
 
+    @torch.no_grad
     def generate(self, initial_noise, steps):
         """Sample a batch of images given the `initial_noise` using `steps` steps."""
-        images = initial_noise
+        images = keras.ops.convert_to_tensor(initial_noise)
         diffusion_process = []
 
-        # We emply a uniformly distributed sequence of times from 1 to 0. We in fact
-        # create an identical batch of them, and we also make the time of the next step
-        # available in the body of the cycle, because it is needed by the DDIM algorithm.
-        steps = torch.linspace(1., 0., steps + 1).unsqueeze(-1).repeat(1, images.shape[0])
+        # We emply a uniformly distributed sequence of times from 1 to 0.
+        steps = keras.ops.linspace(1., 0., steps + 1)
 
+        # We promote every scalar time in a vector of the same length as the batch size.
+        steps = keras.ops.tile(keras.ops.expand_dims(steps, axis=-1), [1, images.shape[0]])
+
+        # In the cycle, we make available the current and next time step.
         for times, next_times in zip(steps[:-1], steps[1:]):
-            # Store the current images converted to `torch.uint8` to allow denoising visualization.
+            # Store the current images converted to "uint8" to allow denoising visualization.
             diffusion_process.append(self._image_denormalization(images))
 
-            # TODO: Compute the signal and noise rates of the current time step.
+            # TODO(ddim): Compute the signal and noise rates of the current time step.
             signal_rates, noise_rates = ...
 
-            # TODO: Predict the noise by calling the `self._ema_network` with `training=False`.
+            # TODO(ddim): Predict the noise by calling the `self._ema_network` with `training=False`.
             predicted_noises = ...
 
-            # TODO: Predict the denoised version of `images` (i.e., the $x_0$ estimate
+            # TODO(ddim): Predict the denoised version of `images` (i.e., the $x_0$ estimate
             # in the DDIM sampling algorithm).
             denoised_images = ...
 
-            # TODO: Compute the signal and noise rates of the next time step.
+            # TODO(ddim): Compute the signal and noise rates of the next time step.
             next_signal_rates, next_noise_rates = ...
 
-            # TODO: Update the `images` according to the DDIM sampling algorithm.
+            # TODO(ddim): Update the `images` according to the DDIM sampling algorithm.
             images = ...
 
-        # TODO: Compute the output by passing the latest `denoised_images` through
-        # the `self._image_denormalization` to obtain a `torch.uint8` representation.
+        # TODO(ddim): Compute the output by passing the latest `denoised_images` through
+        # the `self._image_denormalization` to obtain a "uint8" representation.
         images = ...
 
         return images, diffusion_process
@@ -314,24 +354,24 @@ def main(args: argparse.Namespace) -> dict[str, float]:
         def __init__(self, columns: int, rows: int) -> None:
             self._columns = columns
             self._rows = rows
-            self._noise = torch.randn([columns * rows, Image64Dataset.H, Image64Dataset.W, Image64Dataset.C])
+            self._noise = keras.random.normal([rows, columns, Image64Dataset.H, Image64Dataset.W, Image64Dataset.C])
 
         def __call__(self, epoch, logs=None) -> None:
             # After the last epoch and every `args.plot_each` epoch, generate a sample to TensorBoard logs.
             if epoch + 1 == args.epochs or (epoch + 1) % (args.plot_each or args.epochs) == 0:
                 # Generate a grid of `self._columns *  self._rows` independent samples.
-                samples, _ = ddim.generate(self._noise, args.sampling_steps)
-                images = torch.cat([torch.cat(list(row), axis=1) for row in torch.chunk(samples, self._rows)], axis=0)
+                rows = [ddim.generate(noise, args.sampling_steps)[0] for noise in list(self._noise)]
+                images = keras.ops.vstack([keras.ops.hstack(row) for row in rows])
                 ddim.tb_callback.writer("train").add_image("images", images, epoch + 1, dataformats="HWC")
                 # Generate gradual denoising process for `rows` samples, showing `self._columns` steps.
                 steps = args.sampling_steps // self._columns + 1
-                samples, process = ddim.generate(self._noise[::self._columns], steps * (self._columns - 2) + 1)
-                process = torch.cat([torch.reshape(s, [-1, *s.shape[2:]]) for s in process[::steps] + [samples]], axis=1)
+                samples, process = ddim.generate(self._noise[:, 0], steps * (self._columns - 2) + 1)
+                process = keras.ops.hstack([keras.ops.vstack(list(col)) for col in process[::steps] + [samples]])
                 ddim.tb_callback.writer("train").add_image("process", process, epoch + 1, dataformats="HWC")
             # After the last epoch, store statistics of the generated sample for ReCodEx to evaluate.
             if epoch + 1 == args.epochs:
-                logs["sample_mean"] = torch.mean(images.to(torch.float32))
-                logs["sample_std"] = torch.std(images.to(torch.float32))
+                images = keras.ops.convert_to_numpy(images).astype(np.float32)
+                logs["sample_mean"], logs["sample_std"] = np.mean(images), np.std(images)
 
     # Train the model
     ddim.compile(
