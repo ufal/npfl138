@@ -351,9 +351,9 @@
   including the explicit formula of computing the likelihood of the data. [5]
 
 - Describe the changes in the Student model of Parallel WaveNet, which allow
-  efficient sampling (how does the latent prior look like, how the output
-  data distribution is modeled in a single iteration and then after multiple
-  iterations). [5]
+  efficient sampling (how the latent prior looks like, how the output
+  data distribution is modeled in a single iteration, how is every iteration
+  computed). [5]
 
 - Write down the loss used for training of the Student model in Parallel
   WaveNet, then rewrite the cross-entropy part to a sum of per-time-step
