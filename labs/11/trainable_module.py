@@ -70,6 +70,8 @@ class TrainableModule(torch.nn.Module):
             data_and_progress = self._tqdm(
                 dataloader, epoch_message, unit="batch", leave=False, disable=None if verbose == 2 else not verbose)
             for xs, y in data_and_progress:
+                assert isinstance(xs, (tuple, torch.Tensor)), "The input must be either a single tensor or a tuple."
+                assert isinstance(y, torch.Tensor), "The output must be a single tensor."
                 xs, y = tuple(x.to(self.device) for x in (xs if isinstance(xs, tuple) else (xs,))), y.to(self.device)
                 logs = self.train_step(xs, y)
                 message = [epoch_message] + [f"{k}={v:#.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()]
@@ -119,6 +121,8 @@ class TrainableModule(torch.nn.Module):
         self.loss_metric.reset()
         self.metrics.reset()
         for xs, y in dataloader:
+            assert isinstance(xs, (tuple, torch.Tensor)), "The input must be either a single tensor or a tuple."
+            assert isinstance(y, torch.Tensor), "The output must be a single tensor."
             xs, y = tuple(x.to(self.device) for x in (xs if isinstance(xs, tuple) else (xs,))), y.to(self.device)
             logs = self.test_step(xs, y)
         verbose and print("Evaluation", *[f"{k}={v:#.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()])
@@ -149,6 +153,7 @@ class TrainableModule(torch.nn.Module):
         predictions = []
         for batch in dataloader:
             xs = batch[0] if isinstance(batch, tuple) else batch
+            assert isinstance(xs, (tuple, torch.Tensor)), "The input must be either a single tensor or a tuple."
             xs = tuple(x.to(self.device) for x in (xs if isinstance(xs, tuple) else (xs,)))
             predictions.extend(self.predict_step(xs, as_numpy=as_numpy))
         return predictions
