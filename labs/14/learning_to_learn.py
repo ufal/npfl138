@@ -176,7 +176,7 @@ class Model(keras.Model):
             output = ...
 
             # TODO: Return the `output` as output and `memory`, `read_value`, and all vectors of
-            # `constroller_state` as the state.
+            # `controller_state` as the state.
             raise NotImplementedError()
 
     def __init__(self, args: argparse.Namespace) -> None:
