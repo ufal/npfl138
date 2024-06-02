@@ -40,8 +40,9 @@ class TrainableModule(torch.nn.Module):
 
     def load_weights(self, path, device="auto"):
         """Load the model weights from the given path."""
+        self.load_state_dict(torch.load(path, map_location="cpu"))
         self.device = torch.device(("cuda" if torch.cuda.is_available() else "cpu") if device == "auto" else device)
-        self.load_state_dict(torch.load(path, map_location=self.device))
+        self.to(self.device)
 
     def save_weights(self, path):
         """Save the model weights to the given path."""
