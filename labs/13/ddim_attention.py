@@ -252,7 +252,7 @@ class DDIM(keras.Model):
         # (to run batch normalizations in training regime).
         predicted_noises = ...
 
-        # TODO(ddim): Compute loss using the `self.compute_loss`.
+        # TODO(ddim): Compute loss using the `self.compute_loss(x, y_true, y_pred)`.
         loss = ...
 
         # Perform an update step.
