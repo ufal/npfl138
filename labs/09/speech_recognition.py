@@ -238,6 +238,7 @@ class Model(TrainableModule):
         # only when `training==False` to speed up training.
         predictions = ...
         self.metrics["edit_distance"].update(predictions, y_true)
+        return self.metrics.compute()
 
     def predict_step(self, xs, as_numpy=True):
         with torch.no_grad():
