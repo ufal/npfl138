@@ -337,8 +337,10 @@
   represented, and how the conditioning on an input image and an input text
   looks like. [10]
 
-- Define the forward DDIM process, and show how its
-  forward diffusion marginal $q_0(\boldsymbol x_t | \boldsymbol x_0)$ looks like. [5]
+- Define the forward DDIM process, so $q_0(\boldsymbol x_{1:T} | \boldsymbol x_0)$,
+  $q_0(\boldsymbol x_T | \boldsymbol x_0)$, $q_0(\boldsymbol x_{t-1}
+  | \boldsymbol x_t, \boldsymbol x_0)$, and show how its forward diffusion
+  marginal $q_0(\boldsymbol x_t | \boldsymbol x_0)$ looks like. [5]
 
 - Write down the DDIM sampling algorithm. [5]
 
