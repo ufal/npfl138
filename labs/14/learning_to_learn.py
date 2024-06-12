@@ -159,7 +159,8 @@ class Model(keras.Model):
             # - compute the attention between the L2-normalized copy of `memory` and `read_keys`
             #   with a single matrix multiplication, obtaining a tensor with shape
             #   `[batch_size, self._read_heads, self._memory_cells]`. Note that you will need
-            #   to transpose one of the matrices.
+            #   to transpose one of the matrices. These two steps compute the cosine similarities
+            #   between all read keys and all memory cells.
             # - apply softmax, resulting in a distribution over the memory cells for every read key
             # - compute weighted sum of the original (non-L2-normalized) `memory` according to the
             #   obtained distribution. Compute it using a single matrix multiplication, producing
