@@ -153,10 +153,10 @@ class Model(keras.Model):
             # - compute cell distribution as a softmax of the computed cosine similarities;
             # - the read value is the sum of the memory cells weighted by the above distribution.
             #
-            # However, implement the reading process in a vectorized way (for all read keys in parallel):
+            # Namely, implement the reading process in a vectorized way (for all read keys in parallel):
             # - compute L2 normalized copy of `memory` and `read_keys`, using `keras.ops.normalize`,
             #   so that every cell vector has norm 1;
-            # - compute the self-attention between the L2-normalized copy of `memory` and `read_keys`
+            # - compute the attention between the L2-normalized copy of `memory` and `read_keys`
             #   with a single matrix multiplication, obtaining a tensor with shape
             #   `[batch_size, self._read_heads, self._memory_cells]`. Note that you will need
             #   to transpose one of the matrices.
