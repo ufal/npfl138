@@ -301,9 +301,9 @@
 
 - Draw an architecture of a variational autoencoder (VAE). Pay attention to the
   parametrization of the distribution from the encoder (including the used
-  activation functions), and show how to perform latent variable sampling so
+  activation functions), show how to perform latent variable sampling so
   that it is differentiable with respect to the encoder parameters (the
-  reparametrization trick). [10]
+  reparametrization trick), and write down the loss [10]
 
 #### Questions@:, Lecture 13 Questions
 - Write down the min-max formulation of generative adversarial network (GAN)
