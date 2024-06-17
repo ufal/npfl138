@@ -144,7 +144,7 @@
   architecture (the RoI-Align layer, the new mask-producing head). [5]
 
 - Write down the focal loss with class weighting, including the commonly used
-  hyperparameter values. [5]
+  hyperparameter values and how the class weighting works for a given class. [5]
 
 - Draw the overall architecture of a RetinaNet architecture (the computation of
   $C_1, \ldots, C_7$, the FPN architecture computing $P_1, \ldots, P_7$
