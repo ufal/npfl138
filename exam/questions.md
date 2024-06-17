@@ -16,8 +16,8 @@
   KL divergence. [10]
 
 - Define mean squared error, and show how it can be derived using MLE (define
-  $p_{\textrm{model}}$, show how MLE looks using it, and that minimizing it
-  is equal to minimizing MSE). [5]
+  $p_{\textrm{model}}$, show how MLE looks using $p_{\textrm{model}}$, prove
+  that minimizing such MLE is equal to minimizing MSE). [5]
 
 - Describe gradient descent and compare it to stochastic (i.e., online) gradient
   descent and minibatch stochastic gradient descent. [5]
