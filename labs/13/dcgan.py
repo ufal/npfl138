@@ -74,7 +74,7 @@ class GAN(keras.Model):
         # TODO: Define `self.discriminator` as a `keras.Model`, which
         # - takes input images with shape `[MNIST.H, MNIST.W, MNIST.C]`
         # - computes batch normalized convolution with 32 filters, kernel size 5,
-        #   same padding, and ReLU activation.
+        #   same padding, and ReLU activation
         # - max-pools with pool size 2 and stride 2
         # - computes batch normalized convolution with 64 filters, kernel size 5,
         #   same padding, and ReLU activation
