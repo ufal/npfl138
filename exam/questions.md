@@ -305,7 +305,7 @@
   parametrization of the distribution from the encoder (including the used
   activation functions), show how to perform latent variable sampling so
   that it is differentiable with respect to the encoder parameters (the
-  reparametrization trick), and write down the loss [10]
+  reparametrization trick), and write down the loss. [10]
 
 #### Questions@:, Lecture 13 Questions
 - Write down the min-max formulation of generative adversarial network (GAN)
