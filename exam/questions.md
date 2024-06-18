@@ -133,15 +133,15 @@
 
 - Considering a Fast-RCNN architecture, draw overall network architecture,
   explain what a RoI-pooling layer is, show how the network parametrizes
-  bounding boxes and write down the loss. Finally, describe non-maximum
+  bounding boxes and write down the complete loss. Finally, describe non-maximum
   suppression and how the Fast-RCNN prediction is performed. [10]
 
 - Considering a Faster-RCNN architecture, describe the region proposal network
   (what are anchors, architecture including both heads, how are the coordinates
-  of proposals parametrized, what does the loss look like). [10]
+  of proposals parametrized, what does the complete loss look like). [10]
 
 - Considering Mask-RCNN architecture, describe the additions to a Faster-RCNN
-  architecture (the RoI-Align layer, the new mask-producing head). [5]
+  architecture (the RoI-Align layer, the new mask-producing head, its loss). [5]
 
 - Write down the focal loss with class weighting, including the commonly used
   hyperparameter values and how the class weighting works for a given class. [5]
@@ -150,7 +150,7 @@
   $C_1, \ldots, C_7$, the FPN architecture computing $P_1, \ldots, P_7$
   including the block combining feature maps of different resolutions; the
   classification and bounding box generation heads, including their output
-  size). Write down the losses for both heads. [10]
+  size). Write down the losses for both heads and the overall loss. [10]
 
 - Describe GroupNorm, and compare it to BatchNorm and LayerNorm. [5]
 
