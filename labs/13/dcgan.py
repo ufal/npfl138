@@ -58,7 +58,7 @@ class GAN(keras.Model):
         self._z_dim = args.z_dim
         self._z_prior = torch.distributions.Normal(torch.zeros(args.z_dim), torch.ones(args.z_dim))
 
-        # TODO: Define `self.generator` as a `keras.Model`, which
+        # TODO: Using functional API, define `self.generator` as a `keras.Model`, which
         # - takes vectors of shape `[args.z_dim]` on input
         # - applies batch normalized dense layer with 1_024 units and ReLU
         # - applies batch normalized dense layer with `MNIST.H // 4 * MNIST.W // 4 * 64` units and ReLU
@@ -71,7 +71,7 @@ class GAN(keras.Model):
         # not use bias -- but for simplicity, do not do it here (so do not set `use_bias=False`).
         self.generator = ...
 
-        # TODO: Define `self.discriminator` as a `keras.Model`, which
+        # TODO: Using functional API, define `self.discriminator` as a `keras.Model`, which
         # - takes input images with shape `[MNIST.H, MNIST.W, MNIST.C]`
         # - computes batch normalized convolution with 32 filters, kernel size 5,
         #   same padding, and ReLU activation

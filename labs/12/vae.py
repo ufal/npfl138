@@ -61,7 +61,7 @@ class VAE(keras.Model):
         self._z_dim = args.z_dim
         self._z_prior = torch.distributions.Normal(torch.zeros(args.z_dim), torch.ones(args.z_dim))
 
-        # TODO: Define `self.encoder` as a `keras.Model`, which
+        # TODO: Using functional API, define `self.encoder` as a `keras.Model`, which
         # - takes input images with shape `[MNIST.H, MNIST.W, MNIST.C]`
         # - flattens them
         # - applies `len(args.encoder_layers)` dense layers with ReLU activation,
@@ -71,7 +71,7 @@ class VAE(keras.Model):
         #   with `z_sd` using exponential function as activation to keep it positive.
         self.encoder = ...
 
-        # TODO: Define `self.decoder` as a `keras.Model`, which
+        # TODO: Using functional API, define `self.decoder` as a `keras.Model`, which
         # - takes vectors of `[args.z_dim]` shape on input
         # - applies `len(args.decoder_layers)` dense layers with ReLU activation,
         #   i-th layer with `args.decoder_layers[i]` units

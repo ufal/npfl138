@@ -60,7 +60,7 @@ class GAN(keras.Model):
         self._z_dim = args.z_dim
         self._z_prior = torch.distributions.Normal(torch.zeros(args.z_dim), torch.ones(args.z_dim))
 
-        # TODO: Define `self.generator` as a `keras.Model`, which
+        # TODO: Using functional API, define `self.generator` as a `keras.Model`, which
         # - takes vectors of [args.z_dim] shape on input
         # - applies `len(args.generator_layers)` dense layers with ReLU activation,
         #   i-th layer with `args.generator_layers[i]` units
@@ -69,7 +69,7 @@ class GAN(keras.Model):
         # - reshapes the output (`keras.layers.Reshape`) to `[MNIST.H, MNIST.W, MNIST.C]`
         self.generator = ...
 
-        # TODO: Define `self.discriminator` as a `keras.Model`, which
+        # TODO: Using functional API, define `self.discriminator` as a `keras.Model`, which
         # - takes input images with shape `[MNIST.H, MNIST.W, MNIST.C]`
         # - flattens them
         # - applies `len(args.discriminator_layers)` dense layers with ReLU activation,
