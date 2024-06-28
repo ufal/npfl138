@@ -59,8 +59,8 @@ class Image64Dataset:
             item = self._dataset[index]
             return self._transform(*item) if isinstance(item, tuple) else self._transform(item)
 
-        def transform(self, transform: Callable[..., Any]) -> "SVHN.TransformedDataset":
-            return SVHN.TransformedDataset(self, transform)
+        def transform(self, transform: Callable[..., Any]) -> "Image64Dataset.TransformedDataset":
+            return Image64Dataset.TransformedDataset(self, transform)
 
     def __init__(self, name: str, decode_on_demand: bool = False) -> None:
         path = "{}.tfrecord".format(name)
