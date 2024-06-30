@@ -129,7 +129,8 @@
   object detection, and instance segmentation, and write down which metrics
   are used for these tasks. [5]
 
-- Write down how is $\mathit{AP}_{50}$ computed. [5]
+- Write down how is $\mathit{AP}_{50}$ computed given predicted objects
+  and their bounding boxes in the whole dataset. [5]
 
 - Considering a Fast-RCNN architecture, draw overall network architecture,
   explain what a RoI-pooling layer is, show how the network parametrizes
