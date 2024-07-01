@@ -93,7 +93,8 @@
   case of fully connected layers and in case of convolutional layers. [10]
 
 - Describe overall architecture of VGG-19 (you do not need to remember the exact
-  number of layers/filters, but you should describe which layers are used). [5]
+  number of layers/filters, but you should describe the overall order and type
+  of layers that are used). [5]
 
 #### Questions@:, Lecture 5 Questions
 - Describe overall architecture of ResNet. You do not need to remember the exact
