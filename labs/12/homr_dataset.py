@@ -16,7 +16,7 @@ class HOMRDataset:
     C: int = 1
     MARKS: list[str]  # Set at the bottom of the script for readability
 
-    Element = TypedDict("Element", {"image": torch.Tensor, "classes": torch.Tensor})
+    Element = TypedDict("Element", {"image": torch.Tensor, "marks": torch.Tensor})
 
     _URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/datasets/"
 

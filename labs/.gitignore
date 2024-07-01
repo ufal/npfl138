@@ -5,3 +5,4 @@ logs/
 *.npz
 *.tfrecord
 *.zip
+*.LICENSE

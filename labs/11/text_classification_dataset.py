@@ -64,7 +64,7 @@ class TextClassificationDataset:
     class Dataset(torch.utils.data.Dataset):
         def __init__(self, data_file: BinaryIO, train: Self | None = None) -> None:
             # Load the data
-            self._data: Elements = {
+            self._data: "TextClassificationDataset.Elements" = {
                 "documents": [],
                 "labels": [],
             }
