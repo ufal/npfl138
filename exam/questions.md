@@ -12,8 +12,8 @@
 - Formulate the Universal approximation theorem. [5]
 
 #### Questions@:, Lecture 2 Questions
-- Describe maximum likelihood estimation, as minimizing NLL, cross-entropy and
-  KL divergence. [10]
+- Define maximum likelihood estimation, and show that it is equal to minimizing
+  NLL, minimizing cross-entropy, and minimizing KL divergence. [10]
 
 - Define mean squared error, and show how it can be derived using MLE (define
   $p_{\textrm{model}}$, show how MLE looks using $p_{\textrm{model}}$, prove
