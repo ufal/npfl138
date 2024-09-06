@@ -83,7 +83,7 @@ def ResidualBlock(inputs, width, noise_embeddings):
     residual = ...
 
     # TODO: Pass `inputs` through a BatchNormalization, Swish activation, and 3x3 convolution
-    # with "same" padding. As in the `gan` assignment, for simplicity ignore `use_bias=False`.
+    # with "same" padding. As in the `dcgan` assignment, for simplicity ignore `use_bias=False`.
     hidden = ...
 
     # TODO: Pass `noise_embeddings` through a dense layer with `width` outputs and Swish
