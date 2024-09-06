@@ -154,7 +154,9 @@
   classification and bounding box generation heads, including their output
   size). Write down the losses for both heads and the overall loss. [10]
 
-- Describe GroupNorm, and compare it to BatchNorm and LayerNorm. [5]
+- Describe GroupNorm (including its parameters and their size), and compare it
+  to BatchNorm and LayerNorm, discussing both fully connected layers and
+  convolutional layers. [5]
 
 #### Questions@:, Lecture 8 Questions
 - Write down how the Long Short-Term Memory (LSTM) cell operates, including
