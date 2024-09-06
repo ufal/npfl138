@@ -15,9 +15,9 @@
 - Define maximum likelihood estimation, and show that it is equal to minimizing
   NLL, minimizing cross-entropy, and minimizing KL divergence. [10]
 
-- Define mean squared error, and show how it can be derived using MLE (define
-  $p_{\textrm{model}}$, show how MLE looks using $p_{\textrm{model}}$, prove
-  that minimizing such MLE is equal to minimizing MSE). [5]
+- Define mean squared error, show how it can be derived using MLE (define
+  $p_{\textrm{model}}$, show how MLE looks using $p_{\textrm{model}}$, and prove
+  that the maximum likelihood estimate is equal to minimizing MSE). [5]
 
 - Describe gradient descent and compare it to stochastic (i.e., online) gradient
   descent and minibatch stochastic gradient descent. [5]
