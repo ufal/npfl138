@@ -237,8 +237,10 @@
   self-attention (but you do not need to describe multi-head attention), FFN
   and positions of LNs and dropouts. [10]
 
-- Write down the formula of Transformer self-attention, and then describe
-  multi-head self-attention in detail. [10]
+- Write down the formula of Transformer self-attention assuming you get
+  sequence representation $\boldsymbol X \in \mathbb{R}^{n \times d}$, and then
+  describe multi-head self-attention in detail, including the dimensionality
+  of the individual heads. [10]
 
 - Describe the Transformer decoder architecture, including the description of
   self-attention and masked self-attention (but you do not need to describe
