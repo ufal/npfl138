@@ -9,7 +9,7 @@ you can read the [Dataset and DataLoaders
 tutorial](https://pytorch.org/tutorials/beginner/basics/data_tutorial.html).
 
 The goal of this assignment is to start with the
-[torch_dataset.py](https://github.com/ufal/npfl138/tree/master/labs/04/torch_dataset.py)
+[torch_dataset.py](https://github.com/ufal/npfl138/tree/past-2324/labs/04/torch_dataset.py)
 template and implement a simple image augmentation preprocessing.
 
 #### Tests Start: torch_dataset_tests

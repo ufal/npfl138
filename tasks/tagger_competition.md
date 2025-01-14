@@ -4,14 +4,14 @@
 
 In this assignment, you should extend `tagger_cle`
 into a real-world Czech part-of-speech tagger. We will use
-Czech PDT dataset loadable using the [morpho_dataset.py](https://github.com/ufal/npfl138/tree/master/labs/08/morpho_dataset.py)
+Czech PDT dataset loadable using the [morpho_dataset.py](https://github.com/ufal/npfl138/tree/past-2324/labs/08/morpho_dataset.py)
 module. Note that the dataset contains more than 1500 unique POS tags and that
 the POS tags have a fixed structure of 15 positions (so it is possible to
 generate the POS tag characters independently).
 
 You can use the following additional data in this assignment:
 - You can use outputs of a morphological analyzer loadable with
-  [morpho_analyzer.py](https://github.com/ufal/npfl138/tree/master/labs/08/morpho_analyzer.py).
+  [morpho_analyzer.py](https://github.com/ufal/npfl138/tree/past-2324/labs/08/morpho_analyzer.py).
   If a word form in train, dev or test PDT data is known to the analyzer,
   all its _(lemma, POS tag)_ pairs are returned.
 - You can use any _unannotated_ text data (Wikipedia, Czech National Corpus, …),
@@ -25,8 +25,8 @@ of your solutions. Lastly, **3 bonus points** will be given to anyone surpassing
 pre-neural-network state-of-the-art of **96.35%**.
 
 You can start with the
-[tagger_competition.py](https://github.com/ufal/npfl138/tree/master/labs/08/tagger_competition.py)
+[tagger_competition.py](https://github.com/ufal/npfl138/tree/past-2324/labs/08/tagger_competition.py)
 template, which among others generates test set annotations in the required format. Note that
-you can evaluate the predictions as usual using the [morpho_dataset.py](https://github.com/ufal/npfl138/tree/master/labs/08/morpho_dataset.py)
+you can evaluate the predictions as usual using the [morpho_dataset.py](https://github.com/ufal/npfl138/tree/past-2324/labs/08/morpho_dataset.py)
 module, either by running with `--task=tagger --evaluate=path` arguments, or using its
 `evaluate_file` method.

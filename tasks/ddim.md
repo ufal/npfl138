@@ -8,13 +8,13 @@ Implement a Denoising Diffusion Implicit Model (DDIM) to unconditionally
 generate images with $64×64$ resolution.
 
 The unlabeled image data can be loaded using the
-[image64_dataset.py](https://github.com/ufal/npfl138/tree/master/labs/13/image64_dataset.py)
+[image64_dataset.py](https://github.com/ufal/npfl138/tree/past-2324/labs/13/image64_dataset.py)
 module, with the following datasets being available:
 - `oxford_flowers102`: 8k [images of flowers](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/demos/oxford_flowers102.jpg), 67MB,
 - `lsun_bedrooms`: 15k [images of bedrooms](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/demos/lsun_bedrooms.jpg), 109MB,
 - `ffhq`: 70k [images of Flickr faces](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/demos/ffhq.jpg), 529MB.
 
-Start with the [ddim.py](https://github.com/ufal/npfl138/tree/master/labs/13/ddim.py)
+Start with the [ddim.py](https://github.com/ufal/npfl138/tree/past-2324/labs/13/ddim.py)
 template, which contains extensive comments indicating how the architecture
 should like and how the training and sampling should be performed. Note that the
 template generate images to TensorBoard (after the whole training and optionally

@@ -8,7 +8,7 @@ recognition, optionally utilizing the pretrained EfficientNetV2-B0 backbone
 
 The [Street View House Numbers (SVHN) dataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/demos/svhn_train.html)
 annotates for every photo all digits appearing on it, including their bounding
-boxes. The dataset can be loaded using the [svhn_dataset.py](https://github.com/ufal/npfl138/tree/master/labs/06/svhn_dataset.py)
+boxes. The dataset can be loaded using the [svhn_dataset.py](https://github.com/ufal/npfl138/tree/past-2324/labs/06/svhn_dataset.py)
 module. Similarly to the `CAGS` dataset, the `train/dev/test` are PyTorch
 `torch.utils.data.Dataset`s, and every element is a dictionary with the following keys:
 - `"image"`: a square 3-channel image stored using PyTorch tensor of type `torch.uint8`,
@@ -21,7 +21,7 @@ five-tuples _label top left bottom right_, and the annotation is considered
 correct, if exactly the gold digits are predicted, each with IoU at least 0.5.
 The whole test set score is then the prediction accuracy of individual images.
 You can again evaluate your predictions using the
-[svhn_dataset.py](https://github.com/ufal/npfl138/tree/master/labs/06/svhn_dataset.py)
+[svhn_dataset.py](https://github.com/ufal/npfl138/tree/past-2324/labs/06/svhn_dataset.py)
 module, either by running with `--evaluate=path` arguments, or using its
 `evaluate_file` method.
 
@@ -32,7 +32,7 @@ of your solutions. Note that I usually need at least _35%_ development set
 accuracy to achieve the required test set performance.
 
 You should start with the
-[svhn_competition.py](https://github.com/ufal/npfl138/tree/master/labs/06/svhn_competition.py)
+[svhn_competition.py](https://github.com/ufal/npfl138/tree/past-2324/labs/06/svhn_competition.py)
 template, which generates the test set annotation in the required format.
 
 _A baseline solution can use RetinaNet-like single stage detector,

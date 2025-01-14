@@ -12,7 +12,7 @@ if interested. After computing the gradient, you should then perform training by
 running manually implemented minibatch stochastic gradient descent.
 
 Starting with the
-[sgd_backpropagation.py](https://github.com/ufal/npfl138/tree/master/labs/02/sgd_backpropagation.py)
+[sgd_backpropagation.py](https://github.com/ufal/npfl138/tree/past-2324/labs/02/sgd_backpropagation.py)
 template, you should:
 - implement a neural network with a single _tanh_ hidden layer and
   categorical output layer;

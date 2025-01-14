@@ -5,12 +5,12 @@
 
 The goal of this exercise is to familiarize with PyTorch `torch.Tensor`s,
 shapes and basic tensor manipulation methods. Start with the
-[pca_first.py](https://github.com/ufal/npfl138/tree/master/labs/01/pca_first.py)
-(and you will also need the [mnist.py](https://github.com/ufal/npfl138/tree/master/labs/01/mnist.py)
+[pca_first.py](https://github.com/ufal/npfl138/tree/past-2324/labs/01/pca_first.py)
+(and you will also need the [mnist.py](https://github.com/ufal/npfl138/tree/past-2324/labs/01/mnist.py)
 module).
 
 Alternatively, you can instead use the
-[pca_first.keras.py](https://github.com/ufal/npfl138/tree/master/labs/01/pca_first.keras.py)
+[pca_first.keras.py](https://github.com/ufal/npfl138/tree/past-2324/labs/01/pca_first.keras.py)
 template, which uses backend-agnostic `keras.ops` operations instead of PyTorch
 operations – both templates can be used to solve the assignment.
 

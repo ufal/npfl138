@@ -6,11 +6,11 @@
 
 The goal of this assignment is to create a simple lemmatizer. For training
 and evaluation, we use the same dataset as in `tagger_we` loadable by the
-updated [morpho_dataset.py](https://github.com/ufal/npfl138/tree/master/labs/10/morpho_dataset.py)
+updated [morpho_dataset.py](https://github.com/ufal/npfl138/tree/past-2324/labs/10/morpho_dataset.py)
 module.
 
 Your goal is to modify the
-[lemmatizer_noattn.py](https://github.com/ufal/npfl138/tree/master/labs/10/lemmatizer_noattn.py)
+[lemmatizer_noattn.py](https://github.com/ufal/npfl138/tree/past-2324/labs/10/lemmatizer_noattn.py)
 template and implement the following:
 - Embed characters of source forms and run a bidirectional GRU encoder.
 - Embed characters of target lemmas.

@@ -6,7 +6,7 @@
 
 To pass this assignment, you will learn to construct basic convolutional
 neural network layers. Start with the
-[mnist_cnn.py](https://github.com/ufal/npfl138/tree/master/labs/04/mnist_cnn.py)
+[mnist_cnn.py](https://github.com/ufal/npfl138/tree/past-2324/labs/04/mnist_cnn.py)
 template and assume the requested architecture is described by the `cnn`
 argument, which contains comma-separated specifications of the following layers:
 - `C-filters-kernel_size-stride-padding`: Add a convolutional layer with ReLU

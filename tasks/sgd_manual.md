@@ -14,9 +14,9 @@ a mathematical exercise than a real-world application. Furthermore, we will
 compute the derivatives together on the Mar 06 practicals.
 
 Start with the
-[sgd_manual.py](https://github.com/ufal/npfl138/tree/master/labs/02/sgd_manual.py)
+[sgd_manual.py](https://github.com/ufal/npfl138/tree/past-2324/labs/02/sgd_manual.py)
 template, which is based on
-[sgd_backpropagation.py](https://github.com/ufal/npfl138/tree/master/labs/02/sgd_backpropagation.py)
+[sgd_backpropagation.py](https://github.com/ufal/npfl138/tree/past-2324/labs/02/sgd_backpropagation.py)
 one.
 
 Note that ReCodEx disables the PyTorch automatic differentiation during

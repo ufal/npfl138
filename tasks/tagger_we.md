@@ -7,11 +7,11 @@
 In this assignment you will create a simple part-of-speech tagger. For training
 and evaluation, we will use Czech dataset containing tokenized sentences, each
 word annotated by gold lemma and part-of-speech tag. The
-[morpho_dataset.py](https://github.com/ufal/npfl138/tree/master/labs/08/morpho_dataset.py)
+[morpho_dataset.py](https://github.com/ufal/npfl138/tree/past-2324/labs/08/morpho_dataset.py)
 module (down)loads the dataset and provides mappings between strings and integers.
 
 Your goal is to modify the
-[tagger_we.py](https://github.com/ufal/npfl138/tree/master/labs/08/tagger_we.py)
+[tagger_we.py](https://github.com/ufal/npfl138/tree/past-2324/labs/08/tagger_we.py)
 template and implement the following:
 - Use specified RNN layer type (`GRU` and `LSTM`) and dimensionality.
 - Create word embeddings for training vocabulary.

@@ -4,7 +4,7 @@
 
 This is a continuation of the `reinforce_baseline` assignment.
 
-The supplied [cart_pole_pixels_environment.py](https://github.com/ufal/npfl138/tree/master/labs/12/cart_pole_pixels_environment.py)
+The supplied [cart_pole_pixels_environment.py](https://github.com/ufal/npfl138/tree/past-2324/labs/12/cart_pole_pixels_environment.py)
 generates a pixel representation of the `CartPole` environment
 as an $80×80$ `np.uint8` image with three channels, with each channel representing one time step
 (i.e., the current observation and the two previous ones).
@@ -19,5 +19,5 @@ model to ReCodEx, but it is also possible to train an agent during ReCodEx
 evaluation.
 
 Start with the
-[reinforce_pixels.py](https://github.com/ufal/npfl138/tree/master/labs/12/reinforce_pixels.py)
+[reinforce_pixels.py](https://github.com/ufal/npfl138/tree/past-2324/labs/12/reinforce_pixels.py)
 template, which parses several parameters and creates the correct environment.

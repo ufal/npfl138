@@ -27,10 +27,10 @@ to `reset`), your goal is to reach an average return of 475 during 100
 evaluation episodes. Note that the environment prints your 100-episode
 average return each 10 episodes even during training.
 
-Start with the [reinforce.py](https://github.com/ufal/npfl138/tree/master/labs/12/reinforce.py)
+Start with the [reinforce.py](https://github.com/ufal/npfl138/tree/past-2324/labs/12/reinforce.py)
 template, which provides a simple network implementation in PyTorch. However,
 feel free to use TensorFlow or JAX instead, if you like.
-You will also need the [rl_utils.py](https://github.com/ufal/npfl138/blob/master/labs/12/rl_utils.py)
+You will also need the [rl_utils.py](https://github.com/ufal/npfl138/tree/past-2324/labs/12/rl_utils.py)
 module, which wraps the standard `gymnasium` API with the above-mentioned added features we use.
 
 During evaluation in ReCodEx, two different random seeds will be employed, and

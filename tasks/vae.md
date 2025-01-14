@@ -6,7 +6,7 @@
 
 In this assignment you will implement a simple Variational Autoencoder
 for three datasets in the MNIST format. Your goal is to modify the
-[vae.py](https://github.com/ufal/npfl138/tree/master/labs/12/vae.py)
+[vae.py](https://github.com/ufal/npfl138/tree/past-2324/labs/12/vae.py)
 template and implement a VAE.
 
 After submitting the assignment to ReCodEx, you can experiment with the three
