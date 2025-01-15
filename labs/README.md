@@ -1,8 +1,8 @@
 The tasks are evaluated automatically using the
 [ReCodEx Code Examiner](https://recodex.mff.cuni.cz/).
 
-The evaluation is performed using Python 3.11, Keras 3.0.5, PyTorch 2.2.0, HF Transformers
-4.37.2, and Gymnasium 1.0.0a. You should
+The evaluation is performed using Python 3.11, Keras 3.8.0, PyTorch 2.6.0, HF Transformers
+4.48.0, and Gymnasium 1.0.0. You should
 [install the exact version of these packages yourselves](#faq_install).
 
 ### Teamwork
