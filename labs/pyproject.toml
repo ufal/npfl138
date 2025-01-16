@@ -20,3 +20,6 @@ license = { text="MPL-2.0" }
 [project.urls]
 Homepage = "https://ufal.mff.cuni.cz/courses/npfl138"
 Repository = "https://github.com/ufal/npfl138"
+
+[tool.setuptools]
+license-files = [ "npfl138/LICENSE" ]
