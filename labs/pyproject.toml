@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "npfl138"
+version = "24.0.0.a0"
+authors = [
+  { name="Milan Straka", email="straka@ufal.mff.cuni.cz" },
+]
+description = "Modules used by the Deep Learning Course NPFL138"
+readme = "npfl138/README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+    "Programming Language :: Python :: 3",
+]
+license = { file="npfl138/LICENSE" }
+
+[project.urls]
+Homepage = "https://ufal.mff.cuni.cz/courses/npfl138"
+Repository = "https://github.com/ufal/npfl138"

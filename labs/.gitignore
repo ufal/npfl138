@@ -1,3 +1,5 @@
+/dist/
+/npfl138.egg-info/
 __pycache__/
 logs/
 *.h5
