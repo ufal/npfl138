@@ -11,6 +11,17 @@ authors = [
 description = "Modules used by the Deep Learning Course NPFL138"
 readme = "npfl138/README.md"
 requires-python = ">=3.10"
+dependencies = [
+  "torch ~= 2.6.0",
+  "torchaudio ~= 2.6.0",
+  "torchvision ~= 0.21.0",
+  "torchmetrics ~= 1.6.1",
+  "flashlight-text ~= 0.0.7",
+  "tensorboard ~= 2.18.0",
+  "transformers ~= 4.48.1",
+  "gymnasium ~= 1.0.0",
+  "pygame ~= 2.6.1",
+]
 classifiers = [
     "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
     "Programming Language :: Python :: 3",
