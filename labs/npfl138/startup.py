@@ -11,15 +11,18 @@ import torch
 
 
 def startup(seed: int | None = None, threads: int | None = None, forkserver_instead_of_fork: bool = True):
+    # Set random seed if not None.
     if seed is not None:
         random.seed(seed)
         np.random.seed(seed)
         torch.manual_seed(seed)
 
+    # Set number of threads if > 0; otherwise, use as many threads as cores.
     if threads is not None and threads > 0:
         torch.set_num_threads(threads)
         torch.set_num_interop_threads(threads)
 
+    # If instructed, use `forkserver` instead of `fork` (which will be the default in Python 3.14).
     if "fork" in torch.multiprocessing.get_all_start_methods():
         if os.environ.get("FORCE_FORK_METHOD") == "1":
             torch.multiprocessing.set_start_method("fork")
