@@ -220,8 +220,9 @@ class TrainableModule(torch.nn.Module):
                 xs = tuple(x.to(self.device) for x in (xs if is_sequence(xs) else (xs,)))
                 y = tuple(y_.to(self.device) for y_ in y) if is_sequence(y) else y.to(self.device)
                 logs = self.train_step(xs, y)
-                message = [epoch_message] + [f"{k}={v:#.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()]
-                data_and_progress.set_description(" ".join(message), refresh=False)
+                if not data_and_progress.disable:
+                    logs_message = [f"{k}={v:#.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()]
+                    data_and_progress.set_description(f"{epoch_message} {logs_message}", refresh=False)
             logs = {f"train_{k}": v for k, v in logs.items()}
             if dev is not None:
                 logs |= {f"dev_{k}": v for k, v in self.evaluate(dev, log_as=None).items()}
