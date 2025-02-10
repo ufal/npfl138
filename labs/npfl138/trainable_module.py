@@ -337,10 +337,10 @@ class TrainableModule(torch.nn.Module):
                 self.get_tb_writer(writer).add_scalar(metric, value, self.epoch)
             for writer in dict.fromkeys(key.split("_", maxsplit=1)[0] for key in logs):
                 self.get_tb_writer(writer).flush()
-            for file in [self.get_log_file()] + [sys.stdout] * bool(console):
-                print(f"Epoch {self.epoch}" + (f"/{epochs}" if epochs is not None else ""),
-                      *[f"{elapsed:.1f}s"] if elapsed is not None else [],
-                      *[f"{k}={v:#.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()], file=file, flush=True)
+        for file in ([self.get_log_file()] if self.logdir is not None else []) + [sys.stdout] * bool(console):
+            print(f"Epoch {self.epoch}" + (f"/{epochs}" if epochs is not None else ""),
+                  *[f"{elapsed:.1f}s"] if elapsed is not None else [],
+                  *[f"{k}={v:#.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()], file=file, flush=True)
 
     def log_config(self, config: dict, sort_keys: bool = True, console: int = 1) -> None:
         """Log the given dictionary to the file logs, TensorBoard logs, and optionally the console."""
@@ -348,8 +348,8 @@ class TrainableModule(torch.nn.Module):
             config = dict(sorted(config.items())) if sort_keys else config
             writer = self.get_tb_writer("train")
             writer.add_text("config", json.dumps(config, ensure_ascii=False, indent=2), self.epoch); writer.flush()
-            for file in [self.get_log_file()] + [sys.stdout] * bool(console):
-                print("Config", f"epoch={self.epoch}", *[f"{k}={v}" for k, v in config.items()], file=file, flush=True)
+        for file in ([self.get_log_file()] if self.logdir is not None else []) + [sys.stdout] * bool(console):
+            print("Config", f"epoch={self.epoch}", *[f"{k}={v}" for k, v in config.items()], file=file, flush=True)
 
     def get_log_file(self) -> TextIO:
         if self._log_file is None:
