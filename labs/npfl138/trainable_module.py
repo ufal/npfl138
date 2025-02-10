@@ -232,7 +232,7 @@ class TrainableModule(torch.nn.Module):
 
     def train_step(self, xs: TensorOrTensors, y: TensorOrTensors) -> Logs:
         """An overridable method performing a single training step, returning the logs."""
-        self.zero_grad()
+        self.optimizer.zero_grad()
         y_pred = self(*xs)
         loss = self.compute_loss(y_pred, y, *xs)
         loss.backward()
