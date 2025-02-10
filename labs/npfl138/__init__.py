@@ -5,4 +5,5 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 # Utils
+from .initializers_override import global_keras_initializers
 from .startup import startup
