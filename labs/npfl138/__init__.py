@@ -8,6 +8,7 @@
 from .trainable_module import TrainableModule
 
 # Datasets
+from .datasets.mnist import MNIST
 from .transformed_dataset import TransformedDataset
 
 # Utils
