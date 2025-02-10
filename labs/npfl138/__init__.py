@@ -7,6 +7,9 @@
 # Training
 from .trainable_module import TrainableModule
 
+# Datasets
+from .transformed_dataset import TransformedDataset
+
 # Utils
 from .initializers_override import global_keras_initializers
 from .startup import startup
