@@ -11,6 +11,9 @@ import torch
 
 
 def startup(seed: int | None = None, threads: int | None = None, forkserver_instead_of_fork: bool = True):
+    # Allow TF32 when available.
+    torch.backends.cuda.matmul.allow_tf32 = True
+
     # Set random seed if not None.
     if seed is not None:
         random.seed(seed)
