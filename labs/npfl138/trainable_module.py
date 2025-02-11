@@ -10,7 +10,6 @@ from typing import Protocol, TextIO, TypeAlias
 
 import numpy as np
 import torch
-import torchmetrics
 
 Tensor: TypeAlias = torch.Tensor | torch.nn.utils.rnn.PackedSequence
 TensorOrTensors: TypeAlias = Tensor | tuple[Tensor, ...] | list[Tensor]
