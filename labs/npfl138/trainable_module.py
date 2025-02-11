@@ -23,6 +23,15 @@ class LossProtocol(Protocol):
         ...
 
 
+class MetricProtocol(Protocol):
+    def reset(self) -> None:
+        ...
+    def update(self, y_pred: TensorOrTensors, y: TensorOrTensors) -> None:  # noqa: E301
+        ...
+    def compute(self) -> torch.Tensor:  # noqa: E301
+        ...
+
+
 class CallbackProtocol(Protocol):
     def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> None:
         ...
@@ -132,7 +141,7 @@ class TrainableModule(torch.nn.Module):
         optimizer: torch.optim.Optimizer | None = None,
         scheduler: torch.optim.lr_scheduler.LRScheduler | None = None,
         loss: LossProtocol | None = None,
-        metrics: dict[str, torchmetrics.Metric] | None = None,
+        metrics: dict[str, MetricProtocol] | None = None,
         initial_epoch: int | None = None,
         logdir: str | None = None,
         device: torch.device | str = "auto",
@@ -143,7 +152,8 @@ class TrainableModule(torch.nn.Module):
         - `optimizer` is the optimizer to use for training;
         - `scheduler` is an optional learning rate scheduler used after every batch;
         - `loss` is the loss function to minimize;
-        - `metrics` is a dictionary of additional torchmetrics.Metrics to compute;
+        - `metrics` is a dictionary of additional metrics to compute, each being an object
+          implementing the MetricProtocol (reset/update/compute), e.g., a torchmetrics.Metric;
         - `initial_epoch` is the initial epoch of the model used during training and evaluation;
         - `logdir` is an optional directory where TensorBoard logs should be written;
         - `device` is the device to move the module to; when "auto", the previously set
