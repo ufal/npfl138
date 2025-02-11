@@ -348,7 +348,8 @@ class TrainableModule(torch.nn.Module):
         if self.logdir is not None:
             config = dict(sorted(config.items())) if sort_keys else config
             writer = self.get_tb_writer("train")
-            writer.add_text("config", json.dumps(config, ensure_ascii=False, indent=2), self.epoch); writer.flush()
+            writer.add_text("config", json.dumps(config, ensure_ascii=False, indent=2), self.epoch)
+            writer.flush()
         for file in ([self.get_log_file()] if self.logdir is not None else []) + [sys.stdout] * bool(console):
             print("Config", f"epoch={self.epoch}", *[f"{k}={v}" for k, v in config.items()], file=file, flush=True)
 
