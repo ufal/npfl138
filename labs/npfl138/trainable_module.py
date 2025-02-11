@@ -106,7 +106,7 @@ class TrainableModule(torch.nn.Module):
         *,
         optimizer: torch.optim.Optimizer | None = None,
         scheduler: torch.optim.lr_scheduler.LRScheduler | None = None,
-        loss: Callable | None = None,
+        loss: Callable[[TensorOrTensors, TensorOrTensors], torch.Tensor] | None = None,
         metrics: dict[str, torchmetrics.Metric] | None = None,
         initial_epoch: int | None = None,
         logdir: str | None = None,
