@@ -6,7 +6,7 @@
 import json
 import os
 import sys
-from typing import Callable, TextIO, TypeAlias
+from typing import Protocol, TextIO, TypeAlias
 
 import numpy as np
 import torch
@@ -17,7 +17,15 @@ TensorOrTensors: TypeAlias = Tensor | tuple[Tensor, ...] | list[Tensor]
 
 Logs: TypeAlias = dict[str, float]
 
-Callback: TypeAlias = Callable[["TrainableModule", int, Logs], None]
+
+class LossProtocol(Protocol):
+    def __call__(self, y_pred: TensorOrTensors, y: TensorOrTensors) -> torch.Tensor:
+        ...
+
+
+class CallbackProtocol(Protocol):
+    def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> None:
+        ...
 
 
 def is_sequence(x: TensorOrTensors) -> bool:
@@ -123,7 +131,7 @@ class TrainableModule(torch.nn.Module):
         *,
         optimizer: torch.optim.Optimizer | None = None,
         scheduler: torch.optim.lr_scheduler.LRScheduler | None = None,
-        loss: Callable[[TensorOrTensors, TensorOrTensors], torch.Tensor] | None = None,
+        loss: LossProtocol | None = None,
         metrics: dict[str, torchmetrics.Metric] | None = None,
         initial_epoch: int | None = None,
         logdir: str | None = None,
@@ -208,7 +216,7 @@ class TrainableModule(torch.nn.Module):
         dataloader: torch.utils.data.DataLoader,
         epochs: int,
         dev: torch.utils.data.DataLoader | None = None,
-        callbacks: list[Callback] = [],
+        callbacks: list[CallbackProtocol] = [],
         console: int = 3,
     ) -> Logs:
         """Train the model on the given dataset.
@@ -274,7 +282,7 @@ class TrainableModule(torch.nn.Module):
         self,
         dataloader: torch.utils.data.DataLoader,
         log_as: str | None = "test",
-        callbacks: list[Callback] = [],
+        callbacks: list[CallbackProtocol] = [],
         console: int = 1,
     ) -> Logs:
         """An evaluation of the model on the given dataset.
