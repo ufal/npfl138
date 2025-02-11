@@ -163,7 +163,7 @@ class TrainableModule(torch.nn.Module):
         self.scheduler = scheduler if scheduler is not None else getattr(self, "scheduler", None)
         self.loss = loss if loss is not None else getattr(self, "loss", None)
         self.loss_tracker = getattr(self, "loss_tracker", LossTracker())
-        self.metrics = torchmetrics.MetricCollection(metrics or {}) \
+        self.metrics = torch.nn.ModuleDict(metrics or {}) \
             if metrics is not None or not hasattr(self, "metrics") else self.metrics
         self.epoch = initial_epoch if initial_epoch is not None else getattr(self, "epoch", 0)
         self._log_file, self._tb_writers = getattr(self, "_log_file", None), getattr(self, "_tb_writers", {})
@@ -245,7 +245,8 @@ class TrainableModule(torch.nn.Module):
             self.epoch += 1
             self.train()
             self.loss_tracker.reset()
-            self.metrics.reset()
+            for metric in self.metrics.values():
+                metric.reset()
             start = self._time()
             epoch_message = f"Epoch {self.epoch}/{epochs}"
             data_and_progress = self._tqdm(
@@ -285,8 +286,9 @@ class TrainableModule(torch.nn.Module):
 
     def compute_metrics(self, y_pred: TensorOrTensors, y: TensorOrTensors, *xs: TensorOrTensors) -> Logs:
         """Compute and return metrics given the inputs, predictions, and target outputs."""
-        self.metrics.update(y_pred, y)
-        return self.metrics.compute()
+        for metric in self.metrics.values():
+            metric.update(y_pred, y)
+        return {name: metric.compute() for name, metric in self.metrics.items()}
 
     def evaluate(
         self,
@@ -306,7 +308,8 @@ class TrainableModule(torch.nn.Module):
         """
         self.eval()
         self.loss_tracker.reset()
-        self.metrics.reset()
+        for metric in self.metrics.values():
+            metric.reset()
         start = self._time()
         for batch in dataloader:
             xs, y = validate_batch_input_output(batch)
