@@ -74,6 +74,23 @@ def get_auto_device() -> torch.device:
     return torch.device("cpu")
 
 
+class LossTracker(torch.nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.register_buffer("total", torch.tensor(0.0, dtype=torch.float32))
+        self.register_buffer("count", torch.tensor(0, dtype=torch.int64))
+
+    def reset(self):
+        self.total.zero_()
+        self.count.zero_()
+
+    def __call__(self, value):
+        total, count = self.total, self.count
+        total.add_(value)
+        count.add_(1)
+        return total / count
+
+
 class TrainableModule(torch.nn.Module):
     """A simple Keras-like module for training with raw PyTorch.
 
@@ -127,7 +144,7 @@ class TrainableModule(torch.nn.Module):
         self.optimizer = optimizer if optimizer is not None else getattr(self, "optimizer", None)
         self.scheduler = scheduler if scheduler is not None else getattr(self, "scheduler", None)
         self.loss = loss if loss is not None else getattr(self, "loss", None)
-        self.loss_metric = self.loss_metric if hasattr(self, "loss_metric") else torchmetrics.MeanMetric()
+        self.loss_tracker = getattr(self, "loss_tracker", LossTracker())
         self.metrics = torchmetrics.MetricCollection(metrics or {}) \
             if metrics is not None or not hasattr(self, "metrics") else self.metrics
         self.epoch = initial_epoch if initial_epoch is not None else getattr(self, "epoch", 0)
@@ -209,7 +226,7 @@ class TrainableModule(torch.nn.Module):
         while self.epoch < epochs:
             self.epoch += 1
             self.train()
-            self.loss_metric.reset()
+            self.loss_tracker.reset()
             self.metrics.reset()
             start = self._time()
             epoch_message = f"Epoch {self.epoch}/{epochs}"
@@ -240,8 +257,7 @@ class TrainableModule(torch.nn.Module):
         with torch.no_grad():
             self.optimizer.step()
             self.scheduler is not None and self.scheduler.step()
-            self.loss_metric.update(loss)
-            return {"loss": self.loss_metric.compute()} \
+            return {"loss": self.loss_tracker(loss)} \
                 | ({"lr": self.scheduler.get_last_lr()[0]} if self.scheduler else {}) \
                 | self.compute_metrics(y_pred, y, *xs)
 
@@ -271,7 +287,7 @@ class TrainableModule(torch.nn.Module):
         - `console` controls the console verbosity: 0 for silent, 1 for a single message.
         """
         self.eval()
-        self.loss_metric.reset()
+        self.loss_tracker.reset()
         self.metrics.reset()
         start = self._time()
         for batch in dataloader:
@@ -288,8 +304,8 @@ class TrainableModule(torch.nn.Module):
         """An overridable method performing a single evaluation step, returning the logs."""
         with torch.no_grad():
             y_pred = self(*xs)
-            self.loss_metric.update(self.compute_loss(y_pred, y, *xs))
-            return {"loss": self.loss_metric.compute()} | self.compute_metrics(y_pred, y, *xs)
+            loss = self.compute_loss(y_pred, y, *xs)
+            return {"loss": self.loss_tracker(loss)} | self.compute_metrics(y_pred, y, *xs)
 
     def predict(
         self,
