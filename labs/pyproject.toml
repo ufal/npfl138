@@ -18,6 +18,8 @@ dependencies = [
   "torchvision ~= 0.21.0",
   # Large collection of PyTorch metrics
   "torchmetrics ~= 1.6.1",
+  # PyTorch Image Models
+  "timm ~= 1.0.14",
   # Huggingface Transformers
   "transformers ~= 4.48.1",
   # Used by torchaudio for CTC decoding
