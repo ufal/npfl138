@@ -97,5 +97,6 @@ def global_keras_initializers(
             class_.reset_parameters = reset_parameters_method
 
     if batchnorm_momentum_override:
-        for batch_norm in KerasBatchNormMomentum.batch_norms:
-            KerasBatchNormMomentum.override_default_argument_value(batch_norm.__init__, "momentum", 0.01)
+        for batch_norm_super in KerasBatchNormMomentum.batch_norms:
+            for batch_norm in [batch_norm_super] + batch_norm_super.__subclasses__():
+                KerasBatchNormMomentum.override_default_argument_value(batch_norm.__init__, "momentum", 0.01)
