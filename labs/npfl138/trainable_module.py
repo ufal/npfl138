@@ -49,7 +49,7 @@ def is_sequence(x: TensorOrTensors) -> bool:
 def maybe_unpack(x: Tensor, as_numpy: bool) -> Tensor | np.ndarray | list[Tensor] | list[np.ndarray]:
     if isinstance(x, torch.nn.utils.rnn.PackedSequence):
         return [y.numpy(force=True) if as_numpy else y for y in torch.nn.utils.rnn.unpack_sequence(x)]
-    return x.numpy() if as_numpy else x
+    return x.numpy(force=True) if as_numpy else x
 
 
 def check_tensor(x: Tensor) -> bool:
