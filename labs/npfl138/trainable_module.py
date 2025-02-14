@@ -358,7 +358,7 @@ class TrainableModule(torch.nn.Module):
         predictions = []
         for batch in dataloader:
             xs = validate_batch_input(batch, with_output=dataloader_with_outputs)
-            xs = tuple(x.to(self.device) for x in (xs if isinstance(xs, tuple) else (xs,)))
+            xs = tuple(x.to(self.device) for x in (xs if is_sequence(xs) else (xs,)))
             y = self.predict_step(xs, as_numpy=as_numpy)
             predictions.extend(y if not isinstance(y, tuple) else zip(*y))
         return predictions
