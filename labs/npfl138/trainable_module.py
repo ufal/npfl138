@@ -79,6 +79,13 @@ def validate_batch_input(
     return batch
 
 
+def console_default(default: int) -> int:
+    try:
+        return int(os.environ["CONSOLE"])
+    except Exception:
+        return default
+
+
 def get_auto_device() -> torch.device:
     """Return the first available accelerator or CPU if none is available."""
     if torch.cuda.is_available():
@@ -226,7 +233,7 @@ class TrainableModule(torch.nn.Module):
         epochs: int,
         dev: torch.utils.data.DataLoader | None = None,
         callbacks: list[CallbackProtocol] = [],
-        console: int = 3,
+        console: int = console_default(2),
     ) -> Logs:
         """Train the model on the given dataset.
 
@@ -294,7 +301,7 @@ class TrainableModule(torch.nn.Module):
         dataloader: torch.utils.data.DataLoader,
         log_as: str | None = "test",
         callbacks: list[CallbackProtocol] = [],
-        console: int = 1,
+        console: int = console_default(1),
     ) -> Logs:
         """An evaluation of the model on the given dataset.
 
@@ -365,7 +372,7 @@ class TrainableModule(torch.nn.Module):
             return maybe_unpack(y, as_numpy) if not is_sequence(y) else tuple(maybe_unpack(y_, as_numpy) for y_ in y)
 
     def log_metrics(
-        self, logs: Logs, epochs: int | None = None, elapsed: float | None = None, console: int = 1,
+        self, logs: Logs, epochs: int | None = None, elapsed: float | None = None, console: int = console_default(1),
     ) -> None:
         """Log the given dictionary to file logs, TensorBoard logs, and optionally the console."""
         if self.logdir is not None:
@@ -379,7 +386,7 @@ class TrainableModule(torch.nn.Module):
                   *[f"{elapsed:.1f}s"] if elapsed is not None else [],
                   *[f"{k}={v:#.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()], file=file, flush=True)
 
-    def log_config(self, config: dict, sort_keys: bool = True, console: int = 1) -> None:
+    def log_config(self, config: dict, sort_keys: bool = True, console: int = console_default(1)) -> None:
         """Log the given dictionary to the file logs, TensorBoard logs, and optionally the console."""
         if self.logdir is not None:
             config = dict(sorted(config.items())) if sort_keys else config
