@@ -51,7 +51,7 @@ class MNIST:
                 batch = {key: value[batch_perm] for key, value in self._data.items()}
                 yield batch
 
-    def __init__(self, dataset: str = "mnist", size: dict[str, int] = {}) -> None:
+    def __init__(self, dataset: str = "mnist", sizes: dict[str, int] = {}) -> None:
         path = "{}.npz".format(dataset)
         if not os.path.exists(path):
             print("Downloading {} dataset...".format(dataset), file=sys.stderr)
