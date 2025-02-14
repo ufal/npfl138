@@ -70,9 +70,9 @@ def validate_batch_input_output(
 
 
 def validate_batch_input(
-    batch: TensorOrTensors | tuple[TensorOrTensors, TensorOrTensors] | list[TensorOrTensors], with_output: bool,
+    batch: TensorOrTensors | tuple[TensorOrTensors, TensorOrTensors] | list[TensorOrTensors], with_labels: bool,
 ) -> TensorOrTensors:
-    if with_output:
+    if with_labels:
         assert isinstance(batch, (tuple, list)) and len(batch) == 2, "The batch must be an (input, _) pair."
         batch = batch[0]
     assert check_tensors(batch), "The batch input must be a tensor or a tuple of tensors."
@@ -337,7 +337,7 @@ class TrainableModule(torch.nn.Module):
     def predict(
         self,
         dataloader: torch.utils.data.DataLoader,
-        dataloader_with_outputs: bool = False,
+        input_with_labels: bool = False,
         as_numpy: bool = True,
     ) -> list[torch.Tensor | tuple[torch.Tensor, ...] | np.ndarray | tuple[np.ndarray, ...]]:
         """Compute predictions for the given dataset.
@@ -345,8 +345,8 @@ class TrainableModule(torch.nn.Module):
         - `dataloader` is the dataset to predict on, each element either
           directly the input or a tuple whose first element is the input;
           the input can be either a single tensor or a tuple of tensors;
-        - `dataloader_with_outputs` specifies whether the dataloader elements
-          are (input, output) pairs or just inputs (default);
+        - `input_with_labels` specifies whether the dataloader elements
+          are (input, labels) pairs or just inputs (default);
         - `as_numpy` is a flag controlling whether the output should be
           converted to a numpy array or kept as a PyTorch tensor.
 
@@ -357,7 +357,7 @@ class TrainableModule(torch.nn.Module):
         self.eval()
         predictions = []
         for batch in dataloader:
-            xs = validate_batch_input(batch, with_output=dataloader_with_outputs)
+            xs = validate_batch_input(batch, with_labels=input_with_labels)
             xs = tuple(x.to(self.device) for x in (xs if is_sequence(xs) else (xs,)))
             y = self.predict_step(xs, as_numpy=as_numpy)
             predictions.extend(y if not isinstance(y, tuple) else zip(*y))
