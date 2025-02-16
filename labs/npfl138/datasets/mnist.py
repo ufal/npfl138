@@ -60,7 +60,7 @@ class MNIST:
 
         mnist = np.load(path)
         for dataset in ["train", "dev", "test"]:
-            data = {key[len(dataset) + 1:]: mnist[key][:size.get(dataset, None)]
+            data = {key[len(dataset) + 1:]: mnist[key][:sizes.get(dataset, None)]
                     for key in mnist if key.startswith(dataset)}
             setattr(self, dataset, self.Dataset(data))
 
