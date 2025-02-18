@@ -2,6 +2,8 @@
 #### Date: Feb 18
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides/?01
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides.pdf/npfl138-2425-01.pdf, PDF Slides
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-01-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-01-english.mp4, EN Lecture
 #### Questions: #lecture_1_questions
 
 - Random variables, probability distributions, expectation, variance, Bernoulli
