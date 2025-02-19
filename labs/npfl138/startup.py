@@ -10,7 +10,7 @@ import numpy as np
 import torch
 
 
-def startup(seed: int | None = None, threads: int | None = None, forkserver_instead_of_fork: bool = True):
+def startup(seed: int | None = None, threads: int | None = None, forkserver_instead_of_fork: bool = True) -> None:
     # Allow TF32 when available.
     torch.backends.cuda.matmul.allow_tf32 = True
 
