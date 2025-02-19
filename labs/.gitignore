@@ -2,9 +2,8 @@
 /npfl138.egg-info/
 __pycache__/
 logs/
-*.h5
-*.keras
 *.npz
+*.pt
 *.tfrecord
 *.zip
 *.LICENSE
