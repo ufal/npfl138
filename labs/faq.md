@@ -15,6 +15,8 @@
   On macOS, the `--extra-index-url` has no effect and the Metal support is
   installed in any case.
 
+  - **To update the `npfl138` package later**, use `python3 -m pip install --user --upgrade npfl138`.
+
 - _Installing to a virtual environment_
 
   Python supports virtual environments, which are directories containing
@@ -28,6 +30,8 @@
   - `cpu` to get CPU-only (smaller) version,
   - `cu124` to get CUDA 12.4 build,
   - `rocm6.2.4` to get AMD ROCm 6.2.4 build (Linux only).
+
+  - **To update the `npfl138` package later**, use `VENV_DIR/bin/pip install --upgrade npfl138`.
 
 - _**Windows** installation_
 
