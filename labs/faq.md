@@ -237,41 +237,6 @@
   The memory limit during evaluation is **1.5GB**. The time limit varies, but it should
   be at least 10 seconds and at least twice the running time of my solution.
 
-### TOCEntry: Finetuning
-
-- _How to make a part of the network frozen, so that its weights are not updated?_
-
-  Each `keras.layers.Layer`/`keras.Model` has a mutable `trainable`
-  property indicating whether its variables should be updated – however, after
-  changing it, you need to call `.compile` again (or otherwise make sure the
-  list of trainable variables for the optimizer is updated).
-
-  Note that once `trainable == False`, the insides of a layer are no longer
-  considered, even if some its sub-layers have `trainable == True`. Therefore, if
-  you want to freeze only some sub-layers of a layer you use in your model, the
-  layer itself must have `trainable == True`.
-
-- _How to choose whether dropout/batch normalization is executed in training or
-  inference regime?_
-
-  When calling a `keras.layers.Layer`/`keras.Model`, a named option
-  `training` can be specified, indicating whether training or inference regime
-  should be used. For a model, this option is automatically passed to its layers
-  which require it, and Keras automatically passes it during
-  `model.{fit,evaluate,predict}`.
-
-  However, you can manually pass for example `training=False` to a layer when
-  using Functional API, meaning that layer is executed in the inference
-  regime even when the whole model is training.
-
-- _How does `trainable` and `training` interact?_
-
-  The only layer, which is influenced by both these options, is batch
-  normalization, for which:
-  - if `trainable == False`, the layer is always executed in inference regime;
-  - if `trainable == True`, the training/inference regime is chosen according
-    to the `training` option.
-
 ### TOCEntry: TensorBoard
 
 - _Cannot start TensorBoard after installation_
