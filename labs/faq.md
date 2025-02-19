@@ -73,7 +73,7 @@
   To create a virtual environment, you first need to decide where it will
   reside. Either you can find a permanent storage, where you have large-enough
   [quota](https://docs.metacentrum.cz/data/quotas/), or you can [use scratch
-  storage for a submitted job](https://docs.metacentrum.cz/computing/scratch-storages/).
+  storage for a submitted job](https://docs.metacentrum.cz/computing/infrastructure/scratch-storages/).
 
   TL;DR:
   - Run an interactive CPU job, asking for 16GB scratch space:
@@ -105,8 +105,8 @@
   First, read the official MetaCentrum documentation:
   [Basic terms](https://docs.metacentrum.cz/computing/concepts/),
   [Run simple job](https://docs.metacentrum.cz/computing/run-basic-job/),
-  [GPU computing](https://docs.metacentrum.cz/computing/gpu-comput/),
-  [GPU clusters](https://docs.metacentrum.cz/computing/gpu-clusters/).
+  [GPU computing](https://docs.metacentrum.cz/computing/gpu-comput/gpu-job/),
+  [GPU clusters](https://docs.metacentrum.cz/computing/gpu-comput/clusters/).
 
   TL;DR: To run an interactive GPU job with 1 CPU, 1 GPU, 8GB RAM, and 16GB scatch
   space, run:
