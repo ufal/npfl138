@@ -273,3 +273,7 @@
     ```python
     summary_writer.add_audio(name like "train/samples", clip, step, [sample_rate])
     ```
+  - traced modules using:
+    ```python
+    summary_writer.add_graph(module, example_input_batch)
+    ```
