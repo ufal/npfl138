@@ -21,7 +21,7 @@ class MNIST:
     Element = TypedDict("Element", {"image": torch.Tensor, "label": torch.Tensor})
     Elements = TypedDict("Elements", {"images": torch.Tensor, "labels": torch.Tensor})
 
-    _URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2324/datasets/"
+    URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/datasets/"
 
     class Dataset(torch.utils.data.Dataset):
         def __init__(self, data: "MNIST.Elements") -> None:
@@ -55,7 +55,7 @@ class MNIST:
         path = "{}.npz".format(dataset)
         if not os.path.exists(path):
             print("Downloading {} dataset...".format(dataset), file=sys.stderr)
-            urllib.request.urlretrieve("{}/{}".format(self._URL, path), filename="{}.tmp".format(path))
+            urllib.request.urlretrieve("{}/{}".format(self.URL, path), filename="{}.tmp".format(path))
             os.rename("{}.tmp".format(path), path)
 
         mnist = np.load(path)
