@@ -55,7 +55,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
     # TODO: Finish the model. Namely:
     # - start by adding the `torch.nn.Flatten()` layer;
     # - then add `args.hidden_layers` number of fully connected hidden layers
-    #   `torch.nn.Linear()`, each with `args.hidden_layer` neurons and followed by
+    #   `torch.nn.Linear()`, each with `args.hidden_layer_size` neurons and followed by
     #   a specified `args.activation`, allowing "none", "relu", "tanh", "sigmoid";
     # - finally, add an output fully connected layer with `MNIST.LABELS` units.
     ...
