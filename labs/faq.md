@@ -2,6 +2,15 @@
 
 ### TOCEntry: Install
 
+- _What Python version to use_
+
+  The recommended Python version is **3.11**. This version is used by ReCodEx to
+  evaluate your solutions. Minimum required version should be Python 3.10, and
+  the newest version that currently (as of Nov 20) works is Python 3.12 (because
+  some dependencies do not yet provide precompiled binary packages for Python 3.13).
+
+  You can find out the version of your Python installation using `python3 --version`.
+
 - _Installing to central user packages repository_
 
   You can install all required packages to central user packages repository using
