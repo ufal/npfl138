@@ -55,6 +55,13 @@
     increase this limit on Windows 10, version 1607 or later, by following
     the [instructions](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation).
 
+- _**MacOS** installation_
+
+  - If you encounter issues with SSL certificates (`certificate verify failed:
+    self-signed certificate in certificate chain`), you probably need to run the
+    `Install Certificates.command`, which should be executed after installation;
+    see https://docs.python.org/3/using/mac.html#installation-steps.
+
 - _**GPU** support on Linux and Windows_
 
   PyTorch supports NVIDIA GPU or AMD GPU out of the box, you just need to select
