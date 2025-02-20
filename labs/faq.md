@@ -57,8 +57,8 @@
 
 - _**MacOS** installation_
 
-  - If you encounter issues with SSL certificates (`certificate verify failed:
-    self-signed certificate in certificate chain`), you probably need to run the
+  - If you encounter issues with SSL certificates (_certificate verify failed:
+    self-signed certificate in certificate chain_), you probably need to run the
     `Install Certificates.command`, which should be executed after installation;
     see https://docs.python.org/3/using/mac.html#installation-steps.
 
