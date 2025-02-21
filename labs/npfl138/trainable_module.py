@@ -131,12 +131,17 @@ class TrainableModule(torch.nn.Module):
     from tqdm import tqdm as _tqdm
 
     def __init__(self, module: torch.nn.Module | None = None):
-        """Initialize the module with the given PyTorch model.
+        """Initialize the module, optionally with an existing PyTorch module.
 
-        This constructor is useful when you want to wrap an existing module
-        (e.g., a torch.nn.Sequential or a pretrained Transformer).
+        The `module` argument is useful when you want to wrap an existing
+        module (e.g., a torch.nn.Sequential or a pretrained Transformer).
         """
         super().__init__()
+
+        self.optimizer, self.scheduler, self.epoch, self.device = None, None, 0, None
+        self.loss, self.loss_tracker, self.metrics = None, LossTracker(), torch.nn.ModuleDict()
+        self.logdir, self._log_file, self._tb_writers = None, None, {}
+
         if module is not None:
             self._module = module
             self.forward = lambda *args, **kwargs: self._module(*args, **kwargs)
@@ -165,18 +170,15 @@ class TrainableModule(torch.nn.Module):
         - `device` is the device to move the module to; when "auto", the previously set
           device is kept, otherwise the first of cuda/mps/xpu is used if available.
         """
-        self.optimizer = optimizer if optimizer is not None else getattr(self, "optimizer", None)
-        self.scheduler = scheduler if scheduler is not None else getattr(self, "scheduler", None)
-        self.loss = loss if loss is not None else getattr(self, "loss", None)
-        self.loss_tracker = getattr(self, "loss_tracker", LossTracker())
-        self.metrics = torch.nn.ModuleDict(metrics or {}) \
-            if metrics is not None or not hasattr(self, "metrics") else self.metrics
-        self.epoch = initial_epoch if initial_epoch is not None else getattr(self, "epoch", 0)
-        self._log_file, self._tb_writers = getattr(self, "_log_file", None), getattr(self, "_tb_writers", {})
-        if logdir is not None and logdir != getattr(self, "logdir", None):  # reset loggers on a new logdir
+        self.optimizer = optimizer if optimizer is not None else self.optimizer
+        self.scheduler = scheduler if scheduler is not None else self.scheduler
+        self.loss = loss if loss is not None else self.loss
+        self.metrics = torch.nn.ModuleDict(metrics) if metrics else self.metrics
+        self.epoch = initial_epoch if initial_epoch is not None else self.epoch
+        if logdir is not None and logdir != self.logdir:  # reset loggers on a new logdir
             self._log_file, self._tb_writers = None, {}
-        self.logdir = logdir if logdir is not None else getattr(self, "logdir", None)
-        self.device = getattr(self, "device", get_auto_device()) if device == "auto" else torch.device(device)
+        self.logdir = logdir if logdir is not None else self.logdir
+        self.device = (self.device or get_auto_device()) if device == "auto" else torch.device(device)
         self.to(self.device)
 
     def save_weights(self, path: str, optimizer_path: str | None = None) -> None:
@@ -204,7 +206,7 @@ class TrainableModule(torch.nn.Module):
         The device specifies where to load the model to; when "auto", the previously set
         device is kept, otherwise the first of cuda/mps/xpu is used if available.
         """
-        self.device = getattr(self, "device", get_auto_device()) if device == "auto" else torch.device(device)
+        self.device = (self.device or get_auto_device()) if device == "auto" else torch.device(device)
         self.load_state_dict(torch.load(path, map_location=self.device))
         if optimizer_path is not None:
             optimizer_path = os.path.join(os.path.dirname(path), optimizer_path)
