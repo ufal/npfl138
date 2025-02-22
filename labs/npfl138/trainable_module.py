@@ -398,15 +398,18 @@ class TrainableModule(torch.nn.Module):
         for file in ([self.get_log_file()] if self.logdir is not None else []) + [sys.stdout] * bool(console):
             print("Config", f"epoch={self.epoch}", *[f"{k}={v}" for k, v in config.items()], file=file, flush=True)
 
-    def log_graph(self, dataloader: torch.utils.data.DataLoader, input_with_labels: bool = True) -> None:
+    def log_graph(self, data: torch.utils.data.DataLoader | TensorOrTensors, data_with_labels: bool = False) -> None:
         """Log the traced module as a graph to the TensorBoard logs.
 
-        The first batch of the dataloader is used to trace the module.
-        By default, it is expected to contain (input, output) pair; however,
-        when `input_with_labels` is False, only an input is expected.
+        Tracing requires an example batch; either the first batch from the
+        dataloader passed in `data` is used, or the `data` itself is used.
+        When `data_with_labels` is True, the given batch is expected to be an
+        (input, output) pair and only the input is used; otherwise, the whole
+        given batch is used as input (the default).
         """
         if self.logdir is not None:
-            xs = validate_batch_input(next(iter(dataloader)), with_labels=input_with_labels)
+            batch = next(iter(data)) if isinstance(data, torch.utils.data.DataLoader) else data
+            xs = validate_batch_input(batch, with_labels=data_with_labels)
             xs = tuple(x.to(self.device) for x in xs) if is_sequence(xs) else xs.to(self.device)
             writer = self.get_tb_writer("train")
             writer.add_graph(self, xs)
