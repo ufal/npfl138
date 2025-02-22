@@ -339,7 +339,7 @@ class TrainableModule(torch.nn.Module):
     def predict(
         self,
         dataloader: torch.utils.data.DataLoader,
-        input_with_labels: bool = False,
+        data_with_labels: bool = False,
         as_numpy: bool = True,
     ) -> list[torch.Tensor | tuple[torch.Tensor, ...] | np.ndarray | tuple[np.ndarray, ...]]:
         """Compute predictions for the given dataset.
@@ -347,8 +347,8 @@ class TrainableModule(torch.nn.Module):
         - `dataloader` is the dataset to predict on, each element either
           directly the input or a tuple whose first element is the input;
           the input can be either a single tensor or a tuple of tensors;
-        - `input_with_labels` specifies whether the dataloader elements
-          are (input, labels) pairs or just inputs (default);
+        - `data_with_labels` specifies whether the dataloader elements
+          are (input, labels) pairs or just inputs (the default);
         - `as_numpy` is a flag controlling whether the output should be
           converted to a numpy array or kept as a PyTorch tensor.
 
@@ -359,7 +359,7 @@ class TrainableModule(torch.nn.Module):
         self.eval()
         predictions = []
         for batch in dataloader:
-            xs = validate_batch_input(batch, with_labels=input_with_labels)
+            xs = validate_batch_input(batch, with_labels=data_with_labels)
             xs = tuple(x.to(self.device) for x in (xs if is_sequence(xs) else (xs,)))
             y = self.predict_step(xs, as_numpy=as_numpy)
             predictions.extend(y if not isinstance(y, tuple) else zip(*y))
