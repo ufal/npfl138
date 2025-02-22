@@ -64,7 +64,7 @@ def main(args: argparse.Namespace) -> None:
         metrics={"accuracy": torchmetrics.Accuracy("multiclass", num_classes=MNIST.LABELS)},
         logdir=args.logdir,
     )
-    model.get_tb_writer("train").add_graph(model, next(iter(dev))[0].to(model.device))
+    model.get_tb_writer("train").add_graph(model, torch.zeros(1, MNIST.C, MNIST.H, MNIST.W, device=model.device))
 
     # Train the model.
     model.fit(train, dev=dev, epochs=args.epochs)
