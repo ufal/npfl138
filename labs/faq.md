@@ -259,6 +259,15 @@
 
 ### TOCEntry: TensorBoard
 
+- _Should TensorFlow be installed when using TensorBoard?_
+
+  When TensorBoard starts, it warns about a reduced feature set because of
+  missing TensorFlow, notably
+  ```
+  TensorFlow installation not found - running with reduced feature set.
+  ```
+  Do not worry about the warning, there is **no need** to install TensorFlow.
+
 - _Cannot start TensorBoard after installation_
 
   If `tensorboard` executable cannot be found, make sure the directory with pip installed
