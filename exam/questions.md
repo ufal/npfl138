@@ -27,8 +27,6 @@
 
 - Write down the backpropagation algorithm. [5]
 
-- Write down the mini-batch SGD algorithm with momentum. [5]
-
 - Write down the mini-batch SGD algorithm with momentum. Then, formulate
   SGD with Nesterov momentum and show the difference between them. [5]
 
