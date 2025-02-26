@@ -419,12 +419,14 @@ class TrainableModule(torch.nn.Module):
             writer.flush()
 
     def get_log_file(self) -> TextIO:
+        assert self.logdir is not None, "Cannot use get_log_file when logdir is not set."
         if self._log_file is None:
             self._log_file = open(os.path.join(self.logdir, "logs.txt"), "a", encoding="utf-8")
         return self._log_file
 
     def get_tb_writer(self, name: str) -> torch.utils.tensorboard.SummaryWriter:
         """Possibly create and return a TensorBoard writer for the given name."""
+        assert self.logdir is not None, "Cannot use get_tb_writer when logdir is not set."
         if name not in self._tb_writers:
             self._tb_writers[name] = self._SummaryWriter(os.path.join(self.logdir, name))
         return self._tb_writers[name]
