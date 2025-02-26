@@ -29,6 +29,8 @@ dependencies = [
   "pygame ~= 2.6.1",
   # TensorBoard for inspecting logs
   "tensorboard ~= 2.18.0",
+  # Conditionally install imghdr removed in Python 3.13, TensorBoard needs it
+  "standard-imghdr; python_version>='3.13'",
 ]
 classifiers = [
     "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
