@@ -143,8 +143,11 @@ class TrainableModule(torch.nn.Module):
         self.logdir, self._log_file, self._tb_writers = None, None, {}
 
         if module is not None:
-            self._module = module
-            self.forward = lambda *args, **kwargs: self._module(*args, **kwargs)
+            self.module = module
+            self.forward = self._call_wrapped_module
+
+    def _call_wrapped_module(self, inputs):
+        return self.module(inputs)
 
     def configure(
         self,
