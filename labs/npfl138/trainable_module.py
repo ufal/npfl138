@@ -250,6 +250,7 @@ class TrainableModule(torch.nn.Module):
           arguments `self`, `epoch`, and `logs`;
         - `console` controls the console verbosity: 0 for silent, 1 for epoch logs, 2 for
           additional only-when-writing-to-console progress bar, 3 for persistent progress bar.
+        Set the model to evaluation mode after training.
         """
         logs, epochs = {}, self.epoch + epochs
         while self.epoch < epochs:
@@ -276,6 +277,7 @@ class TrainableModule(torch.nn.Module):
             for callback in callbacks:
                 callback(self, self.epoch, logs)
             self.log_metrics(logs, epochs, self._time() - start, console)
+        self.eval()
         return logs
 
     def train_step(self, xs: TensorOrTensors, y: TensorOrTensors) -> Logs:
