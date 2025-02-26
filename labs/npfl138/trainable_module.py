@@ -137,11 +137,8 @@ class TrainableModule(torch.nn.Module):
         module (e.g., a torch.nn.Sequential or a pretrained Transformer).
         """
         super().__init__()
-
-        self.optimizer, self.scheduler, self.epoch, self.device = None, None, 0, None
-        self.loss, self.loss_tracker, self.metrics = None, LossTracker(), torch.nn.ModuleDict()
-        self.logdir, self._log_file, self._tb_writers = None, None, {}
-
+        self.device = None
+        self.unconfigure()
         if module is not None:
             self.module = module
             self.forward = self._call_wrapped_module
@@ -183,6 +180,12 @@ class TrainableModule(torch.nn.Module):
         self.logdir = logdir if logdir is not None else self.logdir
         self.device = (self.device or get_auto_device()) if device == "auto" else torch.device(device)
         self.to(self.device)
+
+    def unconfigure(self) -> None:
+        """Remove all training configuration of the TrainableModule."""
+        self.optimizer, self.scheduler, self.epoch = None, None, None
+        self.loss, self.loss_tracker, self.metrics = None, None, None
+        self.logdir, self._log_file, self._tb_writers = None, None, None
 
     def save_weights(self, path: str, optimizer_path: str | None = None) -> None:
         """Save the model weights to the given path.
