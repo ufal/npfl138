@@ -242,15 +242,17 @@ class TrainableModule(torch.nn.Module):
     ) -> Logs:
         """Train the model on the given dataset.
 
+        Arguments:
         - `dataloader` is the training dataset, each element a pair of inputs and an output;
           the inputs can be either a single tensor or a tuple of tensors;
-        - `dev` is an optional development dataset;
         - `epochs` is the number of epochs to train;
-        - `callbacks` is a list of callbacks to call after each epoch with
-          arguments `self`, `epoch`, and `logs`;
+        - `dev` is an optional development dataset;
+        - `callbacks` is a list of callbacks to call after every epoch, each implementing
+          the CallbackProtocol with arguments `self`, `epoch`, and `logs`;
         - `console` controls the console verbosity: 0 for silent, 1 for epoch logs, 2 for
           additional only-when-writing-to-console progress bar, 3 for persistent progress bar.
-        Set the model to evaluation mode after training.
+        The method returns a dictionary of logs from the training and optionally dev evaluation,
+        and sets the model to evaluation mode after training.
         """
         logs, epochs = {}, self.epoch + epochs
         while self.epoch < epochs:
