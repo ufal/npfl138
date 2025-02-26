@@ -6,7 +6,7 @@
 import json
 import os
 import sys
-from typing import Protocol, TextIO, TypeAlias
+from typing import Literal, Protocol, TextIO, TypeAlias
 
 import numpy as np
 import torch
@@ -34,6 +34,11 @@ class MetricProtocol(Protocol):
 class CallbackProtocol(Protocol):
     def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> None:
         ...
+
+
+class KeepPrevious:
+    pass
+keep_previous = KeepPrevious()  # noqa: E305
 
 
 def is_sequence(x: TensorOrTensors) -> bool:
@@ -149,17 +154,17 @@ class TrainableModule(torch.nn.Module):
     def configure(
         self,
         *,
-        optimizer: torch.optim.Optimizer | None = None,
-        scheduler: torch.optim.lr_scheduler.LRScheduler | None = None,
-        loss: LossProtocol | None = None,
-        metrics: dict[str, MetricProtocol] | None = None,
-        initial_epoch: int | None = None,
-        logdir: str | None = None,
-        device: torch.device | str = "auto",
+        optimizer: torch.optim.Optimizer | None | KeepPrevious = keep_previous,
+        scheduler: torch.optim.lr_scheduler.LRScheduler | None | KeepPrevious = keep_previous,
+        loss: LossProtocol | None | KeepPrevious = keep_previous,
+        metrics: dict[str, MetricProtocol] | KeepPrevious = keep_previous,
+        initial_epoch: int | KeepPrevious = keep_previous,
+        logdir: str | None | KeepPrevious = keep_previous,
+        device: torch.device | str | Literal["auto"] | KeepPrevious = keep_previous,
     ) -> None:
         """Configure the module fitting, evaluation, and placement.
 
-        The method can be called multiple times, preserving previously set values for Nones.
+        The method can be called multiple times, preserving previously set values by default.
         - `optimizer` is the optimizer to use for training;
         - `scheduler` is an optional learning rate scheduler used after every batch;
         - `loss` is the loss function to minimize;
@@ -167,18 +172,22 @@ class TrainableModule(torch.nn.Module):
           implementing the MetricProtocol (reset/update/compute), e.g., a torchmetrics.Metric;
         - `initial_epoch` is the initial epoch of the model used during training and evaluation;
         - `logdir` is an optional directory where TensorBoard logs should be written;
-        - `device` is the device to move the module to; when "auto", the previously set
-          device is kept, otherwise the first of cuda/mps/xpu is used if available.
+        - `device` is the device to move the module to; when "auto", or `keep_previous`
+          with no previously set device, the first of cuda/mps/xpu is used if available.
+        When an argument cannot be None, the corresponding field is never None after this call.
         """
-        self.optimizer = optimizer if optimizer is not None else self.optimizer
-        self.scheduler = scheduler if scheduler is not None else self.scheduler
-        self.loss = loss if loss is not None else self.loss
-        self.metrics = torch.nn.ModuleDict(metrics) if metrics else self.metrics
-        self.epoch = initial_epoch if initial_epoch is not None else self.epoch
-        if logdir is not None and logdir != self.logdir:  # reset loggers on a new logdir
+        self.optimizer = optimizer if optimizer is not keep_previous else self.optimizer
+        self.scheduler = scheduler if scheduler is not keep_previous else self.scheduler
+        self.loss = loss if loss is not keep_previous else self.loss
+        self.loss_tracker = self.loss_tracker or LossTracker()
+        if metrics is not keep_previous or not self.metrics:
+            self.metrics = torch.nn.ModuleDict({} if metrics is keep_previous else metrics)
+        self.epoch = initial_epoch if initial_epoch is not keep_previous else self.epoch or 0
+        if logdir is not keep_previous and logdir != self.logdir:  # reset loggers on a new logdir
             self._log_file, self._tb_writers = None, {}
-        self.logdir = logdir if logdir is not None else self.logdir
-        self.device = (self.device or get_auto_device()) if device == "auto" else torch.device(device)
+        self.logdir = logdir if logdir is not keep_previous else self.logdir
+        if device is not keep_previous or not self.device:
+            self.device = get_auto_device() if device == "auto" or device is keep_previous else torch.device(device)
         self.to(self.device)
 
     def unconfigure(self) -> None:
