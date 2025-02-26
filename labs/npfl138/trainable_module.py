@@ -241,8 +241,16 @@ class TrainableModule(torch.nn.Module):
             optimizer_path = os.path.join(os.path.dirname(path), optimizer_path)
             optimizer_state = torch.load(optimizer_path, map_location=self.device)
             self.epoch = optimizer_state["epoch"]
-            "optimizer" in optimizer_state and self.optimizer.load_state_dict(optimizer_state["optimizer"])
-            "scheduler" in optimizer_state and self.scheduler.load_state_dict(optimizer_state["scheduler"])
+            if self.optimizer is not None:
+                assert "optimizer" in optimizer_state, "The optimizer state is missing."
+                self.optimizer.load_state_dict(optimizer_state["optimizer"])
+            else:
+                assert "optimizer" not in optimizer_state, "The optimizer state is present, but there is no optimizer."
+            if self.scheduler is not None:
+                assert "scheduler" in optimizer_state, "The scheduler state is missing."
+                self.scheduler.load_state_dict(optimizer_state["scheduler"])
+            else:
+                assert "scheduler" not in optimizer_state, "The scheduler state is present, but there is no scheduler."
         self.to(self.device)
 
     @staticmethod
