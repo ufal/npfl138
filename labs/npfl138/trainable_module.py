@@ -213,15 +213,17 @@ class TrainableModule(torch.nn.Module):
             os.makedirs(os.path.dirname(optimizer_path), exist_ok=True)
             torch.save(optimizer_state, optimizer_path)
 
-    def load_weights(self, path: str, optimizer_path: str | None = None, device: torch.device | str = "auto") -> None:
+    def load_weights(self, path: str, optimizer_path: str | None = None,
+                     device: torch.device | str | Literal["auto"] | KeepPrevious = keep_previous) -> None:
         """Load the model weights from the given path.
 
         If the optimizer_path is given, the optimizer state is also loaded,
         with the optimizer_path resolved relative to the model weights path.
-        The device specifies where to load the model to; when "auto", the previously set
-        device is kept, otherwise the first of cuda/mps/xpu is used if available.
+        The device specifies where to load the model to; when "auto", or `keep_previous`
+        with no previously set device, the first of cuda/mps/xpu is used if available.
         """
-        self.device = (self.device or get_auto_device()) if device == "auto" else torch.device(device)
+        if device is not keep_previous or not self.device:
+            self.device = get_auto_device() if device == "auto" or device is keep_previous else torch.device(device)
         self.load_state_dict(torch.load(path, map_location=self.device))
         if optimizer_path is not None:
             optimizer_path = os.path.join(os.path.dirname(path), optimizer_path)
