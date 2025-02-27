@@ -56,7 +56,7 @@ class Model(torch.nn.Module):
 
     def train_epoch(self, dataset: MNIST.Dataset) -> None:
         self.train()
-        for batch in dataset.batches(self._args.batch_size):
+        for batch in dataset.batches(self._args.batch_size, shuffle=True):
             # The batch contains
             # - batch["images"] with shape [?, MNIST.C, MNIST.H, MNIST.W]
             # - batch["labels"] with shape [?]

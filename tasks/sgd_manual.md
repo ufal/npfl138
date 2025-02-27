@@ -4,6 +4,10 @@
 #### Tests: sgd_manual_tests
 #### Examples: sgd_manual_examples
 
+_**The template was updated on Feb 23, 17:30.** The original one did not shuffle
+the training data. You do not need to redownload it, ReCodEx accepts both variants.
+However, the Tests and Examples have been regenerated using the updated template._
+
 The goal in this exercise is to extend your solution to the
 [sgd_backpropagation](https://ufal.mff.cuni.cz/courses/npfl138/2425-summer#sgd_backpropagation)
 assignment by **manually** computing the gradient.
@@ -27,16 +31,16 @@ _Note that your results may be slightly different, depending on your CPU type an
 
 1. `python3 sgd_manual.py --epochs=2 --batch_size=64 --hidden_layer=20 --learning_rate=0.1`
 ```
-Dev accuracy after epoch 1 is 92.92
-Dev accuracy after epoch 2 is 94.08
-Test accuracy after epoch 2 is 92.46
+Dev accuracy after epoch 1 is 92.98
+Dev accuracy after epoch 2 is 94.42
+Test accuracy after epoch 2 is 92.72
 ```
 
 2. `python3 sgd_manual.py --epochs=2 --batch_size=100 --hidden_layer=32 --learning_rate=0.2`
 ```
-Dev accuracy after epoch 1 is 93.80
-Dev accuracy after epoch 2 is 95.30
-Test accuracy after epoch 2 is 93.63
+Dev accuracy after epoch 1 is 93.58
+Dev accuracy after epoch 2 is 95.26
+Test accuracy after epoch 2 is 93.75
 ```
 #### Tests End:
 #### Examples Start: sgd_manual_examples
@@ -44,31 +48,31 @@ _Note that your results may be slightly different, depending on your CPU type an
 
 - `python3 sgd_manual.py --batch_size=64 --hidden_layer=20 --learning_rate=0.1`
 ```
-Dev accuracy after epoch 1 is 92.92
-Dev accuracy after epoch 2 is 94.08
-Dev accuracy after epoch 3 is 94.74
-Dev accuracy after epoch 4 is 95.00
-Dev accuracy after epoch 5 is 95.34
-Dev accuracy after epoch 6 is 95.34
-Dev accuracy after epoch 7 is 95.46
-Dev accuracy after epoch 8 is 95.60
-Dev accuracy after epoch 9 is 95.74
-Dev accuracy after epoch 10 is 95.72
-Test accuracy after epoch 10 is 94.67
+Dev accuracy after epoch 1 is 92.98
+Dev accuracy after epoch 2 is 94.42
+Dev accuracy after epoch 3 is 94.68
+Dev accuracy after epoch 4 is 95.08
+Dev accuracy after epoch 5 is 95.28
+Dev accuracy after epoch 6 is 95.20
+Dev accuracy after epoch 7 is 95.52
+Dev accuracy after epoch 8 is 95.32
+Dev accuracy after epoch 9 is 95.66
+Dev accuracy after epoch 10 is 95.84
+Test accuracy after epoch 10 is 95.02
 ```
 
 - `python3 sgd_manual.py --batch_size=100 --hidden_layer=32 --learning_rate=0.2`
 ```
-Dev accuracy after epoch 1 is 93.80
-Dev accuracy after epoch 2 is 95.30
-Dev accuracy after epoch 3 is 95.80
-Dev accuracy after epoch 4 is 96.08
-Dev accuracy after epoch 5 is 96.18
-Dev accuracy after epoch 6 is 96.26
-Dev accuracy after epoch 7 is 96.36
-Dev accuracy after epoch 8 is 96.44
-Dev accuracy after epoch 9 is 96.42
-Dev accuracy after epoch 10 is 96.42
-Test accuracy after epoch 10 is 95.78
+Dev accuracy after epoch 1 is 93.58
+Dev accuracy after epoch 2 is 95.26
+Dev accuracy after epoch 3 is 95.66
+Dev accuracy after epoch 4 is 95.90
+Dev accuracy after epoch 5 is 96.26
+Dev accuracy after epoch 6 is 96.52
+Dev accuracy after epoch 7 is 96.52
+Dev accuracy after epoch 8 is 96.74
+Dev accuracy after epoch 9 is 96.74
+Dev accuracy after epoch 10 is 96.62
+Test accuracy after epoch 10 is 95.84
 ```
 #### Examples End:
