@@ -13,9 +13,9 @@ import torch
 
 
 class MNIST:
+    C: int = 1
     H: int = 28
     W: int = 28
-    C: int = 1
     LABELS: int = 10
 
     Element = TypedDict("Element", {"image": torch.Tensor, "label": torch.Tensor})
