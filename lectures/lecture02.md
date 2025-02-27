@@ -3,7 +3,9 @@
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides/?02
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides.pdf/npfl138-2425-02.pdf, PDF Slides
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-02-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-02-czech.practicals.mp4, CZ Practicals
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-02-english.mp4, EN Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-02-english.practicals.mp4, EN Practicals
 #### Questions: #lecture_2_questions
 #### Lecture assignment: sgd_backpropagation
 #### Lecture assignment: sgd_manual
