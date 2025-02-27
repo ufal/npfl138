@@ -3,6 +3,7 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+import argparse
 import json
 import os
 import sys
@@ -257,8 +258,11 @@ class TrainableModule(torch.nn.Module):
     def save_config(path: str, config: dict = {}, **kwargs) -> None:
         """Save a JSON-serializable configuration to the given path.
 
-        The configuration can be given as a dictionary or as keyword arguments.
+        The configuration can be given as a dictionary or as keyword arguments
+        and the configuration values might also be `argparse.Namespace` objects.
         """
+        config = dict((k + " : argparse.Namespace", vars(v)) if isinstance(v, argparse.Namespace) else (k, v)
+                      for k, v in {**config, **kwargs}.items())
         os.path.dirname(path) and os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as config_file:
             json.dump(config, config_file, ensure_ascii=False, indent=2)
@@ -267,7 +271,9 @@ class TrainableModule(torch.nn.Module):
     def load_config(path: str) -> dict:
         """Load a JSON-serializable configuration from the given path."""
         with open(path, "r", encoding="utf-8-sig") as config_file:
-            return json.load(config_file)
+            config = json.load(config_file)
+        return dict((k.removesuffix(" : argparse.Namespace"), argparse.Namespace(**v))
+                    if k.endswith(" : argparse.Namespace") else (k, v) for k, v in config.items())
 
     def fit(
         self,
