@@ -112,7 +112,7 @@ class Model(torch.nn.Module):
             correct = 0
             for batch in dataset.batches(self._args.batch_size):
                 # TODO: Compute the logits of the batch images as in the training,
-                # and then convert them to Numpy with `.numpy(force=True`).
+                # and then convert them to Numpy with `.numpy(force=True)`.
                 logits = ...
 
                 # TODO: Evaluate how many batch examples were predicted
