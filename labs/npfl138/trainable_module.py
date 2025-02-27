@@ -305,7 +305,7 @@ class TrainableModule(torch.nn.Module):
                 y = tuple(y_.to(self.device) for y_ in y) if is_sequence(y) else y.to(self.device)
                 logs = self.train_step(xs, y)
                 if not data_and_progress.disable:
-                    logs_message = " ".join([f"{k}={v:#.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()])
+                    logs_message = " ".join([f"{k}={v:#.{0<abs(v)<2e-4 and '2e' or '4f'}}" for k, v in logs.items()])
                     data_and_progress.set_description(f"{epoch_message} {logs_message}", refresh=False)
             logs = {f"train_{k}": v for k, v in logs.items()}
             if dev is not None:
@@ -427,7 +427,7 @@ class TrainableModule(torch.nn.Module):
         for file in ([self.get_log_file()] if self.logdir is not None else []) + [sys.stdout] * bool(console):
             print(f"Epoch {self.epoch}" + (f"/{epochs}" if epochs is not None else ""),
                   *[f"{elapsed:.1f}s"] if elapsed is not None else [],
-                  *[f"{k}={v:#.{0<abs(v)<2e-4 and '3g' or '4f'}}" for k, v in logs.items()], file=file, flush=True)
+                  *[f"{k}={v:#.{0<abs(v)<2e-4 and '2e' or '4f'}}" for k, v in logs.items()], file=file, flush=True)
 
     def log_config(self, config: dict, sort_keys: bool = True, console: int = console_default(1)) -> None:
         """Log the given dictionary to the file logs, TensorBoard logs, and optionally the console."""
