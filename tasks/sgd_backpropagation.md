@@ -4,7 +4,7 @@
 #### Tests: sgd_backpropagation_tests
 #### Examples: sgd_backpropagation_examples
 
-_**The template was updated on Feb 23, 17:30.** The original one did not shuffle
+_**The template was updated on Feb 27, 17:30.** The original one did not shuffle
 the training data. You do not need to redownload it, ReCodEx accepts both variants.
 However, the Tests and Examples have been regenerated using the updated template._
 
