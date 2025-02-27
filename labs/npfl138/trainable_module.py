@@ -254,8 +254,11 @@ class TrainableModule(torch.nn.Module):
         self.to(self.device)
 
     @staticmethod
-    def save_config(config: dict, path: str) -> None:
-        """Save a JSON-serializable configuration to the given path."""
+    def save_config(path: str, config: dict = {}, **kwargs) -> None:
+        """Save a JSON-serializable configuration to the given path.
+
+        The configuration can be given as a dictionary or as keyword arguments.
+        """
         os.path.dirname(path) and os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as config_file:
             json.dump(config, config_file, ensure_ascii=False, indent=2)
