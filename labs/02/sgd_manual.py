@@ -30,7 +30,7 @@ class Model(torch.nn.Module):
         self._args = args
 
         self._W1 = torch.nn.Parameter(
-            torch.randn(MNIST.W * MNIST.H * MNIST.C, args.hidden_layer) * 0.1,
+            torch.randn(MNIST.C * MNIST.H * MNIST.W, args.hidden_layer) * 0.1,
             requires_grad=True,  # This is the default.
         )
         self._b1 = torch.nn.Parameter(torch.zeros(args.hidden_layer))
@@ -62,7 +62,7 @@ class Model(torch.nn.Module):
         self.train()
         for batch in dataset.batches(self._args.batch_size):
             # The batch contains
-            # - batch["images"] with shape [?, MNIST.H, MNIST.W, MNIST.C]
+            # - batch["images"] with shape [?, MNIST.C, MNIST.H, MNIST.W]
             # - batch["labels"] with shape [?]
             # Size of the batch is `self._args.batch_size`, except for the last, which
             # might be smaller.
