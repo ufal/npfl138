@@ -207,7 +207,7 @@ class TrainableModule(torch.nn.Module):
         self.loss_tracker, self.metrics = None, None
         state_dict = self.state_dict()
         self.loss_tracker, self.metrics = loss_tracker, metrics
-        os.makedirs(os.path.dirname(path), exist_ok=True)
+        os.path.dirname(path) and os.makedirs(os.path.dirname(path), exist_ok=True)
         torch.save(state_dict, path)
 
         # Save the number of epochs, optimizer state, and the scheduler state when requested.
@@ -216,7 +216,7 @@ class TrainableModule(torch.nn.Module):
             self.optimizer is not None and optimizer_state.update(optimizer=self.optimizer.state_dict())
             self.scheduler is not None and optimizer_state.update(scheduler=self.scheduler.state_dict())
             optimizer_path = os.path.join(os.path.dirname(path), optimizer_path)
-            os.makedirs(os.path.dirname(optimizer_path), exist_ok=True)
+            os.path.dirname(optimizer_path) and os.makedirs(os.path.dirname(optimizer_path), exist_ok=True)
             torch.save(optimizer_state, optimizer_path)
 
     def load_weights(self, path: str, optimizer_path: str | None = None,
@@ -256,7 +256,7 @@ class TrainableModule(torch.nn.Module):
     @staticmethod
     def save_config(config: dict, path: str) -> None:
         """Save a JSON-serializable configuration to the given path."""
-        os.makedirs(os.path.dirname(path), exist_ok=True)
+        os.path.dirname(path) and os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as config_file:
             json.dump(config, config_file, ensure_ascii=False, indent=2)
 
