@@ -149,6 +149,8 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
         model = model.to(device="cuda")
     elif torch.mps.is_available():
         model = model.to(device="mps")
+    elif torch.xpu.is_available():
+        model = model.to(device="xpu")
 
     for epoch in range(args.epochs):
         # TODO: Run the `train_epoch` with `mnist.train` dataset
