@@ -1,5 +1,4 @@
-_You are creating a pull request for the **main NPFL138** repository.
-This pull request will be visible to everyone._
+## Warning
+_You are creating a pull request for the **main NPFL138 repository**. This pull request will be visible to everyone._
 
-Please make sure you are not including source code of your own solutions
-or any other private content.
+_Please make sure you are not including source code of your own solutions or any other private content._
