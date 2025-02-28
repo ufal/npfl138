@@ -73,7 +73,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
     #   each batch, so the number of scheduler iterations is the number of batches in all
     #   training epochs (note that `len(train)` is the number of batches in one epoch).
     #   - for `linear`, use `torch.optim.lr_scheduler.LinearLR` and set `start_factor`,
-    #     `end_factor`, and `total_steps` appropriately;
+    #     `end_factor`, and `total_iters` appropriately;
     #   - for `exponential`, use `torch.optim.lr_scheduler.ExponentialLR` and set `gamma`
     #     appropriately (be careful to compute it using float64 to avoid precision issues);
     #   - for `cosine`, use `torch.optim.lr_scheduler.CosineAnnealingLR` and set `T_max`
