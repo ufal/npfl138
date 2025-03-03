@@ -38,3 +38,40 @@
 - Write down the Adam algorithm. Then show why the bias-correction terms
   $(1-\beta^t)$ make the estimation of the first and second moment unbiased.
   [10]
+
+#### Questions@:, Lecture 3 Questions
+- Considering a neural network with $D$ input neurons, a single ReLU hidden
+  layer with $H$ units and softmax output layer with $K$ units, write down the
+  explicit formulas (i.e., without differential operators) of the gradient of
+  all the MLP parameters (two weight matrices and two bias vectors), assuming
+  input $\boldsymbol x$, target $g$ and negative log likelihood loss. [10]
+
+- Assume a network with MSE loss generated a single output $o \in \mathbb{R}$,
+  and the target output is $g$. What is the value of the loss function itself,
+  and what is the explicit formula (i.e., without a differential operator) of
+  the gradient of the loss function with respect to $o$? [5]
+
+- Assume a binary-classification network with cross-entropy loss generated a single output
+  $z \in \mathbb{R}$, which is passed through the sigmoid output activation
+  function, producing $o = \sigma(z)$. If the target output is $g$, what is the value
+  of the loss function itself, and what is the explicit formula (i.e., without
+  a differential operator) of the gradient of the loss function with respect to
+  $z$? [5]
+
+- Assume a $K$-class-classification network with cross-entropy loss generated a $K$-element output
+  $\boldsymbol z \in \mathbb{R}^K$, which is passed through the softmax output
+  activation function, producing $\boldsymbol o=\operatorname{softmax}(\boldsymbol z)$.
+  If the target distribution is $\boldsymbol g$, what is the value of the loss
+  function itself, and what is the explicit formula (i.e., without a differential
+  operator) of the gradient of the loss function with respect to $\boldsymbol z$? [5]
+
+- Define $L_2$ regularization and describe its effect both on the value of the
+  loss function and on the value of the loss function gradient. [5]
+
+- Describe the dropout method and write down exactly how it is used during training and
+  during inference. [5]
+
+- Describe how label smoothing works for cross-entropy loss, both for sigmoid
+  and softmax activations. [5]
+
+- How are weights and biases initialized using the Glorot initialization? [5]
