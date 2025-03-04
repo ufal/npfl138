@@ -463,7 +463,7 @@ class TrainableModule(torch.nn.Module):
         if self.logdir is not None:
             batch = next(iter(data)) if isinstance(data, torch.utils.data.DataLoader) else data
             xs = validate_batch_input(batch, with_labels=data_with_labels)
-            xs = tuple(x.to(self.device) for x in xs) if is_sequence(xs) else xs.to(self.device)
+            xs = tuple(x.to(self.device) for x in (xs if is_sequence(xs) else (xs,)))
             writer = self.get_tb_writer("train")
             writer.add_graph(self, xs)
             writer.flush()
