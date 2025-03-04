@@ -4,7 +4,6 @@
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides.pdf/npfl138-2425-03.pdf, PDF Slides
 #### Questions: #lecture_3_questions
 
-- Softmax with NLL (negative log likelihood) as a loss function [Section 6.2.2.3 of DLB, notably equation (6.30)]
 - Regularization [Chapter 7 until Section 7.1 of DLB]
   - Early stopping [Section 7.8 of DLB, without the _How early stopping acts as a regularizer_ part]
   - L2 and L1 regularization [Sections 7.1 and 5.6.1 of DLB; plus slides 17-18]
@@ -15,3 +14,4 @@
 - Saturating non-linearities [Section 6.3.2 and second half of Section 6.2.2.2 of DLB]
 - Parameter initialization strategies [Section 8.4 of DLB]
 - Gradient clipping [Section 10.11.1 of DLB]
+- Softmax with NLL (negative log likelihood) as a loss function [Section 6.2.2.3 of DLB, notably equation (6.30)]
