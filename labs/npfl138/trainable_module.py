@@ -278,6 +278,7 @@ class TrainableModule(torch.nn.Module):
     def fit(
         self,
         dataloader: torch.utils.data.DataLoader,
+        *,
         epochs: int,
         dev: torch.utils.data.DataLoader | None = None,
         callbacks: list[CallbackProtocol] = [],
@@ -351,6 +352,7 @@ class TrainableModule(torch.nn.Module):
     def evaluate(
         self,
         dataloader: torch.utils.data.DataLoader,
+        *,
         log_as: str | None = "test",
         callbacks: list[CallbackProtocol] = [],
         console: int = console_default(1),
@@ -389,6 +391,7 @@ class TrainableModule(torch.nn.Module):
     def predict(
         self,
         dataloader: torch.utils.data.DataLoader,
+        *,
         data_with_labels: bool = False,
         as_numpy: bool = True,
     ) -> list[torch.Tensor | tuple[torch.Tensor, ...] | np.ndarray | tuple[np.ndarray, ...]]:
