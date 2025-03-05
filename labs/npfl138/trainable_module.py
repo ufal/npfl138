@@ -7,7 +7,7 @@ import argparse
 import json
 import os
 import sys
-from typing import Literal, Protocol, TextIO, TypeAlias
+from typing import Literal, Protocol, TextIO, TypeAlias, TypeVar
 
 import numpy as np
 import torch
@@ -16,6 +16,8 @@ Tensor: TypeAlias = torch.Tensor | torch.nn.utils.rnn.PackedSequence
 TensorOrTensors: TypeAlias = Tensor | tuple[Tensor, ...] | list[Tensor]
 
 Logs: TypeAlias = dict[str, float]
+
+Self: TypeVar = TypeVar("Self", bound="TrainableModule")
 
 
 class LossProtocol(Protocol):
@@ -162,7 +164,7 @@ class TrainableModule(torch.nn.Module):
         initial_epoch: int | KeepPrevious = keep_previous,
         logdir: str | None | KeepPrevious = keep_previous,
         device: torch.device | str | Literal["auto"] | KeepPrevious = keep_previous,
-    ) -> None:
+    ) -> Self:
         """Configure the module fitting, evaluation, and placement.
 
         The method can be called multiple times, preserving previously set values by default.
@@ -190,14 +192,16 @@ class TrainableModule(torch.nn.Module):
         if device is not keep_previous or not self.device:
             self.device = get_auto_device() if device == "auto" or device is keep_previous else torch.device(device)
         self.to(self.device)
+        return self
 
-    def unconfigure(self) -> None:
+    def unconfigure(self) -> Self:
         """Remove all training configuration of the TrainableModule."""
         self.optimizer, self.scheduler, self.epoch = None, None, None
         self.loss, self.loss_tracker, self.metrics = None, None, None
         self.logdir, self._log_file, self._tb_writers = None, None, None
+        return self
 
-    def save_weights(self, path: str, optimizer_path: str | None = None) -> None:
+    def save_weights(self, path: str, optimizer_path: str | None = None) -> Self:
         """Save the model weights to the given path.
 
         If optimizer_path is given, the optimizer state is also saved,
@@ -219,9 +223,10 @@ class TrainableModule(torch.nn.Module):
             optimizer_path = os.path.join(os.path.dirname(path), optimizer_path)
             os.path.dirname(optimizer_path) and os.makedirs(os.path.dirname(optimizer_path), exist_ok=True)
             torch.save(optimizer_state, optimizer_path)
+        return self
 
     def load_weights(self, path: str, optimizer_path: str | None = None,
-                     device: torch.device | str | Literal["auto"] | KeepPrevious = keep_previous) -> None:
+                     device: torch.device | str | Literal["auto"] | KeepPrevious = keep_previous) -> Self:
         """Load the model weights from the given path.
 
         If the optimizer_path is given, the optimizer state is also loaded,
@@ -253,6 +258,7 @@ class TrainableModule(torch.nn.Module):
             else:
                 assert "scheduler" not in optimizer_state, "The scheduler state is present, but there is no scheduler."
         self.to(self.device)
+        return self
 
     @staticmethod
     def save_config(path: str, config: dict = {}, /, **kwargs: dict) -> None:
@@ -431,7 +437,7 @@ class TrainableModule(torch.nn.Module):
 
     def log_metrics(
         self, logs: Logs, epochs: int | None = None, elapsed: float | None = None, console: int = console_default(1),
-    ) -> None:
+    ) -> Self:
         """Log the given dictionary to file logs, TensorBoard logs, and optionally the console."""
         if self.logdir is not None:
             for key, value in logs.items():
@@ -443,8 +449,9 @@ class TrainableModule(torch.nn.Module):
             print(f"Epoch {self.epoch}" + (f"/{epochs}" if epochs is not None else ""),
                   *[f"{elapsed:.1f}s"] if elapsed is not None else [],
                   *[f"{k}={v:#.{0<abs(v)<2e-4 and '2e' or '4f'}}" for k, v in logs.items()], file=file, flush=True)
+        return self
 
-    def log_config(self, config: dict, sort_keys: bool = True, console: int = console_default(1)) -> None:
+    def log_config(self, config: dict, sort_keys: bool = True, console: int = console_default(1)) -> Self:
         """Log the given dictionary to the file logs, TensorBoard logs, and optionally the console."""
         if self.logdir is not None:
             config = dict(sorted(config.items())) if sort_keys else config
@@ -453,8 +460,9 @@ class TrainableModule(torch.nn.Module):
             writer.flush()
         for file in ([self.get_log_file()] if self.logdir is not None else []) + [sys.stdout] * bool(console):
             print("Config", f"epoch={self.epoch}", *[f"{k}={v}" for k, v in config.items()], file=file, flush=True)
+        return self
 
-    def log_graph(self, data: torch.utils.data.DataLoader | TensorOrTensors, data_with_labels: bool = False) -> None:
+    def log_graph(self, data: torch.utils.data.DataLoader | TensorOrTensors, data_with_labels: bool = False) -> Self:
         """Log the traced module as a graph to the TensorBoard logs.
 
         Tracing requires an example batch; either the first batch from the
@@ -470,6 +478,7 @@ class TrainableModule(torch.nn.Module):
             writer = self.get_tb_writer("train")
             writer.add_graph(self, xs)
             writer.flush()
+        return self
 
     def get_log_file(self) -> TextIO:
         assert self.logdir is not None, "Cannot use get_log_file when logdir is not set."
