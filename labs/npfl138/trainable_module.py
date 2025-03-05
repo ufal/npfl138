@@ -436,11 +436,12 @@ class TrainableModule(torch.nn.Module):
     ) -> Self:
         """Log the given dictionary to file logs, TensorBoard logs, and optionally the console."""
         if self.logdir is not None:
+            writers = {}
             for key, value in logs.items():
-                writer, metric = key.split("_", maxsplit=1)
-                self.get_tb_writer(writer).add_scalar(metric, value, self.epoch)
-            for writer in dict.fromkeys(key.split("_", maxsplit=1)[0] for key in logs):
-                self.get_tb_writer(writer).flush()
+                writer, metric = key.split("_", maxsplit=1) if "_" in key else ("train", key)
+                writers.setdefault(writer, self.get_tb_writer(writer)).add_scalar(metric, value, self.epoch)
+            for writer in writers.values():
+                writer.flush()
         for file in ([self.get_log_file()] if self.logdir is not None else []) + [sys.stdout] * bool(console):
             print(f"Epoch {self.epoch}" + (f"/{epochs}" if epochs is not None else ""),
                   *[f"{elapsed:.1f}s"] if elapsed is not None else [],
