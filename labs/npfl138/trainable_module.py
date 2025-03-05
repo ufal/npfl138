@@ -207,11 +207,7 @@ class TrainableModule(torch.nn.Module):
         If optimizer_path is given, the optimizer state is also saved,
         to a separate checkpoint, relative to the model weights path.
         """
-        # Do not save the loss_tracker state and the metric states.
-        loss_tracker, metrics = self.loss_tracker, self.metrics
-        self.loss_tracker, self.metrics = None, None
         state_dict = self.state_dict()
-        self.loss_tracker, self.metrics = loss_tracker, metrics
         os.path.dirname(path) and os.makedirs(os.path.dirname(path), exist_ok=True)
         torch.save(state_dict, path)
 
@@ -236,11 +232,7 @@ class TrainableModule(torch.nn.Module):
         """
         if device is not keep_previous or not self.device:
             self.device = get_auto_device() if device == "auto" or device is keep_previous else torch.device(device)
-        # Do not load the loss_tracker state and the metric states.
-        loss_tracker, metrics = self.loss_tracker, self.metrics
-        self.loss_tracker, self.metrics = None, None
         self.load_state_dict(torch.load(path, map_location=self.device))
-        self.loss_tracker, self.metrics = loss_tracker, metrics
 
         # Load the number of epochs, optimizer state, and the scheduler state when requested.
         if optimizer_path is not None:
