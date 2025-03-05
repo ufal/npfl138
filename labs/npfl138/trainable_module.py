@@ -108,8 +108,8 @@ def get_auto_device() -> torch.device:
 class LossTracker(torch.nn.Module):
     def __init__(self):
         super().__init__()
-        self.register_buffer("total", torch.tensor(0.0, dtype=torch.float32))
-        self.register_buffer("count", torch.tensor(0, dtype=torch.int64))
+        self.register_buffer("total", torch.tensor(0.0, dtype=torch.float32), persistent=False)
+        self.register_buffer("count", torch.tensor(0, dtype=torch.int64), persistent=False)
 
     def reset(self):
         self.total.zero_()
