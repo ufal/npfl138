@@ -299,6 +299,7 @@ class TrainableModule(torch.nn.Module):
         The method returns a dictionary of logs from the training and optionally dev evaluation,
         and sets the model to evaluation mode after training.
         """
+        assert self.loss_tracker is not None, "The TrainableModule has not been configured, run configure first."
         logs, epochs = {}, self.epoch + epochs
         while self.epoch < epochs:
             self.epoch += 1
@@ -368,6 +369,7 @@ class TrainableModule(torch.nn.Module):
           arguments `self`, `epoch`, and `logs`;
         - `console` controls the console verbosity: 0 for silent, 1 for a single message.
         """
+        assert self.loss_tracker is not None, "The TrainableModule has not been configured, run configure first."
         self.eval()
         self.loss_tracker.reset()
         for metric in self.metrics.values():
@@ -411,6 +413,7 @@ class TrainableModule(torch.nn.Module):
         of the individual examples. Note that if the input was padded, so
         will be the predictions, which will then need to be trimmed.
         """
+        assert self.device is not None, "No device has been set for the TrainableModule, run configure first."
         self.eval()
         predictions = []
         for batch in dataloader:
