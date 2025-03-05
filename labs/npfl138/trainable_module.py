@@ -291,7 +291,8 @@ class TrainableModule(torch.nn.Module):
         - `epochs` is the number of epochs to train;
         - `dev` is an optional development dataset;
         - `callbacks` is a list of callbacks to call after every epoch, each implementing
-          the CallbackProtocol with arguments `self`, `epoch`, and `logs`;
+          the CallbackProtocol with arguments `self`, `epoch`, and `logs` (note that the
+          module is set to evaluation mode before calling each callback);
         - `log_graph` controls whether to log the model graph to TensorBoard;
         - `console` controls the console verbosity: 0 for silent, 1 for epoch logs, 2 for
           additional only-when-writing-to-console progress bar, 3 for persistent progress bar.
@@ -320,9 +321,9 @@ class TrainableModule(torch.nn.Module):
                     data_and_progress.set_description(f"{epoch_message} {logs_message}", refresh=False)
             logs = {f"train_{k}": v for k, v in logs.items()}
             if dev is not None:
-                logs |= {f"dev_{k}": v for k, v in self.evaluate(dev, log_as=None).items()}
+                logs |= {f"dev_{k}": v for k, v in self.eval().evaluate(dev, log_as=None).items()}
             for callback in callbacks:
-                callback(self, self.epoch, logs)
+                callback(self.eval(), self.epoch, logs)
             self.log_metrics(logs, epochs, self._time() - start, console)
         self.eval()
         return logs
