@@ -51,10 +51,9 @@ def main(args: argparse.Namespace) -> dict[str, float]:
     train = torch.utils.data.DataLoader(Dataset(mnist.train), batch_size=args.batch_size, shuffle=True)
     dev = torch.utils.data.DataLoader(Dataset(mnist.dev), batch_size=args.batch_size)
 
-    # TODO: Incorporate dropout to the model below. Namely, add
-    #   a `keras.layers.Dropout` layer with `args.dropout` rate after
-    #   the `Flatten` layer and after each `Linear` hidden layer (but not after
-    #   the output `Linear` layer).
+    # TODO: Incorporate dropout to the model below. Namely, add a `torch.nn.Dropout`
+    # layer with `args.dropout` rate after the `Flatten` layer and after each
+    # `Linear` hidden layer (but not after the output `Linear` layer).
 
     model = torch.nn.Sequential()
     model.append(torch.nn.Flatten())
