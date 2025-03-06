@@ -68,7 +68,7 @@ class Model(npfl138.TrainableModule):
 
     def forward(self, inputs: torch.Tensor) -> torch.Tensor:
         # TODO: Run your model. Because some inputs are on a CPU, you should
-        # start by moving them to the `model.device`.
+        # start by moving them to the `self.device`.
         ...
 
 
