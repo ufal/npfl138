@@ -138,7 +138,7 @@ class TrainableModule(torch.nn.Module):
     from time import time as _time
     from tqdm import tqdm as _tqdm
 
-    def __init__(self, module: torch.nn.Module | None = None):
+    def __init__(self, module: torch.nn.Module | None = None, device: torch.device | str | None = None):
         """Initialize the module, optionally with an existing PyTorch module.
 
         The `module` argument is useful when you want to wrap an existing
@@ -150,6 +150,10 @@ class TrainableModule(torch.nn.Module):
         if module is not None:
             self.module = module
             self.forward = self._call_wrapped_module
+            self.device = get_auto_device() if device == "auto" or device is None else torch.device(device)
+            self.to(self.device)
+        else:
+            assert device is None, "The device cannot be set without a module; use configure or load_weights."
 
     def _call_wrapped_module(self, inputs):
         return self.module(inputs)
