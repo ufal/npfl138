@@ -5,6 +5,9 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-03-czech.mp4, CZ Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-03-english.mp4, EN Lecture
 #### Questions: #lecture_3_questions
+#### Lecture assignment: mnist_regularization
+#### Lecture assignment: mnist_ensemble
+#### Lecture assignment: uppercase
 
 - Regularization [Chapter 7 until Section 7.1 of DLB]
   - Early stopping [Section 7.8 of DLB, without the _How early stopping acts as a regularizer_ part]
