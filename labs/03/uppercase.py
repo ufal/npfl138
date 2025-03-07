@@ -8,7 +8,7 @@ import torch
 import torchmetrics
 
 import npfl138
-npfl138.require_version("2425.3")
+npfl138.require_version("2425.3.1")
 from npfl138.datasets.uppercase_data import UppercaseData
 
 # TODO: Set reasonable values for the hyperparameters, especially for
@@ -85,8 +85,8 @@ def main(args: argparse.Namespace) -> None:
         ",".join(("{}={}".format(re.sub("(.)[^_]*_?", r"\1", k), v) for k, v in sorted(vars(args).items())))
     ))
 
-    # Load the data.
-    uppercase_data = UppercaseData(args.window, args.alphabet_size)
+    # Load the data (the label dtype can be changed if needed).
+    uppercase_data = UppercaseData(args.window, args.alphabet_size, label_dtype=torch.float32)
 
     # Instead of using
     #   train = torch.utils.data.DataLoader(
