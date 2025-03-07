@@ -34,6 +34,11 @@ class TransformedDataset(torch.utils.data.Dataset):
         return batch
 
     def dataloader(self, batch_size=1, *, shuffle=False, num_workers=0, **kwargs) -> torch.utils.data.DataLoader:
+        if not shuffle and kwargs.get("generator", None) is None:
+            # If not shuffling and no generator is given, pass an explicit generator to the Dataloader.
+            # Otherwise, the global random generator would generate a number on every iter(dataloader) call.
+            kwargs["generator"] = torch.Generator()
+
         if num_workers > 0:
             # By default, set persistent_workers to True, but allow it to be overridden
             kwargs.setdefault("persistent_workers", True)
