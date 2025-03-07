@@ -38,7 +38,7 @@ class UppercaseData:
     _URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/datasets/uppercase_data.zip"
 
     class Dataset:
-        def __init__(self, data: str, window: int, alphabet: int | list[str], seed: int = 42) -> None:
+        def __init__(self, data: str, window: int, alphabet: int | list[str], label_dtype: torch.dtype) -> None:
             self._window = window
             self._text = data
             self._size = len(data)
@@ -79,7 +79,7 @@ class UppercaseData:
                 labels[i] = self._text[i].isupper()
 
             self._windows = torch.from_numpy(lcletters).unfold(0, 2 * window + 1, 1)
-            self._labels = torch.from_numpy(labels)
+            self._labels = torch.from_numpy(labels).to(dtype=label_dtype)
 
             # Compute alphabet
             self._alphabet = [None] * len(alphabet_map)
@@ -106,7 +106,7 @@ class UppercaseData:
         def labels(self) -> torch.Tensor:
             return self._labels
 
-    def __init__(self, window: int, alphabet_size: int = 0):
+    def __init__(self, window: int, alphabet_size: int = 0, label_dtype: torch.dtype = torch.float32) -> None:
         path = os.path.basename(self._URL)
         if not os.path.exists(path):
             print("Downloading dataset {}...".format(path), file=sys.stderr)
@@ -121,6 +121,7 @@ class UppercaseData:
                     data,
                     window,
                     alphabet=alphabet_size if dataset == "train" else self.train.alphabet,
+                    label_dtype=label_dtype,
                 ))
 
     train: Dataset
