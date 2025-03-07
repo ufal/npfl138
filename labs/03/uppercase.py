@@ -85,7 +85,8 @@ def main(args: argparse.Namespace) -> None:
         ",".join(("{}={}".format(re.sub("(.)[^_]*_?", r"\1", k), v) for k, v in sorted(vars(args).items())))
     ))
 
-    # Load the data (the label dtype can be changed if needed).
+    # Load the data. The default label dtype of torch.float32 is suitable for binary classification,
+    # but you should change it to torch.int64 if you use 2-class classification (CrossEntropyLoss).
     uppercase_data = UppercaseData(args.window, args.alphabet_size, label_dtype=torch.float32)
 
     # Instead of using
