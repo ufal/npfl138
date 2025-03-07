@@ -67,14 +67,15 @@ def main(args: argparse.Namespace) -> tuple[list[float], list[float]]:
         # TODO: Compute the accuracy on the dev set for the ensemble `models[0:model+1]`.
         #
         # Generally you can choose one of the following approaches:
-        # 1) For the given models to ensemble, create a new `npfl138.TrainableModule` subclass
-        #    that in `forward` runs the given models and averages their outputs. Then you can
-        #    configure the model with the required metric (and a loss) and use `model.evaluate`.
+        # 1) Create a `npfl138.TrainableModule` subclass that gets several models to
+        #    ensemble during its constructions, and in `forward` it runs them on the given
+        #    batch and averages the predicted distributions. Then you can configure the
+        #    ensemble with the required metric (and a loss) and use its `evaluate` method.
         # 2) Manually perform the averaging (using PyTorch or NumPy). In this case you do not
         #    need to construct the ensemble model at all; instead, call `model.predict`
         #    on the `dev` dataloader (with `data_with_labels=True` to indicate the dataloader
-        #    also contains the labels), stack the predictions, and average the results.
-        #    To measure accuracy, either do it completely manually or use `torchmetrics.Accuracy`.
+        #    also contains the labels) and average the predicted distributions. To measure
+        #    accuracy, either do it completely manually or use `torchmetrics.Accuracy`.
         ensemble_accuracy = ...
 
         # Store the accuracies
