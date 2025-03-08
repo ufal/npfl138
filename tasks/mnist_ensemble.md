@@ -4,7 +4,8 @@
 #### Tests: mnist_ensemble_tests
 #### Examples: mnist_ensemble_examples
 
-Your goal in this assignment is to implement model ensembling.
+Your goal in this assignment is to implement ensembling of
+classification models by averaging their predicted probability distributions.
 The [mnist_ensemble.py](https://github.com/ufal/npfl138/tree/master/labs/03/mnist_ensemble.py)
 template trains `args.models` individual models, and your goal is to perform
 an ensemble of the first model, first two models, first three models, …, all
