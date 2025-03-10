@@ -75,3 +75,23 @@
   and softmax activations. [5]
 
 - How are weights and biases initialized using the Glorot initialization? [5]
+
+#### Questions@:, Lecture 4 Questions
+- Write down the equation of how convolution of a given image is computed.
+  Assume the input is an image $I$ of size $H \times W$ with $C$ channels, the
+  kernel $K$ has size $N \times M$, the stride is $T \times S$, the operation
+  performed is in fact cross-correlation (as usual in convolutional neural
+  networks) and that $O$ output channels are computed. [5]
+
+- Explain both `SAME` and `VALID` padding schemes and write down the output
+  size of a convolutional operation with an $N \times M$ kernel on image
+  of size $H \times W$ for both these padding schemes (stride is 1). [5]
+
+- Describe batch normalization including all its parameters, and write down an
+  algorithm how it is used during training and the algorithm how it is used
+  during inference. Be sure to explicitly write over what is being normalized in
+  case of fully connected layers and in case of convolutional layers. [10]
+
+- Describe overall architecture of VGG-19 (you do not need to remember the exact
+  number of layers/filters, but you should describe the overall order and type
+  of layers that are used). [5]
