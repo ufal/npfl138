@@ -13,7 +13,7 @@ template and implement the following:
 - Using specified learning rate for the optimizer.
 - Optionally use a given learning rate schedule. The schedule can be either
   `linear`, `exponential`, or `cosine`. If a schedule is specified, you also
-  get a final learning rate, and the learning rate should be gradually decresed
+  get a final learning rate, and the learning rate should be gradually decreased
   during training to reach the final learning rate just after the training
   (i.e., the first update after the training would use exactly the final learning rate).
 
