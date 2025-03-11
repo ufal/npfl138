@@ -319,7 +319,7 @@ class TrainableModule(torch.nn.Module):
                 xs, y = validate_batch_input_output(batch)
                 xs = tuple(x.to(self.device) for x in (xs if is_sequence(xs) else (xs,)))
                 y = tuple(y_.to(self.device) for y_ in y) if is_sequence(y) else y.to(self.device)
-                log_graph = log_graph and self.log_graph(xs)
+                log_graph = log_graph and self.log_graph(xs) and False
                 logs = self.train_step(xs, y)
                 if not data_and_progress.disable:
                     logs_message = " ".join([f"{k}={v:#.{0<abs(v)<2e-4 and '2e' or '4f'}}" for k, v in logs.items()])
