@@ -13,4 +13,3 @@
 - GoogLeNet (aka Inception) [[Going Deeper with Convolutions](https://arxiv.org/abs/1409.4842)]
 - Batch normalization [Section 8.7.1 of DLB, _optionally the paper [Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift](https://arxiv.org/abs/1502.03167)_]
 - _Inception v2 and v3 [[Rethinking the Inception Architecture for Computer Vision](https://arxiv.org/abs/1512.00567)]_
-- ResNet [[Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)]
