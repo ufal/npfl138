@@ -35,7 +35,7 @@ class MetricProtocol(Protocol):
 
 
 class CallbackProtocol(Protocol):
-    def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> None:
+    def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> Literal["stop_training"] | None:
         ...
 
 
@@ -137,6 +137,8 @@ class TrainableModule(torch.nn.Module):
     from torch.utils.tensorboard import SummaryWriter as _SummaryWriter
     from time import time as _time
     from tqdm import tqdm as _tqdm
+
+    STOP_TRAINING: Literal["stop_training"] = "stop_training"
 
     def __init__(self, module: torch.nn.Module | None = None, device: torch.device | str | None = None):
         """Initialize the module, optionally with an existing PyTorch module.
@@ -295,8 +297,9 @@ class TrainableModule(torch.nn.Module):
         - `epochs` is the number of epochs to train;
         - `dev` is an optional development dataset;
         - `callbacks` is a list of callbacks to call after every epoch, each implementing
-          the CallbackProtocol with arguments `self`, `epoch`, and `logs` (note that the
-          module is set to evaluation mode before calling each callback);
+          the CallbackProtocol with arguments `self`, `epoch`, and `logs`, possibly returning
+          `TrainableModule.STOP_TRAINING` to stop the training (note that the module is set
+          to evaluation mode before calling each callback);
         - `log_graph` controls whether to log the model graph to TensorBoard;
         - `console` controls the console verbosity: 0 for silent, 1 for epoch logs, 2 for
           additional only-when-writing-to-console progress bar, 3 for persistent progress bar.
@@ -304,8 +307,8 @@ class TrainableModule(torch.nn.Module):
         and sets the model to evaluation mode after training.
         """
         assert self.loss_tracker is not None, "The TrainableModule has not been configured, run configure first."
-        logs, epochs = {}, self.epoch + epochs
-        while self.epoch < epochs:
+        logs, epochs, stop_training = {}, self.epoch + epochs, False
+        while self.epoch < epochs and not stop_training:
             self.epoch += 1
             self.train()
             self.loss_tracker.reset()
@@ -328,7 +331,7 @@ class TrainableModule(torch.nn.Module):
             if dev is not None:
                 logs |= {f"dev_{k}": v for k, v in self.eval().evaluate(dev, log_as=None).items()}
             for callback in callbacks:
-                callback(self.eval(), self.epoch, logs)
+                stop_training = callback(self.eval(), self.epoch, logs) == self.STOP_TRAINING or stop_training
             self.log_metrics(logs, epochs, self._time() - start, console)
         self.eval()
         return logs
