@@ -27,7 +27,6 @@ class MNIST:
         def __init__(self, data: "MNIST.Elements") -> None:
             self._data = {key: torch.as_tensor(value) for key, value in data.items()}
             self._data["images"] = self._data["images"].view(-1, MNIST.C, MNIST.H, MNIST.W)
-            self._size = len(self._data["images"])
 
         @property
         def data(self) -> "MNIST.Elements":
