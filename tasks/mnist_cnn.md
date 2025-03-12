@@ -14,7 +14,7 @@ argument, which contains comma-separated specifications of the following layers:
   Example: `C-10-3-1-same`
 - `CB-filters-kernel_size-stride-padding`: Same as
   `C-filters-kernel_size-stride-padding`, but use batch normalization.
-  In detail, start with a convolutional layer **without bias and activation**,
+  In detail, start with a convolutional layer **without bias** and activation,
   then add batch normalization layer, and finally the ReLU activation.
   Example: `CB-10-3-1-same`
 - `M-pool_size-stride`: Add max pooling with specified size and stride, using
