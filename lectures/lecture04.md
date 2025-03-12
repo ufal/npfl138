@@ -5,6 +5,10 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-04-czech.mp4, CZ Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-04-english.mp4, EN Lecture
 #### Questions: #lecture_4_questions
+#### Lecture assignment: mnist_cnn
+#### Lecture assignment: torch_dataset
+#### Lecture assignment: mnist_multiple
+#### Lecture assignment: cifar_competition
 
 - Introduction to convolutional networks [Chapter 9 and Sections 9.1-9.3 of DLB]
 - Convolution as operation on 4D tensors [Section 9.5 of DLB, notably Equations (9.7) and (9.8)]
