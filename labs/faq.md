@@ -80,12 +80,12 @@
   After your account is created, please make sure that the directories
   containing your solutions are always **private**.
 
-- _How to activate Python 3.10 on MetaCentrum?_
+- _How to activate Python 3.11 on MetaCentrum?_
 
-  On Metacentrum, currently the newest available Python is 3.10, which you need
+  On Metacentrum, currently the newest available Python is 3.11, which you need
   to activate in every session by running the following command:
   ```
-  module add python/python-3.10.4-intel-19.0.4-sc7snnf
+  module add python/3.11.11-gcc-10.2.1-555dlyc
   ```
 
 - _How to install the required virtual environment on MetaCentrum?_
