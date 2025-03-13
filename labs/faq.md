@@ -114,9 +114,8 @@
 
   - Finally, create the virtual environment and install PyTorch in it:
     ```
-    module add python/python-3.10.4-intel-19.0.4-sc7snnf
+    module add python/3.11.11-gcc-10.2.1-555dlyc
     python3 -m venv CHOSEN_VENV_DIR
-    CHOSEN_VENV_DIR/bin/pip install --no-cache-dir --upgrade pip setuptools
     CHOSEN_VENV_DIR/bin/pip install --no-cache-dir --extra-index-url=https://download.pytorch.org/whl/cu118 npfl138
     ```
 
@@ -128,10 +127,10 @@
   [GPU computing](https://docs.metacentrum.cz/en/docs/computing/gpu-comput/gpu-job),
   [GPU clusters](https://docs.metacentrum.cz/en/docs/computing/gpu-comput/clusters).
 
-  TL;DR: To run an interactive GPU job with 1 CPU, 1 GPU, 8GB RAM, and 16GB scatch
+  TL;DR: To run an interactive GPU job with 1 CPU, 1 GPU, 8GB RAM, and 32GB scatch
   space, run:
   ```
-  qsub -q gpu -l select=1:ncpus=1:ngpus=1:mem=8gb:scratch_local=16gb -I
+  qsub -l select=1:ncpus=1:ngpus=1:mem=8gb:scratch_local=32gb -I
   ```
 
   To run a script in a non-interactive way, replace the `-I` option with the script to be executed.
