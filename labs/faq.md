@@ -135,8 +135,7 @@
 
   To run a script in a non-interactive way, replace the `-I` option with the script to be executed.
 
-  If you want to run a CPU-only computation, remove the `-q gpu` and `ngpus=1:`
-  from the above commands.
+  If you want to run a CPU-only computation, remove the `ngpus=1:` from the above commands.
 
 ### TOCEntry: AIC
 
