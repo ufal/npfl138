@@ -52,7 +52,7 @@ class TransformedDataset(npfl138.TransformedDataset):
         super().__init__(dataset)
         self._augmentation_fn = augmentation_fn
 
-    def transform(self, example: dict[str, torch.Tensor]) -> dict[str, torch.Tensor]:
+    def transform(self, example: dict[str, torch.Tensor]) -> tuple[torch.Tensor, torch.Tensor]:
         # TODO: Here the `example` is already the selected example from the underlying
         # dataset; you now only need to process it as in the `ManualDataset`, so
         # (1) convert to `torch.float32`, (2) divide by 255, and (3) apply the
