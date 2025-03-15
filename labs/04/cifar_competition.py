@@ -43,8 +43,8 @@ def main(args: argparse.Namespace) -> None:
     with open(os.path.join(args.logdir, "cifar_competition_test.txt"), "w", encoding="utf-8") as predictions_file:
         # TODO: Perform the prediction on the test data. The line below assumes you have
         # a dataloader `test` where the individual examples are `(image, target)` pairs.
-        for probs in model.predict(test, data_with_labels=True):
-            print(np.argmax(probs), file=predictions_file)
+        for prediction in model.predict(test, data_with_labels=True):
+            print(np.argmax(prediction), file=predictions_file)
 
 
 if __name__ == "__main__":
