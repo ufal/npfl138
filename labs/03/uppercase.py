@@ -24,7 +24,7 @@ parser.add_argument("--window", default=..., type=int, help="Window size to use.
 
 
 class BatchGenerator:
-    """A simple batch generator, optionally with suffling.
+    """A simple batch generator, optionally with shuffling.
 
     The functionality of this batch generator is very similar to
         torch.utils.data.DataLoader(
