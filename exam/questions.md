@@ -95,3 +95,32 @@
 - Describe overall architecture of VGG-19 (you do not need to remember the exact
   number of layers/filters, but you should describe the overall order and type
   of layers that are used). [5]
+
+#### Questions@:, Lecture 5 Questions
+- Describe overall architecture of ResNet. You do not need to remember the exact
+  number of layers/filters, but you should draw a bottleneck block (including
+  the applications of BatchNorms and ReLUs) and state how residual connections
+  work when the number of channels increases. [10]
+
+- Draw the original ResNet block (including the exact positions of BatchNorms
+  and ReLUs) and also the improved variant with full pre-activation. [5]
+
+- Compare the bottleneck block of ResNet and ResNeXt architectures (draw the
+  latter using convolutions only, i.e., do not use grouped convolutions). [5]
+
+- Describe the CNN regularization method of networks with stochastic depth. [5]
+
+- Compare Cutout and DropBlock. [5]
+
+- Describe in detail how is CutMix performed. [5]
+
+- Describe Squeeze and Excitation applied to a ResNet block. [5]
+
+- Draw the Mobile inverted bottleneck block (including explanation of separable
+  convolutions, the expansion factor, exact positions of BatchNorms and ReLUs,
+  but without describing Squeeze and excitation blocks). [5]
+
+- Assume an input image $I$ of size $H \times W$ with $C$ channels, and
+  a convolutional kernel $K$ with size $N \times M$, stride $S$ and $O$ output
+  channels. Write down (or derive) the equation of transposed convolution
+  (or equivalently backpropagation through a convolution to its inputs). [5]
