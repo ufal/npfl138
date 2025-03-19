@@ -25,7 +25,7 @@ template, you should:
   with respect to all variables;
 - perform the SGD update.
 
-This assignment also demonstrate the most important parts of the
+This assignment also demonstrates the most important parts of the
 [npfl138.TrainableModule](https://github.com/ufal/npfl138/tree/master/labs/npfl138/trainable_module.py)
 that we are using.
 
