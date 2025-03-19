@@ -3,6 +3,27 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+"""Loads the Uppercase data.
+
+- The `UppercaseData` consists of three Datasets
+    - `train`
+    - `dev`
+    - `test`
+- When loading, you need to specify `window` and `alphabet_size`. If
+  `alphabet_size` is nonzero, it specifies the maximum number of alphabet
+  characters, in which case that many most frequent characters will be used,
+  and all other will be remapped to "<unk>".
+- Features are generated using a sliding window of given size,
+  i.e., for a character, we include left `window` characters, the character
+  itself and right `window` characters, `2 * window + 1` in total.
+- Each dataset (train/dev/test) has the following members:
+    - `size`: the length of the text
+    - `text`: the original text (of course lowercased in case of the test set)
+    - `alphabet`: an alphabet used by `windows`
+    - `windows`: a torch Tensor with shape `[size, 2 * window + 1]` containing
+      windows with indices of input lowercased characters
+    - `labels`: a torch Tensor with shape `[size]` containing 0/1 for lower/uppercase
+"""
 import os
 import sys
 from typing import TextIO
@@ -13,25 +34,6 @@ import numpy as np
 import torch
 
 
-# Loads the Uppercase data.
-# - The data consists of three Datasets
-#   - `train`
-#   - `dev`
-#   - `test` [all in lowercase]
-# - When loading, you need to specify `window` and `alphabet_size`. If
-#   `alphabet_size` is nonzero, it specifies the maximum number of alphabet
-#   characters, in which case that many most frequent characters will be used,
-#   and all other will be remapped to "<unk>".
-# - Features are generated using a sliding window of given size,
-#   i.e., for a character, we include left `window` characters, the character
-#   itself and right `window` characters, `2 * window + 1` in total.
-# - Each dataset (train/dev/test) has the following members:
-#   - `size`: the length of the text
-#   - `text`: the original text (of course lowercased in case of the test set)
-#   - `alphabet`: an alphabet used by `windows`
-#   - `windows`: a torch Tensor with shape `[size, 2 * window + 1]` containing
-#     windows with indices of input lowercased characters
-#   - `labels`: a torch Tensor with shape `[size]` containing 0/1 for lower/uppercase
 class UppercaseData:
     LABELS: int = 2
 
