@@ -91,7 +91,23 @@ def global_keras_initializers(
     parameter_initialization: bool = True,
     batchnorm_momentum_override: bool = True,
 ) -> None:
-    """Change default PyTorch initializers to Keras defaults."""
+    """Change default PyTorch initializers to Keras defaults.
+
+    The following initializers are used:
+
+    - `Linear`, `Conv1d`, `Conv2d`, `Conv3d`, `ConvTranspose1d`, `ConvTranspose2d`, `ConvTranspose3d`, `Bilinear`:
+      Xavier uniform for weights, zeros for biases.
+    - `Embedding`, `EmbeddingBag`: Uniform [-0.05, 0.05] for weights.
+    - `RNN`, `RNNCell`, `LSTM`, `LSTMCell`, `GRU`, `GRUCell`: Xavier uniform for input weights,
+      orthogonal for recurrent weights, zeros for biases (with LSTM forget gate bias set to 1).
+
+    Furthermore, for batch normalization layers, the default momentum value is changed from 0.1 to 0.01.
+
+    Parameters:
+     parameter_initialization: If True, override the default PyTorch initializers with Keras defaults.
+     batchnorm_momentum_override: If True, override the default momentum value of 0.1 in
+       batch normalization layers to 0.01.
+    """
     if parameter_initialization:
         for class_, reset_parameters_method in KerasParameterInitialization.overrides.items():
             class_.reset_parameters = reset_parameters_method
