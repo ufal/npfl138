@@ -11,6 +11,21 @@ import torch
 
 
 def startup(seed: int | None = None, threads: int | None = None, forkserver_instead_of_fork: bool = True) -> None:
+    """Initialize the environment.
+
+    - Allow using TF32 for matrix multiplication.
+    - Set the random seed if given.
+    - Set the number of threads if given.
+    - Use `forkserver` instead of `fork` if requested.
+
+    Parameters:
+      seed: If not `None`, set the Python, Numpy, and PyTorch random seeds to this value.
+      threads: If not `None` of 0, set the number of threads to this value.
+        Otherwise, use as many threads as cores.
+      forkserver_instead_of_fork: If `True`, use `forkserver` instead of `fork` as the
+        default multiprocessing method. This will be the default in Python 3.14.
+    """
+
     # Allow TF32 when available.
     torch.backends.cuda.matmul.allow_tf32 = True
 
