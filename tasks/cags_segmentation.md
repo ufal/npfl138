@@ -14,12 +14,15 @@ whole test set score is the average of its masks' IoU. A `TrainableModule`-compa
 metric is implemented by the class `MaskIoUMetric` of the
 [npfl138.datasets.cags](https://github.com/ufal/npfl138/blob/master/labs/npfl138/datasets/cags.py)
 module, which can also evaluate your predictions (either by running with
-`python3 -m npfl138.datasets.cags --evaluate_segmentation=path --datasetpdev/test`
-arguments, or using its `evaluate_segmentation_file` method).
+`python3 -m npfl138.datasets.cags --evaluate_segmentation=path --dataset=dev/test`
+arguments, or using its `evaluate_segmentation_file` method) and also visualize
+your predictions (using `python3 -m npfl138.datasets.cags
+--visualize_segmentation=path --dataset=dev/test`).
 
-The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2425-summer#competitions). Everyone who submits a solution
-achieving at least _87%_ test set IoU gets 4 points; the remaining
-5 bonus points are distributed depending on relative ordering of your solutions.
+The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2425-summer#competitions).
+Everyone who submits a solution achieving at least _87%_ test set IoU gets
+4 points; the remaining 5 bonus points are distributed depending on relative
+ordering of your solutions.
 
 You may want to start with the
 [cags_segmentation.py](https://github.com/ufal/npfl138/tree/master/labs/05/cags_segmentation.py)
