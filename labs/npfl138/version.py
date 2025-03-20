@@ -4,7 +4,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-__version__ = "2425.4.0"
+__version__ = "2425.5.0"
 
 def require_version(required_version: str) -> None:
     """Make sure the installed version is at least `required_version`.

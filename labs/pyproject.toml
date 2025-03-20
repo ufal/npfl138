@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "npfl138"
-version = "2425.4.0"
+version = "2425.5.0"
 authors = [
   { name="Milan Straka", email="straka@ufal.mff.cuni.cz" },
 ]
@@ -27,6 +27,8 @@ dependencies = [
   # Gymnasium package including the pygame used for GUI
   "gymnasium ~= 1.1.1",
   "pygame ~= 2.6.1",
+  # Matplotlib for plotting
+  "matplotlib ~= 3.10.1",
   # TensorBoard for inspecting logs
   "tensorboard ~= 2.18.0",
   # Conditionally install imghdr removed in Python 3.13, TensorBoard needs it
