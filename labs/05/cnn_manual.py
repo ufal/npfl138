@@ -58,7 +58,7 @@ class Convolution:
 
     def backward(
         self, inputs: torch.Tensor, outputs: torch.Tensor, outputs_gradient: torch.Tensor
-    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    ) -> tuple[torch.Tensor, list[torch.Tensor], list[torch.Tensor]]:
         # TODO: Given this layer's inputs, this layer's outputs,
         # and the gradient with respect to the layer's outputs,
         # compute the derivatives of the loss with respect to
