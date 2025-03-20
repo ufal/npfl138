@@ -22,20 +22,36 @@ Self: TypeVar = TypeVar("Self", bound="TrainableModule")
 
 class LossProtocol(Protocol):
     def __call__(self, y_pred: TensorOrTensors, y: TensorOrTensors) -> torch.Tensor:
+        """Compute the loss of the given predictions and gold outputs."""
         ...
 
 
 class MetricProtocol(Protocol):
     def reset(self) -> None:
+        """Reset the metric to its initial state."""
         ...
     def update(self, y_pred: TensorOrTensors, y: TensorOrTensors) -> None:  # noqa: E301
+        """Update the metric with the given predictions and gold outputs."""
         ...
     def compute(self) -> torch.Tensor:  # noqa: E301
+        """Return the current value of the metric."""
         ...
 
 
 class CallbackProtocol(Protocol):
     def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> Literal["stop_training"] | None:
+        """Represents a callback called after every training epoch.
+
+        If the callback returns `module.STOP_TRAINING`, the training stops.
+
+        Parameters:
+          module: the module being trained
+          epoch: the current epoch number (one-based)
+          logs: a dictionary of logs, newly computed metric or losses should be added here
+
+        Returns:
+          `module.STOP_TRAINING` to stop the training, or `None` to continue
+        """
         ...
 
 
@@ -170,16 +186,25 @@ class TrainableModule(torch.nn.Module):
         """Configure the module fitting, evaluation, and placement.
 
         The method can be called multiple times, preserving previously set values by default.
-        - `optimizer` is the optimizer to use for training;
-        - `scheduler` is an optional learning rate scheduler used after every batch;
-        - `loss` is the loss function to minimize;
-        - `metrics` is a dictionary of additional metrics to compute, each being an object
-          implementing the MetricProtocol (reset/update/compute), e.g., a torchmetrics.Metric;
-        - `initial_epoch` is the initial epoch of the model used during training and evaluation;
-        - `logdir` is an optional directory where TensorBoard logs should be written;
-        - `device` is the device to move the module to; when "auto", or `keep_previous`
-          with no previously set device, the first of cuda/mps/xpu is used if available.
-        When an argument cannot be None, the corresponding field is never None after this call.
+
+        Note:
+          When an input argument cannot be `None`, the corresponding field is
+          never `None` after this call.
+
+        Parameters:
+          optimizer: the optimizer to use for training
+          scheduler: an optional learning rate scheduler used after every batch
+          loss: the loss function to minimize
+          metrics: a dictionary of additional metrics to compute, each being an
+            object implementing the `MetricProtocol` (reset/update/compute), e.g.,
+            a `torchmetrics.Metric`
+          initial_epoch: the initial epoch of the model used during training and evaluation
+          logdir: an optional directory where TensorBoard logs should be written
+          device: the device to move the module to; when "auto", or `keep_previous`
+            with no previously set device, the first of cuda/mps/xpu is used if available
+
+        Returns:
+          self
         """
         self.optimizer = optimizer if optimizer is not keep_previous else self.optimizer
         self.scheduler = scheduler if scheduler is not keep_previous else self.scheduler
