@@ -23,7 +23,7 @@ parser.add_argument("--verify", default=False, action="store_true", help="Verify
 
 class Convolution:
     def __init__(
-        self, filters: int, kernel_size: int, stride: int, input_shape: list[int], seed: int, verify: bool,
+        self, filters: int, kernel_size: int, stride: int, input_shape: list[int], verify: bool,
     ) -> None:
         # Create a convolutional layer with the given arguments and given input shape.
         # Note that we use NHWC format, so the MNIST images have shape [28, 28, 1].
@@ -94,7 +94,7 @@ class Model:
         self._convs = []
         for layer in args.cnn.split(","):
             filters, kernel_size, stride = map(int, layer.split("-"))
-            self._convs.append(Convolution(filters, kernel_size, stride, input_shape, args.seed, args.verify))
+            self._convs.append(Convolution(filters, kernel_size, stride, input_shape, args.verify))
             input_shape = [(input_shape[0] - kernel_size) // stride + 1,
                            (input_shape[1] - kernel_size) // stride + 1, filters]
 
