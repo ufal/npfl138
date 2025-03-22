@@ -17,9 +17,10 @@ kernel has shape `[kernel_height, kernel_width, in_channels, out_channels]`.
 These shapes are consistent with the course slides, but are different from the
 native PyTorch format.
 
-Of course, you cannot use any PyTorch convolutional operation (instead,
-implement the forward and backward pass using matrix multiplication and other
-operations), nor the `.backward()` for gradient computation.
+Of course, you cannot use any PyTorch convolutional operation (including `fold`
+and `unfold`; instead, implement the forward and backward pass using matrix
+multiplication and other operations), nor the `.backward()` for gradient
+computation.
 
 To make debugging easier, the template supports a `--verify` option, which
 allows comparing the forward pass and the three gradients you compute in the
