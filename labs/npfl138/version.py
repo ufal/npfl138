@@ -6,6 +6,7 @@
 
 __version__ = "2425.5.0"
 
+
 def require_version(required_version: str) -> None:
     """Make sure the installed version is at least `required_version`.
 
