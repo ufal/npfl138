@@ -60,13 +60,14 @@ class Model(npfl138.TrainableModule):
         #   connections, and manually perform them in the forward pass.
         #
         # It might be difficult to compute the number of features after the `F` layer. You can
-        # nevertheless use the `torch.nn.LazyLinear` and `torch.nn.LazyConv2d` layers, which
-        # do not require the number of input features to be specified in the constructor.
-        # However, after the whole model is constructed, you must call the model once on a dummy input
-        # so that the number of features is computed and the model parameters are initialized.
-        # To that end, you can use for example
+        # nevertheless use the `torch.nn.LazyLinear`, `torch.nn.LazyConv2d`, and `torch.nn.LazyBatch2d`
+        # layers, which do not require the number of input features to be specified in the constructor.
+        # During `__init__`, these layers do not allocate their parameters, and only do so when
+        # they are first called on a tensor, at which point the number of input features is known.
+        # During this first call they also change themselves to the corresponding `torch.nn.Linear` etc.
+        # This first call might be the first training batch, or you can call the model on a dummy input
         #   self.eval()(torch.zeros(1, MNIST.C, MNIST.H, MNIST.W))
-        # where the `self.eval()` is necessary to avoid the batchnorms to update their running statistics.
+        # where the `self.eval()` is necessary to avoid the BatchNorms to update their running statistics.
 
         # TODO: Finally, add the final Linear output layer with `MNIST.LABELS` units.
         ...
