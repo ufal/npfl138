@@ -93,7 +93,7 @@ class TFRecordDataset(torch.utils.data.Dataset):
 
         typecode_to_dtype = {"B": torch.uint8, "f": torch.float32, "q": torch.int64, "Q": torch.uint64}
         for key, value in arrays.items():
-            arrays[key] = torch.asarray(value, dtype=typecode_to_dtype[value.typecode], copy=True)
+            arrays[key] = torch.asarray(value or [], dtype=typecode_to_dtype[value.typecode], copy=True)
         for key, value in indices.items():
-            indices[key] = torch.asarray(value, dtype=typecode_to_dtype[value.typecode], copy=True)
+            indices[key] = torch.asarray(value or [], dtype=typecode_to_dtype[value.typecode], copy=True)
         return arrays, indices
