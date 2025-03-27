@@ -11,7 +11,7 @@ import torchvision.transforms.v2 as v2
 
 import bboxes_utils
 import npfl138
-npfl138.require_version("2425.6")
+npfl138.require_version("2425.6.1")
 from npfl138.datasets.svhn import SVHN
 
 # TODO: Define reasonable defaults and optionally more parameters.
