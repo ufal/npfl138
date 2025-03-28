@@ -4,6 +4,8 @@
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides.pdf/npfl138-2425-06.pdf, PDF Slides
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-06-czech.mp4, CZ Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-06-english.mp4, EN Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-06-english.cnn_manual.mp4, EN cnn_manual
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-06-english.practicals.mp4, EN Practicals
 #### Questions: #lecture_6_questions
 #### Lecture assignment: bboxes_utils
 #### Lecture assignment: svhn_competition
