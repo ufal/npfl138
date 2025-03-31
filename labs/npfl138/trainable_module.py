@@ -7,10 +7,13 @@ import argparse
 import json
 import os
 import sys
+import time
 from typing import Literal, Protocol, TextIO, TypeAlias, TypeVar
 
 import numpy as np
 import torch
+import torch.utils.tensorboard
+import tqdm
 
 Tensor: TypeAlias = torch.Tensor | torch.nn.utils.rnn.PackedSequence
 TensorOrTensors: TypeAlias = Tensor | tuple[Tensor, ...] | list[Tensor]
@@ -150,10 +153,6 @@ class TrainableModule(torch.nn.Module):
     or a tuple of those. However, when there are multiple outputs, you
     must handle loss and metrics computation manually.
     """
-    from torch.utils.tensorboard import SummaryWriter as _SummaryWriter
-    from time import time as _time
-    from tqdm import tqdm as _tqdm
-
     STOP_TRAINING: Literal["stop_training"] = "stop_training"
     """A constant returned by callbacks to stop the training."""
 
@@ -277,9 +276,9 @@ class TrainableModule(torch.nn.Module):
             self.loss_tracker.reset()
             for metric in self.metrics.values():
                 metric.reset()
-            start = self._time()
+            start = time.time()
             epoch_message = f"Epoch {self.epoch}/{epochs}"
-            data_and_progress = self._tqdm(
+            data_and_progress = tqdm.tqdm(
                 dataloader, epoch_message, unit="batch", leave=False, disable=None if console == 2 else console < 2)
             for batch in data_and_progress:
                 xs, y = validate_batch_input_output(batch)
@@ -295,7 +294,7 @@ class TrainableModule(torch.nn.Module):
                 logs |= {f"dev_{k}": v for k, v in self.eval().evaluate(dev, log_as=None).items()}
             for callback in callbacks:
                 stop_training = callback(self.eval(), self.epoch, logs) == self.STOP_TRAINING or stop_training
-            self.log_metrics(logs, epochs, self._time() - start, console)
+            self.log_metrics(logs, epochs, time.time() - start, console)
         self.eval()
         return logs
 
@@ -372,7 +371,7 @@ class TrainableModule(torch.nn.Module):
         self.loss_tracker.reset()
         for metric in self.metrics.values():
             metric.reset()
-        start = self._time()
+        start = time.time()
         for batch in dataloader:
             xs, y = validate_batch_input_output(batch)
             xs = tuple(x.to(self.device) for x in (xs if is_sequence(xs) else (xs,)))
@@ -383,7 +382,7 @@ class TrainableModule(torch.nn.Module):
         for callback in callbacks:
             callback(self, self.epoch, logs)
         if log_as is not None:
-            self.log_metrics(logs, elapsed=self._time() - start, console=console)
+            self.log_metrics(logs, elapsed=time.time() - start, console=console)
         return logs
 
     def test_step(self, xs: TensorOrTensors, y: TensorOrTensors) -> Logs:
@@ -630,7 +629,7 @@ class TrainableModule(torch.nn.Module):
             self._log_file = open(os.path.join(self.logdir, "logs.txt"), "a", encoding="utf-8")
         return self._log_file
 
-    def get_tb_writer(self, name: str) -> _SummaryWriter:
+    def get_tb_writer(self, name: str) -> torch.utils.tensorboard.SummaryWriter:
         """Possibly create and return a TensorBoard writer for the given name.
 
         To use this method, nonempty `logdir` must have been set in `configure`.
@@ -640,5 +639,5 @@ class TrainableModule(torch.nn.Module):
         """
         assert self.logdir is not None, "Cannot use get_tb_writer when logdir is not set."
         if name not in self._tb_writers:
-            self._tb_writers[name] = self._SummaryWriter(os.path.join(self.logdir, name))
+            self._tb_writers[name] = torch.utils.tensorboard.SummaryWriter(os.path.join(self.logdir, name))
         return self._tb_writers[name]
