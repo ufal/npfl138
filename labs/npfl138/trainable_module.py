@@ -16,9 +16,12 @@ import torch.utils.tensorboard
 import tqdm
 
 Tensor: TypeAlias = torch.Tensor | torch.nn.utils.rnn.PackedSequence
+"""A type alias for a single tensor or a packed sequence of tensors."""
 TensorOrTensors: TypeAlias = Tensor | tuple[Tensor, ...] | list[Tensor]
+"""A type alias for a single tensor/packed sequence of a sequence of them."""
 
 Logs: TypeAlias = dict[str, float]
+"""A dictionary of logs, with keys being the log names and values being the log values."""
 
 Self: TypeVar = TypeVar("Self", bound="TrainableModule")
 
