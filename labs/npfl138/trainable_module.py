@@ -45,7 +45,8 @@ class CallbackProtocol(Protocol):
     def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> Literal["stop_training"] | None:
         """Represents a callback called after every training epoch.
 
-        If the callback returns `module.STOP_TRAINING`, the training stops.
+        If the callback returns [TrainableModule.STOP_TRAINING][npfl138.TrainableModule.STOP_TRAINING],
+        the training stops.
 
         Parameters:
           module: the module being trained
@@ -53,7 +54,8 @@ class CallbackProtocol(Protocol):
           logs: a dictionary of logs, newly computed metric or losses should be added here
 
         Returns:
-          `module.STOP_TRAINING` to stop the training, or `None` to continue
+          [TrainableModule.STOP_TRAINING][npfl138.TrainableModule.STOP_TRAINING] to stop the training;
+          `None` to continue.
         """
         ...
 
@@ -160,7 +162,7 @@ class TrainableModule(torch.nn.Module):
         """Initialize the module, optionally with an existing PyTorch module.
 
         Parameters:
-          module: An optional existing PyTorch module to wrap, e.g., a `torch.nn.Sequential`
+          module: An optional existing PyTorch module to wrap, e.g., a [torch.nn.Sequential][]
             or a pretrained Transformer. If given, the module still must be configured.
         """
         super().__init__()
@@ -193,16 +195,17 @@ class TrainableModule(torch.nn.Module):
           never `None` after this call.
 
         Parameters:
-          optimizer: the optimizer to use for training
-          scheduler: an optional learning rate scheduler used after every batch
-          loss: the loss function to minimize
-          metrics: a dictionary of additional metrics to compute, each being an
-            object implementing the `MetricProtocol` (reset/update/compute), e.g.,
-            a `torchmetrics.Metric`
-          initial_epoch: the initial epoch of the model used during training and evaluation
-          logdir: an optional directory where TensorBoard logs should be written
-          device: the device to move the module to; when "auto", or `keep_previous`
-            with no previously set device, the first of cuda/mps/xpu is used if available
+          optimizer: The optimizer to use for training.
+          scheduler: An optional learning rate scheduler used after every batch.
+          loss: The loss function to minimize, implementing the
+            [LossProtocol][npfl138.trainable_module.LossProtocol].
+          metrics: A dictionary of additional metrics to compute, each being an
+            object implementing the [MetricProtocol][npfl138.trainable_module.MetricProtocol]
+            (reset/update/compute), e.g., a `torchmetrics.Metric`.
+          initial_epoch: The initial epoch of the model used during training and evaluation.
+          logdir: An optional directory where textual and TensorBoard logs should be stored.
+          device: The device to move the module to. When "auto", or `keep_previous`
+            with no previously set device, the first of cuda/mps/xpu is used if available.
 
         Returns:
           self
@@ -254,9 +257,10 @@ class TrainableModule(torch.nn.Module):
           dev: An optional development dataset to evaluate after every epoch, with the
             same format as the training dataset.
           callbacks: A list of callbacks to call after every epoch, each implementing
-            the CallbackProtocol with arguments `self`, `epoch`, and `logs`, possibly returning
-            `TrainableModule.STOP_TRAINING` to stop the training (note that the module is set
-            to evaluation mode before calling each callback).
+            the [CallbackProtocol][npfl138.trainable_module.CallbackProtocol]
+            with arguments `self`, `epoch`, and `logs`, possibly returning
+            [TrainableModule.STOP_TRAINING](npfl138.TrainableModule.STOP_TRAINING] to stop the
+            training (note that the module is set to evaluation mode before calling each callback).
           log_graph: Controls whether to log the model graph to TensorBoard.
           console: Controls the console verbosity: 0 for silent, 1 for epoch logs, 2 for
             additional only-when-writing-to-console progress bar, 3 for persistent progress bar.
@@ -362,7 +366,8 @@ class TrainableModule(torch.nn.Module):
             the inputs and outputs can be either a single tensor or a sequence of tensors.
           log_as: The name of the dataset used in the logs; when `None`, no logs are written.
           callbacks: A list of callbacks to call after the evaluation, each implementing
-            the CallbackProtocol with arguments `self`, `epoch`, and `logs` arguments.
+            the [CallbackProtocol][npfl138.trainable_module.CallbackProtocol] with arguments
+            `self`, `epoch`, and `logs` arguments.
           console: Controls the console verbosity: 0 for silent, 1 for a single message.
             The default is 1, but be overridden by the `CONSOLE` environment variable.
         """
@@ -515,7 +520,7 @@ class TrainableModule(torch.nn.Module):
         """Save a JSON-serializable configuration to the given path.
 
         The configuration can be given as a dictionary or as keyword arguments
-        and the configuration values might also be `argparse.Namespace` objects.
+        and the configuration values might also be [argparse.Namespace][] objects.
 
         Parameters:
           path: The path to save the configuration to; a `.json` extension is recommended.
