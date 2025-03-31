@@ -340,8 +340,8 @@ class TrainableModule(torch.nn.Module):
           y: The target output of the model, either a single tensor or a sequence of tensors.
           *xs: The inputs to the model, unpacked, if the input was a sequence of tensors.
 
-          Returns:
-            logs: A dictionary of computed metrics.
+        Returns:
+          logs: A dictionary of computed metrics.
         """
         for metric in self.metrics.values():
             metric.update(y_pred, y)
