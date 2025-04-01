@@ -2,7 +2,7 @@
 #### Date: Apr 1
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides/?07
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides.pdf/npfl138-2425-07.pdf, PDF Slides
-#### Questions: #lecture_8_questions
+#### Questions: #lecture_7_questions
 
 - Sequence modelling using Recurrent Neural Networks (RNN) [Chapter 10 until Section 10.2.1 (excluding) of DLB]
 - The challenge of long-term dependencies [Section 10.7 of DLB]
