@@ -2,6 +2,8 @@
 #### Date: Apr 1
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides/?07
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides.pdf/npfl138-2425-07.pdf, PDF Slides
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-07-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-07-english.mp4, EN Lecture
 #### Questions: #lecture_7_questions
 
 - Sequence modelling using Recurrent Neural Networks (RNN) [Chapter 10 until Section 10.2.1 (excluding) of DLB]
