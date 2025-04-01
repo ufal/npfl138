@@ -124,3 +124,23 @@
   a convolutional kernel $K$ with size $N \times M$, stride $S$ and $O$ output
   channels. Write down (or derive) the equation of transposed convolution
   (or equivalently backpropagation through a convolution to its inputs). [5]
+
+#### Questions@:, Lecture 7 Questions
+- Write down how the Long Short-Term Memory (LSTM) cell operates, including
+  the explicit formulas. Also mention the forget gate bias. [10]
+
+- Write down how the Gated Recurrent Unit (GRU) operates, including
+  the explicit formulas. [10]
+
+- Why the usual dropout cannot be used on recurrent state? Describe
+  how the problem can be alleviated with variational dropout. [5]
+
+- Describe layer normalization including all its parameters, and write down how
+  it is computed (be sure to explicitly state over what is being normalized in
+  case of fully connected layers and convolutional layers). [5]
+
+- Draw a tagger architecture utilizing word embeddings, recurrent
+  character-level word embeddings (including how are these computed from
+  individual characters), and two sentence-level bidirectional RNNs (explaining
+  the bidirectionality) with a residual connection. Where would you put the
+  dropout layers? [10]
