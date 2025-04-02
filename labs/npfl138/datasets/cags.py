@@ -73,18 +73,24 @@ class CAGS:
 
     # The MaskIoUMetric
     class MaskIoUMetric(torch.nn.Module):
-        """MaskIoUMetric computes IoU for CAGS dataset masks predicted by binary classification"""
-        def __init__(self):
+        """MaskIoUMetric computes IoU for CAGS dataset masks predicted by binary classification
+
+        Parameters:
+          from_logits: If `True`, the predictions are expected to be logits; otherwise, they
+            are probabilities (the default). However, the target masks must always be probabilities.
+        """
+        def __init__(self, from_logits=False):
             super().__init__()
             self.register_buffer("iou", torch.tensor(0.0, dtype=torch.float32), persistent=False)
             self.register_buffer("count", torch.tensor(0, dtype=torch.int64), persistent=False)
+            self._prediction_threshold = 0.0 if from_logits else 0.5
 
         def reset(self):
             self.iou.zero_()
             self.count.zero_()
 
         def update(self, y_pred: torch.Tensor, y_true: torch.Tensor) -> None:
-            y_pred_mask = (y_pred.detach() >= 0.5).reshape([-1, CAGS.H * CAGS.W])
+            y_pred_mask = (y_pred.detach() >= self._prediction_threshold).reshape([-1, CAGS.H * CAGS.W])
             y_true_mask = (y_true.detach() >= 0.5).reshape([-1, CAGS.H * CAGS.W])
 
             intersection = torch.logical_and(y_pred_mask, y_true_mask).float().sum(dim=1)
