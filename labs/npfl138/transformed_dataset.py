@@ -9,31 +9,67 @@ import torch
 
 
 class TransformedDataset(torch.utils.data.Dataset):
+    """A dataset capable of applying transformations to its items and batches.
+
+    """
     def __init__(self, dataset: torch.utils.data.Dataset) -> None:
+        """Create a new transformed dataset using the provided dataset.
+
+        Parameters:
+          dataset: The source dataset implementing `__len__` and `__getitem__`.
+        """
         self._dataset = dataset
 
     def __len__(self) -> int:
+        """Return the number of items in the dataset."""
         return len(self._dataset)
 
     def __getitem__(self, index: int) -> Any:
+        """Return the item at the specified index."""
         item = self._dataset[index]
         if self.transform is not None:
             return self.transform(*item) if isinstance(item, tuple) else self.transform(item)
         return item
 
+    @property
+    def dataset(self) -> torch.utils.data.Dataset:
+        """Return the source dataset."""
+        return self._dataset
+
     transform: Callable | None = None
+    """If given, `transform` is called on each item before returning it.
+
+    If the dataset item is a tuple, `transform` is called with the tuple unpacked.
+    """
 
     collate: Callable | None = None
+    """If given, `collate` is called on a list of items before returning them as a batch."""
 
     transform_batch: Callable | None = None
+    """If given, `transform_batch` is called on a batch before returning it."""
 
     def collate_fn(self, batch: list[Any]) -> Any:
+        """A function for a DataLoader to collate a batch of items using `collate` and/or `transform_batch`.
+
+        This function is used as the `collate_fn` parameter of a DataLoader when `collate` or `transform_batch` is set.
+
+        Parameters:
+          batch: A list of items to collate and/or pass through `transform_batch`.
+        """
         batch = self.collate(batch) if self.collate is not None else torch.utils.data.dataloader.default_collate(batch)
         if self.transform_batch is not None:
             batch = self.transform_batch(batch)
         return batch
 
     def dataloader(self, batch_size=1, *, shuffle=False, num_workers=0, **kwargs) -> torch.utils.data.DataLoader:
+        """Create a DataLoader for this dataset.
+
+        This method is a convenience wrapper around `torch.utils.data.DataLoader`
+        setting up the required parameters. All arguments are passed to the DataLoader,
+        however, when `num_workers` is greater than 0, `persistent_workers` is set to True.
+        When `collate` or `transform_batch` is set, the `self.collate_fn` is passed as the
+        `collate_fn` parameter.
+        """
         if not shuffle and kwargs.get("generator", None) is None:
             # If not shuffling and no generator is given, pass an explicit generator to the Dataloader.
             # Otherwise, the global random generator would generate a number on every iter(dataloader) call.
