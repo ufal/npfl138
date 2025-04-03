@@ -3,6 +3,37 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+"""The Keras-inspired high-level API for training PyTorch models.
+
+The [TrainableModule][npfl138.trainable_module.TrainableModule] class is
+a high-level API for training PyTorch models. It is a subclass of
+[torch.nn.Module][] and:
+
+- It provides a high-level API for training, evaluation, and prediction
+  via [fit][npfl138.TrainableModule.fit], [evaluate][npfl138.TrainableModule.evaluate],
+  and [predict][npfl138.TrainableModule.predict] methods. Each can be customized
+  by overriding the corresponding [train_step][npfl138.TrainableModule.train_step],
+  [test_step][npfl138.TrainableModule.test_step], or [predict_step][npfl138.TrainableModule.predict_step]
+  methods.
+
+- The module automatically handles moving the model to a specified device,
+  using the first available accelerator (GPU, MPS, XPU) by default. To this end,
+  [configure][npfl138.TrainableModule.configure] or
+  [load_weights][npfl138.TrainableModule.load_weights] must always be called
+  first before using the high-level API.
+
+- The module provides API for serialization and deserialization of the model,
+  both the weights ([save_weights][npfl138.TrainableModule.save_weights],
+  [load_weights][npfl138.TrainableModule.load_weights]) and the configuration
+  ([save_config][npfl138.TrainableModule.save_config],
+  [load_config][npfl138.TrainableModule.load_config]).
+
+- The module keeps a collection of metrics implementing the
+  [MetricProtocol][npfl138.trainable_module.MetricProtocol] (e.g., any
+  metric from `torchmetric`), and stores the computed logs in a text
+  file, in TensorBoard logs, and in the console.
+"""
+
 import argparse
 import json
 import os
