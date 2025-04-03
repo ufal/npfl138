@@ -18,7 +18,7 @@
       the following fields:
         - `strings`: a Python list containing input sentences, each being
           a list of strings (words/lemmas/tags)
-        - `word_vocab`: a [npfl138.Vocabulary][] object capable of mapping words to
+        - `string_vocab`: a [npfl138.Vocabulary][] object capable of mapping words to
           indices. It is constructed on the train set and shared by the dev
           and test sets
         - `char_vocab`: a [npfl138.Vocabulary][] object capable of mapping characters
@@ -60,7 +60,7 @@ class MorphoDataset:
 
     class Factor:
         """A factor of the dataset, i.e., words, lemmas or tags."""
-        word_vocab: Vocabulary
+        string_vocab: Vocabulary
         """The word vocabulary of this factor."""
         char_vocab: Vocabulary
         """The character vocabulary of this factor."""
@@ -73,11 +73,11 @@ class MorphoDataset:
         def finalize(self, train: Self | None = None) -> None:
             # Create vocabularies
             if train:
-                self.word_vocab = train.word_vocab
+                self.string_vocab = train.string_vocab
                 self.char_vocab = train.char_vocab
             else:
                 strings = sorted(set(string for sentence in self.strings for string in sentence))
-                self.word_vocab = Vocabulary(strings, add_unk=True)
+                self.string_vocab = Vocabulary(strings, add_unk=True)
 
                 bow_eow = ["[BOW]", "[EOW]"]
                 self.char_vocab = Vocabulary(bow_eow + sorted(set(char for string in strings for char in string)),
