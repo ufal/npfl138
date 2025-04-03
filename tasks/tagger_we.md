@@ -7,7 +7,7 @@
 In this assignment you will create a simple part-of-speech tagger. For training
 and evaluation, we will use Czech dataset containing tokenized sentences, each
 word annotated by gold lemma and part-of-speech tag. The
-[morpho_dataset.py](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/docs/datasets/morpho_dataset/)
+[morpho_dataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/docs/datasets/morpho_dataset/)
 module (down)loads the dataset and uses
 [Vocabulary](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/docs/vocabulary/)
 to provide mappings between strings and integers.
