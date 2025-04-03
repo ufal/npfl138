@@ -21,14 +21,15 @@ class Vocabulary:
     PAD: int = 0
     """The index of the padding token."""
     UNK: int = 1
-    """The index of the unknown token."""
+    """The index of the unknown token, if present."""
 
-    def __init__(self, strings: Sequence[str]) -> None:
+    def __init__(self, strings: Sequence[str], add_unk: bool = False) -> None:
         """Initializes the vocabulary with the given list of strings.
 
-        The `Vocabulary.PAD` and `Vocabulary.UNK` tokens are always present in the vocabulary.
+        The `Vocabulary.PAD` is always the first token in the vocabulary;
+        `Vocabulary.UNK` is the second token but only when `add_unk=True`.
         """
-        self._strings = ["[PAD]", "[UNK]"]
+        self._strings = ["[PAD]"] + (["[UNK]"] if add_unk else [])
         self._strings.extend(strings)
         self._string_map = {string: index for index, string in enumerate(self._strings)}
 
