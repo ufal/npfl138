@@ -12,12 +12,12 @@
 - Each dataset is a [torch.utils.data.Dataset][] providing
     - `__len__`: number of sentences in the dataset
     - `__getitem__`: return the requested sentence as an `Element`
-      instance, which is a dictionary with keys "forms"/"lemmas"/"tags",
+      instance, which is a dictionary with keys "words"/"lemmas"/"tags",
       each being a list of strings
-    - `forms`, `lemmas`, `tags`: instances of type `Factor` containing
+    - `words`, `lemmas`, `tags`: instances of type `Factor` containing
       the following fields:
         - `strings`: a Python list containing input sentences, each being
-          a list of strings (forms/lemmas/tags)
+          a list of strings (words/lemmas/tags)
         - `word_vocab`: a [npfl138.Vocabulary][] object capable of mapping words to
           indices. It is constructed on the train set and shared by the dev
           and test sets
@@ -25,12 +25,12 @@
           to  indices. It is constructed on the train set and shared by the dev
           and test sets
     - `cle_batch`: a method for creating inputs for character-level embeddings.
-      It takes a list of sentences, each being a list of string forms, and produces
+      It takes a list of sentences, each being a list of string words, and produces
       a tuple of two tensors:
-        - `unique_forms` with shape `[num_unique_forms, max_form_length]` containing
-          each unique form as a sequence of character ids
-        - `forms_indices` with shape `[num_sentences, max_sentence_length]`
-          containing for every form its index in `unique_forms`
+        - `unique_words` with shape `[num_unique_words, max_word_length]` containing
+          each unique word as a sequence of character ids
+        - `words_indices` with shape `[num_sentences, max_sentence_length]`
+          containing for every word its index in `unique_words`
 """
 import os
 import sys
@@ -55,11 +55,11 @@ class MorphoDataset:
 
     _URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/datasets/"
 
-    Element = TypedDict("Element", {"forms": list[str], "lemmas": list[str], "tags": list[str]})
+    Element = TypedDict("Element", {"words": list[str], "lemmas": list[str], "tags": list[str]})
     """The type of a single dataset element, i.e., a single sentence."""
 
     class Factor:
-        """A factor of the dataset, i.e., forms, lemmas or tags."""
+        """A factor of the dataset, i.e., words, lemmas or tags."""
         word_vocab: Vocabulary
         """The word vocabulary of this factor."""
         char_vocab: Vocabulary
@@ -116,8 +116,8 @@ class MorphoDataset:
                 factor.finalize(train._factors[i] if train else None)
 
         @property
-        def forms(self) -> "MorphoDataset.Factor":
-            """Factor containing the forms of the dataset."""
+        def words(self) -> "MorphoDataset.Factor":
+            """Factor containing the words of the dataset."""
             return self._factors[0]
 
         @property
@@ -136,32 +136,32 @@ class MorphoDataset:
 
         def __getitem__(self, index: int) -> "MorphoDataset.Element":
             """Return the `index`-th element of the dataset as a dictionary."""
-            return {"forms": self.forms.strings[index],
+            return {"words": self.words.strings[index],
                     "lemmas": self.lemmas.strings[index],
                     "tags": self.tags.strings[index]}
 
-        def cle_batch(self, forms: list[list[str]]) -> tuple[torch.Tensor, torch.Tensor]:
+        def cle_batch(self, words: list[list[str]]) -> tuple[torch.Tensor, torch.Tensor]:
             """Create a batch suitable for computation of character-level word embeddings.
 
             Parameters:
-              forms: A batch of sentences, each being a list of string forms.
+              words: A batch of sentences, each being a list of string words.
 
             Returns:
-              unique_forms: A tensor with shape `[num_unique_forms, max_form_length]`
-                containing each unique form as a sequence of character ids.
-              forms_indices: A tensor with shape `[num_sentences, max_sentence_length]`
-                containing for every form from the batch its index in `unique_forms`.
+              unique_words: A tensor with shape `[num_unique_words, max_word_length]`
+                containing each unique word as a sequence of character ids.
+              words_indices: A tensor with shape `[num_sentences, max_sentence_length]`
+                containing for every word from the batch its index in `unique_words`.
             """
-            unique_strings = list(set(form for sentence in forms for form in sentence))
-            unique_string_map = {form: index + 1 for index, form in enumerate(unique_strings)}
-            unique_forms = torch.nn.utils.rnn.pad_sequence(
+            unique_strings = list(set(word for sentence in words for word in sentence))
+            unique_string_map = {word: index + 1 for index, word in enumerate(unique_strings)}
+            unique_words = torch.nn.utils.rnn.pad_sequence(
                 [torch.tensor([MorphoDataset.UNK])]
-                + [torch.tensor(self.forms.char_vocab.indices(form)) for form in unique_strings], batch_first=True)
-            forms_indices = torch.nn.utils.rnn.pad_sequence(
-                [torch.tensor([unique_string_map[form] for form in sentence]) for sentence in forms], batch_first=True)
-            return unique_forms, forms_indices
+                + [torch.tensor(self.words.char_vocab.indices(word)) for word in unique_strings], batch_first=True)
+            words_indices = torch.nn.utils.rnn.pad_sequence(
+                [torch.tensor([unique_string_map[word] for word in sentence]) for sentence in words], batch_first=True)
+            return unique_words, words_indices
 
-        def cle_batch_packed(self, forms: list[list[str]]) -> tuple[torch.nn.utils.rnn.PackedSequence,
+        def cle_batch_packed(self, words: list[list[str]]) -> tuple[torch.nn.utils.rnn.PackedSequence,
                                                                     torch.nn.utils.rnn.PackedSequence]:
             """Create a batch suitable for computation of character-level word embeddings.
 
@@ -169,22 +169,22 @@ class MorphoDataset:
             of padded sequences.
 
             Parameters:
-              forms: A batch of sentences, each being a list of string forms.
+              words: A batch of sentences, each being a list of string words.
 
             Returns:
-              unique_forms: A PackedSequence containing each unique form as
+              unique_words: A PackedSequence containing each unique word as
                 a sequence of character ids.
-              forms_indices: A PackedSequence containing for every form from
-              the batch its index in `unique_forms`.
+              words_indices: A PackedSequence containing for every word from
+              the batch its index in `unique_words`.
             """
-            unique_strings = list(set(form for sentence in forms for form in sentence))
-            unique_string_map = {form: index + 1 for index, form in enumerate(unique_strings)}
-            unique_forms = torch.nn.utils.rnn.pack_sequence(
+            unique_strings = list(set(word for sentence in words for word in sentence))
+            unique_string_map = {word: index + 1 for index, word in enumerate(unique_strings)}
+            unique_words = torch.nn.utils.rnn.pack_sequence(
                 [torch.tensor([MorphoDataset.UNK])]
-                + [torch.tensor(self.forms.char_vocab.indices(form)) for form in unique_strings], False)
-            forms_indices = torch.nn.utils.rnn.pack_sequence(
-                [torch.tensor([unique_string_map[form] for form in sentence]) for sentence in forms], False)
-            return unique_forms, forms_indices
+                + [torch.tensor(self.words.char_vocab.indices(word)) for word in unique_strings], False)
+            words_indices = torch.nn.utils.rnn.pack_sequence(
+                [torch.tensor([unique_string_map[word] for word in sentence]) for sentence in words], False)
+            return unique_words, words_indices
 
     def __init__(self, dataset, max_sentences=None):
         """Load the `dataset` dataset, downloading it if necessary.
