@@ -32,6 +32,8 @@ class Vocabulary:
         self._strings = ["[PAD]"] + (["[UNK]"] if add_unk else [])
         self._strings.extend(strings)
         self._string_map = {string: index for index, string in enumerate(self._strings)}
+        if not add_unk:
+            self.UNK = None
 
     def __len__(self) -> int:
         """Returns the number of strings in the vocabulary."""
@@ -49,10 +51,10 @@ class Vocabulary:
         """Returns the list of strings for the given indices."""
         return [self._strings[index] for index in indices]
 
-    def index(self, string: str) -> int:
+    def index(self, string: str) -> int | None:
         """Returns the index of a given string in the vocabulary."""
-        return self._string_map.get(string, Vocabulary.UNK)
+        return self._string_map.get(string, self.UNK)
 
-    def indices(self, strings: Sequence[str]) -> list[int]:
+    def indices(self, strings: Sequence[str]) -> list[int | None]:
         """Returns the list of indices for given strings."""
-        return [self._string_map.get(string, Vocabulary.UNK) for string in strings]
+        return [self._string_map.get(string, self.UNK) for string in strings]
