@@ -77,10 +77,11 @@ class MorphoDataset:
                 self.char_vocab = train.char_vocab
             else:
                 strings = sorted(set(string for sentence in self.strings for string in sentence))
-                self.word_vocab = Vocabulary(strings)
+                self.word_vocab = Vocabulary(strings, add_unk=True)
 
                 bow_eow = ["[BOW]", "[EOW]"]
-                self.char_vocab = Vocabulary(bow_eow + sorted(set(char for string in strings for char in string)))
+                self.char_vocab = Vocabulary(bow_eow + sorted(set(char for string in strings for char in string)),
+                                             add_unk=True)
 
     class Dataset(torch.utils.data.Dataset):
         def __init__(self, data_file: BinaryIO, train: Self | None = None, max_sentences: int | None = None) -> None:
