@@ -54,15 +54,15 @@ class Model(npfl138.TrainableModule):
         self._word_masking = ...
 
         # TODO: Create a `torch.nn.Embedding` layer for embedding the character ids
-        # from `train.forms.char_vocab` to dimensionality `args.cle_dim`.
+        # from `train.words.char_vocab` to dimensionality `args.cle_dim`.
         self._char_embedding = ...
 
         # TODO: Create a bidirectional `torch.nn.GRU` layer processing the character
         # embeddings, producing output of dimensionality `args.cle_dim`.
         self._char_rnn = ...
 
-        # TODO(tagger_we): Create a `torch.nn.Embedding` layer, embedding the form ids
-        # from `train.forms.word_vocab` to dimensionality `args.we_dim`.
+        # TODO(tagger_we): Create a `torch.nn.Embedding` layer, embedding the word ids
+        # from `train.words.word_vocab` to dimensionality `args.we_dim`.
         self._word_embedding = ...
 
         # TODO: Create an RNN layer, either `torch.nn.LSTM` or `torch.nn.GRU` depending
@@ -77,37 +77,37 @@ class Model(npfl138.TrainableModule):
         # producing logits for tag prediction; `train.tags.word_vocab` is the tag vocabulary.
         self._output_layer = ...
 
-    def forward(self, form_ids: torch.nn.utils.rnn.PackedSequence, unique_forms: torch.nn.utils.rnn.PackedSequence,
-                form_indices: torch.nn.utils.rnn.PackedSequence) -> torch.nn.utils.rnn.PackedSequence:
+    def forward(self, word_ids: torch.nn.utils.rnn.PackedSequence, unique_words: torch.nn.utils.rnn.PackedSequence,
+                word_indices: torch.nn.utils.rnn.PackedSequence) -> torch.nn.utils.rnn.PackedSequence:
         # The input arguments are `PackedSequence`s. A `PackedSequence` allows us to:
-        # - get the flattened data using `form_ids.data`; these are the data without
+        # - get the flattened data using `word_ids.data`; these are the data without
         #   padding elements, i.e., a 1D vector of shape `[sum_of_sentence_lengths]`;
         # - replace the data while keeping the sizes of the original sequences
-        #   by calling `form_ids._replace(data=...)` and getting a new `PackedSequence`.
+        #   by calling `word_ids._replace(data=...)` and getting a new `PackedSequence`.
         # Therefore, depending on the context, we need to use either the flattened
         # data or the `PackedSequence` object.
 
-        # TODO: Mask the input `form_ids` using the `self._word_masking` layer.
+        # TODO: Mask the input `word_ids` using the `self._word_masking` layer.
         hidden = ...
 
-        # TODO: Embed the masked form IDs in `hidden` using the word embedding layer.
+        # TODO: Embed the masked word IDs in `hidden` using the word embedding layer.
         hidden = ...
 
-        # TODO: Embed the `unique_forms` using the character embedding layer.
+        # TODO: Embed the `unique_words` using the character embedding layer.
         cle = ...
 
         # TODO: Pass the character embeddings through the character-level RNN.
         # The input to the RNN should be a `PackedSequence` with the same structure
-        # as `unique_forms`. Note that this time we are interested only in the
+        # as `unique_words`. Note that this time we are interested only in the
         # second output of the GRU call (the last hidden state of the RNN).
 
         # TODO: Concatenate the states of the forward and backward directions (in this order).
         cle = ...
 
-        # TODO: With `cle` being the character-level embeddings of the unique forms
-        # of shape `[num_unique_forms, 2 * cle_dim]`, create the representation of the
-        # (not necessary unique) sentence forms by indexing the character-level
-        # embeddings with the `form_indices`. The result should have an analogous structure
+        # TODO: With `cle` being the character-level embeddings of the unique words
+        # of shape `[num_unique_words, 2 * cle_dim]`, create the representation of the
+        # (not necessary unique) sentence words by indexing the character-level
+        # embeddings with the `word_indices`. The result should have an analogous structure
         # to word embeddings in `hidden`, just with a different dimensionality of the
         # embedding. You can use for example the `torch.nn.functional.embedding` function.
         cle = ...
@@ -115,8 +115,8 @@ class Model(npfl138.TrainableModule):
         # TODO: Concatenate the word embeddings with the character-level embeddings (in this order).
         hidden = ...
 
-        # TODO(tagger_we.packed): Process the embedded forms through the RNN layer, utilizing
-        # the `PackedSequence` structure of `form_ids` (i.e., the same sentence lengths).
+        # TODO(tagger_we.packed): Process the embedded words through the RNN layer, utilizing
+        # the `PackedSequence` structure of `word_ids` (i.e., the same sentence lengths).
         hidden = ...
 
         # TODO(tagger_we.packed): Sum the outputs of forward and backward directions.
@@ -126,7 +126,7 @@ class Model(npfl138.TrainableModule):
         hidden = ...
 
         # TODO(tagger_we.packed): Finally, produce output predictions as a `PackedSequence`
-        # with the same `PackedSequence` structure as `form_ids` (same sentence lengths).
+        # with the same `PackedSequence` structure as `word_ids` (same sentence lengths).
         hidden = ...
 
         return hidden
@@ -145,31 +145,31 @@ class Model(npfl138.TrainableModule):
 class TrainableDataset(npfl138.TransformedDataset):
     def transform(self, example):
         # TODO(tagger_we): Construct a single example, each consisting of the following pair:
-        # - a PyTorch tensor of integer ids of input forms as input,
+        # - a PyTorch tensor of integer ids of input words as input,
         # - a PyTorch tensor of integer tag ids as targets.
-        # To create the ids, use `word_vocab` of `self.dataset.forms` and `self.dataset.tags`.
-        form_ids = ...
+        # To create the ids, use `word_vocab` of `self.dataset.words` and `self.dataset.tags`.
+        word_ids = ...
         tag_ids = ...
         # Note that compared to `tagger_we`, we also return the original
-        # forms in order to be able to compute the character-level embeddings.
-        return form_ids, example["forms"], tag_ids
+        # words in order to be able to compute the character-level embeddings.
+        return word_ids, example["words"], tag_ids
 
     def collate(self, batch):
         # Construct a single batch, where `data` is a list of examples
         # generated by `transform`.
-        form_ids, forms, tag_ids = zip(*batch)
-        # TODO(tagger_we.packed): Combine `form_ids` into a `PackedSequence` by calling
+        word_ids, words, tag_ids = zip(*batch)
+        # TODO(tagger_we.packed): Combine `word_ids` into a `PackedSequence` by calling
         # `torch.nn.utils.rnn.pack_sequence` with `enforce_sorted=False`.
-        form_ids = ...
+        word_ids = ...
         # TODO: Create required inputs for the character-level embeddings using
-        # the provided `self.dataset.cle_batch_packed` function on `forms`. The function
+        # the provided `self.dataset.cle_batch_packed` function on `words`. The function
         # returns a pair of two PyTorch PackedSequences:
-        # - `unique_forms` containing each unique form as a sequence of character ids,
-        # - `forms_indices` containing for every form its index in `unique_forms`.
-        unique_forms, forms_indices = ...
-        # TODO(tagger_we): Process `tag_ids` analogously to `form_ids`.
+        # - `unique_words` containing each unique word as a sequence of character ids,
+        # - `words_indices` containing for every word its index in `unique_words`.
+        unique_words, words_indices = ...
+        # TODO(tagger_we): Process `tag_ids` analogously to `word_ids`.
         tag_ids = ...
-        return (form_ids, unique_forms, forms_indices), tag_ids
+        return (word_ids, unique_words, words_indices), tag_ids
 
 
 def main(args: argparse.Namespace) -> dict[str, float]:

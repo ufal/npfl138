@@ -8,7 +8,7 @@ import torch
 import torchmetrics
 
 import npfl138
-npfl138.require_version("2425.7")
+npfl138.require_version("2425.7.1")
 from npfl138.datasets.morpho_dataset import MorphoDataset
 from npfl138.datasets.morpho_analyzer import MorphoAnalyzer
 
@@ -50,8 +50,8 @@ def main(args: argparse.Namespace) -> None:
         # the prediction for each sentence is a vector of shape `[exactly_sentence_len, num_tags]`.)
         predictions = model.predict(test, data_with_labels=True)
 
-        for predicted_tags, forms in zip(predictions, morpho.test.forms.strings):
-            for predicted_tag in predicted_tags[:, :len(forms)].argmax(axis=0):
+        for predicted_tags, words in zip(predictions, morpho.test.words.strings):
+            for predicted_tag in predicted_tags[:, :len(words)].argmax(axis=0):
                 print(morpho.train.tags.word_vocab.string(predicted_tag), file=predictions_file)
             print(file=predictions_file)
 
