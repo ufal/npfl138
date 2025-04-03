@@ -8,7 +8,7 @@ import torch
 import torchmetrics
 
 import npfl138
-npfl138.require_version("2425.7.1")
+npfl138.require_version("2425.7.2")
 from npfl138.datasets.morpho_dataset import MorphoDataset
 
 parser = argparse.ArgumentParser()
@@ -31,7 +31,7 @@ class Model(npfl138.TrainableModule):
 
         # Create all needed layers.
         # TODO: Create a `torch.nn.Embedding` layer, embedding the word ids
-        # from `train.words.word_vocab` to dimensionality `args.we_dim`.
+        # from `train.words.string_vocab` to dimensionality `args.we_dim`.
         self._word_embedding = ...
 
         # TODO: Create an RNN layer, either `torch.nn.LSTM` or `torch.nn.GRU` depending
@@ -42,7 +42,7 @@ class Model(npfl138.TrainableModule):
         self._word_rnn = ...
 
         # TODO: Create an output linear layer (`torch.nn.Linear`) processing the RNN output,
-        # producing logits for tag prediction; `train.tags.word_vocab` is the tag vocabulary.
+        # producing logits for tag prediction; `train.tags.string_vocab` is the tag vocabulary.
         self._output_layer = ...
 
     def forward(self, word_ids: torch.Tensor) -> torch.Tensor:
@@ -78,7 +78,7 @@ class TrainableDataset(npfl138.TransformedDataset):
         # TODO: Construct a single example, each consisting of the following pair:
         # - a PyTorch tensor of integer ids of input words as input,
         # - a PyTorch tensor of integer tag ids as targets.
-        # To create the ids, use `word_vocab` of `self.dataset.words` and `self.dataset.tags`.
+        # To create the ids, use `string_vocab` of `self.dataset.words` and `self.dataset.tags`.
         word_ids = ...
         tag_ids = ...
         return word_ids, tag_ids

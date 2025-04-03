@@ -8,7 +8,7 @@ import torch
 import torchmetrics
 
 import npfl138
-npfl138.require_version("2425.7.1")
+npfl138.require_version("2425.7.2")
 from npfl138.datasets.morpho_dataset import MorphoDataset
 from npfl138.datasets.morpho_analyzer import MorphoAnalyzer
 
@@ -52,7 +52,7 @@ def main(args: argparse.Namespace) -> None:
 
         for predicted_tags, words in zip(predictions, morpho.test.words.strings):
             for predicted_tag in predicted_tags[:, :len(words)].argmax(axis=0):
-                print(morpho.train.tags.word_vocab.string(predicted_tag), file=predictions_file)
+                print(morpho.train.tags.string_vocab.string(predicted_tag), file=predictions_file)
             print(file=predictions_file)
 
 
