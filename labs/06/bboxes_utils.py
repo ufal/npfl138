@@ -9,7 +9,8 @@ import torch
 # Bounding boxes and anchors are expected to be PyTorch tensors,
 # where the last dimension has size 4.
 
-# For bounding boxes in pixel coordinates, the 4 values correspond to:
+# For bounding boxes in pixel coordinates, the 4 values correspond to
+# (top, left, bottom, right) with top <= bottom and left <= right.
 TOP: int = 0
 LEFT: int = 1
 BOTTOM: int = 2
