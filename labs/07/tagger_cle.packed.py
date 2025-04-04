@@ -96,12 +96,11 @@ class Model(npfl138.TrainableModule):
         # TODO: Embed the `unique_words` using the character embedding layer.
         cle = ...
 
-        # TODO: Pass the character embeddings through the character-level RNN.
+        # TODO: Pass the character embeddings through the character-level RNN,
+        # obtaining fixed-size representation of every unique word in the batch.
         # The input to the RNN should be a `PackedSequence` with the same structure
-        # as `unique_words`. Note that this time we are interested only in the
-        # second output of the GRU call (the last hidden state of the RNN).
-
-        # TODO: Concatenate the states of the forward and backward directions (in this order).
+        # as `unique_words`. Then, concatenate the states of the forward and backward
+        # directions (in this order).
         cle = ...
 
         # TODO: With `cle` being the character-level embeddings of the unique words
@@ -115,8 +114,9 @@ class Model(npfl138.TrainableModule):
         # TODO: Concatenate the word embeddings with the character-level embeddings (in this order).
         hidden = ...
 
-        # TODO(tagger_we.packed): Process the embedded words through the RNN layer, utilizing
-        # the `PackedSequence` structure of `word_ids` (i.e., the same sentence lengths).
+        # TODO(tagger_we.packed): Process the embedded words through the RNN layer, choosing the appropriate
+        # output. The input to the RNN should be a `PackedSequence` with the same structure
+        # as `word_ids` (i.e., the same sentence lengths).
         hidden = ...
 
         # TODO(tagger_we.packed): Sum the outputs of forward and backward directions.

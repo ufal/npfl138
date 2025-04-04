@@ -57,8 +57,8 @@ class Model(npfl138.TrainableModule):
         # Finally, also pass `batch_first=True` and `enforce_sorted=False` to the call.
         packed = ...
 
-        # Pass the `PackedSequence` through the RNN.
-        hidden, _ = self._word_rnn(packed)
+        # TODO: Pass the `PackedSequence` through the RNN, choosing the appropriate output.
+        packed = ...
 
         # TODO: Unpack the RNN output using the `torch.nn.utils.rnn.pad_packed_sequence` with
         # `batch_first=True` argument. Then sum the outputs of forward and backward directions.

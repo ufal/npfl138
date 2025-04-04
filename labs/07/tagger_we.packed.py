@@ -57,8 +57,9 @@ class Model(npfl138.TrainableModule):
         # TODO: Start by embedding the `word_ids` using the word embedding layer.
         hidden = ...
 
-        # TODO: Process the embedded words through the RNN layer, utilizing
-        # the `PackedSequence` structure of `word_ids` (i.e., the same sentence lengths).
+        # TODO: Process the embedded words through the RNN layer, choosing the appropriate
+        # output. The input to the RNN should be a `PackedSequence` with the same structure
+        # as `word_ids` (i.e., the same sentence lengths).
         hidden = ...
 
         # TODO: Sum the outputs of forward and backward directions.
