@@ -22,14 +22,14 @@ when word masking is not used, and are both accepted by ReCodEx._
 #### Tests Start: tagger_cle_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._
 
-1. `python3 tagger_cle.py --epochs=1 --max_sentences=1000 --rnn=LSTM --rnn_dim=16 --cle_dim=16`
+1. `python3 tagger_cle.py --epochs=1 --max_sentences=1000 --rnn=LSTM --rnn_dim=16 --cle_dim=24`
 ```
-Epoch 1/1 1.8s train_loss=2.2773 train_accuracy=0.3328 dev_loss=1.8841 dev_accuracy=0.4033
+Epoch 1/1 2.0s train_loss=2.2294 train_accuracy=0.3722 dev_loss=1.8014 dev_accuracy=0.4973
 ```
 
-2. `python3 tagger_cle.py --epochs=1 --max_sentences=1000 --rnn=LSTM --rnn_dim=16 --cle_dim=16 --word_masking=0.1`
+2. `python3 tagger_cle.py --epochs=1 --max_sentences=1000 --rnn=GRU --rnn_dim=16 --cle_dim=24 --word_masking=0.1`
 ```
-Epoch 1/1 1.8s train_loss=2.2828 train_accuracy=0.3280 dev_loss=1.8993 dev_accuracy=0.4017
+Epoch 1/1 1.9s train_loss=2.0588 train_accuracy=0.4126 dev_loss=1.4207 dev_accuracy=0.5601
 ```
 #### Tests End:
 #### Examples Start: tagger_cle_examples
@@ -44,12 +44,12 @@ Epoch 4/5 11.0s train_loss=0.0296 train_accuracy=0.9923 dev_loss=0.1712 dev_accu
 Epoch 5/5 10.9s train_loss=0.0197 train_accuracy=0.9952 dev_loss=0.1713 dev_accuracy=0.9474
 ```
 
-- `python3 tagger_cle.py --epochs=5 --max_sentences=5000 --rnn=LSTM --rnn_dim=32 --cle_dim=32 --word_masking=0.1`
+- `python3 tagger_cle.py --epochs=5 --max_sentences=5000 --rnn=GRU --rnn_dim=32 --cle_dim=32 --word_masking=0.1`
 ```
-Epoch 1/5 11.3s train_loss=1.1309 train_accuracy=0.6657 dev_loss=0.3800 dev_accuracy=0.9059
-Epoch 2/5 10.9s train_loss=0.2212 train_accuracy=0.9422 dev_loss=0.1958 dev_accuracy=0.9453
-Epoch 3/5 11.3s train_loss=0.1132 train_accuracy=0.9685 dev_loss=0.2114 dev_accuracy=0.9370
-Epoch 4/5 10.8s train_loss=0.0827 train_accuracy=0.9760 dev_loss=0.1642 dev_accuracy=0.9483
-Epoch 5/5 11.5s train_loss=0.0651 train_accuracy=0.9801 dev_loss=0.1529 dev_accuracy=0.9532
+Epoch 1/5 11.2s train_loss=0.8103 train_accuracy=0.7639 dev_loss=0.2349 dev_accuracy=0.9326
+Epoch 2/5 10.8s train_loss=0.1409 train_accuracy=0.9599 dev_loss=0.1599 dev_accuracy=0.9493
+Epoch 3/5 11.0s train_loss=0.0807 train_accuracy=0.9750 dev_loss=0.1511 dev_accuracy=0.9529
+Epoch 4/5 11.1s train_loss=0.0613 train_accuracy=0.9800 dev_loss=0.1363 dev_accuracy=0.9562
+Epoch 5/5 11.1s train_loss=0.0534 train_accuracy=0.9825 dev_loss=0.1499 dev_accuracy=0.9533
 ```
 #### Examples End:
