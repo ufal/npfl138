@@ -92,11 +92,9 @@ class Model(npfl138.TrainableModule):
         # As during word-level RNN, start by packing the input sequence.
         packed = ...
 
-        # Pass the `PackedSequence` through the character RNN. Note that this time
-        # we are interested only in the second output (the last hidden state of the RNN).
-        _, cle = self._char_rnn(packed)
-
-        # TODO: Concatenate the states of the forward and backward directions (in this order).
+        # TODO: Pass the `PackedSequence` through the character RNN, obtaining fixed-size
+        # representation of every unique word in the batch. Then, concatenate the states
+        # of the forward and backward directions (in this order).
         cle = ...
 
         # TODO: With `cle` being the character-level embeddings of the unique words
