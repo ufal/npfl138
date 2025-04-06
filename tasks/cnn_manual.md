@@ -2,6 +2,7 @@
 #### Date: Deadline: Apr 09, 22:00
 #### Points: 3 points
 #### Slides@: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides/?cnn_manual
+#### Video@: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-06-english.cnn_manual.mp4, Recording
 #### Tests: cnn_manual_tests
 
 To pass this assignment, you need to manually implement the forward and backward
