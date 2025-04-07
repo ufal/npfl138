@@ -122,7 +122,7 @@ class Model(npfl138.TrainableModule):
         # TODO(tagger_we.packed): Sum the outputs of forward and backward directions.
         hidden = ...
 
-        # TODO(tagge_we.packed): Pass the RNN output through the output layer.
+        # TODO(tagger_we.packed): Pass the RNN output through the output layer.
         hidden = ...
 
         # TODO(tagger_we.packed): Finally, produce output predictions as a `PackedSequence`
