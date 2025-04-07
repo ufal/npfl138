@@ -28,8 +28,8 @@ parser.add_argument("--train_sequences", default=10_000, type=int, help="Number 
 # If you add more arguments, ReCodEx will keep them with your default values.
 
 
-# Dataset for generating sequences, with labels predicting whether the cumulative sum
-# is odd/even.
+# Dataset for generating sequences of random integers in the range [0, sequence_dim - 1],
+# with labels indicating the parity of the sum of the integers in the sequence.
 class ParitySequences:
     def __init__(self, sequences_num: int, sequence_length: int, sequence_dim: int, seed: int) -> None:
         sequences = torch.zeros([sequences_num, sequence_length, sequence_dim], dtype=torch.int64)
