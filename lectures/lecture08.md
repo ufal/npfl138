@@ -2,6 +2,8 @@
 #### Date: Apr 8
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides/?08
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides.pdf/npfl138-2425-08.pdf, PDF Slides
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-08-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-08-english.mp4, EN Lecture
 #### Questions: #lecture_8_questions
 
 - Structured prediction
