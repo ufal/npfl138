@@ -34,9 +34,10 @@
 """
 import os
 import sys
-from typing import BinaryIO, Self, Sequence, TextIO, TypedDict
+from typing import Any, BinaryIO, Sequence, TextIO, TypedDict
 import urllib.request
 import zipfile
+Self = Any  # For compatibility with Python <3.11 that does not support Self
 
 import torch
 
