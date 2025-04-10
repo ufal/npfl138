@@ -1,4 +1,4 @@
-### Assignment: ctc_loss
+### Assignment: ctc_manual
 #### Date: Deadline: Apr 30, 22:00
 #### Points: 3 points
 #### Tests: ctc_manual_tests
