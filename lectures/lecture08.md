@@ -5,6 +5,10 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-08-czech.mp4, CZ Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-08-english.mp4, EN Lecture
 #### Questions: #lecture_8_questions
+#### Lecture assignment: tensorboard_projector
+#### Lecture assignment: tagger_ner
+#### Lecture assignment: ctc_manual
+#### Lecture assignment: speech_recognition
 
 - Structured prediction
 - Connectionist Temporal Classification (CTC) loss [[Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks](https://www.cs.toronto.edu/~graves/icml_2006.pdf)]
