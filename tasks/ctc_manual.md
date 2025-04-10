@@ -5,7 +5,7 @@
 #### Examples: ctc_manual_examples
 
 This assignment is an extension of `tagger_we` task. Using the
-[ctc_loss.py](https://github.com/ufal/npfl138/tree/master/labs/08/ctc_loss.py)
+[ctc_manual.py](https://github.com/ufal/npfl138/tree/master/labs/08/ctc_manual.py)
 template, manually implement the CTC loss computation and also greedy CTC
 decoding. You can use `torch.nn.CTCLoss` during development as a reference, but
 it is not available during ReCodEx evaluation.
@@ -20,7 +20,7 @@ _Note that your results may be slightly different, depending on your CPU type an
 ```
 Epoch 1/1 0.5s train_loss=26.8515 train_edit_distance=1.6522 dev_loss=16.7245 dev_edit_distance=0.6000
 ```
-[Here](//ufal.mff.cuni.cz/~straka/courses/npfl138/2425/tasks/figures/ctc_loss.test-1.txt)
+[Here](//ufal.mff.cuni.cz/~straka/courses/npfl138/2425/tasks/figures/ctc_manual.test-1.txt)
 you can find for every example in every batch its:
 - matrices $α_-$ and $α_*$, each row on a single line;
 - scalar $α^N(M)$, the log likelihood of all extended labelings
