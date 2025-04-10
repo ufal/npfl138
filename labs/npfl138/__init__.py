@@ -14,6 +14,9 @@ from .transformed_dataset import TransformedDataset
 from .datasets.gym_cartpole_dataset import GymCartpoleDataset
 from .datasets.mnist import MNIST
 
+# The metrics module
+from . import metrics
+
 # Utils
 from .initializers_override import global_keras_initializers
 from .startup import startup
