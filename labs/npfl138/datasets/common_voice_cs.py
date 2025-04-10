@@ -83,6 +83,7 @@ class CommonVoiceCs:
         """The [npfl138.Vocabulary][] object of the letters used in the dataset."""
         return self._letters_vocab
 
+    # Methods for generating MFCC features.
     def load_audio(self, path: str, target_sample_rate: int | None = None) -> tuple[torch.Tensor, int]:
         """Load an audio file and return the audio tensor and sample rate.
 
