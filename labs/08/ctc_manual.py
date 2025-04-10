@@ -7,7 +7,7 @@ import re
 import torch
 
 import npfl138
-npfl138.require_version("2425.8.0")
+npfl138.require_version("2425.8")
 from npfl138.datasets.morpho_dataset import MorphoDataset
 
 parser = argparse.ArgumentParser()
