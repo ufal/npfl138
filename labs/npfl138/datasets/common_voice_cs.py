@@ -101,7 +101,7 @@ class CommonVoiceCs:
         This function can be used to extract MFCC features from any audio sample,
         allowing to perform speech recording on any audio sample.
         """
-        assert sample_rate == 16000, "Only 16k sample rate is supported"
+        assert sample_rate == 16_000, "Only 16k sample rate is supported"
 
         if not hasattr(self, "_mfcc_fn"):
             # Compute a 1024-point STFT with frames of 64 ms and 75% overlap.
