@@ -10,7 +10,7 @@ import numpy as np
 import torch
 
 
-def startup(seed: int | None = None, threads: int | None = None, forkserver_instead_of_fork: bool = True) -> None:
+def startup(seed: int | None = None, threads: int | None = None, forkserver_instead_of_fork: bool = False) -> None:
     """Initialize the environment.
 
     - Allow using TF32 for matrix multiplication.
@@ -44,5 +44,5 @@ def startup(seed: int | None = None, threads: int | None = None, forkserver_inst
     if "fork" in torch.multiprocessing.get_all_start_methods():
         if os.environ.get("FORCE_FORK_METHOD") == "1":
             torch.multiprocessing.set_start_method("fork")
-        elif forkserver_instead_of_fork:
+        elif forkserver_instead_of_fork or os.environ.get("FORCE_FORKSERVER_METHOD") == "1":
             torch.multiprocessing.set_start_method("forkserver")
