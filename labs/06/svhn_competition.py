@@ -4,7 +4,6 @@ import datetime
 import os
 import re
 
-import numpy as np
 import timm
 import torch
 import torchvision.transforms.v2 as v2
