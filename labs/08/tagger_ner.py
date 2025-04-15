@@ -85,11 +85,13 @@ class Model(npfl138.TrainableModule):
 
     def constrained_decoding(self, logits: torch.Tensor, word_ids: torch.Tensor) -> torch.Tensor:
         # TODO: Perform constrained decoding, i.e., produce the most likely BIO-encoded
-        # valid sequence. In such a sequence, every neighboring pair of tags must be
-        # valid according to the transition matrix `self._A`. Additionally, a valid
-        # sequence cannot start with an "I-" tag -- a possible solution is to consider
-        # a tag sequence to be prefixed by a virtual "O" tag during decoding.
-        # Finally, the tags for padding tokens must be `MorphoDataset.PAD`s.
+        # valid sequence. In a valid sequence, all tags are `O`, `B-TYPE`, `I-TYPE`, and
+        # the `I-TYPE` tag must follow either `B-TYPE` or `I-TYPE` tag. This correctness
+        # can be implemented by checking that every neighboring pair of tags is valid
+        # according to the transition matrix `self._A`, plus the sequence cannot start
+        # with an "I-" tag -- a possible solution is to consider a tag sequence to be
+        # prefixed by a virtual "O" tag during decoding. Finally, the tags for padding
+        # tokens must be `MorphoDataset.PAD`s.
         raise NotImplementedError()
 
     def compute_metrics(self, y_pred, y, word_ids):
