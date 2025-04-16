@@ -655,6 +655,10 @@ class TrainableModule(torch.nn.Module):
             writer.flush()
         return self
 
+    def log_console(self, message: str, end: str = "\n", file=None) -> Self:
+        """Log the given message to the console, correctly even if the progress bar is being used."""
+        tqdm.tqdm.write(message, file=file, end=end)
+
     def get_log_file(self) -> TextIO:
         """Possibly create and return a text-based log file for the current log.
 
