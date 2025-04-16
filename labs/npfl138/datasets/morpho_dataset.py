@@ -31,6 +31,7 @@
           each unique word as a sequence of character ids
         - `words_indices` with shape `[num_sentences, max_sentence_length]`
           containing for every word its index in `unique_words`
+    - `cle_batch_packed`: a variant of `cle_batch` returning packed instead of padded sequences
 """
 import os
 import sys
