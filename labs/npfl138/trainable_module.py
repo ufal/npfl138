@@ -298,7 +298,7 @@ class TrainableModule(torch.nn.Module):
           log_graph: Controls whether to log the model graph to TensorBoard.
           console: Controls the console verbosity: 0 for silent, 1 for epoch logs, 2 for
             additional only-when-writing-to-console progress bar, 3 for persistent progress bar.
-            The default is 2, but be overridden by the `CONSOLE` environment variable.
+            The default is 2, but can be overridden by the `CONSOLE` environment variable.
 
         Returns:
           logs: A dictionary of logs from the training and optionally dev evaluation.
@@ -403,7 +403,7 @@ class TrainableModule(torch.nn.Module):
             the [CallbackProtocol][npfl138.trainable_module.CallbackProtocol] with arguments
             `self`, `epoch`, and `logs` arguments.
           console: Controls the console verbosity: 0 for silent, 1 for a single message.
-            The default is 1, but be overridden by the `CONSOLE` environment variable.
+            The default is 1, but can be overridden by the `CONSOLE` environment variable.
         """
         assert self.loss_tracker is not None, "The TrainableModule has not been configured, run configure first."
         self.eval()
@@ -592,7 +592,7 @@ class TrainableModule(torch.nn.Module):
           epochs: An optional total number of epochs, used during logging the epoch number.
           elapsed: An optional time elapsed since the beginning of the current epoch.
           console: Controls the console verbosity: 0 for silent, 1 for epoch logs.
-            The default is 1, but be overridden by the `CONSOLE` environment variable.
+            The default is 1, but can be overridden by the `CONSOLE` environment variable.
 
         Returns:
           self
@@ -617,7 +617,7 @@ class TrainableModule(torch.nn.Module):
           config: The dictionary of configuration to write.
           sort_keys: Whether to sort the keys of the configuration dictionary.
           console: Controls the console verbosity: 0 for silent, 1 for epoch logs.
-            The default is 1, but be overridden by the `CONSOLE` environment variable.
+            The default is 1, but can be overridden by the `CONSOLE` environment variable.
 
         Returns:
           self
