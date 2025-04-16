@@ -19,11 +19,11 @@
         - `strings`: a Python list containing input sentences, each being
           a list of strings (words/lemmas/tags)
         - `string_vocab`: a [npfl138.Vocabulary][] object capable of mapping words to
-          indices. It is constructed on the train set and shared by the dev
-          and test sets
+          indices. It is constructed on the train set (or its subset when `max_sentences`
+          is set) and shared by the dev and test sets
         - `char_vocab`: a [npfl138.Vocabulary][] object capable of mapping characters
-          to  indices. It is constructed on the train set and shared by the dev
-          and test sets
+          to  indices. It is constructed on the train set (or its subset when `max_sentences`
+          is set) and shared by the dev and test sets
     - `cle_batch`: a method for creating inputs for character-level embeddings.
       It takes a list of sentences, each being a list of string words, and produces
       a tuple of two tensors:
