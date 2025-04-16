@@ -190,7 +190,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
 
     logs = model.fit(train, dev=dev, epochs=args.epochs)
 
-    # Return development metrics for ReCodEx to validate.
+    # Return all metrics for ReCodEx to validate.
     return {metric: value for metric, value in logs.items()}
 
 
