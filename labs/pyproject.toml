@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "npfl138"
-version = "2425.8.0"
+version = "2425.9.0"
 authors = [
   { name="Milan Straka", email="straka@ufal.mff.cuni.cz" },
 ]
