@@ -147,7 +147,7 @@ class Model(npfl138.TrainableModule):
         result = super().train_step(xs, y)
 
         self._batches += 1
-        if self._batches % self._show_results_every_batch == 0:
+        if self._show_results_every_batch and self._batches % self._show_results_every_batch == 0:
             self.log_console("{}: {} -> {}".format(
                 self._batches,
                 "".join(self._source_vocab.strings(xs[0][0][xs[0][0] != MorphoDataset.PAD].numpy(force=True))),
