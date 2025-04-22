@@ -211,3 +211,25 @@
   self-attention and masked self-attention (but you do not need to describe
   multi-head attention), FFN and positions of LNs and dropouts. Also discuss the
   difference between training and prediction regimes. [10]
+
+#### Questions@:, Lecture 10 Questions
+- Why are positional embeddings needed in Transformer architecture? Write down
+  the sinusoidal positional embeddings used in the Transformer. [5]
+
+- Compare RNN to Transformer – what are the strengths and weaknesses of these
+  architectures? [5]
+
+- Describe the BERT architecture (you do not need to describe the (multi-head)
+  self-attention operation). Elaborate also on which positional embeddings
+  are used and what are the GELU activations. [10]
+
+- Describe the GELU activations and explain why are they a combination of ReLUs
+  and Dropout. [5]
+
+- Elaborate on BERT training process (what are the two objectives used and how
+  exactly are the corresponding losses computed). [10]
+
+- Describe the architecture of a Vision Transformer – how are input images
+  represented, draw the Transformer encoder layer and the FFN sublayer, how is
+  the distribution over predicted classes computed, what positional embeddings
+  are used (and what alternative positional embeddings were tried). [10]
