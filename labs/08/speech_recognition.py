@@ -100,7 +100,9 @@ def main(args: argparse.Namespace) -> None:
     dev = TrainableDataset(common_voice.dev).dataloader(args.batch_size)
     test = TrainableDataset(common_voice.test).dataloader(args.batch_size)
 
-    # TODO: Create the model and train it
+    # TODO: Create the model and train it. The `Model.compute_metrics` method assumes you
+    # passed the following metric to the `configure` method under the name "edit_distance":
+    #   CommonVoiceCs.EditDistanceMetric(ignore_index=CommonVoiceCs.PAD)
     model = ...
 
     # Generate test set annotations, but in `args.logdir` to allow parallel execution.
