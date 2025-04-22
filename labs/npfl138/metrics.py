@@ -11,7 +11,15 @@ import torch
 
 
 class BIOEncodingF1Score(torch.nn.Module):
-    """Metric for evaluating F1 score of BIO-encoded spans."""
+    """Metric for evaluating F1 score of BIO-encoded spans.
+
+    The metric employs a simple heuristic to handle invalid sequences of BIO tags.
+    Notably:
+
+    - If there is an `I` tag without preceding `B/I` tag, it is considered a `B` tag.
+    - If the type of an `I` tag does not match the type of the preceding tag, the type
+      of this `I` tag is ignored (i.e., considered the same as the preceeding tag type).
+    """
     def __init__(self, labels: list[str], ignore_index: int) -> None:
         """Construct a new BIOEncodingF1Score metric.
 
