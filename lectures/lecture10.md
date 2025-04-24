@@ -5,6 +5,9 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-10-czech.mp4, CZ Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-10-english.mp4, EN Lecture
 #### Questions: #lecture_10_questions
+#### Lecture assignment: tagger_transformer
+#### Lecture assignment: sentiment_analysis
+#### Lecture assignment: reading_comprehension
 
 - Transformer architecture [[Attention Is All You Need](https://arxiv.org/abs/1706.03762)]
 - BERT [[BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)]
