@@ -29,19 +29,19 @@ parser.add_argument("--we_dim", default=64, type=int, help="Word embedding dimen
 
 class Model(npfl138.TrainableModule):
     class FFN(torch.nn.Module):
-        def __init__(self, dim, expansion):
+        def __init__(self, dim: int, expansion: int) -> None:
             super().__init__()
             # TODO: Create the required layers -- first a ReLU-activated dense
             # layer with `dim * expansion` units, followed by a dense layer
             # with `dim` units without an activation.
             raise NotImplementedError()
 
-        def forward(self, inputs):
+        def forward(self, inputs: torch.Tensor) -> torch.Tensor:
             # TODO: Execute the FFN Transformer layer.
             raise NotImplementedError()
 
     class SelfAttention(torch.nn.Module):
-        def __init__(self, dim, heads):
+        def __init__(self, dim: int, heads: int) -> None:
             super().__init__()
             self.dim, self.heads = dim, heads
             # TODO: Create weight matrices W_Q, W_K, W_V, and W_O; each a module parameter
@@ -49,7 +49,7 @@ class Model(npfl138.TrainableModule):
             # the `torch.nn.init.xavier_uniform_` in the same order the matrices are listed above.
             raise NotImplementedError()
 
-        def forward(self, inputs, mask):
+        def forward(self, inputs: torch.Tensor, mask: torch.Tensor) -> torch.Tensor:
             # TODO: Execute the self-attention layer.
             #
             # Start by computing Q, K and V. In all cases:
@@ -75,7 +75,7 @@ class Model(npfl138.TrainableModule):
             raise NotImplementedError()
 
     class PositionalEmbedding(torch.nn.Module):
-        def forward(self, inputs):
+        def forward(self, inputs: torch.Tensor) -> torch.Tensor:
             # TODO: Compute the sinusoidal positional embeddings. Assuming the embeddings have
             # a shape `[max_sentence_len, dim]` with `dim` even, and for `0 <= i < dim/2`:
             # - the value on index `[pos, i]` should be
@@ -88,7 +88,7 @@ class Model(npfl138.TrainableModule):
             raise NotImplementedError()
 
     class Transformer(torch.nn.Module):
-        def __init__(self, layers, dim, expansion, heads, dropout):
+        def __init__(self, layers: int, dim: int, expansion: int, heads: int, dropout: float) -> None:
             super().__init__()
             # TODO: Create:
             # - the positional embedding layer;
@@ -99,7 +99,7 @@ class Model(npfl138.TrainableModule):
             # but if you want to get the same results as on the course website, create
             # the layers in the order they are called in the `forward` method.
 
-        def forward(self, inputs, mask):
+        def forward(self, inputs: torch.Tensor, mask: torch.Tensor) -> torch.Tensor:
             # TODO: First compute the positional embeddings.
 
             # TODO: Add the positional embeddings to the `inputs` and then
