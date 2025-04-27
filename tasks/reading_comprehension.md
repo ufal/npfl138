@@ -24,7 +24,7 @@ comprehension task using _accuracy_, where an answer is considered correct if
 its text is exactly equal to some correct answer. You can evaluate your
 predictions as usual with the
 [reading_comprehension_dataset.py](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/docs/datasets/reading_comprehension_dataset/)
-module, either by running `python3 -m npfl138.datasets.reading_compresension_dataset --evaluate=path --dataset=dev/test`
+module, either by running `python3 -m npfl138.datasets.reading_comprehension_dataset --evaluate=path --dataset=dev/test`
 or by calling the `ReadingComprehensionDataset.evaluate` method.
 
 The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2425-summer#competitions). Everyone who submits
