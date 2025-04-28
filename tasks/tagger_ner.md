@@ -1,5 +1,5 @@
 ### Assignment: tagger_ner
-#### Date: Deadline: Apr 30, 22:00
+#### Date: Deadline: ~~Apr 30~~ May 07, 22:00
 #### Points: 2 points
 #### Tests: tagger_ner_tests
 #### Examples: tagger_ner_examples
