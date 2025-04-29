@@ -233,3 +233,47 @@
   represented, draw the Transformer encoder layer and the FFN sublayer, how is
   the distribution over predicted classes computed, what positional embeddings
   are used (and what alternative positional embeddings were tried). [10]
+
+#### Questions@:, Lecture 11 Questions
+- Define the Markov Decision Process, including the definition of the return. [5]
+
+- Define the value function, such that all expectations are over simple random
+  variables (actions, states, rewards), not trajectories. [5]
+
+- Define the action-value function, such that all expectations are over simple
+  random variables (actions, states, rewards), not trajectories. [5]
+
+- Express the value function using the action-value function, and express the
+  action-value function using the value function. [5]
+
+- Formulate the policy gradient theorem. [5]
+
+- Prove the part of the policy gradient theorem showing the value
+  of $\nabla_{\boldsymbol\theta} v_\pi(s)$. [10]
+
+- Assuming the policy gradient theorem, formulate the loss used by the REINFORCE
+  algorithm and show how can its gradient be expressed as an expectation
+  over states and actions. [5]
+
+- Write down the REINFORCE algorithm, including the loss formula. [10]
+
+- Show that introducing baseline does not influence validity of the policy
+  gradient theorem. [5]
+
+- Write down the REINFORCE with baseline algorithm, including both loss
+  formulas. [10]
+
+- Sketch the overall structure and training procedure of the Neural Architecture
+  Search. You do not need to describe how exactly is the block produced by the
+  controller. [5]
+
+- Write down the variational lower bound (ELBO) in the form of a reconstruction
+  error minus the KL divergence between the encoder and the prior (i.e., in the
+  form used for model training). Then prove it is actually a lower bound on
+  the log-likelihood $\log P(\boldsymbol x)$. [10]
+
+- Draw an architecture of a variational autoencoder (VAE). Pay attention to the
+  parametrization of the distribution from the encoder (including the used
+  activation functions), show how to perform latent variable sampling so
+  that it is differentiable with respect to the encoder parameters (the
+  reparametrization trick), and write down the loss. [10]
