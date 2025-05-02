@@ -61,15 +61,29 @@ class TransformedDataset(torch.utils.data.Dataset):
             batch = self.transform_batch(batch)
         return batch
 
-    def dataloader(self, batch_size=1, *, shuffle=False, num_workers=0, **kwargs) -> torch.utils.data.DataLoader:
+    def dataloader(self, batch_size=1, *, shuffle=False, seed=None, num_workers=0, **kwargs) -> torch.utils.data.DataLoader:
         """Create a DataLoader for this dataset.
 
-        This method is a convenience wrapper around `torch.utils.data.DataLoader`
-        setting up the required parameters. All arguments are passed to the DataLoader,
-        however, when `num_workers` is greater than 0, `persistent_workers` is set to True.
-        When `collate` or `transform_batch` is set, the `self.collate_fn` is passed as the
-        `collate_fn` parameter.
+        This method is a convenience wrapper around [torch.utils.data.DataLoader][]
+        setting up the required parameters. Most arguments are passed directly to the
+        [torch.utils.data.DataLoader][], with a few exceptions:
+
+        - When `seed` is given, it is used to construct the `generator` argument for the
+          DataLoader using `torch.Generator().manual_seed(seed)`; the `generator` options
+          must not be specified in `kwargs`.
+        - When `shuffle` is `False` and no `generator` is given, `torch.Generator()` is passed
+          as `generator`. Otherwise, the global random number generator would be used during
+          every construction of an iterator, i.e. during every `iter(dataloader)` call.
+        - When `num_workers` is greater than 0, `persistent_workers` is set to True.
+        - When `collate` or `transform_batch` is set, the `self.collate_fn` is passed as the
+          `collate_fn` parameter.
         """
+        if seed is not None:
+            # If a seed is given, create a generator with the seed and pass it to the DataLoader.
+            if kwargs.get("generator", None) is not None:
+                raise ValueError("When seed is given, generator must not be specified.")
+            kwargs["generator"] = torch.Generator().manual_seed(seed)
+
         if not shuffle and kwargs.get("generator", None) is None:
             # If not shuffling and no generator is given, pass an explicit generator to the Dataloader.
             # Otherwise, the global random generator would generate a number on every iter(dataloader) call.
