@@ -6,6 +6,10 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-11-english.mp4, EN Lecture
 #### Questions: #lecture_11_questions
 #### Lecture assignment: 3d_recognition
+#### Lecture assignment: reinforce
+#### Lecture assignment: reinforce_baseline
+#### Lecture assignment: reinforce_pixels
+#### Lecture assignment: vae
 
 Study material for Reinforcement Learning is the [Reinforcement Learning: An Introduction; second edition
 by Richard S. Sutton and Andrew G. Barto](http://incompleteideas.net/book/the-book-2nd.html)
