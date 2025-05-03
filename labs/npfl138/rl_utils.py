@@ -16,6 +16,13 @@ import torch
 ############################
 
 class EvaluationEnv(gym.Wrapper):
+    """A wrapper over gym environments capable of performing evaluation on demant.
+
+    In addition to a standard gym envrironment, it provides the following features:
+
+    - The `reset` method can be called as `reset(start_evaluation=False)` to start the evaluation.
+    - The `env.episode` property returns the number of completed episodes.
+    """
     def __init__(self, env, seed=None, render_each=0, evaluate_for=100, report_each=10):
         super().__init__(env)
         self._render_each = render_each
