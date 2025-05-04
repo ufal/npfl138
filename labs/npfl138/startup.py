@@ -37,12 +37,16 @@ def startup(seed: int | None = None, threads: int | None = None, forkserver_inst
 
     # Set number of threads if > 0; otherwise, use as many threads as cores.
     if threads is not None and threads > 0:
-        torch.set_num_threads(threads)
-        torch.set_num_interop_threads(threads)
+        if torch.get_num_threads() != threads:
+            torch.set_num_threads(threads)
+        if torch.get_num_interop_threads() != threads:
+            torch.set_num_interop_threads(threads)
 
     # If instructed, use `forkserver` instead of `fork` (which will be the default in Python 3.14).
     if "fork" in torch.multiprocessing.get_all_start_methods():
         if os.environ.get("FORCE_FORK_METHOD") == "1":
-            torch.multiprocessing.set_start_method("fork")
+            if torch.multiprocessing.get_start_method(allow_none=True) != "fork":
+                torch.multiprocessing.set_start_method("fork")
         elif forkserver_instead_of_fork or os.environ.get("FORCE_FORKSERVER_METHOD") == "1":
-            torch.multiprocessing.set_start_method("forkserver")
+            if torch.multiprocessing.get_start_method(allow_none=True) != "forkserver":
+                torch.multiprocessing.set_start_method("forkserver")
