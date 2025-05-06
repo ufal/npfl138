@@ -277,3 +277,21 @@
   activation functions), show how to perform latent variable sampling so
   that it is differentiable with respect to the encoder parameters (the
   reparametrization trick), and write down the loss. [10]
+
+#### Questions@:, Lecture 12 Questions
+- Write down the min-max formulation of generative adversarial network (GAN)
+  objective. Then describe what loss is actually used for training the generator
+  in order to avoid vanishing gradients at the beginning of the training. [5]
+
+- Write down the training algorithm of generative adversarial networks (GAN),
+  including the losses minimized by the discriminator and the generator. Be sure
+  to use the version of generator loss which avoids vanishing gradients at the
+  beginning of the training. [10]
+
+- Explain how the class label is used when training a conditional generative
+  adversarial network (CGAN). [5]
+
+- Illustrate that alternating SGD steps are not guaranteed to converge for
+  a min-max problem. [5]
+
+Flow Matching questions will be added later.
