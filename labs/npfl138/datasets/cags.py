@@ -165,12 +165,12 @@ class CAGS:
         """Visualize the given image plus predicted mask.
 
         Parameters:
-            image: A torch.Tensor of shape [C, H, W] with dtype torch.uint8
-            mask: A torch.Tensor with H * W float values in [0, 1]
-            show: controls whether to show the figure or return it:
-              if `True`, the figure is shown using `plt.show()`;
-              if `False`, the `plt.Figure` instance is returned; it can be saved
-              to TensorBoard using a the `add_figure` method of a `SummaryWriter`.
+          image: A torch.Tensor of shape [C, H, W] with dtype torch.uint8
+          mask: A torch.Tensor with H * W float values in [0, 1]
+          show: controls whether to show the figure or return it:
+            if `True`, the figure is shown using `plt.show()`;
+            if `False`, the `plt.Figure` instance is returned; it can be saved
+            to TensorBoard using a the `add_figure` method of a `SummaryWriter`.
         """
         import matplotlib.pyplot as plt
 

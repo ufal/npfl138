@@ -190,7 +190,7 @@ class MorphoDataset:
                 [torch.tensor([unique_string_map[word] for word in sentence]) for sentence in words], False)
             return unique_words, words_indices
 
-    def __init__(self, dataset, max_sentences=None):
+    def __init__(self, dataset: str, max_sentences: int | None = None):
         """Load the `dataset` dataset, downloading it if necessary.
 
         Parameters:

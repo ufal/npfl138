@@ -82,7 +82,7 @@ class HOMRDataset:
 
     # Evaluation infrastructure
     @staticmethod
-    def evaluate(gold_dataset: Dataset, predictions: Sequence[Sequence[str]]):
+    def evaluate(gold_dataset: Dataset, predictions: Sequence[Sequence[str]]) -> float:
         """Evaluate the `predictions` against the gold dataset.
 
         Returns:
