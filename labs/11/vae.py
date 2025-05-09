@@ -103,6 +103,7 @@ class VAE(npfl138.TrainableModule):
     def generate(self, epoch: int, logs: dict[str, float]) -> None:
         GRID = 20
 
+        self.decoder.eval()
         with torch.no_grad(), torch.device(self.device):
             # Generate GRIDxGRID images.
             random_images = self.decoder(self._z_prior().sample([GRID * GRID]))
