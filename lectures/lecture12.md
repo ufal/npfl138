@@ -5,6 +5,7 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-12-czech.mp4, CZ Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-12-english.mp4, EN Lecture
 #### Questions: #lecture_12_questions
+#### Lecture assignment: homr_competition
 
 - Generative Adversarial Networks
   - GAN [Section 20.10.4 of DLB, [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)]
