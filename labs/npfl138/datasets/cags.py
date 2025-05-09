@@ -18,9 +18,13 @@ from .tfrecord_dataset import TFRecordDataset
 
 class CAGS:
     C: int = 3
+    """The number of image channels."""
     H: int = 224
+    """The image height."""
     W: int = 224
+    """The image width."""
     LABELS: int = 34
+    """The number of labels."""
     LABEL_NAMES: list[str] = [
         # Cats
         "Abyssinian", "Bengal", "Bombay", "British_Shorthair", "Egyptian_Mau",
@@ -34,7 +38,9 @@ class CAGS:
         "scottish_terrier", "shiba_inu", "staffordshire_bull_terrier",
         "wheaten_terrier", "yorkshire_terrier",
     ]
+    """The list of label names in the dataset."""
     Element = TypedDict("Element", {"image": torch.Tensor, "mask": torch.Tensor, "label": torch.Tensor})
+    """The type of a single dataset element."""
 
     _URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/datasets/"
 
@@ -43,9 +49,11 @@ class CAGS:
             super().__init__(path, size, decode_on_demand)
 
         def __len__(self) -> int:
+            """Return the number of elements in the dataset."""
             return super().__len__()
 
         def __getitem__(self, index: int) -> "CAGS.Element":
+            """Return the `index`-th element of the dataset."""
             return super().__getitem__(index)
 
         def _tfrecord_decode(self, data: dict, indices: dict, index: int) -> "CAGS.Element":
@@ -60,6 +68,7 @@ class CAGS:
             }
 
     def __init__(self, decode_on_demand: bool = False) -> None:
+        "Load the CAGS dataset, downloading it if necessary."
         for dataset, size in [("train", 2_142), ("dev", 306), ("test", 612)]:
             path = "cags.{}.tfrecord".format(dataset)
             if not os.path.exists(path):
@@ -70,8 +79,11 @@ class CAGS:
             setattr(self, dataset, self.Dataset(path, size, decode_on_demand))
 
     train: Dataset
+    """The training dataset."""
     dev: Dataset
+    """The development dataset."""
     test: Dataset
+    """The test dataset."""
 
     # The MaskIoUMetric
     class MaskIoUMetric(metrics.MaskIoU):
@@ -82,6 +94,11 @@ class CAGS:
     # Evaluation infrastructure.
     @staticmethod
     def evaluate_classification(gold_dataset: Dataset, predictions: Sequence[int]) -> float:
+        """Evaluate the `predictions` labels against the gold dataset.
+
+        Returns:
+          accurracy: The average accuracy of the predicted labels in percentages.
+        """
         gold = [int(example["label"]) for example in gold_dataset]
 
         if len(predictions) != len(gold):
@@ -93,11 +110,21 @@ class CAGS:
 
     @staticmethod
     def evaluate_classification_file(gold_dataset: Dataset, predictions_file: TextIO) -> float:
+        """Evaluate the file with label predictions against the gold dataset.
+
+        Returns:
+          accurracy: The average accuracy of the predicted labels in percentages.
+        """
         predictions = [int(line) for line in predictions_file]
         return CAGS.evaluate_classification(gold_dataset, predictions)
 
     @staticmethod
     def evaluate_segmentation(gold_dataset: Dataset, predictions: Sequence[torch.Tensor]) -> float:
+        """Evaluate the `predictions` masks against the gold dataset.
+
+        Returns:
+          iou: The average iou of the predicted masks in percentages.
+        """
         gold = [example["mask"] for example in gold_dataset]
 
         if len(predictions) != len(gold):
@@ -126,6 +153,11 @@ class CAGS:
 
     @staticmethod
     def evaluate_segmentation_file(gold_dataset: Dataset, predictions_file: TextIO) -> float:
+        """Evaluate the file with mask predictions against the gold dataset.
+
+        Returns:
+          iou: The average iou of the predicted masks in percentages.
+        """
         return CAGS.evaluate_segmentation(gold_dataset, CAGS.load_segmentation_file(predictions_file))
 
     @staticmethod
