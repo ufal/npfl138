@@ -5,9 +5,8 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 import os
 import sys
-from typing import Any, Sequence, TextIO, TypedDict
+from typing import Sequence, TextIO, TypedDict
 import urllib.request
-Self = Any  # For compatibility with Python <3.11 that does not support Self
 
 
 import torch
