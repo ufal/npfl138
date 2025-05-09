@@ -5,7 +5,6 @@ import os
 import re
 
 import torch
-import torchvision
 
 import npfl138
 npfl138.require_version("2425.11")
@@ -120,10 +119,12 @@ class VAE(npfl138.TrainableModule):
                 [starts[i] + (ends[i] - starts[i]) * torch.linspace(0., 1., GRID).unsqueeze(-1) for i in range(GRID)])
             interpolated_images = self.decoder(interpolated_z)
 
-            # Stack the random images, then an empty row, and finally interpolated images.
-            grid = torchvision.utils.make_grid(
-                list(random_images) + list(torch.zeros([GRID, MNIST.C, MNIST.H, MNIST.W])) + list(interpolated_images),
-                nrow=GRID, padding=0)
+            # Stack the random images, then an empty column, and finally interpolated images.
+            grid = torch.cat([
+                torch.cat([torch.cat(list(row), dim=2) for row in torch.chunk(random_images, GRID)], dim=1),
+                torch.zeros([MNIST.C, MNIST.H * GRID, MNIST.W]),
+                torch.cat([torch.cat(list(row), dim=2) for row in torch.chunk(interpolated_images, GRID)], dim=1),
+            ], dim=2)
             self.get_tb_writer("train").add_image("images", grid, epoch)
 
 
