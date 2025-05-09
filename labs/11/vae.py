@@ -127,7 +127,7 @@ class VAE(npfl138.TrainableModule):
             self.get_tb_writer("train").add_image("images", grid, epoch)
 
 
-def main(args: argparse.Namespace) -> dict[str, float]:
+def main(args: argparse.Namespace) -> float:
     # Set the random seed and the number of threads.
     npfl138.startup(args.seed, args.threads)
     npfl138.global_keras_initializers()
