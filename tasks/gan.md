@@ -1,5 +1,5 @@
 ### Assignment: gan
-#### Date: Deadline: Jun 28, 22:00
+#### Date: Deadline: Jun 30, 22:00
 #### Points: 2 points
 #### Tests: gan_tests
 #### Examples: gan_examples

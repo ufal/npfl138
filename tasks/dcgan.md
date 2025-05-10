@@ -1,5 +1,5 @@
 ### Assignment: dcgan
-#### Date: Deadline: Jun 28, 22:00
+#### Date: Deadline: Jun 30, 22:00
 #### Points: 1 points
 #### Tests: dcgan_tests
 #### Examples: dcgan_examples
