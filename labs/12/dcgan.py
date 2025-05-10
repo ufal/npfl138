@@ -83,7 +83,7 @@ class GAN(npfl138.TrainableModule):
         # - run discriminator on the generated images (keep it running in the training mode,
         #   even if not updating its parameters, we want to perform possible BatchNorm in it);
         # - compute `generator_loss` using `self.loss`, with ones as target labels.
-        # Then, perform a step of the generator optimizer stored in `self.optimiser["generator"]`.
+        # Then, perform a step of the generator optimizer stored in `self.optimizer["generator"]`.
         ...
 
         # TODO(gan): Train the discriminator:
@@ -94,7 +94,7 @@ class GAN(npfl138.TrainableModule):
         # - compute `discriminator_loss` by summing:
         #   - `self.loss` on `discriminated_real` with suitable targets,
         #   - `self.loss` on `discriminated_fake` with suitable targets.
-        # Then, perform a step of the discriminator optimizer stored in `self.optimiser["discriminator"]`.
+        # Then, perform a step of the discriminator optimizer stored in `self.optimizer["discriminator"]`.
         ...
 
         # TODO(gan): Update the discriminator accuracy metric -- call the
