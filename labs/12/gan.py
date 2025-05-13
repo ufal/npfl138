@@ -45,8 +45,8 @@ class GAN(npfl138.TrainableModule):
 
         # TODO: Define `self.generator` as a `torch.nn.Sequential` module, which
         # - takes vectors of `[args.z_dim]` shape on input;
-        # - applies `len(args.discriminator_layers)` dense layers with ReLU activation,
-        #   i-th layer with `args.discriminator_layers[i]` units;
+        # - applies `len(args.generator_layers)` dense layers with ReLU activation,
+        #   i-th layer with `args.generator_layers[i]` units;
         # - applies output dense layer with `MNIST.C * MNIST.H * MNIST.W` units
         #   and sigmoid activation;
         # - uses `torch.nn.Unflatten` to reshape the output to `[MNIST.C, MNIST.H, MNIST.W]`.
