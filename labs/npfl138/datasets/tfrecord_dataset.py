@@ -13,13 +13,11 @@ import torch
 
 class TFRecordDataset(torch.utils.data.Dataset):
     def __init__(self, path: str, size: int, decode_on_demand: bool) -> None:
-        self._size = size
-
-        arrays, indices = self._tfrecord_load(path, size)
+        arrays, indices, self._size = self._tfrecord_load(path, size)
         if decode_on_demand:
             self._data, self._arrays, self._indices = None, arrays, indices
         else:
-            self._data = [self._tfrecord_decode(arrays, indices, i) for i in range(size)]
+            self._data = [self._tfrecord_decode(arrays, indices, i) for i in range(len(self))]
 
     def __len__(self) -> int:
         return self._size
@@ -49,10 +47,13 @@ class TFRecordDataset(torch.utils.data.Dataset):
             offset += 1
             return get_value()
 
-        arrays, indices = {}, {}
+        arrays, indices, size = {}, {}, 0
         with open(path, "rb") as file:
-            for _ in range(items):
+            while items < 0 or size < items:
                 length = file.read(8)
+                if items < 0 and not(len(length)):
+                    break
+                size += 1
                 assert len(length) == 8
                 length, = struct.unpack("<Q", length)
                 assert len(file.read(4)) == 4
@@ -96,4 +97,4 @@ class TFRecordDataset(torch.utils.data.Dataset):
             arrays[key] = torch.asarray(value or [], dtype=typecode_to_dtype[value.typecode], copy=True)
         for key, value in indices.items():
             indices[key] = torch.asarray(value or [], dtype=typecode_to_dtype[value.typecode], copy=True)
-        return arrays, indices
+        return arrays, indices, size
