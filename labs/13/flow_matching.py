@@ -70,14 +70,14 @@ class ResidualBlock(torch.nn.Module):
         #   `width` outputs and swish activation, and then added to the
         #   convolutional features from the previous step.
         # - Finally, the result is passed through another 3x3 convolution
-        #   convolution with `width` channels and "same" padding, and a group
+        #   with `width` channels and "same" padding, and a group
         #   normalization with the same number of channels and groups as before.
         # - The result of the block is then added to the input images and returned.
         #
         # During initialization, set the `weight` parameter of the last GroupNorm
         # layer to all zeros (so that the block produces initially only zeros).
         #
-        # As mentined earlier, every convolutional layer before a GroupNorm layer
+        # As mentioned earlier, every convolutional layer before a GroupNorm layer
         # must not have a bias (it is provided by the group normalization).
         ...
 
@@ -172,8 +172,8 @@ class FlowMatching(npfl138.TrainableModule):
         image = image * self.imagenet_std[None, :, None, None] + self.imagenet_mean[None, :, None, None]
         return image
 
-    def train_step(self, xs: tuple[torch.tensor], y: torch.tensor) -> dict[str, torch.tensor]:
-        """perform a single training update."""
+    def train_step(self, xs: tuple[torch.Tensor], y: torch.Tensor) -> dict[str, torch.Tensor]:
+        """Perform a single training update."""
         # Unpack the input batch.
         images = xs[0]
 
