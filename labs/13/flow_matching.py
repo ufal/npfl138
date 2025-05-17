@@ -70,8 +70,8 @@ class ResidualBlock(torch.nn.Module):
         #   `width` outputs and swish activation, and then added to the
         #   convolutional features from the previous step.
         # - Finally, the result is passed through another 3x3 convolution
-        #   with `width` channels and "same" padding, and a group
-        #   normalization with the same number of channels and groups as before.
+        #   with `width` channels and "same" padding, and a group normalization
+        #   with the same number of channels and groups as before.
         # - The result of the block is then added to the input images and returned.
         #
         # During initialization, set the `weight` parameter of the last GroupNorm
