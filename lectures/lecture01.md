@@ -13,7 +13,7 @@
 
 - Random variables, probability distributions, expectation, variance, Bernoulli
   distribution, Categorical distribution [Sections 3.2, 3.3, 3.8, 3.9.1 and 3.9.2 of DLB]
-- Self-information, entropy, cross-entropy, KL-divergence [Section 3.13 of DBL]
+- Self-information, entropy, cross-entropy, KL-divergence [Section 3.13 of DLB]
 - Gaussian distribution [Section 3.9.3 of DLB]
 - _Machine Learning Basics [Section 5.1-5.1.3 of DLB]_
 - _History of Deep Learning [Section 1.2 of DLB]_
