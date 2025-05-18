@@ -1,5 +1,5 @@
 ### Assignment: reinforce
-#### Date: Deadline: May 21, 22:00
+#### Date: Deadline: ~~May 21~~ Jun 30, 22:00
 #### Points: 2 points
 
 Solve the continuous [CartPole-v1 environment](https://gymnasium.farama.org/environments/classic_control/cart_pole/)

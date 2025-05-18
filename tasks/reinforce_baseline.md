@@ -1,5 +1,5 @@
 ### Assignment: reinforce_baseline
-#### Date: Deadline: May 21, 22:00
+#### Date: Deadline: ~~May 21~~ Jun 30, 22:00
 #### Points: 2 points
 
 This is a continuation of the `reinforce` assignment.

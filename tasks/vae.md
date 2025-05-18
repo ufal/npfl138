@@ -1,5 +1,5 @@
 ### Assignment: vae
-#### Date: Deadline: May 21, 22:00
+#### Date: Deadline: ~~May 21~~ Jun 30, 22:00
 #### Points: 3 points
 #### Tests: vae_tests
 #### Examples: vae_examples
