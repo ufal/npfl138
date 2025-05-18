@@ -28,10 +28,10 @@ Epoch 1/1 6.3s train_loss=1.1668 sample_mean=0.3886 sample_std=0.3146
 #### Tests End:
 #### Examples Start: flow_matching_conditional_examples
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._
-- `python3 flow_matching_conditional.py --dataset=oxford_flowers102 --epochs=50 --plot_each=10`
+- `python3 flow_matching_conditional.py --dataset=oxford_flowers102 --epochs=70 --plot_each=10`
 ![oxford_flowers102 samples](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/demos/flow_matching_conditional-oxford_flowers102.jpg)
-- `python3 flow_matching_conditional.py --dataset=lsun_bedrooms --epochs=50 --plot_each=10`
+- `python3 flow_matching_conditional.py --dataset=lsun_bedrooms --epochs=100 --plot_each=10`
 ![lsun_bedrooms samples](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/demos/flow_matching_conditional-lsun_bedrooms.jpg)
-- `python3 flow_matching_conditional.py --dataset=ffhq --epochs=100 --plot_each=10`
+- `python3 flow_matching_conditional.py --dataset=ffhq --epochs=100 --stage_blocks=4 --batch_size=256 --plot_each=10`
 ![ffhq samples](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/demos/flow_matching_conditional-ffhq.jpg)
 #### Examples End:

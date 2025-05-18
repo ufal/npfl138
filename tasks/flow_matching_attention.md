@@ -32,6 +32,6 @@ _Note that your results may be slightly different, depending on your CPU type an
 ![oxford_flowers102 samples](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/demos/flow_matching_attention-oxford_flowers102.webp)
 - `python3 flow_matching_attention.py --dataset=lsun_bedrooms --epochs=100 --plot_each=10`
 ![lsun_bedrooms samples](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/demos/flow_matching_attention-lsun_bedrooms.webp)
-- `python3 flow_matching_attention.py --dataset=ffhq --epochs=100 --plot_each=10`
+- `python3 flow_matching_attention.py --dataset=ffhq --epochs=100 --stage_blocks=4 --batch_size=256 --plot_each=10`
 ![ffhq samples](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/demos/flow_matching_attention-ffhq.webp)
 #### Examples End:
