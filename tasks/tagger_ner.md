@@ -31,6 +31,7 @@ _Note that your results may be slightly different, depending on your CPU type an
 ```
 Epoch 1/1 0.1s train_loss=2.2965 train_accuracy=0.2418 dev_loss=2.2514 dev_accuracy=0.3271 dev_f1_constrained=0.0269 dev_f1_greedy=0.0359
 ```
+[The optimally decoded tag sequences on the development set](//ufal.mff.cuni.cz/~straka/courses/npfl138/2425/tasks/figures/tagger_ner.test-1.txt)
 
 2. `python3 tagger_ner.py --epochs=2 --max_sentences=2000 --batch_size=25 --label_smoothing=0.1 --seed=219`
 ```
