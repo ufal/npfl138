@@ -20,7 +20,7 @@ parser.add_argument("--max_sentences", default=None, type=int, help="Maximum num
 parser.add_argument("--recodex", default=False, action="store_true", help="Evaluation in ReCodEx.")
 parser.add_argument("--rnn", default="LSTM", choices=["LSTM", "GRU"], help="RNN layer type.")
 parser.add_argument("--rnn_dim", default=64, type=int, help="RNN layer dimension.")
-parser.add_argument("--seed", default=45, type=int, help="Random seed.")
+parser.add_argument("--seed", default=219, type=int, help="Random seed.")
 parser.add_argument("--show_predictions", default=False, action="store_true", help="Show predicted tag sequences.")
 parser.add_argument("--threads", default=1, type=int, help="Maximum number of threads to use.")
 parser.add_argument("--we_dim", default=128, type=int, help="Word embedding dimension.")
