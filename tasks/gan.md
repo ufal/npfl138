@@ -4,7 +4,7 @@
 #### Tests: gan_tests
 #### Examples: gan_examples
 
-In this assignment you will implement a simple Generative Adversarion Network
+In this assignment you will implement a simple Generative Adversarial Network
 for three datasets in the MNIST format. Your goal is to modify the
 [gan.py](https://github.com/ufal/npfl138/tree/master/labs/12/gan.py)
 template and implement a GAN.
