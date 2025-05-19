@@ -124,8 +124,9 @@ class UNet(torch.nn.Module):
     def __init__(self, channels: int, stage_blocks: int, stages: int) -> None:
         super().__init__()
         # TODO: When processing the input images and the input times, start by
-        # passing the times through the `SinusoidalEmbedding` layer; the result
-        # is then passed to all later layers that require the time embedding.
+        # passing the times through the `SinusoidalEmbedding` layer with
+        # dimension of `channels`; the result is then passed to all later layers
+        # that require the time embedding.
         #
         # The U-Net architecture consists of the following layers:
         # - the initial 3x3 convolution with `channels` channels, the "same"
