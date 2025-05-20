@@ -2,6 +2,8 @@
 #### Date: May 20
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides/?14
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/slides.pdf/npfl138-2425-14.pdf, PDF Slides
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-14-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-14-english.mp4, EN Lecture
 #### Questions: #lecture_14_questions
 
 - WaveNet [[WaveNet: A Generative Model for Raw Audio](https://arxiv.org/abs/1609.03499)]
