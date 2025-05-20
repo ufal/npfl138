@@ -184,7 +184,8 @@ class FlowMatching(npfl138.TrainableModule):
 
         # TODO: Perform a training step.
         # - Start by normalizing the input images using the `normalize_image` method.
-        # - Then compute the noisy images used as the model input.
+        # - Then compute the noisy images used as the model input, using the normalized
+        #   images, `noises`, and `times`.
         # - Follow by running the model to get the predicted vector field.
         # - Finally, compute the loss using the conditional flow matching objective,
         #   utilizing the given PyTorch loss stored in `self.loss`.
