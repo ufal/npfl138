@@ -35,9 +35,9 @@ Epoch 1/1 4.7s train_loss=1.1229 sample_mean=0.4163 sample_std=0.2942
 ```
 To make debugging easier, here are variances of the first batches of various quantities:
 ```
-The torch.var of the first batch of noisy training images (model input): 1.0052
-The torch.var of the first batch of embedded times: 0.5865
-The torch.var of the first batch of target outputs during model training: 1.5766
+The torch.var of the first batch of noisy training images (model input): 1.0105
+The torch.var of the first batch of embedded times: 0.3440
+The torch.var of the first batch of target outputs during model training: 2.4856
 The torch.var of the first batch of model predictions during generate: 0.8083
 ```
 
