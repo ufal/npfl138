@@ -37,7 +37,11 @@ To make debugging easier, here are variances of the first batches of various qua
 ```
 The torch.var of the first batch of noisy training images (model input): 1.0105
 The torch.var of the first batch of embedded times: 0.3440
-The torch.var of the first batch of target outputs during model training: 2.4856
+The torch.var of the first batch returned by ResidualBlock: 0.4083
+The torch.var of the first batch returned by DownscalingBlock: (0.2946, 0.4083)
+The torch.var of the first batch returned by UpscalingBlock: 0.3679
+The torch.var of the first batch of model predictions during training: 0.8467
+The torch.var of the first batch of target outputs during training: 2.4856
 The torch.var of the first batch of model predictions during generate: 0.8083
 ```
 
