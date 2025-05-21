@@ -211,8 +211,9 @@ class FlowMatching(npfl138.TrainableModule):
         images = initial_noise.to(self.device)
         trajectory = []
 
-        # TODO: Perform the sampling process using the Euler method (the one described
-        # on the slides) and `steps` number of steps. You should compute:
+        # TODO: Perform the sampling process using the `self._ema_model` and the
+        # Euler method (the one described on the slides) and `steps` number of steps.
+        # You should compute:
         # - `images`, which are the final generated images, and
         # - `trajectory`, which is a list of the intermediate images x_0, x_{1/T}, ...,
         #   i.e., all the inputs you passed to the model during this method.
