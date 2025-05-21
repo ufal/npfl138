@@ -125,6 +125,39 @@
   channels. Write down (or derive) the equation of transposed convolution
   (or equivalently backpropagation through a convolution to its inputs). [5]
 
+#### Questions@:, Lecture 6 Questions
+- Describe the differences among semantic segmentation, image classification,
+  object detection, and instance segmentation, and write down which metrics
+  are used for these tasks. [5]
+
+- Write down how is $\mathit{AP}_{50}$ computed given predicted objects
+  and their bounding boxes in the whole dataset. [5]
+
+- Considering a Fast-RCNN architecture, draw overall network architecture,
+  explain what a RoI-pooling layer is, show how the network parametrizes
+  bounding boxes and write down the complete loss. Finally, describe non-maximum
+  suppression and how the Fast-RCNN prediction is performed. [10]
+
+- Considering a Faster-RCNN architecture, describe the region proposal network
+  (what are anchors, architecture including both heads, how are the coordinates
+  of proposals parametrized, what does the complete loss look like). [10]
+
+- Considering Mask-RCNN architecture, describe the additions to a Faster-RCNN
+  architecture (the RoI-Align layer, the new mask-producing head, its loss). [5]
+
+- Write down the focal loss with class weighting, including the commonly used
+  hyperparameter values and how the class weighting works for a given class. [5]
+
+- Draw the overall architecture of a RetinaNet architecture (the computation of
+  $C_1, \ldots, C_7$, the FPN architecture computing $P_1, \ldots, P_7$
+  including the block combining feature maps of different resolutions; the
+  classification and bounding box generation heads, including their output
+  size). Write down the losses for both heads and the overall loss. [10]
+
+- Describe GroupNorm (including its parameters and their size), and compare it
+  to BatchNorm and LayerNorm, discussing both fully connected layers and
+  convolutional layers. [5]
+
 #### Questions@:, Lecture 7 Questions
 - Write down how the Long Short-Term Memory (LSTM) cell operates, including
   the explicit formulas. Also mention the forget gate bias. [10]
