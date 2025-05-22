@@ -5,6 +5,8 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-14-czech.mp4, CZ Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2425/npfl138-2425-14-english.mp4, EN Lecture
 #### Questions: #lecture_14_questions
+#### Lecture assignment: tacotron
+#### Lecture assignment: tacotron_aligned
 
 - WaveNet [[WaveNet: A Generative Model for Raw Audio](https://arxiv.org/abs/1609.03499)]
 - Parallel WaveNet [[Parallel WaveNet: Fast High-Fidelity Speech Synthesis](https://arxiv.org/abs/1711.10433)]
