@@ -20,7 +20,7 @@
   - Backpropagation algorithm [Section 6.5 to 6.5.3 of DLB, especially Algorithms 6.1 and 6.2; _note that Algorithms 6.5 and 6.6 are used in practice_]
   - SGD algorithm [Section 8.3.1 and Algorithm 8.1 of DLB]
   - SGD with Momentum algorithm [Section 8.3.2 and Algorithm 8.2 of DLB]
-  - SGD with Nestorov Momentum algorithm [Section 8.3.3 and Algorithm 8.3 of DLB]
+  - SGD with Nesterov Momentum algorithm [Section 8.3.3 and Algorithm 8.3 of DLB]
   - Optimization algorithms with adaptive gradients
     - AdaGrad algorithm [Section 8.5.1 and Algorithm 8.4 of DLB]
     - RMSProp algorithm [Section 8.5.2 and Algorithm 8.5 of DLB]
