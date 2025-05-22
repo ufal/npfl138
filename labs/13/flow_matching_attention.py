@@ -111,8 +111,6 @@ class SelfAttentionBlock(torch.nn.Module):
         # TODO: Implement the forward pass of the self-attention block.
         raise NotImplementedError()
 
-        return hidden + inputs
-
 
 class DownscalingBlock(torch.nn.Module):
     """Downscaling block returning both the features of original and downscaled size."""
