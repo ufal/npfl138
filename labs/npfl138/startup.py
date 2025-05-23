@@ -10,7 +10,10 @@ import numpy as np
 import torch
 
 
-def startup(seed: int | None = None, threads: int | None = None, forkserver_instead_of_fork: bool = False) -> None:
+def startup(seed: int | None = None,
+            threads: int | None = None,
+            forkserver_instead_of_fork: bool = False,
+            recodex: bool = False) -> None:
     """Initialize the environment.
 
     - Allow using TF32 for matrix multiplication.
@@ -22,6 +25,7 @@ def startup(seed: int | None = None, threads: int | None = None, forkserver_inst
       seed: If not `None`, set the Python, Numpy, and PyTorch random seeds to this value.
       threads: If not `None` of 0, set the number of threads to this value.
         Otherwise, use as many threads as cores.
+      recodex: If `True`, run in ReCodEx mode for better replicability.
       forkserver_instead_of_fork: If `True`, use `forkserver` instead of `fork` as the
         default multiprocessing method. This will be the default in Python 3.14.
     """
@@ -50,3 +54,22 @@ def startup(seed: int | None = None, threads: int | None = None, forkserver_inst
         elif forkserver_instead_of_fork or os.environ.get("FORCE_FORKSERVER_METHOD") == "1":
             if torch.multiprocessing.get_start_method(allow_none=True) != "forkserver":
                 torch.multiprocessing.set_start_method("forkserver")
+
+    # If ReCodEx mode is requested, apply various overrides for better replicability.
+    if recodex:
+        # Do not use accelerators.
+        torch.cuda.is_available = lambda: False
+        torch.backends.mps.is_available = lambda: False
+        torch.xpu.is_available = lambda: False
+
+        # Make initializers deterministic.
+        def bind_generator(init):
+            return lambda *args, **kwargs: init(*args, **kwargs | {"generator": torch.Generator().manual_seed(seed)})
+        for name in ["uniform_", "normal_", "trunc_normal_", "xavier_uniform_", "xavier_normal_",
+                     "kaiming_uniform_", "kaiming_normal_", "orthogonal_", "sparse_"]:
+            setattr(torch.nn.init, name, bind_generator(getattr(torch.nn.init, name)))
+
+        # Override the generator of every DataLoader to a fresh default generator.
+        original_dataloader_init = torch.utils.data.DataLoader.__init__
+        torch.utils.data.DataLoader.__init__ = lambda self, dataset, *args, **kwargs: original_dataloader_init(
+            self, dataset, *args, **kwargs | {"generator": torch.Generator().manual_seed(seed)})
