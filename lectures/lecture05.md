@@ -20,7 +20,7 @@
   - _PyramidNet [[Deep Pyramidal Residual Networks](https://arxiv.org/abs/1610.02915)]_
   - ResNeXt [[Aggregated Residual Transformations for Deep Neural Networks](https://arxiv.org/abs/1611.05431)]
 - Regularizing CNN Networks
-  - DropLayer [[Deep Networks with Stochastic Depth](https://arxiv.org/abs/1603.09382)]
+  - Stochastic Depth [[Deep Networks with Stochastic Depth](https://arxiv.org/abs/1603.09382)]
   - CutOut [[Improved Regularization of Convolutional Neural Networks with Cutout](https://arxiv.org/abs/1708.04552)]
   - DropBlock [[DropBlock: A regularization method for convolutional networks](https://arxiv.org/abs/1810.12890)]
 - SENet [[Squeeze-and-Excitation Networks](https://arxiv.org/abs/1709.01507)]
