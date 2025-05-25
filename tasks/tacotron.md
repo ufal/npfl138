@@ -26,12 +26,12 @@ _Note that your results may be slightly different, depending on your CPU type an
 Epoch 1/2 4.7s train_loss=6.4859
 Epoch 2/2 4.3s train_loss=5.6783
 ```
-To make debugging easier, here are variances of the first batches of various quantities:
+To make debugging easier, here are statistics of first batches of various quantities:
 ```
 The torch.std of the first batch returned by Encoder: 0.5400
 The torch.std of the first batch returned by Attention: 0.5991
 The torch.std of the first batch returned by Decoder: (1.0088, 0.0019)
-The first batch loss is: (mse=6.5497, bce=0.5616)
+The first batch loss values: (mse=6.5497, bce=0.5616)
 ```
 
 2. `python3 tacotron.py --recodex --epochs=2 --batch_size=2 --encoder_layers=2 --encoder_dim=16 --prenet_dim=8 --prenet_layers=2 --postnet_dim=14 --postnet_layers=1 --attention_dim=20 --attention_rnn_dim=10 --decoder_dim=24 --dropout=0.1`
@@ -39,11 +39,11 @@ The first batch loss is: (mse=6.5497, bce=0.5616)
 Epoch 1/2 7.0s train_loss=5.7591
 Epoch 2/2 6.5s train_loss=4.8792
 ```
-To make debugging easier, here are variances of the first batches of various quantities:
+To make debugging easier, here are statistics of first batches of various quantities:
 ```
 The torch.std of the first batch returned by Encoder: 0.5572
 The torch.std of the first batch returned by Attention: 0.5442
 The torch.std of the first batch returned by Decoder: (1.0010, 0.0028)
-The first batch loss is: (mse=5.9904, bce=0.6761)
+The first batch loss values: (mse=5.9904, bce=0.6761)
 ```
 #### Tests End:
