@@ -1,6 +1,7 @@
 ### Assignment: tacotron
 #### Date: Deadline: Jun 30, 22:00
 #### Points: 3 points
+#### Tests: tacotron_tests
 
 In this assignment, you will implement a speech synthesis system based on the
 Tacotron 2 architecture, generating a mel spectrogram given an input text. To
@@ -10,10 +11,39 @@ Later in the examination period, there will be instructions for those who would
 like to create a working TTS system, describing how to train this implementation
 on real data and how to utilize some existing vocoder.
 
-The template `tacotron.py` will be available soon.
+Start with the [tacotron.py](https://github.com/ufal/npfl138/tree/master/labs/14/tacotron.py)
+template, which contains extensive comments indicating how the architecture
+should look like and how the training should be performed.
 
-To obtain the same results as in the below tests, use _lazy_ convolutional and
-_lazy_ linear layers, and create all layers in the same order as mentioned in
-the comments. However, in ReCodEx, any order of layer creation should pass, as
-should non-lazy layers.
+The way the locally-executed tests are performed changed in this assignment
+(the `--recodex` option is now being passed in them). This way, you can mix
+lazy and non-lazy layers arbitrarily and create layers in any order.
+#### Tests Start: tacotron_tests
+_Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._
 
+1. `python3 tacotron.py --recodex --epochs=2 --batch_size=4 --encoder_layers=1 --encoder_dim=32 --prenet_dim=16 --prenet_layers=1 --postnet_dim=16 --postnet_layers=2 --attention_dim=24 --attention_rnn_dim=16 --decoder_dim=20`
+```
+Epoch 1/2 4.7s train_loss=6.4859
+Epoch 2/2 4.3s train_loss=5.6783
+```
+To make debugging easier, here are variances of the first batches of various quantities:
+```
+The torch.var of the first batch returned by Encoder: 0.2916
+The torch.var of the first batch returned by Attention: 0.3589
+The torch.var of the first batch returned by Decoder: (1.0177, 0.0000)
+The first batch loss is: (mse=6.5497, bce=0.5616)
+```
+
+2. `python3 tacotron.py --recodex --epochs=2 --batch_size=2 --encoder_layers=2 --encoder_dim=16 --prenet_dim=8 --prenet_layers=2 --postnet_dim=14 --postnet_layers=1 --attention_dim=20 --attention_rnn_dim=10 --decoder_dim=24`
+```
+Epoch 1/2 7.0s train_loss=5.7657
+Epoch 2/2 6.5s train_loss=4.8741
+```
+To make debugging easier, here are variances of the first batches of various quantities:
+```
+The torch.var of the first batch returned by Encoder: 0.2816
+The torch.var of the first batch returned by Attention: 0.3001
+The torch.var of the first batch returned by Decoder: (1.0015, 0.0000)
+The first batch loss is: (mse=6.0098, bce=0.6935)
+```
+#### Tests End:
