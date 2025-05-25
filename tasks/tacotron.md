@@ -28,22 +28,22 @@ Epoch 2/2 4.3s train_loss=5.6783
 ```
 To make debugging easier, here are variances of the first batches of various quantities:
 ```
-The torch.var of the first batch returned by Encoder: 0.2916
-The torch.var of the first batch returned by Attention: 0.3589
-The torch.var of the first batch returned by Decoder: (1.0177, 0.0000)
+The torch.std of the first batch returned by Encoder: 0.5400
+The torch.std of the first batch returned by Attention: 0.5991
+The torch.std of the first batch returned by Decoder: (1.0088, 0.0019)
 The first batch loss is: (mse=6.5497, bce=0.5616)
 ```
 
-2. `python3 tacotron.py --recodex --epochs=2 --batch_size=2 --encoder_layers=2 --encoder_dim=16 --prenet_dim=8 --prenet_layers=2 --postnet_dim=14 --postnet_layers=1 --attention_dim=20 --attention_rnn_dim=10 --decoder_dim=24`
+2. `python3 tacotron.py --recodex --epochs=2 --batch_size=2 --encoder_layers=2 --encoder_dim=16 --prenet_dim=8 --prenet_layers=2 --postnet_dim=14 --postnet_layers=1 --attention_dim=20 --attention_rnn_dim=10 --decoder_dim=24 --dropout=0.1`
 ```
-Epoch 1/2 7.0s train_loss=5.7657
-Epoch 2/2 6.5s train_loss=4.8741
+Epoch 1/2 7.0s train_loss=5.7591
+Epoch 2/2 6.5s train_loss=4.8792
 ```
 To make debugging easier, here are variances of the first batches of various quantities:
 ```
-The torch.var of the first batch returned by Encoder: 0.2816
-The torch.var of the first batch returned by Attention: 0.3001
-The torch.var of the first batch returned by Decoder: (1.0015, 0.0000)
-The first batch loss is: (mse=6.0098, bce=0.6935)
+The torch.std of the first batch returned by Encoder: 0.5572
+The torch.std of the first batch returned by Attention: 0.5442
+The torch.std of the first batch returned by Decoder: (1.0010, 0.0028)
+The first batch loss is: (mse=5.9904, bce=0.6761)
 ```
 #### Tests End:
