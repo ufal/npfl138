@@ -211,7 +211,7 @@ class Tacotron(npfl138.TrainableModule):
         return mel_frames, gates
 
     def compute_loss(self, y_pred: tuple[torch.Tensor, torch.Tensor], y_true: tuple[torch.Tensor, torch.Tensor],
-                     texts: torch.Tensor, spectogram_lens: torch.Tensor) -> torch.Tensor:
+                     texts: torch.Tensor, spectograms_len: torch.Tensor) -> torch.Tensor:
         # Unpack the predicted and true values.
         mel_frames, gates = y_pred
         spectrograms, spectrogram_lens = y_true
