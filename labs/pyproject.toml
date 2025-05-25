@@ -24,6 +24,8 @@ dependencies = [
   "transformers ~= 4.49.0",
   # Used by torchaudio for CTC decoding
   "flashlight-text ~= 0.0.7",
+  # Support for flac and other sound formats on Windows
+  "soundfile ~= 0.13.1",
   # Gymnasium package including the pygame used for GUI
   "gymnasium ~= 1.1.1",
   "pygame ~= 2.6.1",
