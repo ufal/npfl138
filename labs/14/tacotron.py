@@ -7,7 +7,7 @@ import re
 import torch
 
 import npfl138
-npfl138.require_version("2425.14.1")
+npfl138.require_version("2425.14.2")
 from npfl138.datasets.tts_dataset import TTSDataset
 
 parser = argparse.ArgumentParser()
@@ -59,7 +59,12 @@ class Encoder(torch.nn.Module):
 
     def forward(self, texts: torch.Tensor) -> torch.Tensor:
         # TODO: Implement the forward pass of the encoder.
-        raise NotImplementedError()
+        result = ...
+
+        if npfl138.first_time("Encoder.forward"):
+            print(f"The torch.std of the first batch returned by Encoder: {torch.std(result):.4f}")
+
+        return result
 
 
 class Attention(torch.nn.Module):
@@ -117,25 +122,23 @@ class Attention(torch.nn.Module):
         # - the updated cummulative attention weights (the sum of all computed attention weights so far),
         # - the current attention weights, which become the previous attention weights in the next step,
         # - the current attention context vector, which becomes the previous context in the next step.
-        raise NotImplementedError()
+        context = ...
+
+        if npfl138.first_time("Attention.forward"):
+            print(f"The torch.std of the first batch returned by Attention: {torch.std(context):.4f}")
+
+        return context
 
 
 class Decoder(torch.nn.Module):
     def __init__(self, args: argparse.Namespace) -> None:
         super().__init__()
-        # Create the layers of the decoder. Start by defining the pre-net and the post-net modules.
-        # TODO: The pre-net is composed of `args.prenet_layers` layers, each consisting of:
+        # TODO: Create the layers of the decoder. Start by defining the pre-net module, which is
+        # composed of `args.prenet_layers` layers, each consisting of:
         # - a linear layer with `args.prenet_dim` output dimension,
         # - ReLU activation,
         # - dropout with `args.dropout` rate.
         self.prenet = ...
-
-        # TODO: The post-net is composed of `args.postnet_layers` layers, each consisting of:
-        # - a 1D convolution with `args.postnet_dim` output channels, kernel size 5, padding 2, and no bias;
-        #   however, the last layer has `args.mels` output channels,
-        # - batch normalization,
-        # - the tanh activation, except for the last layer, which has no activation.
-        self.postnet = ...
 
         # The LSTM decoder cell is already prepared for you.
         self.decoder = torch.nn.LSTMCell(args.prenet_dim + args.encoder_dim, args.decoder_dim)
@@ -163,25 +166,55 @@ class Decoder(torch.nn.Module):
         #
         # - First run the `self.decoder` on the concatenation the stored next decoder input and
         #   the given context vector, using and updating the stored decoder RNN state and memory cell values.
-        # - Then pass the computed decoder RNN state through the `self.output_layer` to obtain `hidden_output`.
-        # - The `hidden_output` is passed through the `self.prenet` to obtain the next input to the decoder,
+        # - Then pass the computed decoder RNN state through the `self.output_layer` to obtain
+        #   the predicted `mel_frame` for the current step.
+        # - The `mel_frame` is passed through the `self.prenet` to obtain the next input to the decoder,
         #   which should be stored as an instance variable of `self`.
-        # - The `hidden_output` is also passed through the `self.postnet` (by first moving the channels
-        #   to the front [i.e., dim=1], and then back to the last dimension after the `self.postnet` call)
-        #   and then added back to the `hidden_output` to obtain the final mel spectrogram frame output.
         # - Finally, pass the decoder RNN state through the `self.gate_layer` and a sigmoid activation
         #   to obtain the gate output indicating whether the decoder should stop or continue.
         # Return the output mel spectrogram frame and the gate output.
+        mel_frame, gate = ...
+
+        if npfl138.first_time("Decoder.forward"):
+            print(f"The torch.std of the first batch returned by Decoder: ({torch.std(mel_frame):.4f}, {torch.std(gate):.4f})")
+
+        return mel_frame, gate
+
+
+class Postnet(torch.nn.Module):
+    def __init__(self, args: argparse.Namespace) -> None:
+        super().__init__()
+        # TODO: The post-net is composed of `args.postnet_layers` convolutional layers.
+        # - The first `args.postnet_layers - 1` of them consist of
+        #   - a 1D convolution with `args.postnet_dim` output channels, kernel size 5, padding 2, and no bias,
+        #   - a batch normalization,
+        #   - the tanh activation.
+        # - The last layer consists of a 1D convolution with the same hyperparameters, but with `args.mels`
+        #   output channels, followed by a batch normalization; no activation is applied.
         raise NotImplementedError()
+
+    def forward(self, spectrograms: torch.Tensor) -> torch.Tensor:
+        # TODO: Given a batch of mel spectrograms with shape `[batch_size, max_spectrogram_len, mels]`,
+        # - move the channels to the front (i.e., dim=1),
+        # - pass the spectrograms through the post-net,
+        # - move the channels back to the last dimension.
+        # Finally, return the sum of the original and processed spectrograms.
+        result = ...
+
+        if npfl138.first_time("Postnet.forward"):
+            print(f"The torch.std of the first batch returned by Postnet: {torch.std(result):.4f}")
+
+        return result
 
 
 class Tacotron(npfl138.TrainableModule):
     def __init__(self, args: argparse.Namespace, num_characters: int) -> None:
         super().__init__()
-        # TODO: Create the Tacotron 2 model, which consists of the encoder, attention, and decoder modules.
+        # TODO: Create the Tacotron 2 model consisting of the encoder, attention, decoder, and post-net modules.
         self.encoder = ...
         self.attention = ...
         self.decoder = ...
+        self.postnet = ...
 
     def forward(self, texts: torch.Tensor, spectrograms_len: torch.Tensor) -> torch.Tensor:
         # TODO: Start by encoding the texts using the encoder.
@@ -205,7 +238,11 @@ class Tacotron(npfl138.TrainableModule):
             # TODO: Append the obtained mel frame and gate output to the `mel_frames` and `gates` lists.
             ...
 
-        # TODO: Finally, stack the `mel_frames` and `gates` lists into tensors.
+        # TODO: Stack the `mel_frames` and `gates` lists into tensors; the first two dimensions of
+        # the resulting tensors should be `[batch_size, max_spectrogram_len]`.
+        ...
+
+        # TODO: Finally, pass the `mel_frames` through the post-net.
         ...
 
         return mel_frames, gates
@@ -224,9 +261,12 @@ class Tacotron(npfl138.TrainableModule):
         # - the binary cross-entropy between the predicted `gates` and true values derived
         #   from `spectrogram_lens`. As an example, if a spectrogram has length 3, the gates should
         #   be 0 for the first frame and second frame, and 1 for the third frame.
-        loss = ...
+        mse_loss, bce_loss = ...
 
-        return loss
+        if npfl138.first_time("Tacotron.compute_loss"):
+            print(f"The first batch loss values: (mse={mse_loss:.4f}, bce={bce_loss:.4f})")
+
+        return mse_loss + bce_loss
 
 
 class TrainableDataset(npfl138.TransformedDataset):
