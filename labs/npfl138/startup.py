@@ -20,14 +20,20 @@ def startup(seed: int | None = None,
     - Set the random seed if given.
     - Set the number of threads if given.
     - Use `forkserver` instead of `fork` if requested.
+    - Optionally run in ReCodEx mode for better replicability. In this mode,
+        - Layer initialization does not depend on the global random seed generator
+          (it is deterministic and depends only on the parameter shape).
+        - Every dataloader uses its own random generator.
+        - However, the deterministic layer initialization decreases performance
+          of trained models, so it should be used only for running tests.
 
     Parameters:
       seed: If not `None`, set the Python, Numpy, and PyTorch random seeds to this value.
       threads: If not `None` of 0, set the number of threads to this value.
         Otherwise, use as many threads as cores.
-      recodex: If `True`, run in ReCodEx mode for better replicability.
       forkserver_instead_of_fork: If `True`, use `forkserver` instead of `fork` as the
         default multiprocessing method. This will be the default in Python 3.14.
+      recodex: If `True`, run in ReCodEx mode for better replicability of tests.
     """
 
     # Allow TF32 when available.
