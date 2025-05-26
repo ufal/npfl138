@@ -176,7 +176,8 @@ class Decoder(torch.nn.Module):
         mel_frame, gate = ...
 
         if npfl138.first_time("Decoder.forward"):
-            print(f"The torch.std of the first batch returned by Decoder: ({torch.std(mel_frame):.4f}, {torch.std(gate):.4f})")
+            print("The torch.std of the first batch returned by Decoder:",
+                  f"({torch.std(mel_frame):.4f}, {torch.std(gate):.4f})")
 
         return mel_frame, gate
 
