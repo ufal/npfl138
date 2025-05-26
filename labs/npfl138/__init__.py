@@ -24,6 +24,7 @@ from . import envs
 from . import rl_utils
 
 # Utils
+from .first_time import first_time
 from .initializers_override import global_keras_initializers
 from .startup import startup
 from .version import __version__, require_version
