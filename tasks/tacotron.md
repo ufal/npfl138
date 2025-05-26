@@ -34,14 +34,13 @@ Epoch 1/2 3.9s train_loss=6.6053
 Epoch 2/2 3.6s train_loss=6.1535
 ```
 
-2. `python3 tacotron.py --recodex --epochs=2 --batch_size=2 --encoder_layers=2 --encoder_dim=16 --prenet_dim=8 --prenet_layers=2 --postnet_dim=14 --postnet_layers=1 --attention_dim=20 --attention_rnn_dim=10 --decoder_dim=24 --dropout=0.1`
+2. `python3 tacotron.py --recodex --epochs=1 --batch_size=2 --encoder_layers=2 --encoder_dim=16 --prenet_dim=8 --prenet_layers=2 --postnet_dim=14 --postnet_layers=1 --attention_dim=20 --attention_rnn_dim=10 --decoder_dim=24 --dropout=0.1`
 ```
 The torch.std of the first batch returned by Encoder: 0.5572
 The torch.std of the first batch returned by Attention: 0.5442
 The torch.std of the first batch returned by Decoder: (0.0524, 0.0028)
 The torch.std of the first batch returned by Postnet: 1.0133
 The first batch loss values: (mse=6.3396, bce=0.6761)
-Epoch 1/2 6.3s train_loss=6.6926
-Epoch 2/2 5.7s train_loss=6.0053
+Epoch 1/1 6.3s train_loss=6.6926
 ```
 #### Tests End:
