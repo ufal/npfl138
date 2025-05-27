@@ -193,11 +193,11 @@
 
 - Draw the CBOW architecture from `word2vec`, including the sizes of the inputs
   and the sizes of the outputs and used non-linearities. Also make sure to
-  indicate where the embeddings are being trained. [5]
+  explain how to obtain the final embeddings after training. [5]
 
 - Draw the SkipGram architecture from `word2vec`, including the sizes of the
   inputs and the sizes of the outputs and used non-linearities. Also make sure
-  to indicate where the embeddings are being trained. [5]
+  to explain how to obtain the final embeddings after training. [5]
 
 - Describe the hierarchical softmax used in `word2vec`. [5]
 
