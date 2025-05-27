@@ -381,7 +381,9 @@
 
 - Describe the overall architecture of the Tacotron 2 architecture, including
   the description of the encoder, formula for the location-sensitive attention,
-  and the description of the decoder. What is the loss minimized during training? [10]
+  and the description of the decoder. (How exactly is one step of the decoder
+  performed? How exactly is post-net used? Why does the decoder has two outputs?)
+  What is the loss minimized during training? [10]
 
 - Sketch the FastSpeech architecture, and describe what duration predictor
   is and how it is used during computation. What is the advantage of this
