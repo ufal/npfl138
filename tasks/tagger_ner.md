@@ -22,7 +22,9 @@ predicted on the development set using the optimal decoding; you can print the
 tag sequences your solution predicts using the `--show_predictions` option.
 
 **Your implementation of `constrained_decoding` must be fast enough because
-during ReCodEx evaluation it is called 30 times on every batch.**
+during ReCodEx evaluation it is called 30 times on every batch. Therefore,
+only the cycle over the input sequence can be computed sequentially; others
+must be computed in parallel (vectorized).**
 
 #### Tests Start: tagger_ner_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._

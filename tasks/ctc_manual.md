@@ -14,7 +14,9 @@ To make debugging easier, the first test below includes a link to file
 containing $α_-$, $α_*$, final $α$, and losses for all `compute_loss` calls.
 
 **Your implementation of `compute_loss` must be fast enough because
-during ReCodEx evaluation it is called 30 times on every batch.**
+during ReCodEx evaluation it is called 30 times on every batch. Therefore,
+only the cycle over the input sequence can be computed sequentially; others
+must be computed in parallel (vectorized).**
 
 #### Tests Start: ctc_manual_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._
