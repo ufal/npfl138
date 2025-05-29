@@ -112,7 +112,7 @@
 
 - Compare Cutout and DropBlock. [5]
 
-- Describe in detail how is CutMix performed. [5]
+- Describe in detail how CutMix is performed. [5]
 
 - Describe Squeeze and Excitation applied to a ResNet block. [5]
 
@@ -130,7 +130,7 @@
   object detection, and instance segmentation, and write down which metrics
   are used for these tasks. [5]
 
-- Write down how is $\mathit{AP}_{50}$ computed given predicted objects
+- Write down how $\mathit{AP}_{50}$ is computed given predicted objects
   and their bounding boxes in the whole dataset. [5]
 
 - Considering a Fast-RCNN architecture, draw overall network architecture,
@@ -204,7 +204,7 @@
 - Describe the negative sampling proposed in `word2vec`, including
   the choice of distribution of negative samples. [5]
 
-- Explain how are ELMo embeddings trained and how are they used in downstream
+- Explain how ELMo embeddings are trained and how they are used in downstream
   applications. [5]
 
 #### Questions@:, Lecture 9 Questions
@@ -216,15 +216,15 @@
 - Considering machine translation, draw a recurrent sequence-to-sequence
   architecture with attention, used during training (include embedding layers,
   recurrent cells, attention, classification layers).
-  Then write down how exactly is the attention computed. [10]
+  Then write down how exactly the attention is computed. [10]
 
-- Explain how is word embeddings tying used in a sequence-to-sequence
+- Explain how word embeddings tying is used in a sequence-to-sequence
   architecture, including the necessary scaling. [5]
 
-- Write down why are subword units used in text processing, and describe the BPE
+- Write down why subword units are used in text processing, and describe the BPE
   algorithm for constructing a subword dictionary from a large corpus. [5]
 
-- Write down why are subword units used in text processing, and describe the
+- Write down why subword units are used in text processing, and describe the
   WordPieces algorithm for constructing a subword dictionary from a large
   corpus. [5]
 
@@ -256,15 +256,15 @@
   self-attention operation). Elaborate also on which positional embeddings
   are used and what are the GELU activations. [10]
 
-- Describe the GELU activations and explain why are they a combination of ReLUs
+- Describe the GELU activations and explain why they are a combination of ReLUs
   and Dropout. [5]
 
 - Elaborate on BERT training process (what are the two objectives used and how
-  exactly are the corresponding losses computed). [10]
+  exactly the corresponding losses are computed). [10]
 
-- Describe the architecture of a Vision Transformer – how are input images
-  represented, draw the Transformer encoder layer and the FFN sublayer, how is
-  the distribution over predicted classes computed, what positional embeddings
+- Describe the architecture of a Vision Transformer – how input images
+  are represented, draw the Transformer encoder layer and the FFN sublayer, how
+  the distribution over predicted classes is computed, what positional embeddings
   are used (and what alternative positional embeddings were tried). [10]
 
 #### Questions@:, Lecture 11 Questions
@@ -358,7 +358,7 @@
   length, hop length, what frequencies are represented in every window,
   and explain windowing including the Hann window function). Assuming $f$
   hertz corresponds to $m(f)$ mels (no need to know the exact formula),
-  how does the hertz frequencies represented by a mel spectrogram with
+  how do the hertz frequencies represented by a mel spectrogram with
   $M$ entries look like? [10]
 
 - Draw the WaveNet architecture (show the overall architecture, explain dilated
@@ -382,7 +382,7 @@
 - Describe the overall architecture of the Tacotron 2 architecture, including
   the description of the encoder, formula for the location-sensitive attention,
   and the description of the decoder. (How exactly is one step of the decoder
-  performed? How exactly is post-net used? Why does the decoder has two outputs?)
+  performed? How exactly is post-net used? Why does the decoder have two outputs?)
   What is the loss minimized during training? [10]
 
 - Sketch the FastSpeech architecture, and describe what duration predictor
