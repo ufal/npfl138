@@ -86,6 +86,8 @@ class SVHN:
         for (gold_classes, gold_bboxes), (prediction_classes, prediction_bboxes) in zip(gold, predictions):
             if len(gold_classes) != len(prediction_classes):
                 continue
+            if not len(gold_classes):  # Return 0 when evaluating on the public test set without gold data.
+                continue
 
             used = [False] * len(gold_classes)
             for cls, bbox in zip(prediction_classes, prediction_bboxes):
