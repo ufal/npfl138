@@ -87,8 +87,8 @@
   size of a convolutional operation with an $N \times M$ kernel on image
   of size $H \times W$ for both these padding schemes (stride is 1). [5]
 
-- Describe batch normalization including all its parameters, and write down an
-  algorithm how it is used during training and the algorithm how it is used
+- Describe BatchNorm (including its parameters and their size), and write down
+  an algorithm how it is used during training and the algorithm how it is used
   during inference. Be sure to explicitly write over what is being normalized in
   case of fully connected layers and in case of convolutional layers. [10]
 
@@ -168,9 +168,9 @@
 - Why the usual dropout cannot be used on recurrent state? Describe
   how the problem can be alleviated with variational dropout. [5]
 
-- Describe Layer Normalization including all its parameters, and write down how
-  it is computed (be sure to explicitly state over what is being normalized in
-  case of fully connected layers and convolutional layers). [5]
+- Describe LayerNorm (including its parameters and their size), and write down
+  how it is computed (be sure to explicitly state over what is being normalized
+  in case of fully connected layers and convolutional layers). [5]
 
 - Draw a tagger architecture utilizing word embeddings, recurrent
   character-level word embeddings (including how are these computed from
