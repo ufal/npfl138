@@ -162,8 +162,9 @@
 - Write down how the Long Short-Term Memory (LSTM) cell operates, including
   the explicit formulas. Also mention the forget gate bias. [10]
 
-- Write down how the Gated Recurrent Unit (GRU) operates, including
-  the explicit formulas. [10]
+- Write down how the Gated Recurrent Unit (GRU) operates, including the explicit
+  formulas (you can describe either the original formulation or the reset gate
+  applied after the matrix multiplication, both are fine). [10]
 
 - Why the usual dropout cannot be used on recurrent state? Describe
   how the problem can be alleviated with variational dropout. [5]
