@@ -166,7 +166,7 @@
   formulas (you can describe either the original formulation or the reset gate
   applied after the matrix multiplication, both are fine). [10]
 
-- Why the usual dropout cannot be used on recurrent state? Describe
+- Why the usual dropout should not be used on recurrent state? Describe
   how the problem can be alleviated with variational dropout. [5]
 
 - Describe LayerNorm (including its parameters and their size), and write down
