@@ -388,4 +388,4 @@
 
 - Sketch the FastSpeech architecture, and describe what duration predictor
   is and how it is used during computation. What is the advantage of this
-  architecture compared to WaveNet? [5]
+  architecture compared to Tacotron? [5]
