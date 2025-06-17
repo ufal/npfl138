@@ -71,8 +71,8 @@
 - Describe the dropout method and write down exactly how it is used during training and
   during inference. [5]
 
-- Describe how label smoothing works for cross-entropy loss, both for sigmoid
-  and softmax activations. [5]
+- Describe how label smoothing works for both categorical cross-entropy loss and
+  for binary cross-entropy loss. [5]
 
 - How are weights and biases initialized using the Glorot initialization? [5]
 
