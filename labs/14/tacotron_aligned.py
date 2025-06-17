@@ -266,8 +266,9 @@ class Tacotron(npfl138.TrainableModule):
 
         # TODO: Additionally, maximize the sum of probabilities of all monotonic alignments between
         # the mel spectrogram frames and the text characters. To this end:
-        # - Obtain all attention logits computed in the `Attention.forward` method.
-        #   You will need to save them in the `self.attention` instance during `Attention.forward`
+        # - Obtain all (masked) attention logits computed in the `Attention.forward` method.
+        #   You need to store them in the `self.attention` instance during `Attention.forward`
+        #   (or return them from `Attention.forward` instead of storing them to `self.attention`)
         #   and collect all of them in `self.forward`. The resulting tensor should have shape
         #   `[max_spectrogram_length, batch_size, max_text_length]`.
         # - Then, you need to include the logit for the blank token required by the CTC loss:
