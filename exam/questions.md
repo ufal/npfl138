@@ -271,11 +271,11 @@
 #### Questions@:, Lecture 11 Questions
 - Define the Markov Decision Process, including the definition of the return. [5]
 
-- Define the value function, such that all expectations are over simple random
-  variables (actions, states, rewards), not trajectories. [5]
+- Define the value function such that all expectations are over simple random
+  variables (actions, states, rewards), not whole episodes. [5]
 
-- Define the action-value function, such that all expectations are over simple
-  random variables (actions, states, rewards), not trajectories. [5]
+- Define the action-value function such that all expectations are over simple
+  random variables (actions, states, rewards), not whole episodes. [5]
 
 - Express the value function using the action-value function, and express the
   action-value function using the value function. [5]
