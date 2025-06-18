@@ -146,7 +146,7 @@ class UNet(torch.nn.Module):
         #   `C` channels and the "same" padding.
         ...
 
-    def forward(self, images: torch.Tensor, conditioning: torch.Tensor, times: torch.Tensor) -> None:
+    def forward(self, images: torch.Tensor, conditioning: torch.Tensor, times: torch.Tensor) -> torch.Tensor:
         # TODO: Implement the forward pass of the U-Net. Compared to the `flow_matching`
         # assignment, you also need to process the `conditioning` by first upscaling it
         # to the size of the input images using a `torch.nn.Upsample` layer, and then
@@ -217,7 +217,9 @@ class FlowMatching(npfl138.TrainableModule):
             return {"loss": self.loss_tracker(loss)}
 
     @torch.no_grad()
-    def generate(self, initial_noise: torch.Tensor, conditioning: torch.Tensor, steps: int) -> torch.Tensor:
+    def generate(
+        self, initial_noise: torch.Tensor, conditioning: torch.Tensor, steps: int
+    ) -> tuple[torch.Tensor, list[torch.Tensor]]:
         images = initial_noise.to(self.device)
         trajectory = []
 
