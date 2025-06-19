@@ -99,7 +99,7 @@ class CommonVoiceCs:
         """Extract MFCC features from an audio tensor.
 
         This function can be used to extract MFCC features from any audio sample,
-        allowing to perform speech recording on any audio sample.
+        allowing to perform speech recognition on any audio sample.
         """
         assert sample_rate == 16_000, "Only 16k sample rate is supported"
 
