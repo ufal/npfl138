@@ -97,7 +97,7 @@ class CAGS:
         """Evaluate the `predictions` labels against the gold dataset.
 
         Returns:
-          accurracy: The average accuracy of the predicted labels in percentages.
+          accuracy: The average accuracy of the predicted labels in percentages.
         """
         gold = [int(example["label"]) for example in gold_dataset]
 
@@ -113,7 +113,7 @@ class CAGS:
         """Evaluate the file with label predictions against the gold dataset.
 
         Returns:
-          accurracy: The average accuracy of the predicted labels in percentages.
+          accuracy: The average accuracy of the predicted labels in percentages.
         """
         predictions = [int(line) for line in predictions_file]
         return CAGS.evaluate_classification(gold_dataset, predictions)
