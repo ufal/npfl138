@@ -428,8 +428,8 @@ class TrainableModule(torch.nn.Module):
         """An overridable method performing a single evaluation step, returning the logs.
 
         Parameters:
-        xs: The input batch to the model, either a single tensor or a sequence of tensors.
-        y: The target output batch of the model, either a single tensor or a sequence of tensors.
+          xs: The input batch to the model, either a single tensor or a sequence of tensors.
+          y: The target output batch of the model, either a single tensor or a sequence of tensors.
 
         Returns:
           logs: A dictionary of logs from the evaluation step.

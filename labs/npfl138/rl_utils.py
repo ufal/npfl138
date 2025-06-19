@@ -16,7 +16,7 @@ import torch
 ############################
 
 class EvaluationEnv(gym.Wrapper):
-    """A wrapper over gym environments capable of performing evaluation on demant.
+    """A wrapper over gym environments capable of performing evaluation on demand.
 
     In addition to a standard gym envrironment, it provides the following features:
 
