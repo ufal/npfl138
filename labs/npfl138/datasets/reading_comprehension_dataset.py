@@ -16,7 +16,7 @@
     - `qas`: list of questions and answers, each a dictionary with:
         - `question`: text of the question
         - `answers`: a list of answers, each answer a dictionary containing:
-            - `text`: answer test as string, exactly as appearing in the context
+            - `text`: answer text as string, exactly as appearing in the context
             - `start`: character offset of the answer text in the context
 """
 import os
