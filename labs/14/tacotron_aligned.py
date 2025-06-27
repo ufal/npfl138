@@ -217,7 +217,7 @@ class Tacotron(npfl138.TrainableModule):
         self.decoder = ...
         self.postnet = ...
 
-    def forward(self, texts: torch.Tensor, spectrograms_len: torch.Tensor) -> torch.Tensor:
+    def forward(self, texts: torch.Tensor, spectrograms_len: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
         # TODO(tacotron): Start by encoding the texts using the encoder.
         encoded_texts = ...
 
@@ -273,7 +273,7 @@ class Tacotron(npfl138.TrainableModule):
         #   `[max_spectrogram_length, batch_size, max_text_length]`.
         # - Then, you need to include the logit for the blank token required by the CTC loss:
         #   prepend a fixed logit of -1 as the first "row" of the attention logits, obtaining
-        #   attention tensor with shape `[max_spectrogram_lengthm, batch_size, max_text_length + 1]`.
+        #   attention tensor with shape `[max_spectrogram_length, batch_size, max_text_length + 1]`.
         # - Compute the log softmax of the attention logits along a suitable dimension.
         #   Together with `spectrogram_lens`, this will be the predicted input to the CTC loss.
         # - The CTC loss targets are sequences `[1, 2, ..., text_length]`, with the length
