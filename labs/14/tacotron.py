@@ -93,7 +93,7 @@ class Attention(torch.nn.Module):
         # - you should zero-initialize the following `self` variables:
         #   - the state (`h`) and memory cell (`c`) of the `self.attention_rnn`,
         #   - the previously-computed attention weights,
-        #   - the cummulative attention weights (the sum of all computed attention weights so far),
+        #   - the cumulative attention weights (the sum of all computed attention weights so far),
         #   - the previously-computed attention context vector (the previous attention output).
         raise NotImplementedError()
 
@@ -104,7 +104,7 @@ class Attention(torch.nn.Module):
         #   context vector, using and updating the stored attention RNN state and memory cell values.
         #   The resulting RNN state (`h`) will be used as the query for the attention.
         # - Then perform the location-sensitive part of the attention, by:
-        #   - concatenating the cummulative attention weights and the previous attention weights (in this order),
+        #   - concatenating the cumulative attention weights and the previous attention weights (in this order),
         #   - passing them through the `self.location_sensitive_conv` layer,
         #   - moving the channels to the last dimension,
         #   - passing the result through the `self.location_sensitive_output` layer.
@@ -119,7 +119,7 @@ class Attention(torch.nn.Module):
         # - Finally compute the attention context vector as the weighted sum of the `encoded_text` and return it.
         # During the computation, you need to store the following values in the attention module instance:
         # - the updated attention RNN state and memory cell,
-        # - the updated cummulative attention weights (the sum of all computed attention weights so far),
+        # - the updated cumulative attention weights (the sum of all computed attention weights so far),
         # - the current attention weights, which become the previous attention weights in the next step,
         # - the current attention context vector, which becomes the previous context in the next step.
         context = ...
