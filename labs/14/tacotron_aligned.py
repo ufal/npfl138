@@ -80,15 +80,15 @@ class Attention(torch.nn.Module):
         self.attention_memory_layer = torch.nn.Linear(args.encoder_dim, args.attention_dim)
         self.attention_output_layer = torch.nn.Linear(args.attention_dim, 1)
 
-    def reset(self, text: torch.Tensor, encoded_text: torch.Tensor) -> None:
+    def reset(self, texts: torch.Tensor, encoded_texts: torch.Tensor) -> None:
         # TODO(tacotron): The `reset` method initializes the attention module for a new batch of texts.
         # - `texts` is a batch of input texts with shape `[batch_size, max_input_length]`;
-        # - `encoded_text` is the output of the encoder for these texts with the shape
+        # - `encoded_texts` is the output of the encoder for these texts with the shape
         #   of `[batch_size, max_input_length, encoder_dim]`.
         # You should:
-        # - store the `encoded_text` in this attention module instance (i.e., in `self`),
-        # - process the `encoded_text` using `self.attention_memory_layer` and store the result,
-        # - store an attention mask that is `-1e9` for the `TTSDataset.PAD` values in the `text`
+        # - store the `encoded_texts` in this attention module instance (i.e., in `self`),
+        # - process the `encoded_texts` using `self.attention_memory_layer` and store the result,
+        # - store an attention mask that is `-1e9` for the `TTSDataset.PAD` values in the `texts`
         #   and 0 otherwise (it will be used to mask the attention logits before applying softmax),
         # - you should zero-initialize the following `self` variables:
         #   - the state (`h`) and memory cell (`c`) of the `self.attention_rnn`,
@@ -116,7 +116,7 @@ class Attention(torch.nn.Module):
         #   - apply the tanh activation and pass the result through the `self.attention_output_layer`,
         #   - add the previously-computed attention mask to the attention logits to mask the padding positions.
         # - Now compute the attention weights (=probabilities) by applying softmax to the attention logits.
-        # - Finally compute the attention context vector as the weighted sum of the `encoded_text` and return it.
+        # - Finally compute the attention context vector as the weighted sum of the `encoded_texts` and return it.
         # During the computation, you need to store the following values in the attention module instance:
         # - the updated attention RNN state and memory cell,
         # - the updated cumulative attention weights (the sum of all computed attention weights so far),
