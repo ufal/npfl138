@@ -111,7 +111,7 @@ class Attention(torch.nn.Module):
         # - Now compute the attention logits for each position in the encoded text:
         #   - compute the query by passing the attention RNN state through `self.attention_query_layer`;
         #     this query is used for all positions in the encoded text,
-        #   - add the already pre-computed output of the `self.memory_layer` applied to the `encoded_text`,
+        #   - add the already pre-computed output of the `self.attention_memory_layer` applied to `encoded_texts`,
         #   - add the already computed output of the `self.location_sensitive_output` layer,
         #   - apply the tanh activation and pass the result through the `self.attention_output_layer`,
         #   - add the previously-computed attention mask to the attention logits to mask the padding positions.
