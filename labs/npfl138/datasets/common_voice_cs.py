@@ -32,6 +32,14 @@ class CommonVoiceCs:
         "s", "š", "t", "ť", "u", "ú", "ů", "ü", "v", "w", "x", "y", "ý", "z", "ž",
     ]
     """The list of letter strings used in the dataset."""
+    LETTERS_VOCAB: Vocabulary = Vocabulary(LETTER_NAMES[1:])
+    """The [npfl138.Vocabulary][] object of the letters used in the dataset."""
+    letters_vocab: Vocabulary = LETTERS_VOCAB
+    """The [npfl138.Vocabulary][] object of the letters used in the dataset.
+
+    Note:
+        **Deprecated**, use `CommonVoiceCs.LETTERS_VOCAB` instead.
+    """
 
     Element = TypedDict("Element", {"mfccs": torch.Tensor, "sentence": str})
     """The type of a single dataset element."""
@@ -69,19 +77,12 @@ class CommonVoiceCs:
 
             setattr(self, dataset, self.Dataset(path, size, decode_on_demand))
 
-        self._letters_vocab = Vocabulary(self.LETTER_NAMES[1:])
-
     train: Dataset
     """The training dataset."""
     dev: Dataset
     """The development dataset."""
     test: Dataset
     """The test dataset."""
-
-    @property
-    def letters_vocab(self) -> Vocabulary:
-        """The [npfl138.Vocabulary][] object of the letters used in the dataset."""
-        return self._letters_vocab
 
     # Methods for generating MFCC features.
     def load_audio(self, path: str, target_sample_rate: int | None = None) -> tuple[torch.Tensor, int]:
