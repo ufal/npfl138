@@ -22,6 +22,7 @@ import torchvision
 
 from .. import metrics
 from .tfrecord_dataset import TFRecordDataset
+from ..vocabulary import Vocabulary
 
 
 class HOMRDataset:
@@ -32,6 +33,8 @@ class HOMRDataset:
     """The number of different marks in the dataset."""
     MARK_NAMES: list[str]  # Set at the bottom of the script for readability
     """The list of mark names in the dataset."""
+    MARKS_VOCAB: Vocabulary  # Set at the bottom of the script for readability
+    """The [npfl138.Vocabulary][] object of the marks used in the dataset."""
 
     Element = TypedDict("Element", {"image": torch.Tensor, "marks": torch.Tensor})
     """The type of a single dataset element."""
@@ -327,6 +330,8 @@ HOMRDataset.MARK_NAMES = [
     "timeSignature-7/4", "timeSignature-8/2", "timeSignature-8/4", "timeSignature-8/8",
     "timeSignature-9/4", "timeSignature-9/8", "timeSignature-C", "timeSignature-C/",
 ]
+
+HOMRDataset.MARKS_VOCAB = Vocabulary(HOMRDataset.MARK_NAMES[1:])
 
 
 if __name__ == "__main__":
