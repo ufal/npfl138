@@ -73,8 +73,9 @@ class TrainableDataset(npfl138.TransformedDataset):
         # in the `forward`, `compute_loss`, and `compute_metrics` methods; right now, there are
         # just `...` instead of the input arguments in the definition of the mentioned methods.
         #
-        # Note that while the `CommonVoiceCs.LETTER_NAMES` do not explicitly contain a blank token,
-        # the [PAD] token can be employed as a blank token.
+        # You can use `CommonVoiceCs.LETTER_NAMES : list[str]` or `CommonVoiceCs.LETTERS_VOCAB : npfl138.Vocabulary`
+        # to convert between letters and their indices. While the letters do not explicitly contain
+        # a blank token, the [PAD] token can be employed as one.
         raise NotImplementedError()
 
     def collate(self, batch):
@@ -113,7 +114,7 @@ def main(args: argparse.Namespace) -> None:
         predictions = ...
 
         for sentence in predictions:
-            print("".join(CommonVoiceCs.LETTER_NAMES[char] for char in sentence), file=predictions_file)
+            print("".join(CommonVoiceCs.LETTERS_VOCAB.strings(sentence)), file=predictions_file)
 
 
 if __name__ == "__main__":
