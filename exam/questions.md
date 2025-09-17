@@ -181,8 +181,8 @@
   dropout layers? [10]
 
 #### Questions@:, Lecture 8 Questions
-- In the context of named entity recognition, describe what the BIO encoding
-  is and why it is used. [5]
+- In the context of named entity recognition, describe how the BIO encoding
+  works and why it is used. [5]
 
 - Write down the dynamic programming algorithm for decoding a BIO-tag sequence,
   including its asymptotic complexity. [10]
