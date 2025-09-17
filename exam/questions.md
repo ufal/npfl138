@@ -106,7 +106,8 @@
   and ReLUs) and also the improved variant with full pre-activation. [5]
 
 - Compare the bottleneck block of ResNet and ResNeXt architectures (draw the
-  latter using convolutions only, i.e., do not use grouped convolutions). [5]
+  latter using regular convolutions only, i.e., do not use a grouped
+  convolution). [5]
 
 - Describe the CNN regularization method of networks with stochastic depth. [5]
 
