@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
-<ipe version="70218" creator="Ipe 7.2.23">
-<info created="D:20210505163843" modified="D:20220411124854"/>
+<ipe version="70218" creator="Ipe 7.2.26">
+<info created="D:20210505163843" modified="D:20250917110921"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -259,50 +259,50 @@ h
 <text matrix="1 0 0 1 -28 0" transformations="translations" pos="124 684" stroke="black" type="label" width="10.163" height="4.294" depth="1.49" valign="baseline" style="math">x_3</text>
 <text matrix="1 0 0 1 36 0" transformations="translations" pos="124 684" stroke="black" type="label" width="13.25" height="4.294" depth="1.49" valign="baseline" style="math">x_N</text>
 <text matrix="1 0 0 1 4 0" transformations="translations" pos="124 684" stroke="black" type="label" width="11.623" height="4.428" depth="0" valign="baseline" style="math">\cdots</text>
-<path stroke="black">
+<path stroke="darkcyan">
 28 672 m
 28 660 l
 44 660 l
 44 672 l
 h
 </path>
-<text matrix="1 0 0 1 -23.814 -2.79072" transformations="translations" pos="52 672" stroke="black" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
+<text matrix="1 0 0 1 -23.814 -2.79072" transformations="translations" pos="52 672" stroke="darkcyan" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
 <path stroke="black" arrow="normal/tiny">
 36 680 m
 36 672 l
 </path>
-<path matrix="1 0 0 1 32 0" stroke="black">
+<path matrix="1 0 0 1 32 0" stroke="darkcyan">
 28 672 m
 28 660 l
 44 660 l
 44 672 l
 h
 </path>
-<text matrix="1 0 0 1 8.186 -2.79072" transformations="translations" pos="52 672" stroke="black" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
+<text matrix="1 0 0 1 8.186 -2.79072" transformations="translations" pos="52 672" stroke="darkcyan" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
 <path matrix="1 0 0 1 32 0" stroke="black" arrow="normal/tiny">
 36 680 m
 36 672 l
 </path>
-<path matrix="1 0 0 1 64 0" stroke="black">
+<path matrix="1 0 0 1 64 0" stroke="darkcyan">
 28 672 m
 28 660 l
 44 660 l
 44 672 l
 h
 </path>
-<text matrix="1 0 0 1 40.186 -2.79072" transformations="translations" pos="52 672" stroke="black" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
+<text matrix="1 0 0 1 40.186 -2.79072" transformations="translations" pos="52 672" stroke="darkcyan" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
 <path matrix="1 0 0 1 64 0" stroke="black" arrow="normal/tiny">
 36 680 m
 36 672 l
 </path>
-<path matrix="1 0 0 1 128 0" stroke="black">
+<path matrix="1 0 0 1 128 0" stroke="darkcyan">
 28 672 m
 28 660 l
 44 660 l
 44 672 l
 h
 </path>
-<text matrix="1 0 0 1 104.186 -2.79072" transformations="translations" pos="52 672" stroke="black" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
+<text matrix="1 0 0 1 104.186 -2.79072" transformations="translations" pos="52 672" stroke="darkcyan" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
 <path matrix="1 0 0 1 128 0" stroke="black" arrow="normal/tiny">
 36 680 m
 36 672 l
@@ -310,25 +310,25 @@ h
 <path stroke="blue">
 4 0 0 4 32 648 e
 </path>
-<path stroke="darkorange">
+<path stroke="turquoise">
 4 0 0 4 40 640 e
 </path>
 <path matrix="1 0 0 1 32 0" stroke="blue">
 4 0 0 4 32 648 e
 </path>
-<path matrix="1 0 0 1 32 0" stroke="darkorange">
+<path matrix="1 0 0 1 32 0" stroke="turquoise">
 4 0 0 4 40 640 e
 </path>
 <path matrix="1 0 0 1 64 0" stroke="blue">
 4 0 0 4 32 648 e
 </path>
-<path matrix="1 0 0 1 64 0" stroke="darkorange">
+<path matrix="1 0 0 1 64 0" stroke="turquoise">
 4 0 0 4 40 640 e
 </path>
 <path matrix="1 0 0 1 128 0" stroke="blue">
 4 0 0 4 32 648 e
 </path>
-<path matrix="1 0 0 1 128 0" stroke="darkorange">
+<path matrix="1 0 0 1 128 0" stroke="turquoise">
 4 0 0 4 40 640 e
 </path>
 <path stroke="blue" arrow="normal/tiny">
@@ -347,19 +347,19 @@ h
 144 648 m
 156 648 l
 </path>
-<path stroke="darkorange" arrow="normal/tiny">
+<path stroke="turquoise" arrow="normal/tiny">
 68 640 m
 44 640 l
 </path>
-<path matrix="1 0 0 1 32 0" stroke="darkorange" arrow="normal/tiny">
+<path matrix="1 0 0 1 32 0" stroke="turquoise" arrow="normal/tiny">
 68 640 m
 44 640 l
 </path>
-<path stroke="darkorange">
+<path stroke="turquoise">
 164 640 m
 144 640 l
 </path>
-<path stroke="darkorange" arrow="normal/tiny">
+<path stroke="turquoise" arrow="normal/tiny">
 124 640 m
 108 640 l
 </path>
@@ -456,14 +456,14 @@ h
 40 652 l
 40 644 l
 </path>
-<path matrix="1 0 0 1 196 -44" stroke="black">
+<path matrix="1 0 0 1 196 -44" stroke="red">
 28 672 m
 28 660 l
 44 660 l
 44 672 l
 h
 </path>
-<text matrix="1 0 0 1 172.186 -46.7907" transformations="translations" pos="52 672" stroke="black" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
+<text matrix="1 0 0 1 172.186 -46.7907" transformations="translations" pos="52 672" stroke="red" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
 <path matrix="1 0 0 1 196 -44" stroke="black" arrow="normal/tiny">
 36 680 m
 36 672 l
@@ -503,14 +503,14 @@ h
 224 592 m
 224 584 l
 </path>
-<path matrix="1 0 0 1 188 -88" stroke="black">
+<path matrix="1 0 0 1 188 -88" stroke="darkorange">
 28 672 m
 28 660 l
 44 660 l
 44 672 l
 h
 </path>
-<text matrix="1 0 0 1 164.186 -90.7907" transformations="translations" pos="52 672" stroke="black" type="minipage" width="16" height="5.607" depth="0.62" valign="top" size="small" style="center">Clf\kern0.2em</text>
+<text matrix="1 0 0 1 164.186 -90.7907" transformations="translations" pos="52 672" stroke="darkorange" type="minipage" width="16" height="5.607" depth="0.62" valign="top" size="small" style="center">Clf\kern0.2em</text>
 <path matrix="1 0 0 1 0 -20" stroke="black" arrow="normal/tiny">
 224 592 m
 224 584 l
@@ -524,14 +524,14 @@ h
 8 0 0 8 208 608 e
 </path>
 <text matrix="1 0 0 1 80 14.3256" transformations="translations" pos="204 624" stroke="black" type="label" width="9.354" height="4.297" depth="1.93" valign="baseline" style="math">y_1</text>
-<path matrix="1 0 0 1 252 -44" stroke="black">
+<path matrix="1 0 0 1 252 -44" stroke="red">
 28 672 m
 28 660 l
 44 660 l
 44 672 l
 h
 </path>
-<text matrix="1 0 0 1 228.186 -46.7907" transformations="translations" pos="52 672" stroke="black" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
+<text matrix="1 0 0 1 228.186 -46.7907" transformations="translations" pos="52 672" stroke="red" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
 <path matrix="1 0 0 1 252 -44" stroke="black" arrow="normal/tiny">
 36 680 m
 36 672 l
@@ -566,14 +566,14 @@ h
 224 592 m
 224 584 l
 </path>
-<path matrix="1 0 0 1 244 -88" stroke="black">
+<path matrix="1 0 0 1 244 -88" stroke="darkorange">
 28 672 m
 28 660 l
 44 660 l
 44 672 l
 h
 </path>
-<text matrix="1 0 0 1 220.186 -90.7907" transformations="translations" pos="52 672" stroke="black" type="minipage" width="16" height="5.607" depth="0.62" valign="top" size="small" style="center">Clf\kern0.2em</text>
+<text matrix="1 0 0 1 220.186 -90.7907" transformations="translations" pos="52 672" stroke="darkorange" type="minipage" width="16" height="5.607" depth="0.62" valign="top" size="small" style="center">Clf\kern0.2em</text>
 <path matrix="1 0 0 1 56 -20" stroke="black" arrow="normal/tiny">
 224 592 m
 224 584 l
@@ -593,14 +593,14 @@ h
 8 0 0 8 208 608 e
 </path>
 <text matrix="1 0 0 1 168 14.3256" transformations="translations" pos="204 624" stroke="black" type="label" width="13.728" height="4.297" depth="1.93" valign="baseline" style="math">y_M</text>
-<path matrix="1 0 0 1 340 -44" stroke="black">
+<path matrix="1 0 0 1 340 -44" stroke="red">
 28 672 m
 28 660 l
 44 660 l
 44 672 l
 h
 </path>
-<text matrix="1 0 0 1 316.186 -46.7907" transformations="translations" pos="52 672" stroke="black" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
+<text matrix="1 0 0 1 316.186 -46.7907" transformations="translations" pos="52 672" stroke="red" type="minipage" width="16" height="5.898" depth="0.91" valign="top" style="center">E</text>
 <path matrix="1 0 0 1 340 -44" stroke="black" arrow="normal/tiny">
 36 680 m
 36 672 l
@@ -640,14 +640,14 @@ h
 224 592 m
 224 584 l
 </path>
-<path matrix="1 0 0 1 332 -88" stroke="black">
+<path matrix="1 0 0 1 332 -88" stroke="darkorange">
 28 672 m
 28 660 l
 44 660 l
 44 672 l
 h
 </path>
-<text matrix="1 0 0 1 308.186 -90.7907" transformations="translations" pos="52 672" stroke="black" type="minipage" width="16" height="5.607" depth="0.62" valign="top" size="small" style="center">Clf\kern0.2em</text>
+<text matrix="1 0 0 1 308.186 -90.7907" transformations="translations" pos="52 672" stroke="darkorange" type="minipage" width="16" height="5.607" depth="0.62" valign="top" size="small" style="center">Clf\kern0.2em</text>
 <path matrix="1 0 0 1 144 -20" stroke="black" arrow="normal/tiny">
 224 592 m
 224 584 l
