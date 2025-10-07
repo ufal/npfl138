@@ -46,7 +46,7 @@ class Model(npfl138.TrainableModule):
         self._target_output_layer = ...
 
         # Create self._target_rnn_cell, which is the single cell of `self._target_rnn`.
-        self._target_rnn_cell = torch.nn.GRUCell(args.rnn_dim, args.rnn_dim)
+        self._target_rnn_cell = torch.nn.GRUCell(args.cle_dim, args.rnn_dim)
         for name, _ in self._target_rnn_cell.named_parameters():
             setattr(self._target_rnn_cell, name, getattr(self._target_rnn, "{}_l0".format(name)))
 

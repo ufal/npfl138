@@ -25,7 +25,7 @@ _Note that your results may be slightly different, depending on your CPU type an
 
 1. `python3 lemmatizer_noattn.py --epochs=1 --max_sentences=500 --batch_size=2 --cle_dim=64 --rnn_dim=32`
 ```
-Epoch 1/1 2.2s train_loss=2.9629 train_accuracy=0.0228 dev_accuracy=0.1324
+Epoch 1/1 2.2s train_loss=2.9665 train_accuracy=0.0195 dev_accuracy=0.1208
 ```
 
 2. `python3 lemmatizer_noattn.py --epochs=1 --max_sentences=500 --batch_size=2 --cle_dim=32 --rnn_dim=32 --tie_embeddings`
