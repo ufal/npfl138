@@ -5,7 +5,7 @@
 
 The goal of this exercise is to familiarize with PyTorch `torch.Tensor`s,
 shapes and basic tensor manipulation methods. Start with the
-[pca_first.py](https://github.com/ufal/npfl138/tree/master/labs/01/pca_first.py)
+[pca_first.py](https://github.com/ufal/npfl138/tree/past-2425/labs/01/pca_first.py)
 template.
 
 In this assignment, you should compute the covariance matrix of several examples

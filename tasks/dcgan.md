@@ -8,7 +8,7 @@ This task is a continuation of the `gan` assignment, which you will modify to
 implement the Deep Convolutional GAN (DCGAN).
 
 Start with the
-[dcgan.py](https://github.com/ufal/npfl138/tree/master/labs/12/dcgan.py)
+[dcgan.py](https://github.com/ufal/npfl138/tree/past-2425/labs/12/dcgan.py)
 template and implement a DCGAN. Note that most of the TODO notes are from
 the `gan` assignment.
 

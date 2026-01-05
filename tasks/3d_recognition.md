@@ -27,5 +27,5 @@ Everyone who submits a solution achieving at least _88%_ test set accuracy gets
 ordering of your solutions.
 
 You can start with the
-[3d_recognition.py](https://github.com/ufal/npfl138/tree/master/labs/11/3d_recognition.py)
+[3d_recognition.py](https://github.com/ufal/npfl138/tree/past-2425/labs/11/3d_recognition.py)
 template, which among others generates test set annotations in the required format.

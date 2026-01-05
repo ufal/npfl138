@@ -17,7 +17,7 @@ downloads the model weights. However, you can use **any** model from the `timm`
 library in this assignment.
 
 An example performing classification of given images is available in
-[image_classification.py](https://github.com/ufal/npfl138/tree/master/labs/05/image_classification.py).
+[image_classification.py](https://github.com/ufal/npfl138/tree/past-2425/labs/05/image_classification.py).
 
 _A note on finetuning: you should start by training only the newly added
 classifier. To that end pass only the classifier parameters to the optimizer
@@ -30,5 +30,5 @@ achieving at least _93%_ test set accuracy gets 4 points; the remaining
 5 bonus points are distributed depending on relative ordering of your solutions.
 
 You may want to start with the
-[cags_classification.py](https://github.com/ufal/npfl138/tree/master/labs/05/cags_classification.py)
+[cags_classification.py](https://github.com/ufal/npfl138/tree/past-2425/labs/05/cags_classification.py)
 template which generates the test set annotation in the required format.

@@ -5,7 +5,7 @@
 #### Examples: ctc_manual_examples
 
 This assignment is an extension of `tagger_we` task. Using the
-[ctc_manual.py](https://github.com/ufal/npfl138/tree/master/labs/08/ctc_manual.py)
+[ctc_manual.py](https://github.com/ufal/npfl138/tree/past-2425/labs/08/ctc_manual.py)
 template, manually implement the CTC loss computation and also greedy CTC
 decoding. You can use `torch.nn.CTCLoss` during development as a reference, but
 it is not available during ReCodEx evaluation.

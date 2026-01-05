@@ -5,7 +5,7 @@
 #### Examples: tagger_ner_examples
 
 This assignment is an extension of `tagger_we` task. Using the
-[tagger_ner.py](https://github.com/ufal/npfl138/tree/master/labs/08/tagger_ner.py)
+[tagger_ner.py](https://github.com/ufal/npfl138/tree/past-2425/labs/08/tagger_ner.py)
 template, implement optimal decoding of named entity spans from
 BIO-encoded tags. In a valid sequence, the tags are `O`, `B-TYPE`, `I-TYPE`, and
 the `I-TYPE` tag must follow either `B-TYPE` or `I-TYPE` tags.

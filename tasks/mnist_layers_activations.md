@@ -5,13 +5,13 @@
 #### Examples: mnist_layers_activations_examples
 
 Before solving the assignment, start by playing with
-[example_pytorch_tensorboard.py](https://github.com/ufal/npfl138/tree/master/labs/01/example_pytorch_tensorboard.py),
+[example_pytorch_tensorboard.py](https://github.com/ufal/npfl138/tree/past-2425/labs/01/example_pytorch_tensorboard.py),
 in order to familiarize with PyTorch and TensorBoard. After running the example,
 start TensorBoard in the same directory using `tensorboard --logdir logs` and
 open <http://localhost:6006> in a browser and explore the generated logs.
 
 **Your goal** is to modify the
-[mnist_layers_activations.py](https://github.com/ufal/npfl138/tree/master/labs/01/mnist_layers_activations.py)
+[mnist_layers_activations.py](https://github.com/ufal/npfl138/tree/past-2425/labs/01/mnist_layers_activations.py)
 template such that a user-specified neural network is constructed:
 - A number of hidden layers (including zero) can be specified on the command line
   using the parameter `hidden_layers`.

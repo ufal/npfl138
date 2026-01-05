@@ -37,6 +37,6 @@ Note that contrary to working with EfficientNet, you **need** to **finetune**
 the RobeCzech model in order to achieve the required accuracy.
 
 You can start with the
-[reading_comprehension.py](https://github.com/ufal/npfl138/tree/master/labs/10/reading_comprehension.py)
+[reading_comprehension.py](https://github.com/ufal/npfl138/tree/past-2425/labs/10/reading_comprehension.py)
 template, which among others (down)loads the data and the RobeCzech model, and describes
 the format of the required test set annotations.

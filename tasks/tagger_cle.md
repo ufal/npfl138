@@ -5,7 +5,7 @@
 #### Examples: tagger_cle_examples
 
 This assignment is a continuation of `tagger_we`. Using the
-[tagger_cle.py](https://github.com/ufal/npfl138/tree/master/labs/07/tagger_cle.py)
+[tagger_cle.py](https://github.com/ufal/npfl138/tree/past-2425/labs/07/tagger_cle.py)
 template, implement character-level word embedding computation using
 a bidirectional character-level GRU.
 
@@ -14,7 +14,7 @@ compared to a plain `tagger_we`, and the influence of their dimensionality. Note
 that `tagger_cle` has by default smaller word embeddings so that the size
 of word representation (64 + 32 + 32) is the same as in the `tagger_we` assignment.
 
-_Again, in the alternative [tagger_cle.packed.py](https://github.com/ufal/npfl138/tree/master/labs/07/tagger_cle.packed.py)
+_Again, in the alternative [tagger_cle.packed.py](https://github.com/ufal/npfl138/tree/past-2425/labs/07/tagger_cle.packed.py)
 template, `forward` processes `PackedSequence`s instead of rectangular tensors
 and produces also a `PackedSequence`; both templates deliver the same results
 when word masking is not used, and are both accepted by ReCodEx._

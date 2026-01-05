@@ -25,7 +25,7 @@ Everyone who submits a solution achieving at least _87%_ test set IoU gets
 ordering of your solutions.
 
 You may want to start with the
-[cags_segmentation.py](https://github.com/ufal/npfl138/tree/master/labs/05/cags_segmentation.py)
+[cags_segmentation.py](https://github.com/ufal/npfl138/tree/past-2425/labs/05/cags_segmentation.py)
 template, which generates the test set annotation in the required format –
 each mask should be encoded on a single line as a space separated sequence of
 integers indicating the length of alternating runs of zeros and ones.

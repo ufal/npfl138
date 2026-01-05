@@ -13,7 +13,7 @@ Later in the examination period, there will be instructions for those who would
 like to create a working TTS system, describing how to train this implementation
 on real data and how to utilize some existing vocoder.
 
-Start with the [tacotron.py](https://github.com/ufal/npfl138/tree/master/labs/14/tacotron.py)
+Start with the [tacotron.py](https://github.com/ufal/npfl138/tree/past-2425/labs/14/tacotron.py)
 template, which contains extensive comments indicating how the architecture
 should look like and how the training should be performed.
 

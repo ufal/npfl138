@@ -5,7 +5,7 @@
 #### Examples: tagger_transformer_examples
 
 This assignment is a continuation of `tagger_we`. Using the
-[tagger_transformer.py](https://github.com/ufal/npfl138/tree/master/labs/10/tagger_transformer.py)
+[tagger_transformer.py](https://github.com/ufal/npfl138/tree/past-2425/labs/10/tagger_transformer.py)
 template, implement a Pre-LN Transformer encoder.
 
 #### Tests Start: tagger_transformer_tests

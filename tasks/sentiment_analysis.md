@@ -19,8 +19,8 @@ Note that contrary to working with EfficientNet, you **need** to **finetune**
 the Electra model in order to achieve the required accuracy.
 
 You can start with the
-[sentiment_analysis.py](https://github.com/ufal/npfl138/tree/master/labs/10/sentiment_analysis.py)
+[sentiment_analysis.py](https://github.com/ufal/npfl138/tree/past-2425/labs/10/sentiment_analysis.py)
 template, which among others loads the Electra Czech model and generates test
 set annotations in the required format. Note that
-[example_transformers.py](https://github.com/ufal/npfl138/tree/master/labs/10/example_transformers.py)
+[example_transformers.py](https://github.com/ufal/npfl138/tree/past-2425/labs/10/example_transformers.py)
 module illustrates the usage of both the Electra tokenizer and the Electra model.

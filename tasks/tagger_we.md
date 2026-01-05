@@ -13,7 +13,7 @@ module (down)loads the dataset and uses
 to provide mappings between strings and integers.
 
 Your goal is to modify the
-[tagger_we.py](https://github.com/ufal/npfl138/tree/master/labs/07/tagger_we.py)
+[tagger_we.py](https://github.com/ufal/npfl138/tree/past-2425/labs/07/tagger_we.py)
 template and implement the following:
 - Use specified RNN layer type (`GRU` and `LSTM`) and dimensionality.
 - Create word embeddings for training vocabulary.
@@ -22,7 +22,7 @@ template and implement the following:
 Note that you need to properly handle sentences of different lengths in one
 batch.
 
-_In the alternative [tagger_we.packed.py](https://github.com/ufal/npfl138/tree/master/labs/07/tagger_we.packed.py)
+_In the alternative [tagger_we.packed.py](https://github.com/ufal/npfl138/tree/past-2425/labs/07/tagger_we.packed.py)
 template, `forward` processes a `PackedSequence` instead of a rectangular tensor
 and produces also a `PackedSequence`; both templates deliver the same results,
 and are both accepted by ReCodEx._

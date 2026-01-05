@@ -33,7 +33,7 @@ of your solutions. Note that I usually need at least _35%_ development set
 accuracy to achieve the required test set performance.
 
 You should start with the
-[svhn_competition.py](https://github.com/ufal/npfl138/tree/master/labs/06/svhn_competition.py)
+[svhn_competition.py](https://github.com/ufal/npfl138/tree/past-2425/labs/06/svhn_competition.py)
 template, which generates the test set annotation in the required format.
 
 _A baseline solution can use RetinaNet-like single stage detector,

@@ -25,7 +25,7 @@ of your solutions. Lastly, **1 additional bonus point** will be given to anyone 
 the pre-neural-network state-of-the-art of **96.35%**.
 
 You can start with the
-[tagger_competition.py](https://github.com/ufal/npfl138/tree/master/labs/07/tagger_competition.py)
+[tagger_competition.py](https://github.com/ufal/npfl138/tree/past-2425/labs/07/tagger_competition.py)
 template, which among others generates test set annotations in the required format. Note that
 you can evaluate the predictions as usual using the
 [morpho_dataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/docs/datasets/morpho_dataset/)

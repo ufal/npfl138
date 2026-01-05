@@ -20,5 +20,5 @@ model to ReCodEx, but it is also possible to train an agent during ReCodEx
 evaluation.
 
 Start with the
-[reinforce_pixels.py](https://github.com/ufal/npfl138/tree/master/labs/11/reinforce_pixels.py)
+[reinforce_pixels.py](https://github.com/ufal/npfl138/tree/past-2425/labs/11/reinforce_pixels.py)
 template, which parses several parameters and creates the correct environment.

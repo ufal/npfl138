@@ -5,7 +5,7 @@
 
 You will learn how to implement three regularization methods in this assignment.
 Start with the
-[mnist_regularization.py](https://github.com/ufal/npfl138/tree/master/labs/03/mnist_regularization.py)
+[mnist_regularization.py](https://github.com/ufal/npfl138/tree/past-2425/labs/03/mnist_regularization.py)
 template and implement the following:
 - Allow using dropout with rate `args.dropout`. Add a dropout layer after the
   first `Flatten` and also after all `Linear` hidden layers (but not after the

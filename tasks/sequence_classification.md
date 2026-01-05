@@ -11,7 +11,7 @@ of the sequence. The inputs are either 0/1, or vectors with one-hot
 representation of small integer.
 
 Your goal is to modify the
-[sequence_classification.py](https://github.com/ufal/npfl138/tree/master/labs/07/sequence_classification.py)
+[sequence_classification.py](https://github.com/ufal/npfl138/tree/past-2425/labs/07/sequence_classification.py)
 template and implement the following:
 - Use the specified RNN type (`RNN`, `GRU`, and `LSTM`) and dimensionality.
 - Process the sequence using the required RNN.

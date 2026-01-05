@@ -10,7 +10,7 @@ by the [morpho_dataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2425/do
 module.
 
 Your goal is to modify the
-[lemmatizer_noattn.py](https://github.com/ufal/npfl138/tree/master/labs/09/lemmatizer_noattn.py)
+[lemmatizer_noattn.py](https://github.com/ufal/npfl138/tree/past-2425/labs/09/lemmatizer_noattn.py)
 template and implement the following:
 - Embed characters of source forms and run a bidirectional GRU encoder.
 - Embed characters of target lemmas.

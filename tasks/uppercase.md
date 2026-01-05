@@ -22,7 +22,7 @@ programatically using the `UppercaseData.evaluate_file` method, or by running
 `python3 -m npfl138.datasets.uppercase_data` command with `--evaluate` argument.
 
 Start with the
-[uppercase.py](https://github.com/ufal/npfl138/tree/master/labs/03/uppercase.py)
+[uppercase.py](https://github.com/ufal/npfl138/tree/past-2425/labs/03/uppercase.py)
 template, which uses the [npfl138.datasets.uppercase_data](https://github.com/ufal/npfl138/blob/master/labs/npfl138/datasets/uppercase_data.py)
 to load the data, generate an alphabet of given size containing most frequent
 characters, and generate sliding window view on the data. The template also

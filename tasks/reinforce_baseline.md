@@ -4,7 +4,7 @@
 
 This is a continuation of the `reinforce` assignment.
 
-Using the [reinforce_baseline.py](https://github.com/ufal/npfl138/tree/master/labs/11/reinforce_baseline.py)
+Using the [reinforce_baseline.py](https://github.com/ufal/npfl138/tree/past-2425/labs/11/reinforce_baseline.py)
 template, solve the continuous [CartPole-v1 environment](https://gymnasium.farama.org/environments/classic_control/cart_pole/)
 using the REINFORCE with baseline algorithm.
 

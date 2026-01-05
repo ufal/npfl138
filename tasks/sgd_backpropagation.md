@@ -16,7 +16,7 @@ if interested. After computing the gradient, you should then perform training by
 running manually implemented minibatch stochastic gradient descent.
 
 Starting with the
-[sgd_backpropagation.py](https://github.com/ufal/npfl138/tree/master/labs/02/sgd_backpropagation.py)
+[sgd_backpropagation.py](https://github.com/ufal/npfl138/tree/past-2425/labs/02/sgd_backpropagation.py)
 template, you should:
 - implement a neural network with a single _tanh_ hidden layer and
   categorical output layer;
@@ -26,7 +26,7 @@ template, you should:
 - perform the SGD update.
 
 This assignment also demonstrates the most important parts of the
-[npfl138.TrainableModule](https://github.com/ufal/npfl138/tree/master/labs/npfl138/trainable_module.py)
+[npfl138.TrainableModule](https://github.com/ufal/npfl138/tree/past-2425/labs/npfl138/trainable_module.py)
 that we are using.
 
 #### Tests Start: sgd_backpropagation_tests

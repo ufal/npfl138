@@ -19,7 +19,7 @@ Note that my solutions usually need to achieve around ~85% on the development
 set to score 70% on the test set.
 
 You may want to start with the
-[cifar_competition.py](https://github.com/ufal/npfl138/tree/master/labs/04/cifar_competition.py)
+[cifar_competition.py](https://github.com/ufal/npfl138/tree/past-2425/labs/04/cifar_competition.py)
 template which generates the test set annotation in the required format.
 
 In this assignment, you must implement and train your model from scratch, so you

@@ -25,5 +25,5 @@ module, either by running `python3 -m npfl138.datasets.homr_dataset --evaluate=p
 or by calling the `HOMRDataset.evaluate` method.
 
 Start with the
-[homr_competition.py](https://github.com/ufal/npfl138/tree/master/labs/12/homr_competition.py)
+[homr_competition.py](https://github.com/ufal/npfl138/tree/past-2425/labs/12/homr_competition.py)
 template, which loads the data and generates test set annotations in the required format.
