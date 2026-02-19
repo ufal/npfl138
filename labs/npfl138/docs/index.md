@@ -25,3 +25,11 @@ can also be used directly.
 Finally, several [utilities](utilities.md) are provided, including
 a [Vocabulary](vocabulary.md) class for converting between strings and their
 indices.
+
+::: npfl138.__version__
+    options:
+      heading: "The npfl138 version"
+      heading_level: 3
+      show_labels: false
+      show_symbol_type_toc: false
+      show_symbol_type_heading: false
