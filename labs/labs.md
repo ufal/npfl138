@@ -4,8 +4,8 @@ The tasks are evaluated automatically using the
 [ReCodEx Code Examiner](https://recodex.mff.cuni.cz/).
 
 The evaluation is performed using Python 3.11, PyTorch, Python Image
-Models, HF Transformers, and Gymnasium. Instructions how to install
-the exact versions of these packages will be added later.
+Models, HF Transformers, and Gymnasium. You should
+[install the exact version of these packages yourselves](#faq_install).
 
 ### Teamwork
 
