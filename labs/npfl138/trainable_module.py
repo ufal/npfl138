@@ -51,6 +51,7 @@ import time
 from typing import Any, Literal, Self
 
 import torch
+import torchmetrics
 
 from .callback import Callback, STOP_TRAINING
 from .logger import Logger
@@ -225,7 +226,7 @@ class TrainableModule(torch.nn.Module):
         optimizer: torch.optim.Optimizer | None | KeepPrevious = keep_previous,
         scheduler: torch.optim.lr_scheduler.LRScheduler | None | KeepPrevious = keep_previous,
         loss: Loss | None | KeepPrevious = keep_previous,
-        metrics: dict[str, Metric] | KeepPrevious = keep_previous,
+        metrics: dict[str, Metric | torchmetrics.Metric] | KeepPrevious = keep_previous,
         initial_epoch: int | KeepPrevious = keep_previous,
         logdir: str | None | KeepPrevious = keep_previous,
         loggers: list[Logger] | KeepPrevious = keep_previous,
