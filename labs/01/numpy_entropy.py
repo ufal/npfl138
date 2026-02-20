@@ -53,6 +53,6 @@ def main(args: argparse.Namespace) -> tuple[float, float, float]:
 if __name__ == "__main__":
     main_args = parser.parse_args([] if "__file__" not in globals() else None)
     entropy, crossentropy, kl_divergence = main(main_args)
-    print("Entropy: {:.2f} nats".format(entropy))
-    print("Crossentropy: {:.2f} nats".format(crossentropy))
-    print("KL divergence: {:.2f} nats".format(kl_divergence))
+    print(f"Entropy: {entropy:.2f} nats")
+    print(f"Crossentropy: {crossentropy:.2f} nats")
+    print(f"KL divergence: {kl_divergence:.2f} nats")

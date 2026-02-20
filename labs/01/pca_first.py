@@ -78,5 +78,5 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
 if __name__ == "__main__":
     main_args = parser.parse_args([] if "__file__" not in globals() else None)
     total_variance, explained_variance = main(main_args)
-    print("Total variance: {:.2f}".format(total_variance))
-    print("Explained variance: {:.2f}%".format(explained_variance))
+    print(f"Total variance: {total_variance:.2f}")
+    print(f"Explained variance: {explained_variance:.2f}%")
