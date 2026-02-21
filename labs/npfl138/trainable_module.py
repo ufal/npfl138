@@ -303,7 +303,7 @@ class TrainableModule(torch.nn.Module):
         log_config: dict[str, Any] = {},
         log_graph: bool = False,
         console: int | None = None,
-    ) -> Logs:
+    ) -> dict[str, float]:
         """Train the model on the given dataset.
 
         Note:
@@ -328,8 +328,7 @@ class TrainableModule(torch.nn.Module):
             The default is 2, but can be overridden by the `NPFL_PROGRESS` environment variable.
 
         Returns:
-          logs: A dictionary of logs from the training and optionally dev evaluation; the logs are
-            fully evaluated to just float values.
+          logs: A dictionary of logs from the training and optionally dev evaluation.
 
         Note:
           The module is set to evaluation mode when returning from this method.
@@ -444,7 +443,7 @@ class TrainableModule(torch.nn.Module):
         log_results: bool = True,
         callbacks: list[Callback] = [],
         console: int | None = None,
-    ) -> Logs:
+    ) -> dict[str, float]:
         """An evaluation of the model on the given dataset.
 
         Note:
@@ -466,7 +465,7 @@ class TrainableModule(torch.nn.Module):
 
         Returns:
           logs: A dictionary of logs from the evaluation, each name prefixed with `f"{dataset_name}:"`
-            if `dataset_name` is given; the logs are fully evaluated to just float values.
+            if `dataset_name` is given.
 
         Note:
           The module is set to evaluation mode when returning from this method.
