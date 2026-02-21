@@ -7,21 +7,16 @@ from typing import Protocol
 
 import torch
 
-from .type_aliases import TensorOrTensors
-
 
 class Loss(Protocol):
     """An abstract loss function interface."""
 
-    def __call__(
-        self, y: TensorOrTensors, y_true: TensorOrTensors, sample_weights: TensorOrTensors | None = None,
-    ) -> torch.Tensor:
-        """Compute loss of the given predictions and gold targets, optionally with sample weights.
+    def __call__(self, y: torch.Tensor, y_true: torch.Tensor) -> torch.Tensor:
+        """Compute loss of the given predictions and gold targets.
 
         Parameters:
           y: The predicted outputs.
           y_true: The ground-truth targets.
-          sample_weights: Optional sample weights.
 
         Returns:
           A tensor representing the computed loss.
