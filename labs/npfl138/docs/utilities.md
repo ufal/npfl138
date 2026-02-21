@@ -1,6 +1,6 @@
 # Utilities
 
-Minnt framework provides a few utilities for startup initialization,
+The `npfl138` package provides a few utilities for startup initialization,
 parameter initialization override, logdir formatting, tensor manipulation,
 logging, and versioning.
 
