@@ -49,7 +49,7 @@ class Mean(torch.nn.Module, Metric):
     def compute(self) -> torch.Tensor:
         return self._total / self._count
 
-    def reset(self):
+    def reset(self) -> Self:
         self._total.zero_()
         self._count.zero_()
         return self
