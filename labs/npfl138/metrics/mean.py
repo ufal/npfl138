@@ -11,7 +11,7 @@ from ..metric import Metric
 from ..utils import broadcast_to_prefix
 
 
-class Mean(Metric):
+class Mean(torch.nn.Module, Metric):
     """A class tracking the (optionally weighted) mean of given values."""
 
     def __init__(self, device: torch.device | None = None) -> None:

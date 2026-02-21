@@ -3,36 +3,32 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
-from abc import ABC, abstractmethod
-from typing import Self
+from typing import Any, Protocol
 
 import torch
 
-from .type_aliases import TensorOrTensors
 
+class Metric(Protocol):
+    """An abstract metric interface.
 
-class Metric(torch.nn.Module, ABC):
-    """An abstract metric interface."""
+    Note:
+      Metrics are expected to be instances of [torch.nn.Module][] and are stored
+        in a [torch.nn.ModuleDict][].
+    """
 
-    @abstractmethod
-    def update(
-        self, y: TensorOrTensors, y_true: TensorOrTensors | None = None, sample_weights: TensorOrTensors | None = None,
-    ) -> Self:
-        """Update the internal state of the metric with new predictions and possibly gold targets.
-
-        Optional sample weights might be provided if supported by the metric.
+    def update(self, y: torch.Tensor, y_true: torch.Tensor) -> Any:
+        """Update the internal state of the metric with new predictions and gold targets.
 
         Parameters:
           y: The predicted outputs.
-          y_true: Optional ground-truth targets.
-          sample_weights: Optional sample weights.
+          y_true: The ground-truth targets.
 
         Returns:
-          self
+          anything; `npfl138` metrics return `Self`, but any return value is allowed in the generic
+            interface (`torchmetrics` metrics return `None`, for example).
         """
         ...
 
-    @abstractmethod
     def compute(self) -> torch.Tensor:
         """Compute the accumulated metric value.
 
@@ -41,11 +37,11 @@ class Metric(torch.nn.Module, ABC):
         """
         ...
 
-    @abstractmethod
-    def reset(self) -> Self:
+    def reset(self) -> Any:
         """Reset the internal state of the metric.
 
         Returns:
-          self
+          anything; `npfl138` metrics return `Self`, but any return value is allowed in the generic
+            interface (`torchmetrics` metrics return `None`, for example).
         """
         ...
