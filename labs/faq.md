@@ -52,6 +52,9 @@
     increase this limit on Windows 10, version 1607 or later, by following
     the [instructions](https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation).
 
+  - If you encounter an `Import Error: DLL load failed`, install the VS 2017 Redistributable
+    as described in the [official documentation](https://docs.pytorch.org/docs/stable/notes/windows.html#import-error).
+
 - _**MacOS** installation_
 
   - If you encounter issues with SSL certificates (_certificate verify failed:
