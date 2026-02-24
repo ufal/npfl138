@@ -66,7 +66,7 @@ def format_logdir(logdir_template: str, **kwargs: Any) -> str:
     # Create {file} placeholder.
     current_frame = inspect.currentframe()
     if current_frame and current_frame.f_back:
-        kwargs["file"] = os.path.splitext(os.path.basename(current_frame.f_back.f_globals.get("__file__")))[0]
+        kwargs["file"] = os.path.splitext(os.path.basename(current_frame.f_back.f_globals.get("__file__", "")))[0]
     else:
         kwargs["file"] = ""
 
