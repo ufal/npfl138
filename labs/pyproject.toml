@@ -43,3 +43,19 @@ Repository = "https://github.com/ufal/npfl138"
 
 [tool.setuptools]
 license-files = [ "npfl138/LICENSE" ]
+
+[[tool.uv.index]]
+name = "pytorch-cuda"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true  # Otherwise uv will try to use it for other packages and fail.
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cuda" }
+]
+torchvision = [
+  { index = "pytorch-cuda" }
+]
+torchaudio = [
+  { index = "pytorch-cuda" }
+]
