@@ -20,7 +20,7 @@
   - `rocm7.1` to get AMD ROCm 7.1 build (Linux only).
 
   On macOS, the `--extra-index-url` has no effect and the Metal support is
-  installed in any case.
+  installed irrespective of this flag.
 
   **To update the `npfl138` package later, use `python3 -m pip install --user --upgrade npfl138`.**
 - _Installing to a virtual environment_
@@ -115,7 +115,7 @@
   ```
   This creates a new remote `course_repo` and a clone of the `master` branch
   from it; however, `git pull` and `git push` in this branch will operate
-  on the repository your cloned originally.
+  on the repository you cloned originally.
 
   To update your branch with the changes from the course repository, run
   ```

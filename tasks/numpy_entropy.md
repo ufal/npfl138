@@ -4,7 +4,7 @@
 #### Tests: numpy_entropy_tests
 #### Examples: numpy_entropy_examples
 
-The goal of this exercise is to familiarize with Python, NumPy and ReCodEx
+The goal of this exercise is to familiarize yourself with Python, NumPy and the ReCodEx
 submission system. Start with the
 [numpy_entropy.py](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy.py).
 
