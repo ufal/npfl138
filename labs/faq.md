@@ -20,8 +20,8 @@
   - `cu126` to get CUDA 12.6 build,
   - `rocm7.1` to get AMD ROCm 7.1 build (Linux only).
 
-  On macOS, the `--extra-index-url` has no effect and the Metal support is
-  installed irrespective of this flag.
+  On macOS, the above `--extra-index-url` values have no practical effect, the
+  Metal support is installed in all cases.
 
   **To update the `npfl138` package later, use `python3 -m pip install --user --upgrade npfl138`.**
 
