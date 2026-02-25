@@ -14,7 +14,8 @@
   You can install all required packages to central user packages repository using
   `python3 -m pip install --user --no-cache-dir --extra-index-url=https://download.pytorch.org/whl/cu128 npfl138`.
 
-  On Linux and Windows, the above command installs CUDA 12.8 PyTorch build, but you can change `cu128` to:
+  On Linux and Windows, the above command installs CUDA 12.8 PyTorch build (which you would get
+  also without specifying the `--extra-index-url` option), but you can change `cu128` to:
   - `cpu` to get CPU-only (smaller) version,
   - `cu126` to get CUDA 12.6 build,
   - `rocm7.1` to get AMD ROCm 7.1 build (Linux only).
@@ -32,8 +33,8 @@
   `VENV_DIR/bin/pip install --no-cache-dir --extra-index-url=https://download.pytorch.org/whl/cu128 npfl138`.
   (or `VENV_DIR/Scripts/pip` on Windows).
 
-  Again, apart from the CUDA 12.8 build, you can change `cu128` on Linux and
-  Windows to:
+  Again, apart from the CUDA 12.8 build (which you would get also without specifying
+  the `--extra-index-url` option), you can change `cu128` on Linux and Windows to:
   - `cpu` to get CPU-only (smaller) version,
   - `cu126` to get CUDA 12.6 build,
   - `rocm7.1` to get AMD ROCm 7.1 build (Linux only).
