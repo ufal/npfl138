@@ -6,7 +6,7 @@
 
 Before solving the assignment, start by playing with
 [example_pytorch_tensorboard.py](https://github.com/ufal/npfl138/tree/master/labs/01/example_pytorch_tensorboard.py),
-in order to familiarize with PyTorch and TensorBoard. After running the example,
+in order to familiarize yourself with PyTorch and TensorBoard. After running the example,
 start TensorBoard in the same directory using `tensorboard --logdir logs` and
 open <http://localhost:6006> in a browser and explore the generated logs.
 
