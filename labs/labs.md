@@ -4,8 +4,10 @@ The tasks are evaluated automatically using the
 [ReCodEx Code Examiner](https://recodex.mff.cuni.cz/).
 
 The evaluation is performed using Python 3.11, PyTorch, Python Image
-Models, HF Transformers, and Gymnasium. You should
-[install the exact version of these packages yourselves](#faq_install).
+Models, HF Transformers, and Gymnasium. You should [install the `npfl138`
+package](#faq_install), which depends on the exact versions of the packages
+we will be using. The documentation of the `npfl138` package is
+[available here](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/).
 
 ### Teamwork
 
