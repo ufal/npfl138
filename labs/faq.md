@@ -23,6 +23,7 @@
   installed irrespective of this flag.
 
   **To update the `npfl138` package later, use `python3 -m pip install --user --upgrade npfl138`.**
+
 - _Installing to a virtual environment_
 
   Python supports virtual environments, which are directories containing
