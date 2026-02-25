@@ -912,7 +912,7 @@ class TrainableModule(torch.nn.Module):
         """
         for logger in self.logger.loggers:
             if isinstance(logger, TensorBoardLogger):
-                return logger.get_writter(name)
+                return logger.get_writer(name)
         raise RuntimeError("No TensorBoardLogger found in the configured loggers.")
 
     device: torch.device | None
