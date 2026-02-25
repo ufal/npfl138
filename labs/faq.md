@@ -39,6 +39,17 @@
 
   **To update the `npfl138` package later, use `VENV_DIR/bin/pip install --upgrade npfl138`.**
 
+- _Installing to a virtual environment with `uv`_
+
+  If you would like to use `uv pip` to install the required packages to
+  a virtual environment, you need to add **`--index-strategy unsafe-best-match`** to the above command
+  for `uv` to resolve `torchmetrics` correctly.
+
+  If you prefer to use `uv add` instead, then first manually add `torch~=2.10.0`, `torchaudio~=2.10.0`,
+  and `torchvision~=0.25.0` with a specified `tool.uv.index` according to
+  https://docs.astral.sh/uv/guides/integration/pytorch/#using-a-pytorch-index.
+  Once you have PyTorch installed, you can then run `uv add npfl138`.
+
 - _**Windows** installation_
 
   - On Windows, it can happen that `python3` is not in PATH, while `py` command
