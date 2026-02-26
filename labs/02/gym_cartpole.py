@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+from typing import Literal
 
 import numpy as np
 import torch
@@ -97,7 +98,7 @@ def main(args: argparse.Namespace) -> torch.nn.Module | None:
         # Note that the `fit` method accepts a `callbacks` argument, which is a list
         # of callables that are called at the end of each epoch, each being called
         # with the model, epoch, and logs (a dictionary with logged losses and metrics).
-        def callback(model: Model, epoch: int, logs: dict[str, float]):
+        def callback(model: Model, epoch: int, logs: dict[str, float]) -> None | Literal[npfl138.STOP_TRAINING]:
             # When you add items to the `logs` dictionary, they will be logged
             # both to the console and to TensorBoard.
             pass
