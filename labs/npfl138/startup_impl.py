@@ -90,8 +90,9 @@ def startup(
     # If ReCodEx mode is requested, apply various overrides for better replicability.
     if recodex:
         # Do not use accelerators.
+        torch.accelerator.is_available = lambda: False
         torch.cuda.is_available = lambda: False
-        torch.backends.mps.is_available = lambda: False
+        torch.mps.is_available = lambda: False
         torch.xpu.is_available = lambda: False
 
         # Make initializers deterministic.

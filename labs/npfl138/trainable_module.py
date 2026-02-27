@@ -85,12 +85,8 @@ def get_auto_device() -> torch.device:
     """Return an available accelerator or CPU if none is available, unless overridden by `NPFL_DEVICE`."""
     if "NPFL_DEVICE" in os.environ:
         return torch.device(os.environ["NPFL_DEVICE"])
-    if torch.cuda.is_available():
-        return torch.device("cuda")
-    if torch.backends.mps.is_available():
-        return torch.device("mps")
-    if torch.xpu.is_available():
-        return torch.device("xpu")
+    if torch.accelerator.is_available():
+        return torch.accelerator.current_accelerator()
     return torch.device("cpu")
 
 
