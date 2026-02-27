@@ -60,9 +60,9 @@ class GymCartpoleDataset:
           dataset: The file name of the dataset to load.
         """
         if not os.path.exists(dataset):
-            print("Downloading {}...".format(dataset), file=sys.stderr)
-            urllib.request.urlretrieve("{}/{}".format(self.URL, dataset), filename="{}.tmp".format(dataset))
-            os.rename("{}.tmp".format(dataset), dataset)
+            print(f"Downloading {dataset}...", file=sys.stderr)
+            urllib.request.urlretrieve(f"{self.URL}{dataset}", filename=f"{dataset}.tmp")
+            os.rename(f"{dataset}.tmp", dataset)
 
         data = np.loadtxt(dataset)
         self.train = self.Dataset(observations=data[:, :-1].astype(np.float32), labels=data[:, -1].astype(np.int64))
