@@ -55,6 +55,7 @@ class ProgressLogger(tqdm.tqdm):
         if "NPFL_PROGRESS_EACH" in os.environ:
             kwargs["miniters"] = int(os.environ["NPFL_PROGRESS_EACH"])
             kwargs["mininterval"] = None
+            kwargs["maxinterval"] = float("inf")
 
         self._console = console
         self._description = description
