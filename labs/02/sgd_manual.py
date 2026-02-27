@@ -131,12 +131,17 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
     model = Model(args)
 
     # Try using an accelerator if available.
-    if torch.cuda.is_available():
-        model = model.to(device="cuda")
-    elif torch.mps.is_available():
-        model = model.to(device="mps")
-    elif torch.xpu.is_available():
-        model = model.to(device="xpu")
+    if torch.accelerator.is_available():
+        model.to(device=torch.accelerator.current_accelerator())
+
+    # Note that in PyTorch<2.6, you needed to check for the accelerators individually, for example:
+    #
+    # if torch.cuda.is_available():
+    #     model.to(device="cuda")
+    # elif torch.mps.is_available():
+    #     model.to(device="mps")
+    # elif torch.xpu.is_available():
+    #     model.to(device="xpu")
 
     for epoch in range(args.epochs):
         # TODO(sgd_backpropagation): Run the `train_epoch` with `mnist.train` dataset
