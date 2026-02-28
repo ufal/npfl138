@@ -44,10 +44,13 @@
 - _Installing to a virtual environment with `uv`_
 
   If you would like to use `uv pip` to install the required packages to
-  a virtual environment, you need to add **`--index-strategy unsafe-best-match`**
+  a virtual environment and you use `--extra-index-url` (i.e., you want
+  a different build than the default CUDA 12.8 on Linux or Windows),
+  you need to add **`--index-strategy unsafe-best-match`**
   to the above command for `uv` to resolve `torchmetrics` correctly.
 
-  If you prefer to use `uv add` instead, first manually add `torch~=2.10.0`, `torchaudio~=2.10.0`,
+  If you prefer to use `uv add` instead and again want to use a non-default
+  build, first manually add `torch~=2.10.0`, `torchaudio~=2.10.0`,
   and `torchvision~=0.25.0` with a specified `tool.uv.index` according to
   https://docs.astral.sh/uv/guides/integration/pytorch/#using-a-pytorch-index.
   Once you have PyTorch installed, you can then run `uv add npfl138`.
