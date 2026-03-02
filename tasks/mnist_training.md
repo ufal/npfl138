@@ -5,7 +5,7 @@
 #### Examples: mnist_training_examples
 
 This exercise should teach you using different optimizers, learning rates,
-and learning rate decays. Your goal is to modify the
+and learning rate decays from [torch.optim](https://docs.pytorch.org/docs/stable/optim.html). Your goal is to modify the
 [mnist_training.py](https://github.com/ufal/npfl138/tree/master/labs/02/mnist_training.py)
 template and implement the following:
 - Using specified optimizer (either `SGD` or `Adam`).
