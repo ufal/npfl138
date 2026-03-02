@@ -15,5 +15,5 @@ for schedule, name in [
     plt.xlabel("steps")
     plt.ylabel("learning rate")
     plt.grid(True)
-    plt.title("{} decay rate".format(name.title()))
-    plt.savefig("decay_{}.svg".format(name), transparent=True, bbox_inches="tight")
+    plt.title(f"{name.title()} decay rate")
+    plt.savefig(f"decay_{name}.svg", transparent=True, bbox_inches="tight")
