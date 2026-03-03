@@ -32,11 +32,11 @@ def evaluate_model(
     """
     import gymnasium as gym
 
-    # Create the environment
+    # Create the environment.
     env = gym.make("CartPole-v1", render_mode="human" if render else None)
     env.reset(seed=seed)
 
-    # Evaluate the episodes
+    # Evaluate the episodes.
     total_score = 0
     for episode in range(episodes):
         observation, score, done = env.reset()[0], 0, False

@@ -71,7 +71,7 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
     # We now compute the explained variance, which is the ratio of `s` and `total_variance`.
     explained_variance = s / total_variance
 
-    # Return the total and explained variance for ReCodEx to validate
+    # Return the total and explained variance for ReCodEx to validate.
     return total_variance, 100 * explained_variance
 
 
