@@ -3,6 +3,7 @@
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides/?03
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides.pdf/npfl138-2526-03.pdf, PDF Slides
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-03-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-03-english.mp4, EN Lecture
 #### Questions: #lecture_3_questions
 
 - Regularization [Chapter 7 until Section 7.1 of DLB]
