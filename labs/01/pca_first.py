@@ -5,8 +5,8 @@ import numpy as np
 import torch
 
 import npfl138
-from npfl138.datasets.mnist import MNIST
 npfl138.require_version("2526.1")
+from npfl138.datasets.mnist import MNIST
 
 parser = argparse.ArgumentParser()
 # These arguments will be set appropriately by ReCodEx, even if you change them.
