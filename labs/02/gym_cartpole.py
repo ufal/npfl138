@@ -12,9 +12,9 @@ from npfl138.datasets.gym_cartpole_dataset import GymCartpoleDataset
 
 parser = argparse.ArgumentParser()
 # These arguments will be set appropriately by ReCodEx, even if you change them.
-parser.add_argument("--evaluate", default=False, action="store_true", help="Evaluate the given model")
+parser.add_argument("--evaluate", default=False, action="store_true", help="Evaluate the given model.")
 parser.add_argument("--recodex", default=False, action="store_true", help="Evaluation in ReCodEx.")
-parser.add_argument("--render", default=False, action="store_true", help="Render during evaluation")
+parser.add_argument("--render", default=False, action="store_true", help="Render during evaluation.")
 parser.add_argument("--seed", default=42, type=int, help="Random seed.")
 parser.add_argument("--threads", default=1, type=int, help="Maximum number of threads to use.")
 # If you add more arguments, ReCodEx will keep them with your default values.

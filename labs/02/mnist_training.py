@@ -11,7 +11,7 @@ from npfl138.datasets.mnist import MNIST
 parser = argparse.ArgumentParser()
 # These arguments will be set appropriately by ReCodEx, even if you change them.
 parser.add_argument("--batch_size", default=50, type=int, help="Batch size.")
-parser.add_argument("--decay", default=None, choices=["linear", "exponential", "cosine"], help="Decay type")
+parser.add_argument("--decay", default=None, choices=["linear", "exponential", "cosine"], help="Decay type.")
 parser.add_argument("--epochs", default=10, type=int, help="Number of epochs.")
 parser.add_argument("--hidden_layer_size", default=128, type=int, help="Size of the hidden layer.")
 parser.add_argument("--learning_rate", default=0.01, type=float, help="Initial learning rate.")
