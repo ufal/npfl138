@@ -1,0 +1,15 @@
+digraph G { rankdir=TD; splines=line; bgcolor=invis;
+  x [ label=<<b>X</b>> ]
+  W1 [ label=<<b>W</b><sup><font point-size="10">1</font></sup>> ]
+  xW1 [ label=<@> ]; {x, W1} -> xW1
+  b1 [ label=<<b>b</b><sup><font point-size="10">1</font></sup>> ]
+  xW1b1 [ label=<+> ]; {xW1, b1} -> xW1b1
+  h [ label=<f<sup><font point-size="10">1</font></sup>> ]; xW1b1 -> h
+  W2 [ label=<<b>W</b><sup><font point-size="10">2</font></sup>> ]
+  hW2 [ label=<@> ]; {h, W2} -> hW2
+  b2 [ label=<<b>b</b><sup><font point-size="10">2</font></sup>> ]
+  hW2b2 [ label=<+> ]; {hW2, b2} -> hW2b2
+  o [ label=<f<sup><font point-size="10">2</font></sup>> ]; hW2b2 -> o
+  y [ label=<<b>y</b>> ];
+  L [ label="L" ]; {o, y} -> L
+}
