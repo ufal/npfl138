@@ -39,9 +39,9 @@ class SaveBestWeights(Callback):
         self._mode = mode
         self._optimizer_path = optimizer_path
 
-        self.best_metric_value = None
+        self.best_value = None
 
-    best_value: float | None = None
+    best_value: float | None
     """The best metric value seen so far."""
 
     def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> None:
