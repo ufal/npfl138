@@ -106,3 +106,15 @@ def startup(
         original_dataloader_init = torch.utils.data.DataLoader.__init__
         torch.utils.data.DataLoader.__init__ = lambda self, dataset, *args, **kwargs: original_dataloader_init(
             self, dataset, *args, **kwargs | {"generator": torch.Generator().manual_seed(seed)})
+
+        # Use an independent generator for dropouts.
+        dropout_generator = torch.random.get_rng_state()
+        original_functional_dropout = torch.nn.functional.dropout
+        def dropout_with_generator(input, p=0.5, training=True, inplace=False):
+            nonlocal dropout_generator
+            with torch.random.fork_rng(devices=[]):
+                torch.random.set_rng_state(dropout_generator)
+                output = original_functional_dropout(input, p, training, inplace)
+                dropout_generator = torch.random.get_rng_state()
+            return output
+        torch.nn.functional.dropout = dropout_with_generator
