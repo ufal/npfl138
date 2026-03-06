@@ -12,9 +12,9 @@ from npfl138.datasets.gym_cartpole_dataset import GymCartpoleDataset
 
 parser = argparse.ArgumentParser()
 # These arguments will be set appropriately by ReCodEx, even if you change them.
-parser.add_argument("--evaluate", default=False, action="store_true", help="Evaluate the given model")
+parser.add_argument("--evaluate", default=False, action="store_true", help="Evaluate the given model.")
 parser.add_argument("--recodex", default=False, action="store_true", help="Evaluation in ReCodEx.")
-parser.add_argument("--render", default=False, action="store_true", help="Render during evaluation")
+parser.add_argument("--render", default=False, action="store_true", help="Render during evaluation.")
 parser.add_argument("--seed", default=42, type=int, help="Random seed.")
 parser.add_argument("--threads", default=1, type=int, help="Maximum number of threads to use.")
 # If you add more arguments, ReCodEx will keep them with your default values.
@@ -32,11 +32,11 @@ def evaluate_model(
     """
     import gymnasium as gym
 
-    # Create the environment
+    # Create the environment.
     env = gym.make("CartPole-v1", render_mode="human" if render else None)
     env.reset(seed=seed)
 
-    # Evaluate the episodes
+    # Evaluate the episodes.
     total_score = 0
     for episode in range(episodes):
         observation, score, done = env.reset()[0], 0, False

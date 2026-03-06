@@ -5,8 +5,8 @@ import numpy as np
 import torch
 
 import npfl138
-from npfl138.datasets.mnist import MNIST
 npfl138.require_version("2526.1")
+from npfl138.datasets.mnist import MNIST
 
 parser = argparse.ArgumentParser()
 # These arguments will be set appropriately by ReCodEx, even if you change them.
@@ -71,7 +71,7 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
     # We now compute the explained variance, which is the ratio of `s` and `total_variance`.
     explained_variance = s / total_variance
 
-    # Return the total and explained variance for ReCodEx to validate
+    # Return the total and explained variance for ReCodEx to validate.
     return total_variance, 100 * explained_variance
 
 
