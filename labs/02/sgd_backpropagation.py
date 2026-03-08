@@ -162,7 +162,7 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
     test_accuracy = ...
     print(f"Test accuracy after epoch {epoch + 1} is {100 * test_accuracy:.2f}", flush=True)
     writer.add_scalar("test/accuracy", 100 * test_accuracy, epoch + 1)
-    writer.flush()
+    writer.close()
 
     # Return dev and test accuracies for ReCodEx to validate.
     return dev_accuracy, test_accuracy
