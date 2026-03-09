@@ -107,7 +107,7 @@ class Model(torch.nn.Module):
                 logits = ...
 
                 # TODO(sgd_backpropagation): Evaluate how many batch examples were predicted
-                # correctly and increase `correct` variable accordingly, assuming
+                # correctly and increase the `correct` variable accordingly, assuming
                 # the model predicts the class with the highest logit/probability.
                 correct += ...
 

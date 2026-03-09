@@ -73,22 +73,23 @@ class Model(torch.nn.Module):
             # TODO: Compute the probabilities of the batch images using `torch.softmax`.
             probabilities = ...
 
-            # TODO: Manually compute the loss (without `torch.nn.functional.cross_entropy`) by
-            # - For every batch example, the loss is the categorical crossentropy of the
-            #   predicted probabilities and the gold label. To compute the crossentropy, you can
+            # TODO: Manually compute the loss (without `torch.nn.functional.cross_entropy`)
+            # as follows:
+            # - For every batch example, the loss is the categorical cross-entropy of the
+            #   predicted probabilities and the gold label. To compute the cross-entropy, you can
             #   - either use `torch.nn.functional.one_hot` to obtain one-hot encoded gold labels
-            #     and then compute the crossentropy from the definition, or
-            #   - you can start by obtaining directly the model probabilities of the gold labels
+            #     and then compute the cross-entropy from the definition, or
+            #   - start by obtaining directly the model probabilities of the gold labels
             #     by suitably indexing the predicted probabilities by the gold labels.
             #   Note that it might be necessary to convert the labels from bytes to `torch.int64`.
             # - Finally, compute the average across the batch examples.
             loss = ...
 
             # We create a list of all parameters. Note that a `torch.nn.Module` automatically
-            # tracks owned parameters, so we could also use `list(self.parameters())`.
+            # tracks its parameters, so we could also use `list(self.parameters())`.
             parameters = [self._W1, self._b1, self._W2, self._b2]
 
-            # TODO: Compute the gradient of the loss with respect to parameters using
+            # TODO: Compute the gradient of the loss with respect to the parameters using
             # the backpropagation algorithm, by
             # - first resetting the gradients of all parameters to zero with `self.zero_grad()`,
             # - then calling `loss.backward()`.
@@ -113,7 +114,7 @@ class Model(torch.nn.Module):
                 logits = ...
 
                 # TODO: Evaluate how many batch examples were predicted
-                # correctly and increase `correct` variable accordingly, assuming
+                # correctly and increase the `correct` variable accordingly, assuming
                 # the model predicts the class with the highest logit/probability.
                 correct += ...
 

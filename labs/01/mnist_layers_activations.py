@@ -48,7 +48,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
     # - then add `args.hidden_layers` number of fully connected hidden layers
     #   `torch.nn.Linear()`, each with `args.hidden_layer_size` neurons and followed by
     #   a specified `args.activation`, allowing "none", "relu", "tanh", "sigmoid";
-    # - finally, add an output fully connected layer with `MNIST.LABELS` units.
+    # - finally, add a fully connected output layer with `MNIST.LABELS` units.
     ...
 
     # Create the TrainableModule and configure it for training.
