@@ -8,7 +8,7 @@ import npfl138
 from npfl138.datasets.mnist import MNIST
 npfl138.require_version("2526.1")
 
-# Parse arguments
+# Parse the arguments.
 parser = argparse.ArgumentParser()
 parser.add_argument("--batch_size", default=50, type=int, help="Batch size.")
 parser.add_argument("--epochs", default=10, type=int, help="Number of epochs.")

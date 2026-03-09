@@ -28,7 +28,7 @@ class Model(torch.nn.Module):
 
         self._W1 = torch.nn.Parameter(
             torch.randn(MNIST.C * MNIST.H * MNIST.W, args.hidden_layer_size) * 0.1,
-            requires_grad=True,  # This is the default.
+            requires_grad=True,  # This is the default
         )
         self._b1 = torch.nn.Parameter(torch.zeros(args.hidden_layer_size))
 
@@ -99,7 +99,7 @@ class Model(torch.nn.Module):
     def evaluate(self, dataset: MNIST.Dataset) -> float:
         self.eval()
         with torch.no_grad():
-            # Compute the accuracy of the model prediction
+            # Compute the accuracy of the model prediction.
             correct = 0
             for batch in dataset.batches(self._args.batch_size):
                 # TODO: Compute the logits of the batch images as in the training,
@@ -122,12 +122,12 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
     # Load raw data.
     mnist = MNIST()
 
-    # Create the TensorBoard writer
+    # Create the TensorBoard writer.
     writer = torch.utils.tensorboard.SummaryWriter(
         npfl138.format_logdir("logs/{file-}{timestamp}{-config}", **vars(args))
     )
 
-    # Create the model
+    # Create the model.
     model = Model(args)
 
     # Try using an accelerator if available.
@@ -144,15 +144,15 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
     #     model.to(device="xpu")
 
     for epoch in range(args.epochs):
-        # TODO(sgd_backpropagation): Run the `train_epoch` with `mnist.train` dataset
+        # TODO(sgd_backpropagation): Run the `train_epoch` with `mnist.train` dataset.
         ...
 
-        # TODO(sgd_backpropagation): Evaluate the dev data using `evaluate` on `mnist.dev` dataset
+        # TODO(sgd_backpropagation): Evaluate the dev data using `evaluate` on `mnist.dev` dataset.
         dev_accuracy = ...
         print(f"Dev accuracy after epoch {epoch + 1} is {100 * dev_accuracy:.2f}", flush=True)
         writer.add_scalar("dev/accuracy", 100 * dev_accuracy, epoch + 1)
 
-    # TODO(sgd_backpropagation): Evaluate the test data using `evaluate` on `mnist.test` dataset
+    # TODO(sgd_backpropagation): Evaluate the test data using `evaluate` on `mnist.test` dataset.
     test_accuracy = ...
     print(f"Test accuracy after epoch {epoch + 1} is {100 * test_accuracy:.2f}", flush=True)
     writer.add_scalar("test/accuracy", 100 * test_accuracy, epoch + 1)
