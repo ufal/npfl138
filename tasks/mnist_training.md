@@ -4,7 +4,7 @@
 #### Tests: mnist_training_tests
 #### Examples: mnist_training_examples
 
-This exercise should teach you using different optimizers, learning rates,
+This exercise should teach you to use different optimizers, learning rates,
 and learning rate decays from [torch.optim](https://docs.pytorch.org/docs/stable/optim.html). Your goal is to modify the
 [mnist_training.py](https://github.com/ufal/npfl138/tree/master/labs/02/mnist_training.py)
 template and implement the following:
@@ -13,8 +13,8 @@ template and implement the following:
 - Using specified learning rate for the optimizer.
 - Optionally use a given learning rate schedule. The schedule can be either
   `linear`, `exponential`, or `cosine`. If a schedule is specified, you also
-  get a final learning rate, and the learning rate should be gradually decreased
-  during training to reach the final learning rate just after the training
+  get a final learning rate, and you should gradually decrease the learning rate
+  during the training to reach the final learning rate just after the training
   (i.e., the first update after the training would use exactly the final learning rate).
 
 #### Tests Start: mnist_training_tests
