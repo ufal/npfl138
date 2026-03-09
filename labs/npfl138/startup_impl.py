@@ -110,7 +110,7 @@ def startup(
         # Use an independent generator for dropouts.
         dropout_generator = torch.random.get_rng_state()
         original_functional_dropout = torch.nn.functional.dropout
-        def dropout_with_generator(input, p=0.5, training=True, inplace=False):
+        def dropout_with_generator(input, p=0.5, training=True, inplace=False):  # noqa: E301
             nonlocal dropout_generator
             with torch.random.fork_rng(devices=[]):
                 torch.random.set_rng_state(dropout_generator)
