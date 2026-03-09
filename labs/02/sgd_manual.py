@@ -28,7 +28,7 @@ class Model(torch.nn.Module):
 
         self._W1 = torch.nn.Parameter(
             torch.randn(MNIST.C * MNIST.H * MNIST.W, args.hidden_layer_size) * 0.1,
-            requires_grad=True,  # This is the default
+            requires_grad=True,  # this is the default
         )
         self._b1 = torch.nn.Parameter(torch.zeros(args.hidden_layer_size))
 
