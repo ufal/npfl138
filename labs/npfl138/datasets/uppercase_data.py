@@ -175,8 +175,7 @@ class UppercaseData:
             # Note that just the lower() condition is not enough, for example
             # u03c2 and u03c3 have both u03c2 as an uppercase character.
             if predictions[i].lower() != gold[i].lower() and predictions[i].upper() != gold[i].upper():
-                raise RuntimeError("The predictions and gold data differ on position {}: {} vs {}.".format(
-                    i, repr(predictions[i:i + 20].lower()), repr(gold[i:i + 20].lower())))
+                raise RuntimeError(f"The predictions and gold data differ on position {i}: {repr(predictions[i:i + 20].lower())} vs {repr(gold[i:i + 20].lower())}")
 
             correct += gold[i] == predictions[i]
         return correct / len(gold)

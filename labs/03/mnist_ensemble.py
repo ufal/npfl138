@@ -88,5 +88,4 @@ if __name__ == "__main__":
     main_args = parser.parse_args([] if "__file__" not in globals() else None)
     individual_accuracies, ensemble_accuracies = main(main_args)
     for model, (individual_accuracy, ensemble_accuracy) in enumerate(zip(individual_accuracies, ensemble_accuracies)):
-        print("Model {}, individual accuracy {:.2f}, ensemble accuracy {:.2f}".format(
-            model + 1, 100 * individual_accuracy, 100 * ensemble_accuracy))
+        print(f"Model {model + 1}, individual accuracy {100 * individual_accuracy:.2f}, ensemble accuracy {100 * ensemble_accuracy:.2f}")
