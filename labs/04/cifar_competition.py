@@ -38,7 +38,7 @@ def main(args: argparse.Namespace) -> None:
         # TODO: Perform the prediction on the test data. The line below assumes you have
         # a dataloader `test` where the individual examples are `(image, target)` pairs.
         for prediction in model.predict(test, data_with_labels=True):
-            print(prediction.argmax(), file=predictions_file)
+            print(prediction.argmax().item(), file=predictions_file)
 
 
 if __name__ == "__main__":
