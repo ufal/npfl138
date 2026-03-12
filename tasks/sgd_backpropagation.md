@@ -22,7 +22,7 @@ template, you should:
 - perform the SGD update.
 
 This assignment also demonstrates the most important parts of the
-[npfl138.TrainableModule](https://github.com/ufal/npfl138/tree/master/labs/npfl138/trainable_module.py)
+[npfl138.TrainableModule](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/trainable_module/)
 that we are using.
 
 #### Tests Start: sgd_backpropagation_tests
