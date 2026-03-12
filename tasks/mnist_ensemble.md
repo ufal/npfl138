@@ -17,19 +17,19 @@ _Note that your results may be slightly different, depending on your CPU type an
 1. `python3 mnist_ensemble.py --recodex --epochs=1 --models=5`
 ```
 Model 1, individual accuracy 96.08, ensemble accuracy 96.08
-Model 2, individual accuracy 96.38, ensemble accuracy 96.46
-Model 3, individual accuracy 96.62, ensemble accuracy 96.62
-Model 4, individual accuracy 96.00, ensemble accuracy 96.60
-Model 5, individual accuracy 96.24, ensemble accuracy 96.60
+Model 2, individual accuracy 96.30, ensemble accuracy 96.42
+Model 3, individual accuracy 96.62, ensemble accuracy 96.60
+Model 4, individual accuracy 96.00, ensemble accuracy 96.56
+Model 5, individual accuracy 96.24, ensemble accuracy 96.56
 ```
 
 2. `python3 mnist_ensemble.py --recodex --epochs=1 --models=5 --hidden_layer_size=200`
 ```
 Model 1, individual accuracy 96.50, ensemble accuracy 96.50
-Model 2, individual accuracy 96.98, ensemble accuracy 96.90
-Model 3, individual accuracy 96.88, ensemble accuracy 97.04
+Model 2, individual accuracy 97.00, ensemble accuracy 96.86
+Model 3, individual accuracy 96.88, ensemble accuracy 96.98
 Model 4, individual accuracy 96.42, ensemble accuracy 96.98
-Model 5, individual accuracy 96.36, ensemble accuracy 97.12
+Model 5, individual accuracy 96.38, ensemble accuracy 97.06
 ```
 #### Tests End:
 #### Examples Start: mnist_ensemble_examples

@@ -34,7 +34,7 @@ Epoch 1/1 1.6s loss=0.3791 accuracy=0.8913 dev:loss=0.2372 dev:accuracy=0.9314
 
 3. `python3 mnist_layers_activations.py --recodex --epochs=1 --hidden_layers=1 --activation=relu`
 ```
-Epoch 1/1 1.7s loss=0.3149 accuracy=0.9110 dev:loss=0.1458 dev:accuracy=0.9608
+Epoch 1/1 1.7s loss=0.3149 accuracy=0.9109 dev:loss=0.1453 dev:accuracy=0.9606
 ```
 
 4. `python3 mnist_layers_activations.py --recodex --epochs=1 --hidden_layers=1 --activation=tanh`
@@ -49,7 +49,7 @@ Epoch 1/1 1.7s loss=0.4900 accuracy=0.8782 dev:loss=0.2185 dev:accuracy=0.9390
 
 6. `python3 mnist_layers_activations.py --recodex --epochs=1 --hidden_layers=3 --activation=relu`
 ```
-Epoch 1/1 2.1s loss=0.2736 accuracy=0.9194 dev:loss=0.1089 dev:accuracy=0.9676
+Epoch 1/1 2.1s loss=0.2732 accuracy=0.9196 dev:loss=0.1118 dev:accuracy=0.9672
 ```
 #### Tests End:
 #### Examples Start: mnist_layers_activations_examples

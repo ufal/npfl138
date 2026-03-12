@@ -25,14 +25,14 @@ evaluation.
 #### Tests Start: sgd_manual_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._
 
-1. `python3 sgd_manual.py --epochs=2 --batch_size=64 --hidden_layer_size=20 --learning_rate=0.1`
+1. `python3 sgd_manual.py --recodex --epochs=2 --batch_size=64 --hidden_layer_size=20 --learning_rate=0.1`
 ```
 Dev accuracy after epoch 1 is 92.98
 Dev accuracy after epoch 2 is 94.42
 Test accuracy after epoch 2 is 92.72
 ```
 
-2. `python3 sgd_manual.py --epochs=2 --batch_size=100 --hidden_layer_size=32 --learning_rate=0.2`
+2. `python3 sgd_manual.py --recodex --epochs=2 --batch_size=100 --hidden_layer_size=32 --learning_rate=0.2`
 ```
 Dev accuracy after epoch 1 is 93.58
 Dev accuracy after epoch 2 is 95.26

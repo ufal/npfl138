@@ -20,19 +20,19 @@ Tensors](https://pytorch.org/tutorials/beginner/introyt/tensors_deeper_tutorial.
 #### Tests Start: pca_first_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._
 
-1. `python3 pca_first.py --examples=1024 --iterations=64`
+1. `python3 pca_first.py --recodex --examples=1024 --iterations=64`
 ```
 Total variance: 53.12
 Explained variance: 9.64%
 ```
 
-2. `python3 pca_first.py --examples=8192 --iterations=128`
+2. `python3 pca_first.py --recodex --examples=8192 --iterations=128`
 ```
 Total variance: 53.05
 Explained variance: 9.89%
 ```
 
-3. `python3 pca_first.py --examples=55000 --iterations=1024`
+3. `python3 pca_first.py --recodex --examples=55000 --iterations=1024`
 ```
 Total variance: 52.74
 Explained variance: 9.71%

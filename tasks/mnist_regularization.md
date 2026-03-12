@@ -31,7 +31,7 @@ Epoch 1/1 0.5s loss=0.8099 accuracy=0.7600 dev:loss=0.3311 dev:accuracy=0.9066
 
 2. `python3 mnist_regularization.py --recodex --epochs=1 --dropout=0.5 --hidden_layers 300 300`
 ```
-Epoch 1/1 0.6s loss=1.4732 accuracy=0.4886 dev:loss=0.4817 dev:accuracy=0.8772
+Epoch 1/1 0.6s loss=1.4733 accuracy=0.4886 dev:loss=0.4824 dev:accuracy=0.8788
 ```
 
 3. `python3 mnist_regularization.py --recodex --epochs=1 --weight_decay=0.1`
