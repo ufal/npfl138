@@ -1,5 +1,5 @@
 ### Assignment: mnist_multiple
-#### Date: Deadline: Mar 26, 22:00
+#### Date: Deadline: Mar 25, 22:00
 #### Points: 3 points
 #### Tests: mnist_multiple_tests
 

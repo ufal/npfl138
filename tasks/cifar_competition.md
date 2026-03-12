@@ -1,5 +1,5 @@
 ### Assignment: cifar_competition
-#### Date: Deadline: Mar 26, 22:00
+#### Date: Deadline: Mar 25, 22:00
 #### Points: 4 points+5 bonus
 
 The goal of this assignment is to devise the best possible model for CIFAR-10.
