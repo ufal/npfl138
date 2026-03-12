@@ -85,7 +85,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
         logdir=npfl138.format_logdir("logs/{file-}{timestamp}{-config}", **vars(args)),
     )
 
-    logs = model.fit(train, dev=dev, epochs=args.epochs, log_config=vars(args))
+    logs = model.fit(train, dev=dev, epochs=args.epochs)
 
     # Return development metrics for ReCodEx to validate.
     return {metric: value for metric, value in logs.items() if metric.startswith("dev:")}
