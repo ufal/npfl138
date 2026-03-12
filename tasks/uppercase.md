@@ -6,7 +6,7 @@ This assignment introduces first NLP task. Your goal is to implement a model
 which is given Czech lowercased text and tries to uppercase appropriate letters.
 To load the dataset, use the
 [UppercaseData](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/uppercase_data/)
-module which loads (and if required also downloads) the data. While the training
+class which loads (and if required also downloads) the data. While the training
 and the development sets are in correct case, the test set is lowercased.
 
 This is an _open-data task_, where you submit only the uppercased test set
