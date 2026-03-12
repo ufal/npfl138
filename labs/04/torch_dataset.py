@@ -57,7 +57,7 @@ class TransformedDataset(npfl138.TransformedDataset):
         ...
 
     # Furthermore, we could also define a batch-wise transformation function
-    #   def transform_batch(self, batch: tuple[torch.Tensor, torch.Tensor]) -> tuple[torch.Tensor, torch.Tensor]:
+    #   def transform_batch(self, images: torch.Tensor, labels: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
     # However, the dataloader then must be created using the `TransformedDataset.dataloader` method,
     # otherwise the `transform_batch` method would not be called.
 
