@@ -20,7 +20,9 @@ remaining 5 bonus points are distributed depending on relative ordering of your
 solutions. The accuracy is computed per-character and can be evaluated
 programatically using the [UppercaseData.evaluate_file](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/uppercase_data/#npfl138.datasets.uppercase_data.UppercaseData.evaluate_file)
 method, or by running
-`python3 -m npfl138.datasets.uppercase_data` command with `--evaluate` argument.
+`python3 -m npfl138.datasets.uppercase_data --evaluate PREDICTIONS_FILE_PATH --dataset dev/test`
+comand; however, only the `--dataset dev` produces valid accuracy since you do not have
+the test set annotations.
 
 Start with the
 [uppercase.py](https://github.com/ufal/npfl138/tree/master/labs/03/uppercase.py)
