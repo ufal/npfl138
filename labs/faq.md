@@ -125,7 +125,7 @@
   - You should clear the scratch space before you exit using the `clean_scratch`
     command. You can instruct the shell to call it automatically by running:
     ```
-    trap 'clean_scratch' TERM EXIT
+    trap clean_scratch TERM EXIT
     ```
 
   - Finally, create the virtual environment and install PyTorch in it:
