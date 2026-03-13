@@ -65,7 +65,7 @@ Epoch 1/1 1.6s loss=0.8381 accuracy=0.7303 dev:loss=0.3949 dev:accuracy=0.8798
 Epoch 1/1 1.6s loss=0.5869 accuracy=0.8192 dev:loss=0.2439 dev:accuracy=0.9262
 ```
 
-6. `python3 mnist_cnn.py --recodex --epochs=1 --cnn=CB-8-3-5-valid,R-[CB-8-3-1-same,CB-8-3-1-same],F,H-50`
+6. `python3 mnist_cnn.py --recodex --epochs=1 --cnn="CB-8-3-5-valid,R-[CB-8-3-1-same,CB-8-3-1-same],F,H-50"`
 ```
 Epoch 1/1 3.2s loss=0.4437 accuracy=0.8620 dev:loss=0.1763 dev:accuracy=0.9480
 ```
