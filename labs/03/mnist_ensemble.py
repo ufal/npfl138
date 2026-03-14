@@ -78,7 +78,7 @@ def main(args: argparse.Namespace) -> tuple[list[float], list[float]]:
         #    accuracy, either do it completely manually or use `torchmetrics.Accuracy`.
         ensemble_accuracy = ...
 
-        # Store the accuracies
+        # Store the accuracies.
         individual_accuracies.append(individual_accuracy)
         ensemble_accuracies.append(ensemble_accuracy)
     return individual_accuracies, ensemble_accuracies
