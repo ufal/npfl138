@@ -7,7 +7,7 @@ In this assignment you will implement a model with multiple inputs and outputs.
 Start with the [mnist_multiple.py](https://github.com/ufal/npfl138/tree/master/labs/04/mnist_multiple.py)
 template and:
 
-![mnist_multiple](//ufal.mff.cuni.cz/~straka/courses/npfl138/2526/tasks/figures/mnist_multiple.svgz)
+![mnist_multiple](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/tasks/figures/mnist_multiple.svgz)
 
 - The goal is to create a model, which given two input MNIST images, compares if the
   digit on the first one is greater than on the second one.
