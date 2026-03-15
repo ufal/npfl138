@@ -68,7 +68,7 @@ def main(args: argparse.Namespace) -> tuple[list[float], list[float]]:
         #
         # Generally you can choose one of the following approaches:
         # 1) Create a `npfl138.TrainableModule` subclass that gets several models to
-        #    ensemble during its constructions, and in `forward` it runs them on the given
+        #    ensemble during its construction, and in `forward` it runs them on the given
         #    batch and averages the predicted distributions. Then you can configure the
         #    ensemble with the required metric (and a loss) and use its `evaluate` method.
         # 2) Manually perform the averaging (using PyTorch or NumPy). In this case you do not
