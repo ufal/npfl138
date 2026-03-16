@@ -74,15 +74,8 @@ class WandBLogger(BaseLogger):
         # The logging in WandB has a lot of limitations. One is that all
         # children of the graph must be executed before the graph is logged;
         # however, metrics are usually not executed during the forward pass.
-        # We therefore try to exclude metrics from the logged graph.
-        watched_children = torch.nn.Module()
-        for name, child in graph.named_children():
-            if not any(isinstance(module, Metric) for module in child.modules()):
-                watched_children.add_module(name, child)
-        self.run.watch(watched_children, log=None, log_graph=True)
-        with self.graph_in_eval_mode(graph), torch.no_grad():
-            graph(*data) if isinstance(data, (list, tuple)) else graph(data)  # Run the graph to log it.
-        self.run.unwatch(watched_children)
+        # In the past we tried a few heuristics, but they were not robust,
+        # so now we do not try to log the graph to WandB at all.
         return self
 
     def log_image(self, label: str, image: AnyArray, epoch: int, data_format: DataFormat = "HWC") -> Self:
