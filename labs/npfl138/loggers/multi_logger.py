@@ -36,9 +36,9 @@ class MultiLogger(BaseLogger):
             logger.log_audio(label, audio, sample_rate, epoch)
         return self
 
-    def log_config(self, config: dict[str, Any], epoch: int) -> Self:
+    def log_config(self, config: dict[str, Any], epoch: int, sort_keys: bool = True) -> Self:
         for logger in self.loggers:
-            logger.log_config(config, epoch)
+            logger.log_config(config, epoch, sort_keys)
         return self
 
     def log_figure(self, label: str, figure: Any, epoch: int, tight_layout: bool = True, close: bool = True) -> Self:

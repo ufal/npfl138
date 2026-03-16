@@ -78,8 +78,8 @@ class FileSystemLogger(BaseLogger):
 
         return self
 
-    def log_config(self, config: dict[str, Any], epoch: int) -> Self:
-        print(self.format_config_as_text(config, epoch), file=self.get_file(), flush=True)
+    def log_config(self, config: dict[str, Any], epoch: int, sort_keys: bool = True) -> Self:
+        print(self.format_config_as_text(config, epoch, sort_keys), file=self.get_file(), flush=True)
         return self
 
     def log_figure(self, label: str, figure: Any, epoch: int, tight_layout: bool = True, close: bool = True) -> Self:

@@ -31,16 +31,16 @@ class BaseLogger(Logger):
         return self.log_image(label, image, epoch)
 
     @staticmethod
-    def format_config_as_json(config: dict[str, Any]) -> str:
+    def format_config_as_json(config: dict[str, Any], sort_keys: bool = True) -> str:
         """Make a formatted JSON from configuration and epoch number."""
-        return json.dumps(dict(sorted(config.items())), ensure_ascii=False, indent=2)
+        return json.dumps(config, sort_keys=sort_keys, ensure_ascii=False, indent=2)
 
     @staticmethod
-    def format_config_as_text(config: dict[str, Any], epoch: int) -> str:
+    def format_config_as_text(config: dict[str, Any], epoch: int, sort_keys: bool = True) -> str:
         """Make a human-readable plain text from configuration and epoch number."""
         return " ".join(
             [f"Config epoch={epoch}"]
-            + [f"{k}={v}" for k, v in sorted(config.items())]
+            + [f"{k}={v}" for k, v in (sorted(config.items()) if sort_keys else config.items())]
         )
 
     @staticmethod

@@ -65,9 +65,9 @@ class TensorBoardLogger(BaseLogger):
         writer.flush()
         return self
 
-    def log_config(self, config: dict[str, Any], epoch: int) -> Self:
+    def log_config(self, config: dict[str, Any], epoch: int, sort_keys: bool = True) -> Self:
         writer = self.get_writer("train")
-        writer.add_text("config", self.format_config_as_json(config), epoch)
+        writer.add_text("config", self.format_config_as_json(config, sort_keys), epoch)
         writer.flush()
         return self
 

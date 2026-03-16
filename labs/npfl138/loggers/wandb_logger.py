@@ -61,9 +61,9 @@ class WandBLogger(BaseLogger):
         self.run.log({label: self.wandb.Audio(audio, sample_rate=sample_rate)}, step=epoch)
         return self
 
-    def log_config(self, config: dict[str, Any], epoch: int) -> Self:
+    def log_config(self, config: dict[str, Any], epoch: int, sort_keys: bool = True) -> Self:
         self.run.config.update(dict(sorted(config.items())))
-        config_json = self.format_config_as_json(config)
+        config_json = self.format_config_as_json(config, sort_keys)
         self.run.log({"config": config_json} | self._maybe_as_html("config", config_json), step=epoch)
         return self
 

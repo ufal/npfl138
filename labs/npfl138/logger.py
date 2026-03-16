@@ -40,12 +40,13 @@ class Logger(ABC):
         ...
 
     @abstractmethod
-    def log_config(self, config: dict[str, Any], epoch: int) -> Self:
+    def log_config(self, config: dict[str, Any], epoch: int, sort_keys: bool = True) -> Self:
         """Log the given configuration dictionary at the given epoch.
 
         Parameters:
           config: A JSON-serializable dictionary representing the configuration to log.
           epoch: The epoch number at which the configuration is logged.
+          sort_keys: Whether to sort the keys of the configuration dictionary before logging it.
         """
         ...
 
