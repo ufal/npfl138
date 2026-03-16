@@ -3,7 +3,7 @@
 #### Points: 2 points
 #### Tests: torch_dataset_tests
 
-In this assignment you will familiarize yourselves with `torch.utils.data`,
+In this assignment you will familiarize yourself with `torch.utils.data`,
 which is a PyTorch way of constructing training datasets. If you want,
 you can read the [Dataset and DataLoaders
 tutorial](https://pytorch.org/tutorials/beginner/basics/data_tutorial.html).
