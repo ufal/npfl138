@@ -60,7 +60,7 @@ class Model(npfl138.TrainableModule):
         #   and then concatenate the one-hot encodings of the window characters.
         # - Alternatively, you can experiment with `torch.nn.Embedding`s (an
         #   efficient implementation of one-hot encoding followed by a Dense layer)
-        #   and flattening afterwards, or suitably using `torch.nn.EmbeddingBag`.
+        #   and flattening afterwards.
         ...
 
     def forward(self, windows: torch.Tensor) -> torch.Tensor:
