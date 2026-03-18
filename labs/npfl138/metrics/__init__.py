@@ -8,5 +8,6 @@ from .binary_cross_entropy import BinaryCrossEntropy
 from .categorical_accuracy import CategoricalAccuracy
 from .categorical_cross_entropy import CategoricalCrossEntropy
 from .exact_match import ExactMatch
+from .mask_iou import MaskIoU
 from .mean import Mean
 from .mean_squared_error import MeanSquaredError
