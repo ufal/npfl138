@@ -5,7 +5,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 from typing import Literal, TYPE_CHECKING
 
-from ..callback import Callback
+from ..callback import Callback, StopTraining, STOP_TRAINING
 from ..type_aliases import Logs
 if TYPE_CHECKING:
     from ..trainable_module import TrainableModule
@@ -19,6 +19,7 @@ class KeepBestWeights(Callback):
         metric: str,
         mode: Literal["max", "min"] = "max",
         device: str | None = None,
+        patience: int | None = None,
     ) -> None:
         """Create the KeepBestWeights callback.
 
@@ -28,12 +29,16 @@ class KeepBestWeights(Callback):
             or minimized.
           device: The device where the weights will be stored. If `None`, the weights will be stored
             on the same device as the model.
+          patience: When `patience` is not `None`, the callback stops the training if the monitored
+            metric does not improve for `patience` consecutive epochs.
         """
         assert mode in ("max", "min"), "mode must be one of 'max' or 'min'"
 
         self._metric = metric
         self._mode = mode
         self._device = device
+        self._patience = patience
+        self._epochs_without_improvement = 0
 
         self.best_state_dict = None
         self.best_value = None
@@ -44,10 +49,16 @@ class KeepBestWeights(Callback):
     best_value: float | None = None
     """The best metric value seen so far."""
 
-    def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> None:
+    def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> StopTraining | None:
         if (self.best_value is None
                 or (self._mode == "max" and logs[self._metric] > self.best_value)
                 or (self._mode == "min" and logs[self._metric] < self.best_value)):
             self.best_value = logs[self._metric]
             self.best_state_dict = {k: v.to(device=self._device, copy=True)
                                     for k, v in module.state_dict().items()}
+            self._epochs_without_improvement = 0
+        else:
+            self._epochs_without_improvement += 1
+
+        if self._patience is not None and self._epochs_without_improvement >= self._patience:
+            return STOP_TRAINING
