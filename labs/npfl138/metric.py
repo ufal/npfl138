@@ -16,7 +16,7 @@ class Metric(Protocol):
         in a [torch.nn.ModuleDict][].
     """
 
-    def update(self, y: torch.Tensor, y_true: torch.Tensor) -> Any:
+    def update(self, y: torch.Tensor, y_true: torch.Tensor, /) -> Any:
         """Update the internal state of the metric with new predictions and gold targets.
 
         Parameters:

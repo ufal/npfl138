@@ -11,7 +11,7 @@ import torch
 class Loss(Protocol):
     """An abstract loss function interface."""
 
-    def __call__(self, y: torch.Tensor, y_true: torch.Tensor) -> torch.Tensor:
+    def __call__(self, y: torch.Tensor, y_true: torch.Tensor, /) -> torch.Tensor:
         """Compute loss of the given predictions and gold targets.
 
         Parameters:

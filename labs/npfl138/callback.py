@@ -26,7 +26,7 @@ STOP_TRAINING = StopTraining()
 
 
 class Callback(Protocol):
-    def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> StopTraining | None:
+    def __call__(self, module: "TrainableModule", epoch: int, logs: Logs, /) -> StopTraining | None:
         """Represents a callback called after every training epoch.
 
         If the callback returns [npfl138.STOP_TRAINING][], the training stops.
