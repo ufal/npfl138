@@ -67,8 +67,8 @@ class Model(npfl138.TrainableModule):
         # - then, classify the computed representation FV of the second image using
         #   the same layer (identical, i.e., with shared weights) into 10 classes;
         # - finally, compute _indirect comparison_ whether the first digit
-        #   is greater than second, by comparing the predictions from the above
-        #   two outputs.
+        #   is greater than the second by comparing the most probable digits
+        #   predicted by the above two outputs.
         direct_comparison = ...
         digit_1 = ...
         digit_2 = ...
