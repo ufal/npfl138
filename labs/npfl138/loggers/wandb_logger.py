@@ -9,7 +9,6 @@ from typing import Any, Self
 import torch
 
 from .base_logger import BaseLogger
-from ..metric import Metric
 from ..type_aliases import AnyArray, DataFormat, TensorOrTensors
 
 
