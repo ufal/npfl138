@@ -18,7 +18,7 @@ template.
   - _direct comparison_ whether the first digit is greater than the second one,
   - digit classification for the first image,
   - digit classification for the second image,
-  - _indirect comparison_ comparing the digits predicted by the above two outputs.
+  - _indirect comparison_ comparing the most probable digits predicted by the above two outputs.
 - You need to implement:
   - the model, using multiple inputs, outputs, losses and metrics;
   - construction of two-image dataset examples using regular MNIST data via the PyTorch datasets.
