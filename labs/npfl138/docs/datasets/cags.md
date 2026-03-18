@@ -1,0 +1,8 @@
+# CAGS
+
+::: npfl138.datasets.cags
+    options:
+      show_root_heading: false
+      members: false
+
+::: npfl138.datasets.cags.CAGS
