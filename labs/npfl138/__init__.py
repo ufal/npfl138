@@ -25,7 +25,7 @@ from .trainable_module import tensors_to_device
 from .version import require_version, __version__
 
 # Callbacks
-from .callback import Callback, STOP_TRAINING
+from .callback import Callback, StopTraining, STOP_TRAINING
 from . import callbacks
 
 # Loggers

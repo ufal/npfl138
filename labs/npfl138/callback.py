@@ -3,7 +3,7 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
-from typing import Literal, Protocol, TYPE_CHECKING
+from typing import Protocol, Self, TYPE_CHECKING
 
 from .type_aliases import Logs
 if TYPE_CHECKING:
@@ -11,13 +11,22 @@ if TYPE_CHECKING:
 
 
 class StopTraining:
-    pass
-STOP_TRAINING = StopTraining()  # noqa: E305
+    """A sentinel type whose any instance can be returned by a callback to stop training."""
+
+    _instance = None
+
+    def __new__(cls) -> Self:
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+
+STOP_TRAINING = StopTraining()
 """A sentinel value that can be returned by a callback to stop training."""
 
 
 class Callback(Protocol):
-    def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> Literal[STOP_TRAINING] | None:
+    def __call__(self, module: "TrainableModule", epoch: int, logs: Logs) -> StopTraining | None:
         """Represents a callback called after every training epoch.
 
         If the callback returns [npfl138.STOP_TRAINING][], the training stops.
