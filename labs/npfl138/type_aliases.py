@@ -53,5 +53,5 @@ TensorOrTensors: TypeAlias = Tensor | tuple[Tensor, ...] | list[Tensor] | dict[s
 """A type alias for a single tensor or a tensor structure.
 
 While a tensor or a sequence of them is the most common, any type is allowed
-here to accomodate nested or completely custom data structures.
+here to accommodate nested or completely custom data structures.
 """

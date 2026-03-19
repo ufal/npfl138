@@ -12,7 +12,7 @@
 - When loading, you need to specify `window` and `alphabet_size`. If
   `alphabet_size` is nonzero, it specifies the maximum number of alphabet
   characters, in which case that many most frequent characters will be used,
-  and all other will be remapped to "&lt;unk>".
+  and all others will be remapped to "&lt;unk>".
 - Features are generated using a sliding window of a given size,
   i.e., for a character, we include left `window` characters, the character
   itself, and right `window` characters; `2 * window + 1` in total.
@@ -128,7 +128,7 @@ class UppercaseData:
         Parameters:
           window: The size of the sliding window of left and right characters to use for generating features.
           alphabet_size: If nonzero, the maximum number of alphabet characters (the most frequent ones will
-            be used, others are remapped go "<unk>"); if zero, all characters are used.
+            be used, others are remapped to "<unk>"); if zero, all characters are used.
         """
         path = os.path.basename(self.URL)
         if not os.path.exists(path):
