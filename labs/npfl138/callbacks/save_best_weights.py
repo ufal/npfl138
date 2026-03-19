@@ -21,6 +21,7 @@ class SaveBestWeights(Callback):
         mode: Literal["max", "min"] = "max",
         optimizer_path: str | None = None,
         patience: int | None = None,
+        baseline: float | None = None,
     ) -> None:
         """Create the SaveBestWeights callback.
 
@@ -34,6 +35,8 @@ class SaveBestWeights(Callback):
             save also the optimizer state; it is relative to `path`.
           patience: When `patience` is not `None`, the callback stops the training if the monitored
             metric does not improve for `patience` consecutive epochs.
+          baseline: When set, the monitored metric must surpass this value before the model's
+            weights are saved. Acts as the initial `best_value`.
         """
         assert mode in ("max", "min"), "mode must be one of 'max' or 'min'"
 
@@ -44,7 +47,7 @@ class SaveBestWeights(Callback):
         self._patience = patience
         self._epochs_without_improvement = 0
 
-        self.best_value = None
+        self.best_value = baseline
 
     best_value: float | None
     """The best metric value seen so far."""
