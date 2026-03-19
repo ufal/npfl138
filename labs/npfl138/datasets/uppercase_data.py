@@ -66,7 +66,7 @@ class UppercaseData:
                     alphabet_map[letter] = index
             else:
                 # Find most frequent characters
-                freqs = {}
+                freqs: dict[str, int] = {}
                 for char in self._text.lower():
                     freqs[char] = freqs.get(char, 0) + 1
 

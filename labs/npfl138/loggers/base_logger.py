@@ -26,7 +26,8 @@ class BaseLogger(Logger):
         canvas.draw()
         width, height = figure.canvas.get_width_height()
         image = torch.frombuffer(canvas.buffer_rgba(), dtype=torch.uint8).view(height, width, 4)
-        close and plt.close(figure)
+        if close:
+            plt.close(figure)
 
         return self.log_image(label, image, epoch)
 

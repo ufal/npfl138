@@ -3,7 +3,7 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
-from collections.abc import Iterable
+from collections.abc import Iterable, Iterator
 
 
 class Vocabulary:
@@ -63,19 +63,22 @@ class Vocabulary:
         if add_pad or (head and head[0] == self.PAD_TOKEN):  # Add PAD token if required or present.
             self.PAD = 0
             self._strings.append(self.PAD_TOKEN)
-            (head and head[0] == self.PAD_TOKEN) and head.pop(0)
+            if head and head[0] == self.PAD_TOKEN:
+                head.pop(0)
         else:
             self.PAD = None
 
         if add_unk or (head and head[0] == self.UNK_TOKEN):  # Add UNK token if required or present.
             self.UNK = len(self._strings)
-            (head and head[0] == self.UNK_TOKEN) or self._strings.append(self.UNK_TOKEN)
+            if not (head and head[0] == self.UNK_TOKEN):
+                self._strings.append(self.UNK_TOKEN)
         else:
             self.UNK = None
 
         # Now add the remaining strings, both from `head` and from `it`.
         self._strings.extend(head)
-        it is not None and self._strings.extend(it)
+        if it is not None:
+            self._strings.extend(it)
 
         self._string_map = {string: index for index, string in enumerate(self._strings)}
 
@@ -87,7 +90,7 @@ class Vocabulary:
         """
         return len(self._strings)
 
-    def __iter__(self) -> Iterable[str]:
+    def __iter__(self) -> Iterator[str]:
         """Return an iterator over strings in the vocabulary.
 
         Returns:

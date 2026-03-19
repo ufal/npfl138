@@ -137,7 +137,7 @@ class CAGS:
         return CAGS.evaluate_classification(gold_dataset, predictions)
 
     @staticmethod
-    def evaluate_segmentation(gold_dataset: Dataset, predictions: Sequence[torch.Tensor]) -> float:
+    def evaluate_segmentation(gold_dataset: Dataset, predictions: Sequence[torch.Tensor]) -> torch.Tensor:
         """Evaluate the `predictions` masks against the gold dataset.
 
         Returns:
@@ -170,7 +170,7 @@ class CAGS:
         return predictions
 
     @staticmethod
-    def evaluate_segmentation_file(gold_dataset: Dataset, predictions_file: TextIO) -> float:
+    def evaluate_segmentation_file(gold_dataset: Dataset, predictions_file: TextIO) -> torch.Tensor:
         """Evaluate the file with mask predictions against the gold dataset.
 
         Returns:

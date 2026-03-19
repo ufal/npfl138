@@ -45,7 +45,8 @@ class MultiLogger(BaseLogger):
         import matplotlib.pyplot as plt
         for i, logger in enumerate(self.loggers):
             logger.log_figure(label, figure, epoch, tight_layout, False)
-        close and plt.close(figure)
+        if close:
+            plt.close(figure)
         return self
 
     def log_graph(self, graph: torch.nn.Module, data: TensorOrTensors, epoch: int) -> Self:
