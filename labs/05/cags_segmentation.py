@@ -8,7 +8,7 @@ import torch
 import torchvision.transforms.v2 as v2
 
 import npfl138
-npfl138.require_version("2526.5")
+npfl138.require_version("2526.5.2")
 from npfl138.datasets.cags import CAGS
 
 # TODO: Define reasonable defaults and optionally more parameters.
