@@ -36,7 +36,7 @@ def main(args: argparse.Namespace) -> None:
         # Load the image.
         image = torchvision.io.decode_image(image_path, mode="RGB")
 
-        # Transform the image by resizing to 224, 224 and normalizing.
+        # Transform the image by resizing its smaller edge to 224 pixels and normalizing.
         image = preprocessing(image)
 
         # Compute the prediction
