@@ -66,6 +66,13 @@ class Model(npfl138.TrainableModule):
         # TODO: Finally, add the final Linear output layer with `MNIST.LABELS` units.
         ...
 
+        # TODO: Note that you can construct a `TrainableModule` in two ways:
+        # - either you create a `torch.nn.Module` (or a `torch.nn.Sequential` module) representing
+        #   the whole network and pass it to the `super().__init__` call,
+        # - or you start by calling `super().__init__()` without arguments and then assign the
+        #   layers as attributes of `self`; in this case, you also need to implement the `forward`
+        #   method that performs the forward pass through the model.
+
 
 def main(args: argparse.Namespace) -> dict[str, float]:
     # Set the random seed and the number of threads.
