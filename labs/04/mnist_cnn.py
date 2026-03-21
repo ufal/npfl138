@@ -31,9 +31,9 @@ class Model(npfl138.TrainableModule):
     def __init__(self, args: argparse.Namespace) -> None:
         # TODO: Add CNN layers specified by `args.cnn`, which contains
         # a comma-separated list of the following layers:
-        # - `C-filters-kernel_size-stride-padding`: Add a convolutional layer with ReLU
-        #   activation and specified number of filters, kernel size, stride and padding.
-        # - `CB-filters-kernel_size-stride-padding`: Same as `C`, but use batch normalization.
+        # - `C-channels-kernel_size-stride-padding`: Add a convolutional layer with ReLU
+        #   activation and specified number of channels, kernel size, stride and padding.
+        # - `CB-channels-kernel_size-stride-padding`: Same as `C`, but use batch normalization.
         #   In detail, start with a convolutional layer **without bias** and activation,
         #   then add a batch normalization layer, and finally the ReLU activation.
         # - `M-pool_size-stride`: Add max pooling with specified size and stride, using

@@ -9,11 +9,11 @@ neural network layers. Start with the
 [mnist_cnn.py](https://github.com/ufal/npfl138/tree/master/labs/04/mnist_cnn.py)
 template and assume the requested architecture is described by the `cnn`
 argument, which contains comma-separated specifications of the following layers:
-- `C-filters-kernel_size-stride-padding`: Add a convolutional layer with ReLU
-  activation and specified number of filters, kernel size, stride and padding.
+- `C-channels-kernel_size-stride-padding`: Add a convolutional layer with ReLU
+  activation and specified number of channels, kernel size, stride and padding.
   Example: `C-10-3-1-same`
-- `CB-filters-kernel_size-stride-padding`: Same as
-  `C-filters-kernel_size-stride-padding`, but use batch normalization.
+- `CB-channels-kernel_size-stride-padding`: Same as
+  `C-channels-kernel_size-stride-padding`, but use batch normalization.
   In detail, start with a convolutional layer **without bias** and activation,
   then add batch normalization layer, and finally the ReLU activation.
   Example: `CB-10-3-1-same`
