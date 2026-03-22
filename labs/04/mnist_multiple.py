@@ -83,9 +83,9 @@ class Model(npfl138.TrainableModule):
         direct_comparison_pred, digit_1_pred, digit_2_pred, indirect_comparison_pred = y_pred
         digit_1_true, digit_2_true = y_true
 
-        # TODO: Compute the required losses. Note that the `direct_comparison_pred` is
-        # really a probability (sigmoid was applied), while the `digit_1_pred` and
-        # `digit_2_pred` are logits of 10-class classification.
+        # TODO: Compute the required losses using their implementations from `torch.nn`.
+        # Note that the `direct_comparison_pred` is really a probability (sigmoid was applied),
+        # while the `digit_1_pred` and `digit_2_pred` are logits of 10-class classification.
         direct_comparison_loss = ...
         digit_1_loss = ...
         digit_2_loss = ...
