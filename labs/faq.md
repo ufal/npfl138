@@ -265,6 +265,93 @@
   The memory limit during evaluation is **1.5GB**. The time limit varies, but it should
   be at least 10 seconds and at least twice the running time of my solution.
 
+### TOCEntry: Finetuning
+
+Consider finetuning a given `backbone` in the following PyTorch module:
+```python
+class Model(torch.nn.Module):
+    def __init__(self, backbone: torch.nn.Module, args: argparse.Namespace) -> None:
+        super().init()
+        self.backbone = backbone
+        ...
+```
+
+- _How to train including the `self.backbone` parameters?_
+
+  Training including the `self.backbone` parameters is straightforward, it is
+  the default, analogously to training any other submodule.
+
+- _How to train excluding the `self.backbone` parameters?_
+
+  There are two approaches to train without the `self.backbone` parameters.
+  Either you mark them as _not-requiring-a-gradient_, or you do not pass
+  the `self.backbone` parameters to the optimizer at all.
+
+  - To avoid computing the gradient of the `self.backbone` parameters, you can
+    call `self.backbone.requires_grad_(False)`. Optimizer correctly handles
+    parameters without a computed gradient, and it also properly handles dynamic
+    changes of `parameter.requires_grad` during training.
+  - To avoid passing the `self.backbone` parameters to the optimizer, you can
+    use for example `set(model.parameters()) - set(model.backbone.parameters())`
+    as the parameters given to the optimizer. However, if you ever need to
+    train the `self.backbone` parameters later, you need to construct a new
+    optimizer.
+
+- _How to run `self.backbone` in evaluation regime during training (i.e., with
+  frozen batch normalizations and without dropout)?_
+
+  The changes above do not influence whether `self.backbone` is run in training
+  or in evaluation mode; when the whole `module` is set to training/evaluation
+  mode, so is `self.backbone`.
+
+  To always keep `self.backbone` in evaluation mode, the easiest is to overwrite
+  the `train` method of the `Module` class:
+  ```python
+  class Model(torch.nn.Module):
+      ...
+      def train(self, mode: bool = True):
+          super().train(mode)
+          self.backbone.eval()
+          return self
+  ```
+
+- _How to dynamically toggle both parameter training and training mode of the
+  `self.backbone`?_
+
+  We can combine both parameter training toggle and training mode toggle for
+  example in the following way:
+  ```python
+  class Model(torch.nn.Module):
+      def __init__(self, backbone: torch.nn.Module, args: argparse.Namespace) -> None:
+          super().init()
+          self.backbone = backbone
+          self.backbone_trainable(True)  # or False, depending on what should be the default
+          ...
+
+      def backbone_trainable(self, mode: bool) -> None:
+          self.backbone_is_trainable = mode
+          self.backbone.requires_grad_(mode)
+          self.backbone.train(self.training and mode)
+
+      def train(self, mode: bool = True):
+          super().train(mode)
+          self.backbone.train(mode and self.backbone_is_trainable)
+          return self
+  ```
+
+- _How to extend the above approach to always keep the `self.backbone` batch normalizations
+  frozen, even during `self.backbone` finetuning?_
+
+  The `train` method from the above example can be updated for example as follows:
+  ```python
+  class Model(torch.nn.Module):
+      ...
+      def train(self, mode: bool = True):
+          super().train(mode)
+          self.backbone.apply(lambda m: m.train(mode and self.backbone_is_trainable and not isinstance(m, torch.nn.BatchNorm2d)))
+          return self
+  ```
+
 ### TOCEntry: TensorBoard
 
 - _Should TensorFlow be installed when using TensorBoard?_
