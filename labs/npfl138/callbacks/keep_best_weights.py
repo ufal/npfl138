@@ -19,6 +19,7 @@ class KeepBestWeights(Callback):
         metric: str,
         mode: Literal["max", "min"] = "max",
         device: str | None = None,
+        *,
         patience: int | None = None,
     ) -> None:
         """Create the KeepBestWeights callback.

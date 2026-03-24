@@ -20,6 +20,7 @@ class SaveBestWeights(Callback):
         metric: str,
         mode: Literal["max", "min"] = "max",
         optimizer_path: str | None = None,
+        *,
         patience: int | None = None,
     ) -> None:
         """Create the SaveBestWeights callback.
