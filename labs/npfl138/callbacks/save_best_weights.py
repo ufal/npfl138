@@ -21,6 +21,7 @@ class SaveBestWeights(Callback):
         mode: Literal["max", "min"] = "max",
         optimizer_path: str | None = None,
         *,
+        baseline: float | None = None,
         patience: int | None = None,
     ) -> None:
         """Create the SaveBestWeights callback.
@@ -33,6 +34,8 @@ class SaveBestWeights(Callback):
             or minimized.
           optimizer_path: An optional path passed to [npfl138.TrainableModule.save_weights][] to
             save also the optimizer state; it is relative to `path`.
+          baseline: When set, the monitored metric must surpass this value for the model weights
+            to be actually saved.
           patience: When `patience` is not `None`, the callback stops the training if the monitored
             metric does not improve for `patience` consecutive epochs.
         """
@@ -42,6 +45,7 @@ class SaveBestWeights(Callback):
         self._metric = metric
         self._mode = mode
         self._optimizer_path = optimizer_path
+        self._baseline = baseline
         self._patience = patience
         self._epochs_without_improvement = 0
 
@@ -55,8 +59,13 @@ class SaveBestWeights(Callback):
                 or (self._mode == "max" and logs[self._metric] > self.best_value)
                 or (self._mode == "min" and logs[self._metric] < self.best_value)):
             self.best_value = logs[self._metric]
-            module.save_weights(self._path, optimizer_path=self._optimizer_path)
             self._epochs_without_improvement = 0
+
+            if (self._baseline is None
+                    or (self._mode == "max" and self.best_value > self._baseline)
+                    or (self._mode == "min" and self.best_value < self._baseline)):
+                module.save_weights(self._path, optimizer_path=self._optimizer_path)
+
         else:
             self._epochs_without_improvement += 1
 
