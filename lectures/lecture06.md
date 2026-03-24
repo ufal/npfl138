@@ -2,6 +2,7 @@
 #### Date: Mar 24
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides/?06
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides.pdf/npfl138-2526-06.pdf, PDF Slides
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-06-czech.mp4, CZ Lecture
 #### Questions: #lecture_6_questions
 
 - R-CNN [[R-CNN](https://arxiv.org/abs/1311.2524)]
