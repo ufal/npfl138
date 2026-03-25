@@ -153,7 +153,7 @@ class CAGS:
         for i in range(len(gold)):
             iou.update(predictions[i], gold[i])
 
-        return iou.compute()
+        return iou.compute().item()
 
     @staticmethod
     def load_segmentation_file(predictions_file: TextIO) -> list[torch.Tensor]:
