@@ -70,10 +70,10 @@ def main(args: argparse.Namespace) -> dict[str, float]:
     #     and `eta_min` appropriately.
     #   In all cases, you should reach `args.learning_rate_final` just after the training.
     #
-    #   If a learning rate schedule is used, the `TrainableModule` automatically logs the
-    #   learning rate to the console and to TensorBoard. Additionally, you can find out
-    #   the next learning rate to be used by printing `model.scheduler.get_last_lr()[0]`.
-    #   Therefore, after the training, this value should be `args.learning_rate_final`.
+    # If a learning rate schedule is used, the `TrainableModule` automatically logs the
+    # learning rate to the console and to TensorBoard. Additionally, you can find out
+    # the next learning rate to be used by printing `model.scheduler.get_last_lr()[0]`,
+    # as below. Therefore, after training, this value should be `args.learning_rate_final`.
     ...
 
     model.configure(
