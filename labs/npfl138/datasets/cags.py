@@ -80,7 +80,7 @@ class CAGS:
             }
 
     def __init__(self, decode_on_demand: bool = False) -> None:
-        "Load the CAGS dataset, downloading it if necessary."
+        """Load the CAGS dataset, downloading it if necessary."""
         for dataset, size in [("train", 2_142), ("dev", 306), ("test", 612)]:
             path = f"cags.{dataset}.tfrecord"
             if not os.path.exists(path):
@@ -151,7 +151,7 @@ class CAGS:
 
         iou = CAGS.MaskIoUMetric()
         for i in range(len(gold)):
-            iou.update(gold[i], predictions[i])
+            iou.update(predictions[i], gold[i])
 
         return iou.compute()
 
@@ -188,7 +188,7 @@ class CAGS:
           show: controls whether to show the figure or return it:
             if `True`, the figure is shown using `plt.show()`;
             if `False`, the `plt.Figure` instance is returned; it can be saved
-            to TensorBoard using a the [npfl138.Logger.log_figure][] method of
+            to TensorBoard using the [npfl138.Logger.log_figure][] method of
             an [npfl138.TrainableModule.logger][].
         """
         import matplotlib.pyplot as plt

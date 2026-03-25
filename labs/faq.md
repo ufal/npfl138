@@ -143,7 +143,7 @@
   [GPU computing](https://docs.metacentrum.cz/en/docs/computing/gpu-comput/gpu-job),
   [GPU clusters](https://docs.metacentrum.cz/en/docs/computing/gpu-comput/clusters).
 
-  TL;DR: To run an interactive GPU job with 1 CPU, 1 GPU, 8GB RAM, and 32GB scatch
+  TL;DR: To run an interactive GPU job with 1 CPU, 1 GPU, 8GB RAM, and 32GB scratch
   space, run:
   ```
   qsub -l select=1:ncpus=1:ngpus=1:mem=8gb:scratch_local=32gb -I

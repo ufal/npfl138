@@ -31,7 +31,7 @@ class TFRecordDataset(torch.utils.data.Dataset):
         raise NotImplementedError()
 
     @staticmethod
-    def _tfrecord_load(path: str, items: int) -> tuple[dict[str, array.array], dict[str, array.array]]:
+    def _tfrecord_load(path: str, items: int) -> tuple[dict[str, torch.Tensor], dict[str, torch.Tensor], int]:
         def get_value() -> np.int64:
             nonlocal data, offset
             value, start = np.int64(data[offset] & 0x7F), offset

@@ -18,10 +18,10 @@ The task is also a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2526
 a solution achieving at least _98.5%_ accuracy gets 4 basic points; the
 remaining 5 bonus points are distributed depending on the relative ordering of your
 solutions. The accuracy is computed per-character and can be evaluated
-programatically using the [UppercaseData.evaluate_file](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/uppercase_data/#npfl138.datasets.uppercase_data.UppercaseData.evaluate_file)
+programmatically using the [UppercaseData.evaluate_file](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/uppercase_data/#npfl138.datasets.uppercase_data.UppercaseData.evaluate_file)
 method, or by running
 `python3 -m npfl138.datasets.uppercase_data --evaluate PREDICTIONS_FILE_PATH --dataset dev/test`
-comand; however, only the `--dataset dev` produces valid accuracy since you do not have
+command; however, only the `--dataset dev` produces valid accuracy since you do not have
 the test set annotations.
 
 Start with the
@@ -31,6 +31,6 @@ class to load the data, generate an alphabet of a given size containing the most
 characters, and generate a sliding window view on the data. The template also
 comments on possibilities of character representation.
 
-**Do not use RNNs, CNNs, or Transformer** in this task (if you have doubts, contact me);
+**Do not use RNNs, CNNs, or Transformers** in this task (if you have doubts, contact me);
 fully connected layers (and therefore also embedding layers), any activations,
 residual connections, and any regularization layers are fine.

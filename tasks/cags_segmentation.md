@@ -16,7 +16,7 @@ is provided by the
 class of the [CAGS](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/cags/)
 dataset, which can also evaluate your predictions (either by running
 `python3 -m npfl138.datasets.cags --evaluate_segmentation=path --dataset=dev/test`
-or using its [evaluate_segmentation_file](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/cags/#npfl138.datasets.cags.CAGS.evaluate_segmentation_file) method) as well as visuzalize them (using
+or using its [evaluate_segmentation_file](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/cags/#npfl138.datasets.cags.CAGS.evaluate_segmentation_file) method) as well as visualize them (using
 `python3 -m npfl138.datasets.cags --visualize_segmentation=path --dataset=dev/test`
 or the [visualize](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/cags/#npfl138.datasets.cags.CAGS.visualize) method).
 
