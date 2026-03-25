@@ -60,7 +60,10 @@ class ProgressLogger(tqdm.tqdm):
         self._console = console
         self._description = description
         self._logs_fn = logs_fn
-        super().__init__(data, unit="batch", leave=False, dynamic_ncols=True, disable=None if console == 2 else console < 2, **kwargs)
+        super().__init__(
+            data, unit="batch", leave=False, dynamic_ncols=True, disable=None if console == 2 else console < 2,
+            **kwargs,
+        )
 
     def refresh(self, nolock=False, lock_args=None):
         if ProgressLogger._report_only_first > 0:
