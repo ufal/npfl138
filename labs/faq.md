@@ -348,7 +348,8 @@ class Model(torch.nn.Module):
       ...
       def train(self, mode: bool = True):
           super().train(mode)
-          self.backbone.apply(lambda m: m.train(mode and self.backbone_is_trainable and not isinstance(m, torch.nn.BatchNorm2d)))
+          self.backbone.train(mode and self.backbone_is_trainable)
+          self.backbone.apply(lambda m: isinstance(m, torch.nn.BatchNorm2d) and m.eval())
           return self
   ```
 
