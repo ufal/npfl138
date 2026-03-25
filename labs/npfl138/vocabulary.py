@@ -3,7 +3,7 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
-from collections.abc import Iterable
+from collections.abc import Iterable, Iterator
 
 
 class Vocabulary:
@@ -87,7 +87,7 @@ class Vocabulary:
         """
         return len(self._strings)
 
-    def __iter__(self) -> Iterable[str]:
+    def __iter__(self) -> Iterator[str]:
         """Return an iterator over strings in the vocabulary.
 
         Returns:
