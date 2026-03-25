@@ -12,7 +12,7 @@
 - When loading, you need to specify `window` and `alphabet_size`. If
   `alphabet_size` is nonzero, it specifies the maximum number of alphabet
   characters, in which case that many most frequent characters will be used,
-  and all others will be remapped to "&lt;unk>".
+  and all others will be remapped to "<unk>".
 - Features are generated using a sliding window of a given size,
   i.e., for a character, we include left `window` characters, the character
   itself, and right `window` characters; `2 * window + 1` in total.
