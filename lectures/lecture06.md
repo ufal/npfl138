@@ -3,7 +3,11 @@
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides/?06
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides.pdf/npfl138-2526-06.pdf, PDF Slides
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-06-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-06-czech.groupnorm.mp4, CZ GroupNorm
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-06-czech.practicals.mp4, CZ Practicals
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-06-english.mp4, EN Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-06-english.groupnorm.mp4, EN GroupNorm
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-06-english.practicals.mp4, EN Practicals
 #### Questions: #lecture_6_questions
 #### Lecture assignment: bboxes_utils
 #### Lecture assignment: svhn_competition
