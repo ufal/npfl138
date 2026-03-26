@@ -22,7 +22,7 @@ or the [visualize](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/da
 
 The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2526-summer#competitions).
 Everyone who submits a solution achieving at least _87%_ test set IoU gets
-4 points; the remaining 5 bonus points are distributed depending on relative
+4 points; the remaining 5 bonus points are distributed depending on the relative
 ordering of your solutions.
 
 You may want to start with the
