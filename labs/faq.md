@@ -295,7 +295,9 @@ class Model(torch.nn.Module):
     use for example `set(model.parameters()) - set(model.backbone.parameters())`
     as the parameters given to the optimizer. However, if you ever need to
     train the `self.backbone` parameters later, you need to construct a new
-    optimizer.
+    optimizer. Also, the gradient of the `self.backbone` parameters might
+    still be computed, which considerably increases required GPU memory
+    and computation time.
 
 - _How to run `self.backbone` in evaluation regime during training (i.e., with
   frozen batch normalizations and without dropout)?_
