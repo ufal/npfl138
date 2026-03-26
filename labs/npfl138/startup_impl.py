@@ -96,10 +96,11 @@ def startup(
         torch.mps.is_available = lambda: False
         torch.xpu.is_available = lambda: False
 
-        # Use only AVX instructions, avoiding AVX2 and AVX-512 which might produce different results.
-        os.environ["MKL_CBWR"] = "AVX"
-        os.environ["ONEDNN_MAX_CPU_ISA"] = "AVX"
-        os.environ["ATEN_CPU_CAPABILITY"] = "default"
+        # On Linux and Windows, use only AVX instructions for better reproducibility.
+        if "linux" in sys.platform or "win" in sys.platform:
+            os.environ["MKL_CBWR"] = "AVX"
+            os.environ["ONEDNN_MAX_CPU_ISA"] = "AVX"
+            os.environ["ATEN_CPU_CAPABILITY"] = "default"
 
         # Make initializers deterministic.
         def bind_generator(init):
