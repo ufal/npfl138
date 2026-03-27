@@ -58,10 +58,10 @@ Now assume we got $⇶G = \frac{∂L}{∂⇶R}$, which is of size $\big[\lceil\f
 - $\displaystyle \frac{∂L}{∂→b} = ∑_i ∑_j \textcolor{darkgreen}{\frac{∂⇶R_{i,j}}{∂→b}} ⇶G_{i,j} = ∑_i ∑_j \textcolor{darkgreen}{⇉I} ⇶G_{i,j}.$
 
 ~~~
-- $\displaystyle \frac{∂L}{∂⇶K_{m,n}} = ∑_i ∑_j \textcolor{darkblue}{\frac{∂⇶R_{i,j}}{∂⇶K_{m,n}}} ⇶G_{i,j}$
+- $\displaystyle \frac{∂L}{∂⇶K_{m,n}} = ∑_i ∑_j \textcolor{darkblue}{\frac{∂⇶R_{i,j}}{∂⇶K_{m,n}}} (⇶G_{i,j})^\T$
 
 ~~~
-  $\displaystyle \phantom{\frac{∂L}{∂⇶K_{m,n}}} = ∑_i ∑_j \textcolor{darkblue}{⇶I_{si+m,sj+n}} ⇶G_{i,j}^T$
+  $\displaystyle \phantom{\frac{∂L}{∂⇶K_{m,n}}} = ∑_i ∑_j \textcolor{darkblue}{⇶I_{si+m,sj+n}} (⇶G_{i,j})^\T$
 
 ---
 # Convolution – Backward Computation
