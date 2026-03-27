@@ -56,10 +56,16 @@ class TransformedDataset(npfl138.TransformedDataset):
         # `self._augmentation_fn` if it is not `None`; finally, return (image, label) pair.
         ...
 
-    # Furthermore, we could also define a batch-wise transformation function
-    #   def transform_batch(self, images: torch.Tensor, labels: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
-    # However, the dataloader then must be created using the `TransformedDataset.dataloader` method,
-    # otherwise the `transform_batch` method would not be called.
+    # The `npfl138.TransformedDataset` also allows us to define an additional batch-wise transformation
+    # `transform_batch`, which is applied to the whole batch after collating it from individual examples.
+    # However, the dataloader must be then created by either:
+    # - using the `TransformedDataset.dataloader` method, or
+    # - passing `collate_fn=transformed_dataset.collate_fn` to the `torch.utils.data.DataLoader`
+    #   constructor, where `transformed_dataset` is an instance of the `TransformedDataset` class.
+    # Otherwise, the `transform_batch` method will not be called.
+    def transform_batch(self, images: torch.Tensor, labels: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        images = images.to(memory_format=torch.channels_last)  # convert images to channels-last memory format
+        return images, labels
 
 
 def main(args: argparse.Namespace) -> dict[str, float]:
