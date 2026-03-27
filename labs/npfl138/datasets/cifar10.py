@@ -44,7 +44,7 @@ class CIFAR10:
     class Dataset(torch.utils.data.Dataset):
         def __init__(self, data: "CIFAR10.Elements") -> None:
             self._data = {key: torch.as_tensor(value) for key, value in data.items()}
-            self._data["images"] = self._data["images"].moveaxis(-1, 1)
+            self._data["images"] = self._data["images"].movedim(-1, 1)
             self._data["labels"] = self._data["labels"].view(-1)
 
         @property
