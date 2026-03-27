@@ -59,9 +59,9 @@ class TransformedDataset(npfl138.TransformedDataset):
     # The `npfl138.TransformedDataset` also allows us to define an additional batch-wise transformation
     # `transform_batch`, which is applied to the whole batch after collating it from individual examples.
     # However, the dataloader must be then created by either:
-    # - using the `TransformedDataset.dataloader` method, or
+    # - using the `npfl138.TransformedDataset.dataloader` method, or
     # - passing `collate_fn=transformed_dataset.collate_fn` to the `torch.utils.data.DataLoader`
-    #   constructor, where `transformed_dataset` is an instance of the `TransformedDataset` class.
+    #   constructor, where `transformed_dataset` is an instance of the `npfl138.TransformedDataset` class.
     # Otherwise, the `transform_batch` method will not be called.
     def transform_batch(self, images: torch.Tensor, labels: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
         images = images.to(memory_format=torch.channels_last)  # convert images to channels-last memory format
