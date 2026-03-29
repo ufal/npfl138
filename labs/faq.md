@@ -271,7 +271,7 @@ Consider finetuning a given `backbone` in the following PyTorch module:
 ```python
 class Model(torch.nn.Module):
     def __init__(self, backbone: torch.nn.Module, args: argparse.Namespace) -> None:
-        super().init()
+        super().__init__()
         self.backbone = backbone
         ...
 ```
@@ -325,7 +325,7 @@ class Model(torch.nn.Module):
   ```python
   class Model(torch.nn.Module):
       def __init__(self, backbone: torch.nn.Module, args: argparse.Namespace) -> None:
-          super().init()
+          super().__init__()
           self.backbone = backbone
           self.backbone_trainable(True)  # or False, depending on what should be the default
           ...
