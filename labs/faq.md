@@ -138,8 +138,8 @@
 - _How to run a GPU computation on MetaCentrum?_
 
   First, read the official MetaCentrum documentation:
-  [Basic terms](https://docs.metacentrum.cz/en/docs/computing/concepts),
-  [Run simple job](https://docs.metacentrum.cz/en/docs/computing/run-basic-job),
+  [Getting started](https://docs.metacentrum.cz/en/docs/computing/run-basic-job),
+  [Advanced guide](https://docs.metacentrum.cz/en/docs/computing/advanced),
   [GPU computing](https://docs.metacentrum.cz/en/docs/computing/gpu-comput/gpu-job),
   [GPU clusters](https://docs.metacentrum.cz/en/docs/computing/gpu-comput/clusters).
 
