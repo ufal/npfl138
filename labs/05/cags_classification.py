@@ -2,7 +2,6 @@
 import argparse
 import os
 
-import numpy as np
 import timm
 import torch
 import torchvision.transforms.v2 as v2
