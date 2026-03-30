@@ -57,7 +57,7 @@ class Model(npfl138.TrainableModule):
         #   connections, and manually perform them in the forward pass.
         #
         # It might be difficult to compute the number of features after the `F` layer. You can
-        # nevertheless use the `torch.nn.LazyLinear`, `torch.nn.LazyConv2d`, and `torch.nn.LazyBatch2d`
+        # nevertheless use the `torch.nn.LazyLinear`, `torch.nn.LazyConv2d`, and `torch.nn.LazyBatchNorm2d`
         # layers, which do not require the number of input features to be specified in the constructor.
         # During `__init__`, these layers do not allocate their parameters, and only do so when
         # they are first called on a tensor, at which point the number of input features is known.
