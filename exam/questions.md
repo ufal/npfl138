@@ -158,3 +158,24 @@
 - Describe GroupNorm (including its parameters and their size), and compare it
   to BatchNorm and LayerNorm, discussing both fully connected layers and
   convolutional layers. [5]
+
+#### Questions@:, Lecture 7 Questions
+- Write down how the Long Short-Term Memory (LSTM) cell operates, including
+  the explicit formulas. Also mention the forget gate bias. [10]
+
+- Write down how the Gated Recurrent Unit (GRU) operates, including the explicit
+  formulas (you can describe either the original formulation or the reset gate
+  applied after the matrix multiplication, both are fine). [10]
+
+- Why the usual dropout should not be used on recurrent state? Describe
+  how the problem can be alleviated with variational dropout. [5]
+
+- Describe LayerNorm (including its parameters and their size), and write down
+  how it is computed (be sure to explicitly state over what is being normalized
+  in case of fully connected layers and convolutional layers). [5]
+
+- Draw a tagger architecture utilizing word embeddings, recurrent
+  character-level word embeddings (including how are these computed from
+  individual characters), and two sentence-level bidirectional RNNs (explaining
+  the bidirectionality) with a residual connection. Where would you put the
+  dropout layers? [10]
