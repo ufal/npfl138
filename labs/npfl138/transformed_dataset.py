@@ -51,14 +51,15 @@ class TransformedDataset(torch.utils.data.Dataset):
         self._dataset = dataset
         self._dataset_has_getitems = hasattr(self._dataset, "__getitems__")
 
+        self._dataset_limit = dataset_limit
         if os.environ.get("NPFL_DATASET_LIMIT", "").isdecimal():
-            dataset_limit = int(os.environ["NPFL_DATASET_LIMIT"])
-        if dataset_limit is not None and dataset_limit < len(self._dataset):
-            self._dataset = torch.utils.data.Subset(self._dataset, list(range(dataset_limit)))
+            self._dataset_limit = int(os.environ["NPFL_DATASET_LIMIT"])
+        if self._dataset_limit is not None and self._dataset_limit < 0:
+            self._dataset_limit = None
 
     def __len__(self) -> int:
         """Return the number of items in the dataset."""
-        return len(self._dataset)
+        return len(self._dataset) if self._dataset_limit is None else min(len(self._dataset), self._dataset_limit)
 
     def __getitem__(self, index: int) -> Any:
         """Return the item at the specified index."""
