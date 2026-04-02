@@ -13,13 +13,12 @@ The dataset is split into:
 - `test`: 10,000 images for testing.
 """
 
-import os
-import sys
 from typing import Iterator, TypedDict
-import urllib.request
 
 import numpy as np
 import torch
+
+from .downloader import download_url_to_file
 
 
 class MNIST:
@@ -77,12 +76,7 @@ class MNIST:
           dataset: The name of the dataset, typically `mnist`.
           sizes: An optional dictionary overriding the sizes of the `train`, `dev`, and `test` splits.
         """
-        path = f"{dataset}.npz"
-        if not os.path.exists(path):
-            print(f"Downloading {dataset} dataset...", file=sys.stderr)
-            urllib.request.urlretrieve(f"{self.URL}/{path}", filename=f"{path}.tmp")
-            os.rename(f"{path}.tmp", path)
-
+        path = download_url_to_file(self.URL, f"{dataset}.npz")
         mnist = np.load(path)
         for dataset in ["train", "dev", "test"]:
             data = {key[len(dataset) + 1:]: mnist[key][:sizes.get(dataset, None)]

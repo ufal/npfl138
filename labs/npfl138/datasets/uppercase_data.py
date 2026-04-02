@@ -31,19 +31,19 @@
         the character of the corresponding window is lowercase/uppercase.
 """
 import os
-import sys
 from typing import TextIO
-import urllib.request
 import zipfile
 
 import numpy as np
 import torch
 
+from .downloader import download_url_to_file
+
 
 class UppercaseData:
     LABELS: int = 2
 
-    URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/datasets/uppercase_data.zip"
+    URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/datasets"
 
     class Dataset:
         def __init__(self, data: str, window: int, alphabet: int | list[str]) -> None:
@@ -130,11 +130,7 @@ class UppercaseData:
           alphabet_size: If nonzero, the maximum number of alphabet characters (the most frequent ones will
             be used, others are remapped to "<unk>"); if zero, all characters are used.
         """
-        path = os.path.basename(self.URL)
-        if not os.path.exists(path):
-            print(f"Downloading dataset {path}...", file=sys.stderr)
-            urllib.request.urlretrieve(self.URL, filename=f"{path}.tmp")
-            os.rename(f"{path}.tmp", path)
+        path = download_url_to_file(self.URL, "uppercase_data.zip")
 
         with zipfile.ZipFile(path, "r") as zip_file:
             for dataset in ["train", "dev", "test"]:

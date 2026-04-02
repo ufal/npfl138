@@ -21,14 +21,12 @@ The dataset is split into:
 - `dev`: 1,267 images for development (validation);
 - `test`: 4,535 images for testing.
 """
-import os
-import sys
 from typing import Any, Sequence, TextIO, TypedDict
-import urllib.request
 
 import torch
 import torchvision
 
+from .downloader import download_url_to_file
 from .tfrecord_dataset import TFRecordDataset
 
 
@@ -78,12 +76,7 @@ class SVHN:
     def __init__(self, decode_on_demand: bool = False) -> None:
         """Load the CAGS dataset, downloading it if necessary."""
         for dataset, size in [("train", 10_000), ("dev", 1_267), ("test", 4_535)]:
-            path = f"svhn.{dataset}.tfrecord"
-            if not os.path.exists(path):
-                print(f"Downloading file {path}...", file=sys.stderr)
-                urllib.request.urlretrieve(f"{self.URL}/{path}", filename=f"{path}.tmp")
-                os.rename(f"{path}.tmp", path)
-
+            path = download_url_to_file(self.URL, f"svhn.{dataset}.tfrecord")
             setattr(self, dataset, self.Dataset(path, size, decode_on_demand))
 
     train: Dataset

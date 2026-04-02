@@ -13,13 +13,12 @@ The dataset is split into:
 - `test`: 2,000 images for testing; note that this is not the official CIFAR-10 test set.
 """
 
-import os
-import sys
 from typing import Sequence, TextIO, TypedDict
-import urllib.request
 
 import numpy as np
 import torch
+
+from .downloader import download_url_to_file
 
 
 class CIFAR10:
@@ -39,7 +38,7 @@ class CIFAR10:
     Elements = TypedDict("Elements", {"images": torch.Tensor, "labels": torch.Tensor})
     """The type of the whole dataset."""
 
-    URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/datasets/cifar10_competition.npz"
+    URL: str = "https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/datasets"
 
     class Dataset(torch.utils.data.Dataset):
         def __init__(self, data: "CIFAR10.Elements") -> None:
@@ -66,12 +65,7 @@ class CIFAR10:
         Parameters:
           sizes: An optional dictionary overriding the sizes of the `train`, `dev`, and `test` splits.
         """
-        path = os.path.basename(self.URL)
-        if not os.path.exists(path):
-            print("Downloading CIFAR-10 dataset...", file=sys.stderr)
-            urllib.request.urlretrieve(self.URL, filename=f"{path}.tmp")
-            os.rename(f"{path}.tmp", path)
-
+        path = download_url_to_file(self.URL, "cifar10_competition.npz")
         cifar = np.load(path)
         for dataset in ["train", "dev", "test"]:
             data = {key[len(dataset) + 1:]: cifar[key][:sizes.get(dataset, None)]

@@ -9,11 +9,11 @@ import sys
 import torch
 
 
-def download_url_to_file(url: str, filename: str) -> str:
-    """Download the file from a given URL and save it as a given filename.
+def download_url_to_file(url_dir: str, filename: str) -> str:
+    """Download the file from a given URL directory and save it as a given filename.
 
     Parameters:
-      url: The URL to download the file from.
+      url: The URL of a directory where to download the file from.
       filename: The name of the file to save the downloaded content to.
 
     Returns:
@@ -24,7 +24,7 @@ def download_url_to_file(url: str, filename: str) -> str:
     path = os.path.join(cache_dir, filename) if cache_dir is not None else filename
 
     if not os.path.exists(path):
-        print(f"Downloading dataset {filename}...", file=sys.stderr)
-        torch.hub.download_url_to_file(url=url, dst=path, progress=True)
+        print(f"Downloading {filename}...", file=sys.stderr)
+        torch.hub.download_url_to_file(url=f"{url_dir}/{filename}", dst=path, progress=True)
 
     return filename

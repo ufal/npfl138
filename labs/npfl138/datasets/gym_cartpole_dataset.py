@@ -13,12 +13,11 @@ The dataset consists of just a single subset:
     - `label` is a gold 0/1 class index.
 """
 import collections
-import os
-import sys
-import urllib.request
 
 import numpy as np
 import torch
+
+from .downloader import download_url_to_file
 
 
 class GymCartpoleDataset:
@@ -59,12 +58,8 @@ class GymCartpoleDataset:
         Parameters:
           dataset: The file name of the dataset to load.
         """
-        if not os.path.exists(dataset):
-            print(f"Downloading {dataset}...", file=sys.stderr)
-            urllib.request.urlretrieve(f"{self.URL}/{dataset}", filename=f"{dataset}.tmp")
-            os.rename(f"{dataset}.tmp", dataset)
-
-        data = np.loadtxt(dataset)
+        path = download_url_to_file(self.URL, dataset)
+        data = np.loadtxt(path)
         self.train = self.Dataset(observations=data[:, :-1].astype(np.float32), labels=data[:, -1].astype(np.int64))
 
     train: Dataset

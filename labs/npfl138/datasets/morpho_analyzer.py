@@ -3,10 +3,9 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
-import os
-import sys
-import urllib.request
 import zipfile
+
+from .downloader import download_url_to_file
 
 
 class MorphoAnalyzer:
@@ -32,11 +31,7 @@ class MorphoAnalyzer:
 
     def __init__(self, dataset: str) -> None:
         """Loads the morphological analyses from the specified dataset."""
-        path = f"{dataset}.zip"
-        if not os.path.exists(path):
-            print(f"Downloading dataset {dataset}...", file=sys.stderr)
-            urllib.request.urlretrieve(f"{self.URL}/{path}", filename=f"{path}.tmp")
-            os.rename(f"{path}.tmp", path)
+        path = download_url_to_file(self.URL, f"{dataset}.zip")
 
         self.analyses = {}
         with zipfile.ZipFile(path, "r") as zip_file:

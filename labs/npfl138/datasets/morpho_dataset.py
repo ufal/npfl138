@@ -37,14 +37,12 @@ Each split is a [torch.utils.data.Dataset][] providing:
 - `cle_batch_packed`: a variant of `cle_batch` returning packed instead of padded sequences
 """
 import os
-import sys
-from typing import Any, BinaryIO, Sequence, TextIO, TypedDict
-import urllib.request
+from typing import BinaryIO, Self, Sequence, TextIO, TypedDict
 import zipfile
-Self = Any  # For compatibility with Python <3.11 that does not support Self
 
 import torch
 
+from .downloader import download_url_to_file
 from ..vocabulary import Vocabulary
 
 
@@ -200,11 +198,7 @@ class MorphoDataset:
           dataset: The name of the dataset, for example `czech_pdt`.
           max_sentences: The maximum number of sentences to load.
         """
-        path = f"{dataset}.zip"
-        if not os.path.exists(path):
-            print(f"Downloading dataset {dataset}...", file=sys.stderr)
-            urllib.request.urlretrieve(f"{self.URL}/{path}", filename=f"{path}.tmp")
-            os.rename(f"{path}.tmp", path)
+        path = download_url_to_file(self.URL, f"{dataset}.zip")
 
         with zipfile.ZipFile(path, "r") as zip_file:
             for dataset in ["train", "dev", "test"]:
