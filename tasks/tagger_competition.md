@@ -1,5 +1,5 @@
 ### Assignment: tagger_competition
-#### Date: Deadline: Apr 16, 22:00
+#### Date: Deadline: Apr 15, 22:00
 #### Points: 4 points+5 bonus
 
 In this assignment, you should extend `tagger_cle`
