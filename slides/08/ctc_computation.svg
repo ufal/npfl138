@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 761.16967 404.16"
+   version="1.1"
+   id="svg138"
+   sodipodi:docname="ctc_computation2.svg"
+   width="761.16968"
+   height="404.16"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview138"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.1083769"
+     inkscape:cx="446.14786"
+     inkscape:cy="328.85924"
+     inkscape:window-width="1920"
+     inkscape:window-height="1173"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg138" />
+  <defs
+     id="defs2">
+    <marker
+       id="arrowSolid"
+       markerWidth="9"
+       markerHeight="9"
+       refX="24"
+       refY="4.5"
+       orient="auto">
+      <path
+         d="M 0,0 9,4.5 0,9 Z"
+         fill="#7f8c8d"
+         id="path1" />
+    </marker>
+    <marker
+       id="arrowSkip"
+       markerWidth="9"
+       markerHeight="9"
+       refX="24"
+       refY="4.5"
+       orient="auto">
+      <path
+         d="M 0,0 9,4.5 0,9 Z"
+         fill="#e67e22"
+         id="path2" />
+    </marker>
+  </defs>
+  <g
+     font-family="serif"
+     font-size="16px"
+     fill="#34495e"
+     id="g23"
+     transform="translate(-25.656,-40)">
+    <text
+       x="25"
+       y="75"
+       id="text4"><tspan
+         font-style="italic"
+         id="tspan2">α</tspan><tspan
+         dy="4"
+         font-size="12px"
+         id="tspan3">–</tspan><tspan
+         dy="-4"
+         id="tspan4">(0)</tspan></text>
+    <text
+       x="75"
+       y="75"
+       font-weight="bold"
+       font-size="18px"
+       id="text5">–</text>
+    <text
+       x="25"
+       y="130"
+       id="text7"><tspan
+         font-style="italic"
+         id="tspan5">α</tspan><tspan
+         dy="4"
+         font-size="12px"
+         id="tspan6">*</tspan><tspan
+         dy="-4"
+         id="tspan7">(1)</tspan></text>
+    <text
+       x="75"
+       y="130"
+       font-weight="bold"
+       font-size="18px"
+       id="text8">C</text>
+    <text
+       x="25"
+       y="185"
+       id="text10"><tspan
+         font-style="italic"
+         id="tspan8">α</tspan><tspan
+         dy="4"
+         font-size="12px"
+         id="tspan9">–</tspan><tspan
+         dy="-4"
+         id="tspan10">(1)</tspan></text>
+    <text
+       x="75"
+       y="185"
+       font-weight="bold"
+       font-size="18px"
+       id="text11">–</text>
+    <text
+       x="25"
+       y="240"
+       id="text13"><tspan
+         font-style="italic"
+         id="tspan11">α</tspan><tspan
+         dy="4"
+         font-size="12px"
+         id="tspan12">*</tspan><tspan
+         dy="-4"
+         id="tspan13">(2)</tspan></text>
+    <text
+       x="75"
+       y="240"
+       font-weight="bold"
+       font-size="18px"
+       id="text14">A</text>
+    <text
+       x="25"
+       y="295"
+       id="text16"><tspan
+         font-style="italic"
+         id="tspan14">α</tspan><tspan
+         dy="4"
+         font-size="12px"
+         id="tspan15">–</tspan><tspan
+         dy="-4"
+         id="tspan16">(2)</tspan></text>
+    <text
+       x="75"
+       y="295"
+       font-weight="bold"
+       font-size="18px"
+       id="text17">–</text>
+    <text
+       x="25"
+       y="350"
+       id="text19"><tspan
+         font-style="italic"
+         id="tspan17">α</tspan><tspan
+         dy="4"
+         font-size="12px"
+         id="tspan18">*</tspan><tspan
+         dy="-4"
+         id="tspan19">(3)</tspan></text>
+    <text
+       x="75"
+       y="350"
+       font-weight="bold"
+       font-size="18px"
+       id="text20">T</text>
+    <text
+       x="25"
+       y="405"
+       id="text22"><tspan
+         font-style="italic"
+         id="tspan20">α</tspan><tspan
+         dy="4"
+         font-size="12px"
+         id="tspan21">–</tspan><tspan
+         dy="-4"
+         id="tspan22">(3)</tspan></text>
+    <text
+       x="75"
+       y="405"
+       font-weight="bold"
+       font-size="18px"
+       id="text23">–</text>
+  </g>
+  <g
+     font-family="serif"
+     font-size="16px"
+     font-weight="bold"
+     font-style="italic"
+     fill="#34495e"
+     text-anchor="middle"
+     id="g29"
+     transform="translate(-25.656,-46)">
+    <text
+       x="130"
+       y="450"
+       id="text24"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:serif;-inkscape-font-specification:'serif Bold'"
+         id="tspan138">t=1</tspan></text>
+    <text
+       x="240"
+       y="450"
+       id="text25"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:serif;-inkscape-font-specification:'serif Bold'">t=2</text>
+    <text
+       x="350"
+       y="450"
+       id="text26"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:serif;-inkscape-font-specification:'serif Bold'">t=3</text>
+    <text
+       x="460"
+       y="450"
+       id="text27"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:serif;-inkscape-font-specification:'serif Bold'">t=4</text>
+    <text
+       x="570"
+       y="450"
+       id="text28"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:serif;-inkscape-font-specification:'serif Bold'">t=5</text>
+    <text
+       x="680"
+       y="450"
+       id="text29"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:serif;-inkscape-font-specification:'serif Bold'">t=6</text>
+  </g>
+  <g
+     stroke="#ecf0f1"
+     stroke-width="2"
+     id="g34"
+     transform="translate(-25.656,-40)">
+    <line
+       x1="130"
+       y1="40"
+       x2="130"
+       y2="420"
+       id="line29" />
+    <line
+       x1="240"
+       y1="40"
+       x2="240"
+       y2="420"
+       id="line30" />
+    <line
+       x1="350"
+       y1="40"
+       x2="350"
+       y2="420"
+       id="line31" />
+    <line
+       x1="460"
+       y1="40"
+       x2="460"
+       y2="420"
+       id="line32" />
+    <line
+       x1="570"
+       y1="40"
+       x2="570"
+       y2="420"
+       id="line33" />
+    <line
+       x1="680"
+       y1="40"
+       x2="680"
+       y2="420"
+       id="line34" />
+  </g>
+  <g
+     stroke="#95a5a6"
+     stroke-width="2"
+     marker-end="url(#arrowSolid)"
+     id="g69"
+     transform="translate(-25.656,-40)">
+    <line
+       x1="130"
+       y1="70"
+       x2="240"
+       y2="70"
+       id="line35" />
+    <line
+       x1="130"
+       y1="70"
+       x2="240"
+       y2="125"
+       id="line36" />
+    <line
+       x1="130"
+       y1="125"
+       x2="240"
+       y2="125"
+       id="line37" />
+    <line
+       x1="130"
+       y1="125"
+       x2="240"
+       y2="180"
+       id="line38" />
+    <line
+       x1="240"
+       y1="70"
+       x2="350"
+       y2="70"
+       id="line39" />
+    <line
+       x1="240"
+       y1="70"
+       x2="350"
+       y2="125"
+       id="line40" />
+    <line
+       x1="240"
+       y1="125"
+       x2="350"
+       y2="125"
+       id="line41" />
+    <line
+       x1="240"
+       y1="125"
+       x2="350"
+       y2="180"
+       id="line42" />
+    <line
+       x1="240"
+       y1="180"
+       x2="350"
+       y2="180"
+       id="line43" />
+    <line
+       x1="240"
+       y1="180"
+       x2="350"
+       y2="235"
+       id="line44" />
+    <line
+       x1="240"
+       y1="235"
+       x2="350"
+       y2="235"
+       id="line45" />
+    <line
+       x1="240"
+       y1="235"
+       x2="350"
+       y2="290"
+       id="line46" />
+    <line
+       x1="350"
+       y1="70"
+       x2="460"
+       y2="125"
+       id="line47" />
+    <line
+       x1="350"
+       y1="125"
+       x2="460"
+       y2="125"
+       id="line48" />
+    <line
+       x1="350"
+       y1="125"
+       x2="460"
+       y2="180"
+       id="line49" />
+    <line
+       x1="350"
+       y1="180"
+       x2="460"
+       y2="180"
+       id="line50" />
+    <line
+       x1="350"
+       y1="180"
+       x2="460"
+       y2="235"
+       id="line51" />
+    <line
+       x1="350"
+       y1="235"
+       x2="460"
+       y2="235"
+       id="line52" />
+    <line
+       x1="350"
+       y1="235"
+       x2="460"
+       y2="290"
+       id="line53" />
+    <line
+       x1="350"
+       y1="290"
+       x2="460"
+       y2="290"
+       id="line54" />
+    <line
+       x1="350"
+       y1="290"
+       x2="460"
+       y2="345"
+       id="line55" />
+    <line
+       x1="350"
+       y1="345"
+       x2="460"
+       y2="345"
+       id="line56" />
+    <line
+       x1="350"
+       y1="345"
+       x2="460"
+       y2="400"
+       id="line57" />
+    <line
+       x1="460"
+       y1="180"
+       x2="570"
+       y2="235"
+       id="line58" />
+    <line
+       x1="460"
+       y1="235"
+       x2="570"
+       y2="235"
+       id="line59" />
+    <line
+       x1="460"
+       y1="235"
+       x2="570"
+       y2="290"
+       id="line60" />
+    <line
+       x1="460"
+       y1="290"
+       x2="570"
+       y2="290"
+       id="line61" />
+    <line
+       x1="460"
+       y1="290"
+       x2="570"
+       y2="345"
+       id="line62" />
+    <line
+       x1="460"
+       y1="345"
+       x2="570"
+       y2="345"
+       id="line63" />
+    <line
+       x1="460"
+       y1="345"
+       x2="570"
+       y2="400"
+       id="line64" />
+    <line
+       x1="460"
+       y1="400"
+       x2="570"
+       y2="400"
+       id="line65" />
+    <line
+       x1="570"
+       y1="290"
+       x2="680"
+       y2="345"
+       id="line66" />
+    <line
+       x1="570"
+       y1="345"
+       x2="680"
+       y2="345"
+       id="line67" />
+    <line
+       x1="570"
+       y1="345"
+       x2="680"
+       y2="400"
+       id="line68" />
+    <line
+       x1="570"
+       y1="400"
+       x2="680"
+       y2="400"
+       id="line69" />
+  </g>
+  <g
+     stroke="#e67e22"
+     stroke-width="2"
+     stroke-dasharray="6, 4"
+     marker-end="url(#arrowSkip)"
+     id="g77"
+     transform="translate(-25.656,-40)">
+    <line
+       x1="130"
+       y1="125"
+       x2="240"
+       y2="235"
+       id="line70" />
+    <line
+       x1="240"
+       y1="125"
+       x2="350"
+       y2="235"
+       id="line71" />
+    <line
+       x1="240"
+       y1="235"
+       x2="350"
+       y2="345"
+       id="line72" />
+    <line
+       x1="350"
+       y1="125"
+       x2="460"
+       y2="235"
+       id="line73" />
+    <line
+       x1="350"
+       y1="235"
+       x2="460"
+       y2="345"
+       id="line74" />
+    <line
+       x1="460"
+       y1="125"
+       x2="570"
+       y2="235"
+       id="line75" />
+    <line
+       x1="460"
+       y1="235"
+       x2="570"
+       y2="345"
+       id="line76" />
+    <line
+       x1="570"
+       y1="235"
+       x2="680"
+       y2="345"
+       id="line77" />
+  </g>
+  <circle
+     cx="104.344"
+     cy="30"
+     r="23"
+     fill="none"
+     stroke="#2ecc71"
+     stroke-width="3"
+     stroke-dasharray="4, 2"
+     id="circle77" />
+  <circle
+     cx="104.344"
+     cy="85"
+     r="23"
+     fill="none"
+     stroke="#2ecc71"
+     stroke-width="3"
+     stroke-dasharray="4, 2"
+     id="circle78" />
+  <circle
+     cx="654.34399"
+     cy="305"
+     r="23"
+     fill="none"
+     stroke="#e74c3c"
+     stroke-width="3"
+     stroke-dasharray="4, 2"
+     id="circle79" />
+  <circle
+     cx="654.34399"
+     cy="360"
+     r="23"
+     fill="none"
+     stroke="#e74c3c"
+     stroke-width="3"
+     stroke-dasharray="4, 2"
+     id="circle80" />
+  <g
+     stroke-width="2"
+     id="g122"
+     transform="translate(-25.656,-40)">
+    <circle
+       cx="130"
+       cy="70"
+       r="16"
+       fill="#ffffff"
+       stroke="#2c3e50"
+       id="circle81" />
+    <circle
+       cx="240"
+       cy="70"
+       r="16"
+       fill="#ffffff"
+       stroke="#2c3e50"
+       id="circle82" />
+    <circle
+       cx="350"
+       cy="70"
+       r="16"
+       fill="#ffffff"
+       stroke="#2c3e50"
+       id="circle83" />
+    <circle
+       cx="460"
+       cy="70"
+       r="16"
+       fill="#fcfcfc"
+       stroke="#bdc3c7"
+       id="circle84" />
+    <circle
+       cx="570"
+       cy="70"
+       r="16"
+       fill="#fcfcfc"
+       stroke="#bdc3c7"
+       id="circle85" />
+    <circle
+       cx="680"
+       cy="70"
+       r="16"
+       fill="#fcfcfc"
+       stroke="#bdc3c7"
+       id="circle86" />
+    <circle
+       cx="130"
+       cy="125"
+       r="16"
+       fill="#34495e"
+       stroke="#1a252f"
+       id="circle87" />
+    <circle
+       cx="240"
+       cy="125"
+       r="16"
+       fill="#34495e"
+       stroke="#1a252f"
+       id="circle88" />
+    <circle
+       cx="350"
+       cy="125"
+       r="16"
+       fill="#34495e"
+       stroke="#1a252f"
+       id="circle89" />
+    <circle
+       cx="460"
+       cy="125"
+       r="16"
+       fill="#34495e"
+       stroke="#1a252f"
+       id="circle90" />
+    <circle
+       cx="570"
+       cy="125"
+       r="16"
+       fill="#d5d8dc"
+       stroke="#bdc3c7"
+       id="circle91" />
+    <circle
+       cx="680"
+       cy="125"
+       r="16"
+       fill="#d5d8dc"
+       stroke="#bdc3c7"
+       id="circle92" />
+    <circle
+       cx="130"
+       cy="180"
+       r="16"
+       fill="#fcfcfc"
+       stroke="#bdc3c7"
+       id="circle93" />
+    <circle
+       cx="240"
+       cy="180"
+       r="16"
+       fill="#ffffff"
+       stroke="#2c3e50"
+       id="circle94" />
+    <circle
+       cx="350"
+       cy="180"
+       r="16"
+       fill="#ffffff"
+       stroke="#2c3e50"
+       id="circle95" />
+    <circle
+       cx="460"
+       cy="180"
+       r="16"
+       fill="#ffffff"
+       stroke="#2c3e50"
+       id="circle96" />
+    <circle
+       cx="570"
+       cy="180"
+       r="16"
+       fill="#fcfcfc"
+       stroke="#bdc3c7"
+       id="circle97" />
+    <circle
+       cx="680"
+       cy="180"
+       r="16"
+       fill="#fcfcfc"
+       stroke="#bdc3c7"
+       id="circle98" />
+    <circle
+       cx="130"
+       cy="235"
+       r="16"
+       fill="#d5d8dc"
+       stroke="#bdc3c7"
+       id="circle99" />
+    <circle
+       cx="240"
+       cy="235"
+       r="16"
+       fill="#34495e"
+       stroke="#1a252f"
+       id="circle100" />
+    <circle
+       cx="350"
+       cy="235"
+       r="16"
+       fill="#34495e"
+       stroke="#1a252f"
+       id="circle101" />
+    <circle
+       cx="460"
+       cy="235"
+       r="16"
+       fill="#34495e"
+       stroke="#1a252f"
+       id="circle102" />
+    <circle
+       cx="570"
+       cy="235"
+       r="16"
+       fill="#34495e"
+       stroke="#1a252f"
+       id="circle103" />
+    <circle
+       cx="680"
+       cy="235"
+       r="16"
+       fill="#d5d8dc"
+       stroke="#bdc3c7"
+       id="circle104" />
+    <circle
+       cx="130"
+       cy="290"
+       r="16"
+       fill="#fcfcfc"
+       stroke="#bdc3c7"
+       id="circle105" />
+    <circle
+       cx="240"
+       cy="290"
+       r="16"
+       fill="#fcfcfc"
+       stroke="#bdc3c7"
+       id="circle106" />
+    <circle
+       cx="350"
+       cy="290"
+       r="16"
+       fill="#ffffff"
+       stroke="#2c3e50"
+       id="circle107" />
+    <circle
+       cx="460"
+       cy="290"
+       r="16"
+       fill="#ffffff"
+       stroke="#2c3e50"
+       id="circle108" />
+    <circle
+       cx="570"
+       cy="290"
+       r="16"
+       fill="#ffffff"
+       stroke="#2c3e50"
+       id="circle109" />
+    <circle
+       cx="680"
+       cy="290"
+       r="16"
+       fill="#fcfcfc"
+       stroke="#bdc3c7"
+       id="circle110" />
+    <circle
+       cx="130"
+       cy="345"
+       r="16"
+       fill="#d5d8dc"
+       stroke="#bdc3c7"
+       id="circle111" />
+    <circle
+       cx="240"
+       cy="345"
+       r="16"
+       fill="#d5d8dc"
+       stroke="#bdc3c7"
+       id="circle112" />
+    <circle
+       cx="350"
+       cy="345"
+       r="16"
+       fill="#34495e"
+       stroke="#1a252f"
+       id="circle113" />
+    <circle
+       cx="460"
+       cy="345"
+       r="16"
+       fill="#34495e"
+       stroke="#1a252f"
+       id="circle114" />
+    <circle
+       cx="570"
+       cy="345"
+       r="16"
+       fill="#34495e"
+       stroke="#1a252f"
+       id="circle115" />
+    <circle
+       cx="680"
+       cy="345"
+       r="16"
+       fill="#34495e"
+       stroke="#1a252f"
+       id="circle116" />
+    <circle
+       cx="130"
+       cy="400"
+       r="16"
+       fill="#fcfcfc"
+       stroke="#bdc3c7"
+       id="circle117" />
+    <circle
+       cx="240"
+       cy="400"
+       r="16"
+       fill="#fcfcfc"
+       stroke="#bdc3c7"
+       id="circle118" />
+    <circle
+       cx="350"
+       cy="400"
+       r="16"
+       fill="#fcfcfc"
+       stroke="#bdc3c7"
+       id="circle119" />
+    <circle
+       cx="460"
+       cy="400"
+       r="16"
+       fill="#ffffff"
+       stroke="#2c3e50"
+       id="circle120" />
+    <circle
+       cx="570"
+       cy="400"
+       r="16"
+       fill="#ffffff"
+       stroke="#2c3e50"
+       id="circle121" />
+    <circle
+       cx="680"
+       cy="400"
+       r="16"
+       fill="#ffffff"
+       stroke="#2c3e50"
+       id="circle122" />
+  </g>
+  <g
+     font-family="serif"
+     font-size="14px"
+     font-weight="bold"
+     fill="#ffffff"
+     text-anchor="middle"
+     dominant-baseline="central"
+     id="g133"
+     transform="translate(-25.656,-40)">
+    <text
+       x="130"
+       y="125"
+       id="text122">C</text>
+    <text
+       x="240"
+       y="125"
+       id="text123">C</text>
+    <text
+       x="350"
+       y="125"
+       id="text124">C</text>
+    <text
+       x="460"
+       y="125"
+       id="text125">C</text>
+    <text
+       x="240"
+       y="235"
+       id="text126">A</text>
+    <text
+       x="350"
+       y="235"
+       id="text127">A</text>
+    <text
+       x="460"
+       y="235"
+       id="text128">A</text>
+    <text
+       x="570"
+       y="235"
+       id="text129">A</text>
+    <text
+       x="350"
+       y="345"
+       id="text130">T</text>
+    <text
+       x="460"
+       y="345"
+       id="text131">T</text>
+    <text
+       x="570"
+       y="345"
+       id="text132">T</text>
+    <text
+       x="680"
+       y="345"
+       id="text133">T</text>
+  </g>
+  <rect
+     x="580.68457"
+     y="13.372025"
+     width="179.97026"
+     height="143.17088"
+     fill="#ffffff"
+     stroke="#bdc3c7"
+     rx="4.9991741"
+     id="rect133"
+     style="stroke-width:1.02973" />
+  <text
+     x="590.66968"
+     y="38.357159"
+     font-family="serif"
+     font-size="14px"
+     font-weight="bold"
+     fill="#2c3e50"
+     id="text134">Legend</text>
+  <circle
+     cx="605.66968"
+     cy="63.357159"
+     r="8"
+     fill="none"
+     stroke="#2ecc71"
+     stroke-width="2"
+     stroke-dasharray="3, 1"
+     id="circle134" />
+  <text
+     x="625.66968"
+     y="68.357155"
+     font-family="serif"
+     font-size="12px"
+     fill="#34495e"
+     id="text135">Valid Initial States</text>
+  <circle
+     cx="605.66968"
+     cy="88.357155"
+     r="8"
+     fill="none"
+     stroke="#e74c3c"
+     stroke-width="2"
+     stroke-dasharray="3, 1"
+     id="circle135" />
+  <text
+     x="625.66968"
+     y="93.357155"
+     font-family="serif"
+     font-size="12px"
+     fill="#34495e"
+     id="text136">Valid Final States</text>
+  <line
+     x1="595.66968"
+     y1="113.35715"
+     x2="615.66968"
+     y2="113.35715"
+     stroke="#e67e22"
+     stroke-width="2"
+     stroke-dasharray="4, 2"
+     id="line136" />
+  <text
+     x="625.66968"
+     y="118.35715"
+     font-family="serif"
+     font-size="12px"
+     fill="#34495e"
+     id="text137">Skip – (if y_s != y_s-1)</text>
+  <circle
+     cx="605.66968"
+     cy="138.35716"
+     r="8"
+     fill="#ecf0f1"
+     stroke="#bdc3c7"
+     stroke-width="1"
+     id="circle137" />
+  <text
+     x="625.66968"
+     y="143.35716"
+     font-family="serif"
+     font-size="12px"
+     fill="#7f8c8d"
+     id="text138">Invalid</text>
+</svg>
