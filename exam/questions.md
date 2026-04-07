@@ -205,6 +205,3 @@
 
 - Describe the negative sampling proposed in `word2vec`, including
   the choice of distribution of negative samples. [5]
-
-- Explain how ELMo embeddings are trained and how they are used in downstream
-  applications. [5]
