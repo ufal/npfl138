@@ -27,4 +27,4 @@ def download_url_to_file(url_dir: str, filename: str) -> str:
         print(f"Downloading {filename}...", file=sys.stderr)
         torch.hub.download_url_to_file(url=f"{url_dir}/{filename}", dst=path, progress=True)
 
-    return filename
+    return path
