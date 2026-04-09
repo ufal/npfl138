@@ -44,5 +44,5 @@ to perform beam-search decoding.
 
 <span style="color: red">**Currently, the CPU-based CTC decoder provides
 packages only for Python <= 3.12. I will try to provide packages for all
-Python versions, but in the meantime, you can use either the CUDA decoder
-or take the manual greedy decoder from `ctc_manual`.**</span>
+Python versions, but in the meantime, you can use either the CUDA CTC decoder
+or use the manual greedy CTC decoder from `ctc_manual`.**</span>
