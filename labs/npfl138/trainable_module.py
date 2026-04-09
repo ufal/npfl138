@@ -42,8 +42,9 @@ a high-level API for training PyTorch models. It is a subclass of
   implementation of the [Logger][npfl138.Logger] interface.
 """
 import argparse
-from collections.abc import Iterable
+from collections.abc import Generator, Iterable
 import functools
+import inspect
 import json
 import os
 import sys
@@ -536,22 +537,35 @@ class TrainableModule(torch.nn.Module):
           predictions: An iterable whose elements are the individual predicted items.
         """
         assert self.device is not None, "No device has been set for the TrainableModule, run configure first."
+
+        predict_step_is_generator = inspect.isgeneratorfunction(self.predict_step)
+        assert not (whole_batches and predict_step_is_generator), \
+            "Cannot use whole_batches=True when predict_step is a generator function."
+
         self.eval()
         for batch in ProgressLogger(dataloader, "Prediction", console):
             xs = validate_batch_input(batch, with_labels=data_with_labels)
             xs = tensors_to_device_as_tuple(xs, self.device)
             y = self.predict_step(xs)
-            y = self.unpack_batch(y, *xs) if not whole_batches else [y]
+            if not predict_step_is_generator:
+                y = self.unpack_batch(y, *xs) if not whole_batches else [y]
             yield from map(tensors_to_numpy, y) if as_numpy else y
 
-    def predict_step(self, xs: TensorOrTensors) -> TensorOrTensors:
+    def predict_step(self, xs: TensorOrTensors) -> TensorOrTensors | Generator[TensorOrTensors, None, None]:
         """An overridable method performing a single prediction step.
+
+        The result is either a single batch of predictions (that might be unpacked into individual
+        items by [unpack_batch][npfl138.TrainableModule.unpack_batch]), or, if `predict_step`
+        is a generator function, an iterable of individual predicted items (i.e., an unpacked batch;
+        in this case, calls to [predict][npfl138.TrainableModule.predict] with `whole_batches=True`
+        and to [predict_tensor][npfl138.TrainableModule.predict_tensor] raise an error).
 
         Parameters:
           xs: The input batch to the model, either a single tensor or a tensor structure.
 
         Returns:
-          predictions: The predicted batch.
+          predictions: The predicted batch or, if this method is a generator function, an iterable of
+            individual predicted items.
         """
         with torch.no_grad():
             return self(*xs)
@@ -585,7 +599,9 @@ class TrainableModule(torch.nn.Module):
         else:
             raise RuntimeError(f"Cannot unpack batch of type {type(y)} into individual items.")
 
-    def predict_batch(self, xs: TensorOrTensors, *, as_numpy: bool = False) -> TensorOrTensors:
+    def predict_batch(
+        self, xs: TensorOrTensors, *, as_numpy: bool = False,
+    ) -> TensorOrTensors | Iterable[TensorOrTensors]:
         """Run prediction on a single batch, returning the predicted batch.
 
         This method is a convenience wrapper around [predict_step][npfl138.TrainableModule.predict_step].
@@ -606,13 +622,15 @@ class TrainableModule(torch.nn.Module):
             if `True`, they are converted to Numpy arrays.
 
         Returns:
-          predictions: The predicted batch.
+          predictions: The predicted batch, either a single tensor or a tensor structure, or, if `predict_step`
+            is a generator function, an iterable of individual predicted items (i.e., an unpacked batch).
         """
         assert self.device is not None, "No device has been set for the TrainableModule, run configure first."
         self.training and self.eval()
         xs = tensors_to_device_as_tuple(xs, self.device)
         y = self.predict_step(xs)
-        y = tensors_to_numpy(y) if as_numpy else y
+        if as_numpy:
+            y = map(tensors_to_numpy, y) if inspect.isgeneratorfunction(self.predict_step) else tensors_to_numpy(y)
         return y
 
     def predict_tensor(
@@ -645,6 +663,8 @@ class TrainableModule(torch.nn.Module):
         Returns:
           predictions: The predicted dataset concatenated to a single tensor or a tensor structure.
         """
+        assert not inspect.isgeneratorfunction(self.predict_step), \
+            "Cannot use predict_tensor when predict_step is a generator function."
         y = list(self.predict(dataloader, data_with_labels=data_with_labels, whole_batches=True, console=console))
         y = tensors_concatenate(y)
         return tensors_to_numpy(y) if as_numpy else y
