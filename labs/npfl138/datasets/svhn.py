@@ -139,7 +139,7 @@ class SVHN:
         """Evaluate the file with predictions against the gold dataset.
 
         Returns:
-          accuracy: The average accuracy of the predicted labels in percentages.
+          accuracy: The average accuracy of the predicted labels.
         """
         predictions = []
         for line in predictions_file:
