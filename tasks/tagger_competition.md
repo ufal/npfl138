@@ -30,5 +30,5 @@ template, which among others generates test set annotations in the required form
 you can evaluate the predictions as usual using the
 [MorphoDataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/morpho_dataset/)
 class, either by running `python3 -m npfl138.datasets.morpho_dataset --evaluate=path --dataset=dev/test`
-or calling the [MorphoDataset.evaluate](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/morpho_dataset/#npfl138.datasets.morpho_dataset.MorphoDataset.evaluate)
+or by calling the [MorphoDataset.evaluate](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/morpho_dataset/#npfl138.datasets.morpho_dataset.MorphoDataset.evaluate)
 method.
