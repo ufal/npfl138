@@ -41,8 +41,3 @@ performing CTC decoding. You can use [torch.nn.CTCLoss](https://pytorch.org/docs
 to compute the loss and you can use
 [torchaudio.models.decoder.CTCDecoder](https://pytorch.org/audio/main/generated/torchaudio.models.decoder.CTCDecoder.html)/[torchaudio.models.decoder.CUCTCDecoder](https://pytorch.org/audio/main/generated/torchaudio.models.decoder.CUCTCDecoder.html)
 to perform beam-search decoding.
-
-<span style="color: red">**Currently, the CPU-based CTC decoder provides
-packages only for Python <= 3.12. I will try to provide packages for all
-Python versions, but in the meantime, you can use either the CUDA CTC decoder
-or use the manual greedy CTC decoder from `ctc_manual`.**</span>
