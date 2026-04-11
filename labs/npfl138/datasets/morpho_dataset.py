@@ -201,9 +201,9 @@ class MorphoDataset:
         path = download_url_to_file(self.URL, f"{dataset}.zip")
 
         with zipfile.ZipFile(path, "r") as zip_file:
-            for dataset in ["train", "dev", "test"]:
-                with zip_file.open(f"{os.path.splitext(path)[0]}_{dataset}.txt", "r") as dataset_file:
-                    setattr(self, dataset, self.Dataset(
+            for split in ["train", "dev", "test"]:
+                with zip_file.open(f"{dataset}_{split}.txt", "r") as dataset_file:
+                    setattr(self, split, self.Dataset(
                         dataset_file, train=getattr(self, "train", None), max_sentences=max_sentences))
 
     train: Dataset
