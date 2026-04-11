@@ -6,7 +6,7 @@ import torch
 import torchaudio.models.decoder
 
 import npfl138
-npfl138.require_version("2526.8")
+npfl138.require_version("2526.8.1")
 from npfl138.datasets.common_voice_cs import CommonVoiceCs
 
 # TODO: Define reasonable defaults and optionally more parameters.
