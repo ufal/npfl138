@@ -39,3 +39,6 @@ from . import losses
 # Metrics
 from .metric import Metric
 from . import metrics
+
+# Optimizers
+from . import optimizers
