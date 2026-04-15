@@ -677,8 +677,6 @@ class TrainableModule(torch.nn.Module):
         Returns:
           predictions: The predicted dataset concatenated to a single tensor or a tensor structure.
         """
-        assert not inspect.isgeneratorfunction(self.predict_step), \
-            "Cannot use predict_tensor when predict_step is a generator function."
         y = list(self.predict(dataloader, data_with_labels=data_with_labels, whole_batches=True, console=console))
         y = tensors_concatenate(y)
         return tensors_to_numpy(y) if as_numpy else y
