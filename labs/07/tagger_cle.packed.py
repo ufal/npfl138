@@ -37,8 +37,8 @@ class Model(npfl138.TrainableModule):
             if self.training and self._mask_probability:
                 # TODO: Generate a mask tensor of `torch.float32`s of the same shape
                 # as `inputs` using either `torch.rand` or `torch.rand_like`.
-                # Then replace the inputs elements whose mask value is less than
-                # `self._mask_probability` with the value of `self._mask_value`.
+                # Then set `inputs` to a new tensor where elements with a mask value
+                # less than `self._mask_probability` are replaced by `self._mask_value`.
                 inputs = ...
             return inputs
 
