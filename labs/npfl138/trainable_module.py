@@ -115,6 +115,22 @@ def tensors_concatenate(x: list[TensorOrTensors] | tuple[TensorOrTensors, ...]) 
     raise RuntimeError(f"Cannot concatenate tensors of type {type(first)}.")
 
 
+def tensors_stack(x: list[TensorOrTensors]) -> TensorOrTensors:
+    """Stack a list of tensors or tensor structures along the first dimension."""
+    first = x[0]
+    if isinstance(first, torch.Tensor):
+        return torch.stack(x)
+    elif isinstance(first, torch.nn.utils.rnn.PackedSequence):
+        raise RuntimeError("Stack of torch.nn.utils.rnn.PackedSequence is not supported.")
+    elif isinstance(first, tuple):
+        return tuple(map(tensors_stack, zip(*x)))
+    elif isinstance(first, list):
+        return [tensors_stack(b) for b in zip(*x)]
+    elif isinstance(first, dict):
+        return {k: tensors_stack([b[k] for b in x]) for k in first.keys()}
+    raise RuntimeError(f"Cannot stack tensors of type {type(first)}.")
+
+
 def tensors_to_device(x: TensorOrTensors, device: torch.device) -> TensorOrTensors:
     """Asynchronously move the input tensor or the input tensor structure to the given device.
 
@@ -537,15 +553,15 @@ class TrainableModule(torch.nn.Module):
         assert self.device is not None, "No device has been set for the TrainableModule, run configure first."
 
         predict_step_is_generator = inspect.isgeneratorfunction(self.predict_step)
-        assert not (whole_batches and predict_step_is_generator), \
-            "Cannot use whole_batches=True when predict_step is a generator function."
 
         self.eval()
         for batch in ProgressLogger(dataloader, "Prediction", console):
             xs = validate_batch_input(batch, with_labels=data_with_labels)
             xs = tensors_to_device_as_tuple(xs, self.device)
             y = self.predict_step(xs)
-            if not predict_step_is_generator:
+            if predict_step_is_generator:
+                y = [tensors_stack(list(y))] if whole_batches else y
+            else:
                 y = self.unpack_batch(y, *xs) if not whole_batches else [y]
             yield from map(tensors_to_numpy, y) if as_numpy else y
 
