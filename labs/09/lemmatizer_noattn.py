@@ -133,7 +133,7 @@ class Model(npfl138.TrainableModule):
 
     def compute_metrics(self, y_pred, y, *xs):
         if self.training:  # In training regime, convert logits to most likely predictions.
-            y_pred = y_pred.argmax(dim=-2)
+            y_pred = y_pred.argmax(dim=1)
         # Compare the lemmas with the predictions using exact match accuracy.
         y_pred = y_pred[:, :y.shape[-1]]
         y_pred = torch.nn.functional.pad(y_pred, (0, y.shape[-1] - y_pred.shape[-1]), value=MorphoDataset.PAD)
