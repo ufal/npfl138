@@ -144,7 +144,7 @@ class TrainableDataset(npfl138.TransformedDataset):
 
 def main(args: argparse.Namespace) -> dict[str, float]:
     # Set the random seed and the number of threads.
-    npfl138.startup(args.seed, args.threads)
+    npfl138.startup(args.seed, args.threads, args.recodex)
     npfl138.global_keras_initializers()
 
     # Load the data.
