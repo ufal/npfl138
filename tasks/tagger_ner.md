@@ -29,13 +29,13 @@ must be computed in parallel (vectorized).
 #### Tests Start: tagger_ner_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._
 
-1. `python3 tagger_ner.py --epochs=1 --max_sentences=20 --seed=219`
+1. `python3 tagger_ner.py --recodex --epochs=1 --max_sentences=20 --seed=219`
 ```
 Epoch 1/1 0.1s loss=2.2965 accuracy=0.2418 dev:loss=2.2514 dev:accuracy=0.3271 dev:f1_constrained=0.0269 dev:f1_greedy=0.0359
 ```
 [The optimally decoded tag sequences on the development set](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/tasks/figures/tagger_ner.test-1.txt)
 
-2. `python3 tagger_ner.py --epochs=2 --max_sentences=2000 --batch_size=25 --label_smoothing=0.1 --seed=219`
+2. `python3 tagger_ner.py --recodex --epochs=2 --max_sentences=2000 --batch_size=25 --label_smoothing=0.1 --seed=219`
 ```
 Epoch 1/2 3.8s loss=1.5507 accuracy=0.7961 dev:loss=1.2494 dev:accuracy=0.8227 dev:f1_constrained=0.0000 dev:f1_greedy=0.0000
 Epoch 2/2 3.7s loss=1.1968 accuracy=0.8102 dev:loss=1.1583 dev:accuracy=0.8231 dev:f1_constrained=0.0103 dev:f1_greedy=0.0094
