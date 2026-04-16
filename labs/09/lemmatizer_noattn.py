@@ -138,7 +138,7 @@ class Model(npfl138.TrainableModule):
         y_pred = y_pred[:, :y.shape[-1]]
         y_pred = torch.nn.functional.pad(y_pred, (0, y.shape[-1] - y_pred.shape[-1]), value=MorphoDataset.PAD)
         self.metrics["accuracy"].update(torch.all((y_pred == y) | (y == MorphoDataset.PAD), dim=-1))
-        return {name: metric.compute() for name, metric in self.metrics.items()}  # Return all metrics.
+        return self.metrics  # Report all metrics.
 
     def train_step(self, xs, y):
         result = super().train_step(xs, y)
