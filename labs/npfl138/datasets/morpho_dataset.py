@@ -36,7 +36,6 @@ Each split is a [torch.utils.data.Dataset][] providing:
       containing for every word its index in `unique_words`
 - `cle_batch_packed`: a variant of `cle_batch` returning packed instead of padded sequences
 """
-import os
 from typing import BinaryIO, Self, Sequence, TextIO, TypedDict
 import zipfile
 
