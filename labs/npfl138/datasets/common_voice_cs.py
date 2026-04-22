@@ -9,12 +9,13 @@ The task is to transcribe a given audio sample into a sentence. The dataset cont
 recordings of people speaking in Czech, with input sound waves passed through
 the usual preprocessing—computing
 [Mel-frequency cepstral coefficients (MFCCs)](https://en.wikipedia.org/wiki/Mel-frequency_cepstrum).
-You can repeat this preprocessing on a given audio using the [load_audio][npfl138.datasets.common_voice_cs.CommonVoiceCs.load_audio]
+You can repeat this preprocessing on a given audio using the
+[load_audio][npfl138.datasets.common_voice_cs.CommonVoiceCs.load_audio]
 and [extract_mfcc][npfl138.datasets.common_voice_cs.CommonVoiceCs.mfcc_extract] methods.
 
 The dataset is automatically downloaded if necessary, but note that is has
-200MB, so it might take a while. Furthermore, you can listen to the
-[development portion of the dataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/demos/common_voice_cs_dev.html).
+200MB, so it might take a while. Furthermore, you can listen to the [development portion of
+the dataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/demos/common_voice_cs_dev.html).
 
 Each dataset element is a Python dictionary with the following keys:
 
