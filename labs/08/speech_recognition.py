@@ -24,15 +24,17 @@ class Model(npfl138.TrainableModule):
         # TODO: Define the model.
         ...
 
-    def forward(self, ...) -> torch.Tensor:
+    def forward(self, *REPLACE_WITH_YOUR_NETWORK_INPUTS) -> torch.Tensor:
         # TODO: Compute the output of the model.
         raise NotImplementedError()
 
-    def compute_loss(self, y_pred: torch.Tensor, y_true: torch.Tensor, ...) -> torch.Tensor:
+    def compute_loss(
+        self, y_pred: torch.Tensor, y_true: torch.Tensor, *REPLACE_WITH_YOUR_NETWORK_INPUTS
+    ) -> torch.Tensor:
         # TODO: Compute the loss, most likely using the `torch.nn.CTCLoss` class.
         raise NotImplementedError()
 
-    def ctc_decoding(self, y_pred: torch.Tensor, ...) -> list[torch.Tensor]:
+    def ctc_decoding(self, y_pred: torch.Tensor, *MAYBE_ADD_ARGUMENTS) -> list[torch.Tensor]:
         # TODO: Compute predictions, either using manual CTC decoding, or you can use:
         # - `torchaudio.models.decoder.ctc_decoder`, which is CPU-based decoding with
         #   rich functionality;
@@ -47,7 +49,7 @@ class Model(npfl138.TrainableModule):
         raise NotImplementedError()
 
     def compute_metrics(
-        self, y_pred: torch.Tensor, y_true: torch.Tensor, ...
+        self, y_pred: torch.Tensor, y_true: torch.Tensor, *REPLACE_WITH_YOUR_NETWORK_INPUTS
     ) -> dict[str, torch.Tensor]:
         # TODO: Compute predictions using the `ctc_decoding`. Consider computing it
         # only when `self.training==False` to speed up training.
