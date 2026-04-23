@@ -230,23 +230,30 @@
 - Pinpoint the differences between the BPE and WordPieces algorithms, both
   during dictionary construction and during inference. [5]
 
-- Describe the Transformer encoder architecture, including the description of
-  self-attention (but you do not need to describe multi-head attention), FFN
-  and positions of LNs and dropouts. [10]
+- Considering self-attention, recurrent networks, and convolutional networks,
+  describe their total computational complexity, the number of sequential
+  operations they are composed of, and the maximum path needed to transfer
+  information between two sequence elements. [5]
 
 - Write down the formula of Transformer self-attention assuming you get
   sequence representation $\boldsymbol X \in \mathbb{R}^{n \times d}$, and then
   describe multi-head self-attention in detail, including the dimensionality
   of the individual heads. [10]
 
+#### Questions@:, Lecture 10 Questions
+- Describe the Transformer encoder architecture, including the description of
+  self-attention (but you do not need to describe multi-head attention), FFN
+  and positions of LNs and dropouts. [10]
+
 - Describe the Transformer decoder architecture, including the description of
   self-attention and masked self-attention (but you do not need to describe
   multi-head attention), FFN and positions of LNs and dropouts. Also discuss the
   difference between training and prediction regimes. [10]
 
-#### Questions@:, Lecture 10 Questions
 - Why are positional embeddings needed in Transformer architecture? Write down
   the sinusoidal positional embeddings used in the Transformer. [5]
+
+- What is learning-rate warmup, how is it performed, and why is it used? [5]
 
 - Compare RNN to Transformer – what are the strengths and weaknesses of these
   architectures? [5]
@@ -263,8 +270,3 @@
 
 - Elaborate on BERT training process (what are the two objectives used and how
   exactly the corresponding losses are computed). [10]
-
-- Describe the architecture of a Vision Transformer – how input images
-  are represented, draw the Transformer encoder layer and the FFN sublayer, how
-  the distribution over predicted classes is computed, what positional embeddings
-  are used (and what alternative positional embeddings were tried). [10]
