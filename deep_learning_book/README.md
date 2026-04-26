@@ -1,18 +1,18 @@
 # Deep Learning Book
 
 The Deep Learning book by Ian Goodfellow and Yoshua Bengio and Aaron Courville
-is freely available on-line at http://www.deeplearningbook.org.
+is freely available on-line at https://www.deeplearningbook.org.
 It is also available from MIT Press.
 
 ## PDF Version
 
-The http://www.deeplearningbook.org does not offer a PDF version of the book
+The https://www.deeplearningbook.org does not offer a PDF version of the book
 for download, because of the contract conditions of MIT Press.
 
 If you want, you can follow the instructions here to create a PDF version
 of the book including a table of content:
 
-- On http://www.deeplearningbook.org, print every chapter to a PDF file
+- On https://www.deeplearningbook.org, print every chapter to a PDF file
   (the first one is Table of Content, the last one is Index). Name the PDF
   files the *same as the HTML files* (but use `pdf` extension).
 

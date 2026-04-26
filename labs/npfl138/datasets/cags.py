@@ -1,8 +1,8 @@
-# This file is part of NPFL138 <http://github.com/ufal/npfl138/>.
+# This file is part of NPFL138 <https://github.com/ufal/npfl138/>.
 #
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
 """The CAGS dataset consists of images of **ca**ts and do**gs** of size $224×224$,
 each classified in one of the 34 breeds and each containing a mask indicating the presence of the animal.
 
