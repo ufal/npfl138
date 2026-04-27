@@ -8,8 +8,8 @@ Czech PDT dataset loadable using the
 [MorphoDataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/morpho_dataset/)
 class.
 
-You can also use the same additional data as in the `tagger_competition`
-assignment.
+You can also use the same additional data and pre-trained embedding models as in
+the `tagger_competition` assignment.
 
 The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2526-summer#competitions). Everyone who submits
 a solution with at least 97.0% exact match accuracy gets 4 points; the remaining 5 bonus points
