@@ -1,0 +1,21 @@
+### Lecture: 11. RoBERTa, LLMs, ViT, Deep Reinforcement Learning
+#### Date: April 28
+#### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides/?11
+#### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides.pdf/npfl138-2526-11.pdf, PDF Slides
+#### Questions: #lecture_11_questions
+
+Study material for Reinforcement Learning is the [Reinforcement Learning: An Introduction; second edition
+by Richard S. Sutton and Andrew G. Barto](http://incompleteideas.net/book/the-book-2nd.html)
+(referred to as RLB), [available online](http://incompleteideas.net/book/RLbook2020.pdf).
+
+- RoBERTa [[RoBERTa: A Robustly Optimized BERT Pretraining Approach](https://arxiv.org/abs/1907.11692)]
+- ViT [[An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)]
+- _MAE [[Masked Autoencoders Are Scalable Vision Learners](https://arxiv.org/abs/2111.06377)]_
+- _DETR [[End-to-End Object Detection with Transformers](https://arxiv.org/abs/2005.12872)]_
+- Multi-armed bandits [Sections 2-2.4 of RLB]
+- Markov Decision Process [Sections 3-3.3 of RLB]
+- Policies and Value Functions [Section 3.5 of RLB]
+- Policy Gradient Methods [Sections 13-13.1 of RLB]
+- Policy Gradient Theorem [Section 13.2 of RLB]
+- REINFORCE algorithm [Section 13.3 of RLB]
+- REINFORCE with baseline algorithm [Section 13.4 of RLB]
