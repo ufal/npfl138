@@ -3,6 +3,7 @@
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides/?11
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides.pdf/npfl138-2526-11.pdf, PDF Slides
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-11-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-11-english.mp4, EN Lecture
 #### Questions: #lecture_11_questions
 
 Study material for Reinforcement Learning is the [Reinforcement Learning: An Introduction; second edition
