@@ -42,3 +42,7 @@ from . import metrics
 
 # Optimizers
 from . import optimizers
+
+# The reinforcement learning environments and utils
+from . import envs
+from . import rl_utils
