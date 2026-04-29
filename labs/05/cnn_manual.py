@@ -23,19 +23,19 @@ parser.add_argument("--verify", default=False, action="store_true", help="Verify
 
 class Convolution:
     def __init__(
-        self, filters: int, kernel_size: int, stride: int, input_shape: list[int], verify: bool,
+        self, channels: int, kernel_size: int, stride: int, input_shape: list[int], verify: bool,
     ) -> None:
         # Create a convolutional layer with the given arguments and given input shape.
         # Note that we use NHWC format, so the MNIST images have shape [28, 28, 1].
-        self._filters = filters
+        self._channels = channels
         self._kernel_size = kernel_size
         self._stride = stride
         self._verify = verify
 
         # Here the kernel and bias variables are created, the kernel has shape
         # [kernel_height, kernel_width, input_channels, output_channels], bias [output_channels].
-        self._kernel = torch.nn.Parameter(torch.randn(kernel_size, kernel_size, input_shape[2], filters) * 0.1)
-        self._bias = torch.nn.Parameter(torch.zeros(filters))
+        self._kernel = torch.nn.Parameter(torch.randn(kernel_size, kernel_size, input_shape[2], channels) * 0.1)
+        self._bias = torch.nn.Parameter(torch.zeros(channels))
 
     def forward(self, inputs: torch.Tensor) -> torch.Tensor:
         # TODO: Compute the forward propagation through the convolution
@@ -43,7 +43,7 @@ class Convolution:
         #
         # In order for the computation to be reasonably fast, you cannot
         # manually iterate through the individual pixels, batch examples,
-        # input filters, or output filters. However, you can manually
+        # input channels, or output channels. However, you can manually
         # iterate through the kernel size.
         output = ...
 
@@ -93,10 +93,10 @@ class Model:
         input_shape = [MNIST.H, MNIST.W, MNIST.C]
         self._convs = []
         for layer in args.cnn.split(","):
-            filters, kernel_size, stride = map(int, layer.split("-"))
-            self._convs.append(Convolution(filters, kernel_size, stride, input_shape, args.verify))
+            channels, kernel_size, stride = map(int, layer.split("-"))
+            self._convs.append(Convolution(channels, kernel_size, stride, input_shape, args.verify))
             input_shape = [(input_shape[0] - kernel_size) // stride + 1,
-                           (input_shape[1] - kernel_size) // stride + 1, filters]
+                           (input_shape[1] - kernel_size) // stride + 1, channels]
 
         # Create the classification head.
         self._classifier = torch.nn.Linear(np.prod(input_shape), MNIST.LABELS)

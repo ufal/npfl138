@@ -10,7 +10,7 @@ pass through a 2D convolutional layer. Start with the
 template, which constructs a series of 2D convolutional layers with ReLU
 activation and `valid` padding, specified in the `args.cnn` option.
 The `args.cnn` contains comma-separated layer specifications in the format
-`filters-kernel_size-stride`.
+`channels-kernel_size-stride`.
 
 In this assignment, we use the `channels_last` (`NHWC`) format; therefore,
 images have shape `[batch_size, height, width, channels]` and the convolutional
