@@ -27,8 +27,8 @@ argument, which contains comma-separated specifications of the following layers:
   to the input (of this `R` layer).
   Example: `R-[C-16-3-1-same,C-16-3-1-same]`
 - `F`: Flatten inputs. Must appear exactly once in the architecture.
-- `H-hidden_layer_size`: Add a dense layer with ReLU activation and specified
-  size. Example: `H-100`
+- `H-hidden_layer_size`: Add a fully connected layer with ReLU activation and
+  the specified size. Example: `H-100`
 - `D-dropout_rate`: Apply dropout with the given dropout rate. Example: `D-0.5`
 
 An example architecture might be `--cnn=CB-16-5-2-valid,M-3-2,F,H-100,D-0.5`.

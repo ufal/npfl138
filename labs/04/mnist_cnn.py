@@ -44,7 +44,8 @@ class Model(npfl138.TrainableModule):
         #   produced output (after the ReLU nonlinearity of the last layer) should be added
         #   to the input (of this `R` layer).
         # - `F`: Flatten inputs. Must appear exactly once in the architecture.
-        # - `H-hidden_layer_size`: Add a dense layer with ReLU activation and the specified size.
+        # - `H-hidden_layer_size`: Add a fully connected layer with ReLU activation and the
+        #   specified size.
         # - `D-dropout_rate`: Apply dropout with the given dropout rate.
         # You can assume the resulting network is valid; it is fine to crash if it is not.
         #

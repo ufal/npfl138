@@ -59,7 +59,7 @@ class Model(npfl138.TrainableModule):
         #   achieve by using `torch.nn.functional.one_hot` on the characters,
         #   and then concatenate the one-hot encodings of the window characters.
         # - Alternatively, you can experiment with `torch.nn.Embedding`s (an
-        #   efficient implementation of one-hot encoding followed by a Dense layer)
+        #   efficient implementation of one-hot encoding followed by a linear layer)
         #   and flattening afterwards.
         ...
 

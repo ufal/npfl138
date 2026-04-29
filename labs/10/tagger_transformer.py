@@ -28,8 +28,8 @@ class Model(npfl138.TrainableModule):
     class FFN(torch.nn.Module):
         def __init__(self, dim: int, expansion: int) -> None:
             super().__init__()
-            # TODO: Create the required layers -- first a ReLU-activated dense
-            # layer with `dim * expansion` units, followed by a dense layer
+            # TODO: Create the required layers -- first a ReLU-activated fully connected
+            # layer with `dim * expansion` units, followed by another fully connected layer
             # with `dim` units without an activation.
             raise NotImplementedError()
 
