@@ -32,7 +32,7 @@ def main(args: argparse.Namespace) -> None:
     tokenizer = transformers.AutoTokenizer.from_pretrained("ufal/robeczech-base")
     robeczech = transformers.AutoModel.from_pretrained("ufal/robeczech-base")
 
-    # Load the data
+    # Load the data.
     dataset = ReadingComprehensionDataset()
 
     # TODO: Create the model and train it.
