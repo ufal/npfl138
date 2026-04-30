@@ -60,7 +60,7 @@ class Agent:
 
 def main(env: npfl138.rl_utils.EvaluationEnv, args: argparse.Namespace) -> None:
     # Set the random seed and the number of threads.
-    npfl138.startup(args.seed, args.threads, args.recodex)
+    npfl138.startup(args.seed, args.threads)
     npfl138.global_keras_initializers()
 
     # Construct the agent.

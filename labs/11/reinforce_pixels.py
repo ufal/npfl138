@@ -19,7 +19,7 @@ parser.add_argument("--threads", default=1, type=int, help="Maximum number of th
 
 def main(env: npfl138.rl_utils.EvaluationEnv, args: argparse.Namespace) -> None:
     # Set the random seed and the number of threads.
-    npfl138.startup(args.seed, args.threads, args.recodex)
+    npfl138.startup(args.seed, args.threads)
     npfl138.global_keras_initializers()
 
     # Assuming you have pre-trained your agent locally, perform only evaluation in ReCodEx
