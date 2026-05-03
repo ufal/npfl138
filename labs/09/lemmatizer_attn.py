@@ -41,10 +41,17 @@ class WithAttention(torch.nn.Module):
 
     def setup_memory(self, encoded):
         self._encoded = encoded
+
         # TODO: Pass the `encoded` through the `self._project_encoder_layer` and store
-        # the result as `self._encoded_projected`. Note that the padding positions in
-        # `encoded` are indicated by an all-zeros vector.
+        # the result as `self._encoded_projected`.
         self._encoded_projected = ...
+
+        # TODO: Furthermore, you need to mask the padding positions in the attention
+        # computation later. You can handle it in any way you want; a straightforward
+        # solution is to create a mask indicating the valid and padding positions here
+        # and store it as for example `self._encoded_mask`. Note that the padding
+        # positions in `encoded` are indicated by an all-zeros vector.
+        ...
 
     def forward(self, inputs, states):
         # TODO: Compute the attention.
@@ -56,8 +63,8 @@ class WithAttention(torch.nn.Module):
         #   shape `[batch_size, attention_dim]`. The best solution is capable of creating the sum
         #   directly without creating any intermediate tensor.
         # - Pass the sum through the `torch.tanh` and then through the `self._output_layer`.
-        # - The logits corresponding to the padding positions in `self._encoded_projected`
-        #   should be set to -1e9 so that they do not contribute to the attention.
+        # - The logits corresponding to the padding positions in the source sequence
+        #   should be set to -1e9 so that they do not contribute to the attention distribution.
         # - Then, run the softmax activation, generating `weights`.
         # - Multiply the original (non-projected) encoder states `self._encoded` with `weights` and sum
         #   the result in the axis corresponding to characters, generating `attention`. Therefore,
