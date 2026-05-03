@@ -31,10 +31,12 @@ class WithAttention(torch.nn.Module):
 
         # TODO: Define
         # - `self._project_encoder_layer` as a linear layer with `cell.hidden_size` inputs
-        #   and `attention_dim` outputs.
+        #   and `attention_dim` outputs, including bias;
         # - `self._project_decoder_layer` as a linear layer with `cell.hidden_size` inputs
-        #   and `attention_dim` outputs
+        #   and `attention_dim` outputs, including bias;
         # - `self._output_layer` as a linear layer with `attention_dim` inputs and 1 output
+        #   (bias weight, if present, is ignored by the softmax processing the produced logits,
+        #   so it does not matter whether you include it or not).
         ...
 
     def setup_memory(self, encoded):
