@@ -20,6 +20,19 @@ parser.add_argument("--seed", default=42, type=int, help="Random seed.")
 parser.add_argument("--threads", default=1, type=int, help="Maximum number of threads to use.")
 
 
+class Dataset(npfl138.TransformedDataset):
+    def __init__(self, dataset: TextClassificationDataset.Dataset, *MAYBE_ADD_ARGUMENTS) -> None:
+        super().__init__(dataset)
+
+    def transform(self, example):
+        # TODO: Process single examples containing `example["document"]` and `example["label"]`.
+        raise NotImplementedError()
+
+    def collate(self, batch):
+        # TODO: Construct a single batch using a list of examples from the `transform` function.
+        raise NotImplementedError()
+
+
 class Model(npfl138.TrainableModule):
     def __init__(self, args: argparse.Namespace, eleczech: transformers.PreTrainedModel,
                  dataset: TextClassificationDataset.Dataset) -> None:
@@ -32,19 +45,6 @@ class Model(npfl138.TrainableModule):
 
     # TODO: Implement the model computation.
     def forward(self, *REPLACE_WITH_YOUR_NETWORK_INPUTS) -> torch.Tensor:
-        raise NotImplementedError()
-
-
-class TrainableDataset(npfl138.TransformedDataset):
-    def __init__(self, dataset: TextClassificationDataset.Dataset, *MAYBE_ADD_ARGUMENTS) -> None:
-        super().__init__(dataset)
-
-    def transform(self, example):
-        # TODO: Process single examples containing `example["document"]` and `example["label"]`.
-        raise NotImplementedError()
-
-    def collate(self, batch):
-        # TODO: Construct a single batch using a list of examples from the `transform` function.
         raise NotImplementedError()
 
 
