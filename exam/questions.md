@@ -271,12 +271,18 @@
 - Elaborate on BERT training process (what are the two objectives used and how
   exactly the corresponding losses are computed). [10]
 
+#### Questions@:, Lecture 11 Questions
+- Describe the KV cache is and explain how it is used and updated during LLM
+  inference. [5]
+
+- Compare the standard multi-head attention, multi-query attention, and
+  grouped-query attention. [5]
+
 - Describe the architecture of a Vision Transformer – how input images
   are represented, draw the Transformer encoder layer and the FFN sublayer, how
   the distribution over predicted classes is computed, what positional embeddings
   are used (and what alternative positional embeddings were tried). [10]
 
-#### Questions@:, Lecture 11 Questions
 - Define the Markov Decision Process, including the definition of the return. [5]
 
 - Define the value function such that all expectations are over simple random
@@ -289,9 +295,6 @@
   action-value function using the value function. [5]
 
 - Formulate the policy gradient theorem. [5]
-
-- Prove the part of the policy gradient theorem showing the value
-  of $\nabla_{\boldsymbol\theta} v_\pi(s)$. [10]
 
 - Assuming the policy gradient theorem, formulate the loss used by the REINFORCE
   algorithm and show how can its gradient be expressed as an expectation
