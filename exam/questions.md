@@ -272,7 +272,7 @@
   exactly the corresponding losses are computed). [10]
 
 #### Questions@:, Lecture 11 Questions
-- Describe the KV cache is and explain how it is used and updated during LLM
+- Describe the KV cache and explain how it is used and updated during LLM
   inference. [5]
 
 - Compare the standard multi-head attention, multi-query attention, and
