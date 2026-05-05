@@ -3,6 +3,7 @@
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides/?12
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides.pdf/npfl138-2526-12.pdf, PDF Slides
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-12-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-12-english.mp4, EN Lecture
 #### Questions: #lecture_12_questions
 
 - Autoencoders (undercomplete, sparse, denoising) [Chapter 14, Sections 14-14.2.3 of DLB]
