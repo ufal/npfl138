@@ -20,7 +20,7 @@ If you want, it is possible to use any model from the
 [timm](https://huggingface.co/docs/timm) library in this assignment.
 
 The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2526-summer#competitions).
-Everyone who submits a solution achieving at least _88%_ test set accuracy gets
+Everyone who submits a solution achieving at least _89%_ test set accuracy gets
 3 points; the remaining 4 bonus points are distributed depending on the relative
 ordering of your solutions. You can evaluate your
 predictions as usual with the
