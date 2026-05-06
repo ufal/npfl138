@@ -144,7 +144,7 @@ class Model(npfl138.TrainableModule):
         #   (using `args.we_dim` for the `dim` argument),
         self._transformer = ...
 
-        # TODO(tagger_we): Create an output linear layer (`torch.nn.Linear`) processing the RNN output,
+        # TODO: Create an output linear layer (`torch.nn.Linear`) processing the Transformer output,
         # producing logits for tag prediction; `train.tags.string_vocab` is the tag vocabulary.
         self._output_layer = ...
 
