@@ -22,7 +22,7 @@ distributed depending on the relative ordering of your solutions.
 You can evaluate the predictions as usual using the
 [HOMRDataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/homr_dataset/)
 module, either by running `python3 -m npfl138.datasets.homr_dataset --evaluate=path --dataset=dev/test`
-or by calling the [HOMRDataset.evaluate](http://localhost:1234/datasets/homr_dataset/#npfl138.datasets.homr_dataset.HOMRDataset.evaluate)
+or by calling the [HOMRDataset.evaluate](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/homr_dataset/#npfl138.datasets.homr_dataset.HOMRDataset.evaluate)
 method.
 
 Start with the
