@@ -5,6 +5,10 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-12-czech.mp4, CZ Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-12-english.mp4, EN Lecture
 #### Questions: #lecture_12_questions
+#### Lecture assignment: vae
+#### Lecture assignment: gan
+#### Lecture assignment: dcgan
+#### Lecture assignment: homr_competition
 
 - Autoencoders (undercomplete, sparse, denoising) [Chapter 14, Sections 14-14.2.3 of DLB]
 - Deep Generative Models using Differentiable Generator Nets [Section 20.10.2 of DLB]
