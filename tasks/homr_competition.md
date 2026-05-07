@@ -14,8 +14,7 @@ training.
 The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2526-summer#competitions).
 The evaluation is performed using the same metric as in `speech_recognition`, by
 computing edit distance to the gold sequence, normalized by its length (the
-`HOMRDataset.EditDistanceMetric` is again provided by the
-[HOMRDataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/homr_dataset/).
+dataset again provides [HOMRDataset.EditDistanceMetric](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/homr_dataset/#npfl138.datasets.homr_dataset.HOMRDataset.EditDistanceMetric)).
 Everyone who submits a solution with at most
 _3%_ test set edit distance gets 3 points; the remaining 5 bonus points are
 distributed depending on the relative ordering of your solutions.
