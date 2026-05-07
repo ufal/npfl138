@@ -99,7 +99,7 @@ def main(args: argparse.Namespace) -> None:
     #   CommonVoiceCs.EditDistanceMetric(ignore_index=CommonVoiceCs.PAD)
     model = ...
 
-    # Generate test set annotations, but in `model.logdir` to allow parallel execution.
+    # Generate test set annotations, but in `logdir` to allow parallel execution.
     os.makedirs(logdir, exist_ok=True)
     with open(os.path.join(logdir, "speech_recognition.txt"), "w", encoding="utf-8") as predictions_file:
         # TODO: Predict the CommonVoice sentences.
