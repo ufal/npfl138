@@ -62,8 +62,8 @@ class GAN(npfl138.TrainableModule):
         #   same padding, and ReLU activation;
         # - max-pools with pool size 2 and stride 2;
         # - flattens the current representation;
-        # - applies batch normalized linear layer with 1_024 units and ReLU activation
-        # - applies output linear layer with one output and a sigmoid activation function.
+        # - applies a batch normalized linear layer with 1_024 units and ReLU activation
+        # - applies an output linear layer with one output and a sigmoid activation function.
         #
         # Again, pass epsilon of 0.01 to all batchnorms and use `bias=False` where appropriate.
         self.discriminator = ...

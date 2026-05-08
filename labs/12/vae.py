@@ -53,7 +53,7 @@ class VAE(npfl138.TrainableModule):
         # - takes vectors of `[args.z_dim]` shape on input;
         # - applies `len(args.decoder_layers)` linear layers with ReLU activation,
         #   i-th layer with `args.decoder_layers[i]` units;
-        # - applies output linear layer with `MNIST.C * MNIST.H * MNIST.W` units
+        # - applies an output linear layer with `MNIST.C * MNIST.H * MNIST.W` units
         #   and sigmoid activation;
         # - uses `torch.nn.Unflatten` to reshape the output to `[MNIST.C, MNIST.H, MNIST.W]`.
         self.decoder = ...

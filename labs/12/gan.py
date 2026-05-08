@@ -43,7 +43,7 @@ class GAN(npfl138.TrainableModule):
         # - takes vectors of `[args.z_dim]` shape on input;
         # - applies `len(args.generator_layers)` linear layers with ReLU activation,
         #   i-th layer with `args.generator_layers[i]` units;
-        # - applies output linear layer with `MNIST.C * MNIST.H * MNIST.W` units
+        # - applies an output linear layer with `MNIST.C * MNIST.H * MNIST.W` units
         #   and sigmoid activation;
         # - uses `torch.nn.Unflatten` to reshape the output to `[MNIST.C, MNIST.H, MNIST.W]`.
         # You can use both the lazy linear layers or the regular linear layers.
@@ -54,7 +54,7 @@ class GAN(npfl138.TrainableModule):
         # - flattens them;
         # - applies `len(args.discriminator_layers)` linear layers with ReLU activation,
         #   i-th layer with `args.discriminator_layers[i]` units;
-        # - applies output linear layer with one output and a sigmoid activation function.
+        # - applies an output linear layer with one output and a sigmoid activation function.
         self.discriminator = ...
 
     def train_step(self, xs: tuple[torch.Tensor], y: torch.Tensor) -> dict[str, torch.Tensor]:
