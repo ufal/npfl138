@@ -41,7 +41,7 @@ class VAE(npfl138.TrainableModule):
         # TODO: Define `self.encoder` as a `torch.nn.Sequential` module, which
         # - takes input images with shape `[MNIST.C, MNIST.H, MNIST.W]`;
         # - flattens them;
-        # - applies `len(args.encoder_layers)` dense layers with ReLU activation,
+        # - applies `len(args.encoder_layers)` linear layers with ReLU activation,
         #   i-th layer with `args.encoder_layers[i]` units;
         # - generates an output of shape `[2 * args.z_dim]` by applying an output
         #   linear layer. During training, this output will be split into two,
@@ -51,9 +51,9 @@ class VAE(npfl138.TrainableModule):
 
         # TODO: Define `self.decoder` as a `torch.nn.Sequential`, which
         # - takes vectors of `[args.z_dim]` shape on input;
-        # - applies `len(args.decoder_layers)` dense layers with ReLU activation,
+        # - applies `len(args.decoder_layers)` linear layers with ReLU activation,
         #   i-th layer with `args.decoder_layers[i]` units;
-        # - applies output dense layer with `MNIST.C * MNIST.H * MNIST.W` units
+        # - applies output linear layer with `MNIST.C * MNIST.H * MNIST.W` units
         #   and sigmoid activation;
         # - uses `torch.nn.Unflatten` to reshape the output to `[MNIST.C, MNIST.H, MNIST.W]`.
         self.decoder = ...

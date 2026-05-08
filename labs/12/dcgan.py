@@ -39,8 +39,8 @@ class GAN(npfl138.TrainableModule):
 
         # TODO: Define `self.generator` as a `torch.nn.Sequential` module, which
         # - takes vectors of `[args.z_dim]` shape on input;
-        # - applies batch normalized dense layer with 1_024 units and ReLU;
-        # - applies batch normalized dense layer with `64 * MNIST.H // 4 * MNIST.W // 4` units and ReLU;
+        # - applies batch normalized linear layer with 1_024 units and ReLU;
+        # - applies batch normalized linear layer with `64 * MNIST.H // 4 * MNIST.W // 4` units and ReLU;
         # - reshapes the current hidden output to `[64, MNIST.H // 4, MNIST.W // 4]`;
         # - applies batch normalized transposed convolution with 32 filters, kernel size 4,
         #   stride 2, padding 1, and ReLU activation;
@@ -62,8 +62,8 @@ class GAN(npfl138.TrainableModule):
         #   same padding, and ReLU activation;
         # - max-pools with pool size 2 and stride 2;
         # - flattens the current representation;
-        # - applies batch normalized dense layer with 1_024 units and ReLU activation
-        # - applies output dense layer with one output and a sigmoid activation function.
+        # - applies batch normalized linear layer with 1_024 units and ReLU activation
+        # - applies output linear layer with one output and a sigmoid activation function.
         #
         # Again, pass epsilon of 0.01 to all batchnorms and use `bias=False` where appropriate.
         self.discriminator = ...
