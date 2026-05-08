@@ -2,6 +2,9 @@
 #### Date: Deadline: May 20, 22:00
 #### Points: 3 points+5 bonus
 
+**The template was updated on Fri May 8 (the printed marks were not separated
+by a space). Please re-download if you downloaded it before.**
+
 Tackle the **h**andwritten **o**ptical **m**usic **r**ecognition in this
 assignment. The inputs are grayscale images of monophonic scores starting with
 a clef, key signature, and a time signature, followed by several staves. The

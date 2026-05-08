@@ -43,7 +43,7 @@ def main(args: argparse.Namespace) -> None:
         predictions = ...
 
         for sequence in predictions:
-            print("".join(HOMRDataset.MARKS_VOCAB.strings(sequence)), file=predictions_file)
+            print(" ".join(HOMRDataset.MARKS_VOCAB.strings(sequence)), file=predictions_file)
 
 
 if __name__ == "__main__":
