@@ -1,4 +1,4 @@
-### Lecture: 13. Diffuion Models, Flow Matching
+### Lecture: 13. Diffusion Models, Flow Matching
 #### Date: May 12
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides/?13
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides.pdf/npfl138-2526-13.pdf, PDF Slides
