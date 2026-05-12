@@ -338,3 +338,39 @@
 
 - Illustrate that alternating SGD steps are not guaranteed to converge for
   a min-max problem. [5]
+
+#### Questions@:, Lecture 13 Questions
+- Assuming a data point $\boldsymbol x_0$ and a variance schedule
+  $\beta_1, \ldots, \beta_T$, define the forward diffusion process $q$. [5]
+
+- Assuming a variance schedule $\beta_1, \ldots, \beta_T$, prove how the forward
+  diffusion marginal $q(\boldsymbol x_t | \boldsymbol x_0)$ looks like. [10]
+
+- Write down the diffusion marginal $q(\boldsymbol x_t | \boldsymbol x_0)$ and
+  the formulas of the cosine schedule of the signal rate and the noise rate. [5]
+
+- In flow matching, correctly define the probability density path, the
+  time-dependent vector field, the flow, and write down the transport equation
+  connecting these concepts. [5]
+
+- In conditional flow matching, write down how we design the conditional
+  probability path in time 0 and in time 1, define the marginal probability
+  path, explain what the conditional vector field is, define the marginal vector
+  field, and using the transport equation prove that the marginal vector field
+  generates the marginal probability path. [10]
+
+- Write down the general flow matching objective and the general conditional
+  flow matching objective. [5]
+
+- In conditional flow matching, assuming that the conditional probability path
+  is defined as a parametric normal distribution, write down how it is defined
+  in time 0 and in time 1, how the corresponding flow looks like in time $t$,
+  and derive the formula for the conditional vector field generating such
+  a flow. [10]
+
+- Write down the definition of the optimal transport (OT) flow in time $t$, the
+  corresponding conditional probability path, and the conditional vector field
+  generating this flow. Then, write down how exactly the conditional flow
+  matching loss looks like for this optimal transport flow. [10]
+
+- Write down the sampling algorithm used in flow matching. [5]
