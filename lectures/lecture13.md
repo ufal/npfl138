@@ -2,6 +2,8 @@
 #### Date: May 12
 #### Slides: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides/?13
 #### Reading: https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/slides.pdf/npfl138-2526-13.pdf, PDF Slides
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-13-czech.mp4, CZ Lecture
+#### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-13-english.mp4, EN Lecture
 #### Questions: #lecture_13_questions
 
 - DDPM [[Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)]
