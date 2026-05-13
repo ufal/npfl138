@@ -227,8 +227,8 @@ class TrainableModule(torch.nn.Module):
         if module is not None:
             self.forward = self._wrapped_module_forward
 
-    def _wrapped_module_forward(self, inputs):
-        return self.module(inputs)
+    def _wrapped_module_forward(self, *args, **kwargs):
+        return self.module(*args, **kwargs)
 
     def configure(
         self,
