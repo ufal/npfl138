@@ -5,6 +5,9 @@
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-13-czech.mp4, CZ Lecture
 #### Video: https://lectures.ms.mff.cuni.cz/video/rec/npfl138/2526/npfl138-2526-13-english.mp4, EN Lecture
 #### Questions: #lecture_13_questions
+#### Lecture assignment: flow_matching
+#### Lecture assignment: flow_matching_attention
+#### Lecture assignment: flow_matching_conditional
 
 - DDPM [[Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)]
 - Flow Matching [[Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747)]
