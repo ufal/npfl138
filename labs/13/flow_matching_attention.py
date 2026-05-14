@@ -150,9 +150,6 @@ class DownscalingBlock(torch.nn.Module):
         ...
 
     def forward(self, images: torch.Tensor, times: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
-        # TODO: Implement the forward pass of the downscaling block, returning a pair with
-        # first the downscaled features followed by the output of the self-attention block (or
-        # the last residual block if no self-attention is used).
         # TODO: Implement the forward pass of the downscaling block, first computing `hidden` by passing
         # the input images through the residual blocks and (if present) the self-attention block,
         # and then computing `downscaled` by processing the result through the downscaling convolution.
