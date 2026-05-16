@@ -268,6 +268,7 @@ class FlowMatching(npfl138.TrainableModule):
         self, initial_noise: torch.Tensor, conditioning: torch.Tensor, steps: int
     ) -> tuple[torch.Tensor, list[torch.Tensor]]:
         images = initial_noise.to(self.device)
+        conditioning = conditioning.to(self.device)
         trajectory = []
 
         # TODO(flow_matching): Perform the sampling process using the `self._ema_model` and the
