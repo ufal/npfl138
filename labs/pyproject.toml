@@ -25,6 +25,8 @@ dependencies = [
   # Used by torchaudio for CTC decoding
   "ufal.flashlight-text ~= 0.0.7.1",
   "ufal.kenlm ~= 26.4.1",
+  # Support for loading and saving sound files.
+  "soundfile ~= 0.13.1",
   # Gymnasium package including the pygame used for GUI
   "gymnasium ~= 1.2.3",
   "pygame-ce ~= 2.5.6",
