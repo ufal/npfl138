@@ -101,8 +101,9 @@ class Attention(torch.nn.Module):
         #   context vector, using and updating the stored attention RNN state and memory cell values.
         #   The resulting RNN state (`h`) will be used as the query for the attention.
         # - Then perform the location-sensitive part of the attention, by:
-        #   - concatenating the cumulative attention weights and the previous attention weights (in this order),
-        #   - passing them through the `self.location_sensitive_conv` layer,
+        #   - stacking the cumulative attention weights and the previous attention weights (in this order)
+        #     as two channels of a 1D sequence,
+        #   - passing it through the `self.location_sensitive_conv` layer,
         #   - moving the channels to the last dimension,
         #   - passing the result through the `self.location_sensitive_output` layer.
         # - Now compute the attention logits for each position in the encoded text:
