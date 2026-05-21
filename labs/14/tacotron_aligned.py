@@ -34,6 +34,32 @@ parser.add_argument("--window_length", default=1_024, type=int, help="Window len
 # If you add more arguments, ReCodEx will keep them with your default values.
 
 
+class Dataset(npfl138.TransformedDataset):
+    def transform(self, example: TTSDataset.Element) -> tuple[torch.Tensor, torch.Tensor]:
+        # The input `example` is a dictionary with keys "text" and "mel_spectrogram".
+
+        # TODO(tacotron): Prepare a single example for training, returning a pair consisting of:
+        # - the text converted to a sequence of character indices according to `self.dataset.char_vocab`,
+        # - the unmodified mel spectrogram.
+        raise NotImplementedError()
+
+    def collate(self, batch: list) -> tuple[tuple[torch.Tensor, torch.Tensor], tuple[torch.Tensor, torch.Tensor]]:
+        text_ids, spectrograms = zip(*batch)
+        # TODO(tacotron): Construct a single batch from a list of individual examples.
+        # - The `text_ids` should be padded to the same length using `torch.nn.utils.rnn.pad_sequence`,
+        #   using `TTSDataset.PAD` (which is guaranteed to be 0) as the padding value.
+        # - The lengths of the unpadded spectrograms should be stored in a tensor `spectrogram_lens`.
+        # - Finally, the `spectrograms` should also be padded to a common minimal length.
+        padded_text_ids = ...
+        spectrogram_lens = ...
+        padded_spectrograms = ...
+
+        # As input, apart from text ids, we return the maximum spectrogram length to indicate
+        # how many mel frames to produce during training. During inference, this value will be
+        # set to -1 to indicate that the model should produce mel frames until it decides to stop.
+        return (padded_text_ids, spectrogram_lens.max().item()), (padded_spectrograms, spectrogram_lens)
+
+
 class Encoder(torch.nn.Module):
     def __init__(self, args: argparse.Namespace, num_characters: int) -> None:
         super().__init__()
@@ -290,32 +316,6 @@ class Tacotron(npfl138.TrainableModule):
         return mse_loss_post + mse_loss + bce_loss + ctc_loss
 
 
-class TrainableDataset(npfl138.TransformedDataset):
-    def transform(self, example: TTSDataset.Element) -> tuple[torch.Tensor, torch.Tensor]:
-        # The input `example` is a dictionary with keys "text" and "mel_spectrogram".
-
-        # TODO(tacotron): Prepare a single example for training, returning a pair consisting of:
-        # - the text converted to a sequence of character indices according to `self.dataset.char_vocab`,
-        # - the unmodified mel spectrogram.
-        raise NotImplementedError()
-
-    def collate(self, batch: list) -> tuple[tuple[torch.Tensor, torch.Tensor], tuple[torch.Tensor, torch.Tensor]]:
-        text_ids, spectrograms = zip(*batch)
-        # TODO(tacotron): Construct a single batch from a list of individual examples.
-        # - The `text_ids` should be padded to the same length using `torch.nn.utils.rnn.pad_sequence`,
-        #   using `TTSDataset.PAD` (which is guaranteed to be 0) as the padding value.
-        # - The lengths of the unpadded spectrograms should be stored in a tensor `spectrogram_lens`.
-        # - Finally, the `spectrograms` should also be padded to a common minimal length.
-        padded_text_ids = ...
-        spectrogram_lens = ...
-        padded_spectrograms = ...
-
-        # As input, apart from text ids, we return the maximum spectrogram length to indicate
-        # how many mel frames to produce during training. During inference, this value will be
-        # set to -1 to indicate that the model should produce mel frames until it decides to stop.
-        return (padded_text_ids, spectrogram_lens.max().item()), (padded_spectrograms, spectrogram_lens)
-
-
 def main(args: argparse.Namespace) -> dict[str, float]:
     # Set the random seed and the number of threads.
     npfl138.startup(args.seed, args.threads, recodex=args.recodex)
@@ -323,7 +323,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
 
     # Load the TTS data.
     tts_dataset = TTSDataset(args.dataset, args.sample_rate, args.window_length, args.hop_length, args.mels)
-    train = TrainableDataset(tts_dataset.train).dataloader(args.batch_size, shuffle=True, seed=args.seed)
+    train = Dataset(tts_dataset.train).dataloader(args.batch_size, shuffle=True, seed=args.seed)
 
     # Create the model.
     tacotron = Tacotron(args, len(tts_dataset.train.char_vocab))
