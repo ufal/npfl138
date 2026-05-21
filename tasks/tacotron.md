@@ -9,10 +9,6 @@ In this assignment, you will implement a speech synthesis system based on the
 Tacotron 2 architecture, generating a mel spectrogram given an input text. To
 pass in ReCodEx, minor toy dataset is used.
 
-Later in the examination period, there will be instructions for those who would
-like to create a working TTS system, describing how to train this implementation
-on real data and how to utilize some existing vocoder.
-
 Start with the [tacotron.py](https://github.com/ufal/npfl138/tree/past-2425/labs/14/tacotron.py)
 template, which contains extensive comments indicating how the architecture
 should look like and how the training should be performed.
