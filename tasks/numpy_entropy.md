@@ -18,7 +18,7 @@ which happens when an element of data distribution has zero probability
 under the model distribution):
 - entropy _H(data distribution)_
 - cross-entropy _H(data distribution, model distribution)_
-- KL-divergence _D<sub>KL</sub>(data distribution, model distribution)_
+- KL divergence _D<sub>KL</sub>(data distribution, model distribution)_
 
 Use natural logarithms to compute the entropies and the divergence.
 
