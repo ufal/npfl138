@@ -15,8 +15,8 @@
 #### Lecture assignment: reinforce_pixels
 
 Study material for Reinforcement Learning is the [Reinforcement Learning: An Introduction; second edition
-by Richard S. Sutton and Andrew G. Barto](http://incompleteideas.net/book/the-book-2nd.html)
-(referred to as RLB), [available online](http://incompleteideas.net/book/RLbook2020.pdf).
+by Richard S. Sutton and Andrew G. Barto](https://incompleteideas.net/book/the-book-2nd.html)
+(referred to as RLB), [available online](https://incompleteideas.net/book/RLbook2020.pdf).
 
 - RoBERTa [[RoBERTa: A Robustly Optimized BERT Pretraining Approach](https://arxiv.org/abs/1907.11692)]
 - ViT [[An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)]
