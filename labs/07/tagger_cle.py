@@ -33,7 +33,7 @@ class Dataset(npfl138.TransformedDataset):
         word_ids = ...
         tag_ids = ...
         # Note that compared to `tagger_we`, we also return the original
-        # words in order to be able to compute the character-level embeddings.
+        # words in order to compute the character-level embeddings.
         return word_ids, example["words"], tag_ids
 
     def collate(self, batch):
@@ -42,7 +42,7 @@ class Dataset(npfl138.TransformedDataset):
         word_ids, words, tag_ids = zip(*batch)
         # TODO(tagger_we): Combine `word_ids` into a single tensor, padding shorter
         # sequences to length of the longest sequence in the batch with zeros
-        # using `torch.nn.utils.rnn.pad_sequence` with `batch_first=True` argument.
+        # using `torch.nn.utils.rnn.pad_sequence` with the `batch_first=True` argument.
         word_ids = ...
         # TODO: Create required inputs for the character-level embeddings using
         # the provided `self.dataset.cle_batch` function on `words`. The function
@@ -70,7 +70,7 @@ class Model(npfl138.TrainableModule):
             if self.training and self._mask_probability:
                 # TODO: Generate a mask tensor of `torch.float32`s of the same shape
                 # as `inputs` using either `torch.rand` or `torch.rand_like`.
-                # Then set `inputs` to a new tensor where elements with a mask value
+                # Then set `inputs` to a new tensor where elements with the mask value
                 # less than `self._mask_probability` are replaced by `self._mask_value`.
                 inputs = ...
             return inputs
@@ -78,8 +78,8 @@ class Model(npfl138.TrainableModule):
     def __init__(self, args: argparse.Namespace, train: MorphoDataset.Dataset) -> None:
         super().__init__()
 
-        # Create all needed layers.
-        # TODO: Create a word masking layer `self.MaskElements` with the given
+        # Create all the needed layers.
+        # TODO: Create a word masking `self.MaskElements` layer with the given
         # `args.word_masking` probability and `MorphoDataset.UNK` as the masking value.
         self._word_masking = ...
 
@@ -104,7 +104,7 @@ class Model(npfl138.TrainableModule):
         self._word_rnn = ...
 
         # TODO(tagger_we): Create an output linear layer (`torch.nn.Linear`) processing the RNN output,
-        # producing logits for tag prediction; `train.tags.string_vocab` is the tag vocabulary.
+        # producing logits for the tag prediction; `train.tags.string_vocab` is the tag vocabulary.
         self._output_layer = ...
 
     def forward(self, word_ids: torch.Tensor, unique_words: torch.Tensor, word_indices: torch.Tensor) -> torch.Tensor:
@@ -114,7 +114,7 @@ class Model(npfl138.TrainableModule):
         # TODO: Embed the masked word IDs in `hidden` using the word embedding layer.
         hidden = ...
 
-        # TODO: Embed the `unique_words` using the character embedding layer.
+        # TODO: Embed `unique_words` using the character embedding layer.
         cle = ...
 
         # TODO: Pass the character embeddings through the character-level RNN.
@@ -129,7 +129,7 @@ class Model(npfl138.TrainableModule):
         # TODO: With `cle` being the character-level embeddings of the unique words
         # of shape `[num_unique_words, 2 * cle_dim]`, create the representation of the
         # (not necessary unique) sentence words by indexing the character-level
-        # embeddings with the `word_indices`. The result should have a shape
+        # embeddings with `word_indices`. The result should have shape
         # `[batch_size, max_sentence_length, 2 * cle_dim]`. You can use for example
         # the `torch.nn.functional.embedding` function.
         cle = ...
@@ -148,11 +148,11 @@ class Model(npfl138.TrainableModule):
         # TODO(tagger_we): Pass the `PackedSequence` through the RNN, choosing the appropriate output.
         packed = ...
 
-        # TODO(tagger_we): Unpack the RNN output using the `torch.nn.utils.rnn.pad_packed_sequence` with
-        # `batch_first=True` argument. Then sum the outputs of forward and backward directions.
+        # TODO(tagger_we): Unpack the RNN output using `torch.nn.utils.rnn.pad_packed_sequence` with
+        # the `batch_first=True` argument. Then sum the outputs of the forward and backward directions.
         hidden = ...
 
-        # TODO(tagger_we): Pass the RNN output through the output layer. Such an output has a shape
+        # TODO(tagger_we): Pass the RNN output through the output layer. Such an output has shape
         # `[batch_size, sequence_length, num_tags]`, but the loss and the metric expect
         # the `num_tags` dimension to be in front (`[batch_size, num_tags, sequence_length]`),
         # so you need to reorder the dimensions.

@@ -2,14 +2,15 @@
 #### Date: Deadline: May 06, 22:00
 #### Points: 4 points+5 bonus
 
-Implement the best possible model for reading comprehension task using
-an automatically translated version of the SQuAD 1.1 dataset, utilizing a provided
-Czech RoBERTa model [`ufal/robeczech-base`](https://huggingface.co/ufal/robeczech-base).
+Implement the best possible model for a reading comprehension task using
+an automatically translated version of the SQuAD 1.1 dataset, utilizing the
+provided [`ufal/robeczech-base`](https://huggingface.co/ufal/robeczech-base)
+Czech RoBERTa model.
 
 The dataset can be loaded using the
 [ReadingComprehensionDataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/reading_comprehension_dataset/)
 class. The loaded dataset is a direct representation of the data and not yet
-ready to be directly trained on. Each of the `train`, `dev` and `test` datasets
+ready to be directly trained on. The `train`, `dev` and `test` datasets
 are composed of a list of paragraphs, each consisting of:
 - `context`: text with various information;
 - `qas`: list of questions and answers, where each item consists of:

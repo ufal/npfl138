@@ -10,14 +10,14 @@ template, implement the following features in addition to `lemmatizer_noattn`:
 - The bidirectional GRU encoder returns outputs for all input characters, not
   just the last.
 - Implement attention in the decoders. Notably, project the encoder outputs and
-  current state into same-dimensionality vectors, apply non-linearity, and
+  the current state into same-dimensionality vectors, apply a non-linearity, and
   generate weights for every encoder output (masking logits corresponding
   to padding input elements by -1e9). Finally, sum the encoder outputs
   using these weights and concatenate the computed attention to the decoder
   inputs.
 
 Once submitted to ReCodEx, you should experiment with the effect of using
-the attention, and the influence of RNN dimensionality on network performance.
+the attention, and the influence of RNN dimensionality on the network performance.
 
 #### Tests Start: lemmatizer_attn_tests
 _Note that your results may be slightly different, depending on your CPU type and whether you use a GPU._

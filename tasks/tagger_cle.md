@@ -6,7 +6,7 @@
 
 This assignment is a continuation of `tagger_we`. Using the
 [tagger_cle.py](https://github.com/ufal/npfl138/tree/master/labs/07/tagger_cle.py)
-template, implement character-level word embedding computation using
+template, implement a character-level word embedding computation using
 a bidirectional character-level GRU.
 
 Once submitted to ReCodEx, you should experiment with the effect of CLEs

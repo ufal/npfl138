@@ -15,7 +15,7 @@ open <http://localhost:6006> in a browser and explore the generated logs.
 template such that a user-specified neural network is constructed:
 - A number of hidden layers (including zero) can be specified on the command line
   using the parameter `hidden_layers`.
-- Activation function of these hidden layers can be also specified as a command
+- The activation function of these hidden layers can also be specified as a command
   line parameter `activation`, with supported values of `none`, `relu`, `tanh`
   and `sigmoid`.
 

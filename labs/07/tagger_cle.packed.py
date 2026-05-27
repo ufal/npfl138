@@ -33,7 +33,7 @@ class Dataset(npfl138.TransformedDataset):
         word_ids = ...
         tag_ids = ...
         # Note that compared to `tagger_we`, we also return the original
-        # words in order to be able to compute the character-level embeddings.
+        # words in order to compute the character-level embeddings.
         return word_ids, example["words"], tag_ids
 
     def collate(self, batch):
@@ -67,7 +67,7 @@ class Model(npfl138.TrainableModule):
             if self.training and self._mask_probability:
                 # TODO: Generate a mask tensor of `torch.float32`s of the same shape
                 # as `inputs` using either `torch.rand` or `torch.rand_like`.
-                # Then set `inputs` to a new tensor where elements with a mask value
+                # Then set `inputs` to a new tensor where elements with the mask value
                 # less than `self._mask_probability` are replaced by `self._mask_value`.
                 inputs = ...
             return inputs
@@ -75,8 +75,8 @@ class Model(npfl138.TrainableModule):
     def __init__(self, args: argparse.Namespace, train: MorphoDataset.Dataset) -> None:
         super().__init__()
 
-        # Create all needed layers.
-        # TODO: Create a word masking layer `self.MaskElements` with the given
+        # Create all the needed layers.
+        # TODO: Create a `self.MaskElements` word masking layer with the given
         # `args.word_masking` probability and `MorphoDataset.UNK` as the masking value.
         self._word_masking = ...
 
@@ -101,7 +101,7 @@ class Model(npfl138.TrainableModule):
         self._word_rnn = ...
 
         # TODO(tagger_we): Create an output linear layer (`torch.nn.Linear`) processing the RNN output,
-        # producing logits for tag prediction; `train.tags.string_vocab` is the tag vocabulary.
+        # producing logits for the tag prediction; `train.tags.string_vocab` is the tag vocabulary.
         self._output_layer = ...
 
     def forward(self, word_ids: torch.nn.utils.rnn.PackedSequence, unique_words: torch.nn.utils.rnn.PackedSequence,
@@ -120,7 +120,7 @@ class Model(npfl138.TrainableModule):
         # TODO: Embed the masked word IDs in `hidden` using the word embedding layer.
         hidden = ...
 
-        # TODO: Embed the `unique_words` using the character embedding layer.
+        # TODO: Embed `unique_words` using the character embedding layer.
         cle = ...
 
         # TODO: Pass the character embeddings through the character-level RNN,
@@ -133,7 +133,7 @@ class Model(npfl138.TrainableModule):
         # TODO: With `cle` being the character-level embeddings of the unique words
         # of shape `[num_unique_words, 2 * cle_dim]`, create the representation of the
         # (not necessary unique) sentence words by indexing the character-level
-        # embeddings with the `word_indices`. The result should have an analogous structure
+        # embeddings with `word_indices`. The result should have an analogous structure
         # to word embeddings in `hidden`, just with a different dimensionality of the
         # embedding. You can use for example the `torch.nn.functional.embedding` function.
         cle = ...
@@ -146,7 +146,7 @@ class Model(npfl138.TrainableModule):
         # as `word_ids` (i.e., the same sentence lengths).
         hidden = ...
 
-        # TODO(tagger_we.packed): Sum the outputs of forward and backward directions.
+        # TODO(tagger_we.packed): Sum the outputs of the forward and backward directions.
         hidden = ...
 
         # TODO(tagger_we.packed): Pass the RNN output through the output layer.
@@ -159,12 +159,12 @@ class Model(npfl138.TrainableModule):
         return hidden
 
     def compute_loss(self, y_pred, y_true, *xs):
-        # Because the `y_pred` and `y_true` are `PackedSequence` objects, we take
+        # Because `y_pred` and `y_true` are `PackedSequence` objects, we take
         # just their raw data and pass them to the loss function.
         return super().compute_loss(y_pred.data, y_true.data, *xs)
 
     def compute_metrics(self, y_pred, y_true, *xs):
-        # Because the `y_pred` and `y_true` are `PackedSequence` objects, we take
+        # Because `y_pred` and `y_true` are `PackedSequence` objects, we take
         # just their raw data and pass them to the metric computation.
         return super().compute_metrics(y_pred.data, y_true.data, *xs)
 

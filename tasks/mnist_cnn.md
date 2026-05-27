@@ -15,12 +15,12 @@ argument, which contains comma-separated specifications of the following layers:
 - `CB-channels-kernel_size-stride-padding`: Same as
   `C-channels-kernel_size-stride-padding`, but use batch normalization.
   In detail, start with a convolutional layer **without bias** and activation,
-  then add batch normalization layer, and finally the ReLU activation.
+  then add a batch normalization layer, and finally the ReLU activation.
   Example: `CB-10-3-1-same`
 - `M-pool_size-stride`: Add max pooling with specified size and stride, using
   the default padding of 0 (the `"valid"` padding).
   Example: `M-3-2`
-- `R-[layers]`: Add a residual connection. The `layers` contain a specification
+- `R-[layers]`: Add a residual connection. `layers` contains a specification
   of at least one convolutional layer (but not a recursive residual connection `R`).
   The input to the `R` layer should be processed sequentially by `layers`, and the
   produced output (after the ReLU nonlinearity of the last layer) should be added

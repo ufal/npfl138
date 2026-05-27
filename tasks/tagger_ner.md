@@ -4,15 +4,15 @@
 #### Tests: tagger_ner_tests
 #### Examples: tagger_ner_examples
 
-This assignment is an extension of `tagger_we` task. Using the
+This assignment is an extension of the `tagger_we` task. Using the
 [tagger_ner.py](https://github.com/ufal/npfl138/tree/master/labs/08/tagger_ner.py)
 template, implement optimal decoding of named entity spans from
 BIO-encoded tags. In a valid sequence, the tags are `O`, `B-TYPE`, `I-TYPE`, and
-the `I-TYPE` tag must follow either `B-TYPE` or `I-TYPE` tags.
+the `I-TYPE` tag must follow either the `B-TYPE` or `I-TYPE` tags.
 
-The evaluation is performed using the provided metric computing F1 score of the
-span prediction (i.e., a recognized possibly-multiword named entity is a true
-positive if both the entity type and the span exactly match).
+The evaluation is performed using the provided metric computing an F1 score of the
+span prediction (a recognized possibly-multiword named entity is a true
+positive if both the entity type and the span match exactly).
 
 In practice, character-level embeddings (and also pre-trained word embeddings)
 would be used to obtain superior results.

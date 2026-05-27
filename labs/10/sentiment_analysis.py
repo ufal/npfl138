@@ -25,7 +25,7 @@ class Dataset(npfl138.TransformedDataset):
         super().__init__(dataset)
 
     def transform(self, example):
-        # TODO: Process single examples containing `example["document"]` and `example["label"]`.
+        # TODO: Process single examples consisting of `example["document"]` and `example["label"]`.
         raise NotImplementedError()
 
     def collate(self, batch):

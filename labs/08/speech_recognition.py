@@ -52,22 +52,22 @@ class Model(npfl138.TrainableModule):
 
     def ctc_decoding(self, y_pred: torch.Tensor, *MAYBE_ADD_ARGUMENTS) -> list[torch.Tensor]:
         # TODO: Compute predictions, either using manual CTC decoding, or you can use:
-        # - `torchaudio.models.decoder.ctc_decoder`, which is CPU-based decoding with
+        # - `torchaudio.models.decoder.ctc_decoder`, which is a CPU-based decoding with
         #   rich functionality;
-        #   - note that you need to provide `blank_token` and `sil_token` arguments
+        #   - note that you need to provide the `blank_token` and `sil_token` arguments
         #     and they must be valid tokens. For `blank_token`, you need to specify
         #     the token whose index corresponds to the blank token index;
         #     for `sil_token`, you can use also the blank token index (by default,
         #     `sil_token` has ho effect on the decoding apart from being added as the
         #     first and the last token of the predictions unless it is a blank token).
-        # - `torchaudio.models.decoder.cuda_ctc_decoder`, which is faster GPU-based
+        # - `torchaudio.models.decoder.cuda_ctc_decoder`, which is a faster GPU-based
         #   decoder with limited functionality.
         raise NotImplementedError()
 
     def compute_metrics(
         self, y_pred: torch.Tensor, y_true: torch.Tensor, *REPLACE_WITH_YOUR_NETWORK_INPUTS
     ) -> dict[str, torch.Tensor]:
-        # TODO: Compute predictions using the `ctc_decoding`. Consider computing it
+        # TODO: Compute predictions using `ctc_decoding`. Consider computing it
         # only when `self.training==False` to speed up training.
         predictions = ...
         self.metrics["edit_distance"].update(predictions, y_true)
@@ -96,7 +96,7 @@ def main(args: argparse.Namespace) -> None:
 
     # TODO: Create the model and train it. The `Model.compute_metrics` method assumes you
     # passed the following metric to the `configure` method under the name "edit_distance":
-    #   CommonVoiceCs.EditDistanceMetric(ignore_index=CommonVoiceCs.PAD)
+    #   `CommonVoiceCs.EditDistanceMetric(ignore_index=CommonVoiceCs.PAD)`
     model = ...
 
     # Generate test set annotations, but in `logdir` to allow parallel execution.

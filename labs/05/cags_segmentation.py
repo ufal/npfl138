@@ -29,8 +29,8 @@ def main(args: argparse.Namespace) -> None:
     logdir = npfl138.format_logdir("logs/{file-}{timestamp}{-config}", **vars(args))
 
     # Load the data. The individual examples are dictionaries with the keys:
-    # - "image", a `[3, 224, 224]` tensor of `torch.uint8` values in [0-255] range,
-    # - "mask", a `[1, 224, 224]` tensor of `torch.float32` values in [0-1] range,
+    # - "image", a `[3, 224, 224]` tensor of `torch.uint8` values in the [0-255] range,
+    # - "mask", a `[1, 224, 224]` tensor of `torch.float32` values in the [0-1] range,
     # - "label", a scalar of the correct class in `range(CAGS.LABELS)`.
     # The `decode_on_demand` argument can be set to `True` to save memory and decode
     # each image only when accessed, but it will most likely slow down training.

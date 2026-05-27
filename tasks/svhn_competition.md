@@ -19,7 +19,7 @@ is considered correct if exactly the gold digits are predicted, each with IoU at
 The whole test set score is then the prediction accuracy on the individual images.
 You can evaluate your predictions either by running
 `python3 -m npfl138.datasets.svhn --evaluate=path --dataset=dev/test`
-or using [SVHN.evaluate](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/svhn/#npfl138.datasets.svhn.SVHN.evaluate)
+or using the [SVHN.evaluate](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/svhn/#npfl138.datasets.svhn.SVHN.evaluate)
 or [SVHN.evaluate_file](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/svhn/#npfl138.datasets.svhn.SVHN.evaluate_file)
 methods. You can also visualize your predictions by using the
 `python3 -m npfl138.datasets.svhn --visualize=path --dataset=dev/test` command
@@ -33,7 +33,7 @@ accuracy to achieve the required test set performance.
 
 You should start with the
 [svhn_competition.py](https://github.com/ufal/npfl138/tree/master/labs/06/svhn_competition.py)
-template, which generates the test set annotation in the required format.
+template, which generates the test set annotations in the required format.
 
 _A baseline solution can use RetinaNet-like single stage detector,
 using only a single level of convolutional features (no FPN)

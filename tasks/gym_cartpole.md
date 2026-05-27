@@ -3,14 +3,14 @@
 #### Points: 3 points
 
 Solve the [CartPole-v1 environment](https://gymnasium.farama.org/environments/classic_control/cart_pole/)
-from the [Gymnasium library](https://gymnasium.farama.org/), utilizing only provided supervised
+from the [Gymnasium library](https://gymnasium.farama.org/), utilizing only the provided supervised
 training dataset of 100 examples. Start with the
 [gym_cartpole.py](https://github.com/ufal/npfl138/tree/master/labs/02/gym_cartpole.py) template.
 
 The solution to this task should be a _model_ which passes evaluation on random
-inputs. This evaluation can be performed by running the
+inputs. This evaluation can be performed by running
 [gym_cartpole.py](https://github.com/ufal/npfl138/tree/master/labs/02/gym_cartpole.py)
-with `--evaluate` argument (optionally rendering if `--render` option is
+with the `--evaluate` argument (optionally rendering if the `--render` option is
 provided), or directly calling the `evaluate_model` method. In order to pass,
 you must achieve an average reward of at least 475 on 100 episodes. Your model
 should have two outputs (i.e., corresponding to a categorical distribution with

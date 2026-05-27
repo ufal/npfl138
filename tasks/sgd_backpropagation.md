@@ -5,23 +5,23 @@
 #### Examples: sgd_backpropagation_examples
 
 In this exercise you will learn how to compute gradients using the so-called
-**automatic differentiation**, which allows to automatically run backpropagation
+**automatic differentiation**, which allows to automatically run the backpropagation
 algorithm for a given computation. You can read the [Automatic Differentiation
 with torch.autograd tutorial](https://pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html)
 if interested. After computing the gradient, you should then perform training by
-running manually implemented minibatch stochastic gradient descent.
+running a manually implemented minibatch stochastic gradient descent.
 
 Starting with the
 [sgd_backpropagation.py](https://github.com/ufal/npfl138/tree/master/labs/02/sgd_backpropagation.py)
 template, you should:
 - implement a neural network with a single _tanh_ hidden layer and
   categorical output layer;
-- compute the crossentropy loss;
+- compute the cross-entropy loss;
 - use `.backward()` to automatically compute the gradient of the loss
   with respect to all variables;
 - perform the SGD update.
 
-This assignment also demonstrates the most important parts of the
+This assignment also demonstrates the most important parts of
 [npfl138.TrainableModule](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/trainable_module/)
 that we are using.
 

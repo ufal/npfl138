@@ -3,7 +3,7 @@
 #### Points: 4 points+5 bonus
 
 In this assignment, you should extend `lemmatizer_noattn` or `lemmatizer_attn`
-into a real-world Czech lemmatizer. As in `tagger_competition`, we will use
+into a real-world Czech lemmatizer. As in `tagger_competition`, we will use the
 Czech PDT dataset loadable using the
 [MorphoDataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/morpho_dataset/)
 class.
@@ -14,8 +14,8 @@ the `tagger_competition` assignment.
 The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2526-summer#competitions). Everyone who submits
 a solution with at least 97.0% exact match accuracy gets 4 points; the remaining 5 bonus points
 are distributed depending on the relative ordering of your solutions. Lastly,
-**1 bonus point** will be given to anyone surpassing pre-neural-network
-state-of-the-art of **98.76%**.
+**1 bonus point** will be given to anyone surpassing the pre-neural-network
+state-of-the-art accuracy of **98.76%**.
 
 You can start with the
 [lemmatizer_competition.py](https://github.com/ufal/npfl138/tree/master/labs/09/lemmatizer_competition.py)

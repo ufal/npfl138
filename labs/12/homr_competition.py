@@ -26,8 +26,8 @@ def main(args: argparse.Namespace) -> None:
     logdir = npfl138.format_logdir("logs/{file-}{timestamp}{-config}", **vars(args))
 
     # Load the data. The individual examples are dictionaries with the keys:
-    # - "image", a `[1, HEIGHT, WIDTH]` tensor of `torch.uint8` values in [0-255] range,
-    # - "marks", a `[num_marks]` tensor with indices of marks on the image.
+    # - "image", a `[1, HEIGHT, WIDTH]` tensor of `torch.uint8` values in the [0–255] range,
+    # - "marks", a `[num_marks]` tensor with indices of marks in the image.
     # Using `decode_on_demand=True` loads just the raw dataset (~500MB of undecoded PNG images)
     # and then decodes them on every access. Using `decode_on_demand=False` decodes the images
     # during loading, resulting in much faster access, but requires ~5GB of memory.

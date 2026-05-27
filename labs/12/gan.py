@@ -25,7 +25,7 @@ parser.add_argument("--z_dim", default=100, type=int, help="Dimension of Z.")
 
 class Dataset(npfl138.TransformedDataset):
     def transform(self, example):
-        image = example["image"]  # a torch.Tensor with torch.uint8 values in [0, 255] range
+        image = example["image"]  # a torch.Tensor with torch.uint8 values in the [0, 255] range
         image = image.to(torch.float32) / 255  # image converted to float32 and rescaled to [0, 1]
         return image, image  # return the image both as the input and the target
 
@@ -40,13 +40,13 @@ class GAN(npfl138.TrainableModule):
             torch.ones(args.z_dim, device=self.device))      # device of the model.
 
         # TODO: Define `self.generator` as a `torch.nn.Sequential` module, which
-        # - takes vectors of `[args.z_dim]` shape on input;
+        # - takes vectors of shape `[args.z_dim]` on the input;
         # - applies `len(args.generator_layers)` linear layers with ReLU activation,
         #   i-th layer with `args.generator_layers[i]` units;
         # - applies an output linear layer with `MNIST.C * MNIST.H * MNIST.W` units
-        #   and sigmoid activation;
+        #   and a sigmoid activation;
         # - uses `torch.nn.Unflatten` to reshape the output to `[MNIST.C, MNIST.H, MNIST.W]`.
-        # You can use both the lazy linear layers or the regular linear layers.
+        # You can use both the lazy linear layers and the regular linear layers.
         self.generator = ...
 
         # TODO: Define `self.discriminator` as a `torch.nn.Sequential`, which
@@ -62,7 +62,7 @@ class GAN(npfl138.TrainableModule):
 
         # TODO: Train the generator:
         # - generate as many random latent samples as there are `images`, by a single call
-        #   to `self._z_prior.sample`;
+        #   to `self._z_prior().sample`;
         # - pass the samples through the generator;
         # - run discriminator on the generated images (keep it running in the training mode,
         #   even if not updating its parameters, we want to perform possible BatchNorm in it);
@@ -73,17 +73,18 @@ class GAN(npfl138.TrainableModule):
         # TODO: Train the discriminator:
         # - first run the discriminator on `images`, storing the results in `discriminated_real`;
         # - then process the images generated during the generator training, storing the results
-        #   in `discriminated_fake` (be careful to neither re-run the generator nor perform
-        #   backpropagation into the generator during the discriminator loss computation);
+        #   in `discriminated_fake` (be careful not to re-run the generator);
         # - compute `discriminator_loss` by summing:
         #   - `self.loss` on `discriminated_real` with suitable targets,
-        #   - `self.loss` on `discriminated_fake` with suitable targets.
+        #   - `self.loss` on `discriminated_fake` with suitable targets
+        #   (be careful not to perform backpropagation into the generator during the discriminator
+        #   loss computation).
         # Then, perform a step of the discriminator optimizer stored in `self.optimizer["discriminator"]`.
         ...
 
-        # TODO: Update the discriminator accuracy metric -- call the
+        # TODO: Update the discriminator accuracy metric -- call
         # `self.metrics["discriminator_accuracy"].update` twice, with the same
-        # arguments the `self.loss` was called during discriminator loss computation.
+        # arguments `self.loss` was called with during discriminator loss computation.
         ...
 
         # Track the losses and return them together with the metrics.
@@ -100,7 +101,7 @@ class GAN(npfl138.TrainableModule):
 
             # Generate GRIDxGRID interpolated images.
             if self._z_dim == 2:
-                # Use 2D grid of Z values for interpolated images.
+                # Use a 2D grid of Z values for interpolated images.
                 starts = torch.stack([-2 * torch.ones(GRID), torch.linspace(-2., 2., GRID)], -1)
                 ends = torch.stack([2 * torch.ones(GRID), torch.linspace(-2., 2., GRID)], -1)
             else:
@@ -132,7 +133,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
     model = GAN(args)
 
     # TODO: Create Adam optimizers for the discriminator and the generator,
-    # and the loss function and metric for the discriminator.
+    # and the loss function and the metric for the discriminator.
     model.configure(
         optimizer={
             "discriminator": ...,

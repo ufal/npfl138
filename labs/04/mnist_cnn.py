@@ -21,7 +21,7 @@ parser.add_argument("--threads", default=1, type=int, help="Maximum number of th
 
 class Dataset(npfl138.TransformedDataset):
     def transform(self, example):
-        image = example["image"]  # a torch.Tensor with torch.uint8 values in [0, 255] range
+        image = example["image"]  # a torch.Tensor with torch.uint8 values in the [0, 255] range
         image = image.to(torch.float32) / 255  # image converted to float32 and rescaled to [0, 1]
         label = example["label"]  # a torch.Tensor with a single integer representing the label
         return image, label  # return an (input, target) pair
@@ -38,7 +38,7 @@ class Model(npfl138.TrainableModule):
         #   then add a batch normalization layer, and finally the ReLU activation.
         # - `M-pool_size-stride`: Add max pooling with specified size and stride, using
         #   the default padding of 0 (the "valid" padding).
-        # - `R-[layers]`: Add a residual connection. The `layers` contain a specification
+        # - `R-[layers]`: Add a residual connection. `layers` contains a specification
         #   of at least one convolutional layer (but not a recursive residual connection `R`).
         #   The input to the `R` layer should be processed sequentially by `layers`, and the
         #   produced output (after the ReLU nonlinearity of the last layer) should be added

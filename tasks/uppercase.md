@@ -7,7 +7,7 @@ which is given Czech lowercased text and tries to uppercase appropriate letters.
 To load the dataset, use the
 [UppercaseData](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/uppercase_data/)
 class which loads (and if required also downloads) the data. While the training
-and the development sets are in correct case, the test set is lowercased.
+and the development sets are in the correct case, the test set is lowercased.
 
 This is an _open-data task_, where you submit only the uppercased test set
 together with the training script (which will not be executed, it will be
@@ -19,9 +19,9 @@ a solution achieving at least _98.5%_ accuracy gets 4 basic points; the
 remaining 5 bonus points are distributed depending on the relative ordering of your
 solutions. The accuracy is computed per-character and can be evaluated
 programmatically using the [UppercaseData.evaluate_file](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/uppercase_data/#npfl138.datasets.uppercase_data.UppercaseData.evaluate_file)
-method, or by running
+method, or by running the
 `python3 -m npfl138.datasets.uppercase_data --evaluate PREDICTIONS_FILE_PATH --dataset dev/test`
-command; however, only the `--dataset dev` produces valid accuracy since you do not have
+command; however, only `--dataset dev` produces valid accuracy since you do not have
 the test set annotations.
 
 Start with the

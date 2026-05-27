@@ -6,7 +6,7 @@ This is a preparatory assignment for `svhn_competition`. The goal is to
 implement several bounding box manipulation routines in the
 [bboxes_utils.py](https://github.com/ufal/npfl138/tree/master/labs/06/bboxes_utils.py)
 module. Notably, you need to implement the following methods:
-- `bboxes_to_rcnn`: convert given bounding boxes to a R-CNN-like
+- `bboxes_to_rcnn`: convert given bounding boxes to an R-CNN-like
   representation relative to the given anchors;
 - `bboxes_from_rcnn`: convert R-CNN-like representations relative to
   given anchors back to bounding boxes;
@@ -15,8 +15,8 @@ module. Notably, you need to implement the following methods:
   is described in the template).
 
 The [bboxes_utils.py](https://github.com/ufal/npfl138/tree/master/labs/06/bboxes_utils.py)
-contains simple unit tests, which are evaluated when executing the module,
-which you can use to check the validity of your implementation. Note that
+template contains simple unit tests, which are evaluated when executing the module
+and which you can use to check the validity of your implementation. Note that
 the template does not contain type annotations because Python typing system is
 not flexible enough to describe the tensor shape changes.
 

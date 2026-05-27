@@ -24,7 +24,7 @@ def main(args: argparse.Namespace) -> tuple[float, float, float]:
     # NumPy array should contain only data, not any mapping. Alternatively,
     # the NumPy array might be created after loading the model distribution.
 
-    # TODO: Load model distribution, each line `string \t probability`.
+    # TODO: Load the model distribution, each line `string \t probability`.
     with open(args.model_path, "r") as model:
         for line in model:
             line = line.rstrip("\n")
@@ -39,10 +39,10 @@ def main(args: argparse.Namespace) -> tuple[float, float, float]:
 
     # TODO: Compute cross-entropy H(data distribution, model distribution).
     # When some data distribution elements are missing in the model distribution,
-    # the resulting crossentropy should be `np.inf`.
+    # the resulting cross-entropy should be `np.inf`.
     crossentropy = ...
 
-    # TODO: Compute KL-divergence D_KL(data distribution, model distribution),
+    # TODO: Compute KL divergence D_KL(data distribution, model distribution),
     # again using `np.inf` when needed.
     kl_divergence = ...
 

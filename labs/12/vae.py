@@ -24,7 +24,7 @@ parser.add_argument("--z_dim", default=100, type=int, help="Dimension of Z.")
 
 class Dataset(npfl138.TransformedDataset):
     def transform(self, example):
-        image = example["image"]  # a torch.Tensor with torch.uint8 values in [0, 255] range
+        image = example["image"]  # a torch.Tensor with torch.uint8 values in the [0, 255] range
         image = image.to(torch.float32) / 255  # image converted to float32 and rescaled to [0, 1]
         return image, image  # return the image both as the input and the target
 
@@ -46,15 +46,15 @@ class VAE(npfl138.TrainableModule):
         # - generates an output of shape `[2 * args.z_dim]` by applying an output
         #   linear layer. During training, this output will be split into two,
         #   the `z_mean` and then the logarithm of `z_sd`.
-        # You can use both the lazy linear layers or the regular linear layers.
+        # You can use both the lazy linear layers and the regular linear layers.
         self.encoder = ...
 
         # TODO: Define `self.decoder` as a `torch.nn.Sequential`, which
-        # - takes vectors of `[args.z_dim]` shape on input;
+        # - takes vectors of shape `[args.z_dim]` on the input;
         # - applies `len(args.decoder_layers)` linear layers with ReLU activation,
         #   i-th layer with `args.decoder_layers[i]` units;
         # - applies an output linear layer with `MNIST.C * MNIST.H * MNIST.W` units
-        #   and sigmoid activation;
+        #   and a sigmoid activation;
         # - uses `torch.nn.Unflatten` to reshape the output to `[MNIST.C, MNIST.H, MNIST.W]`.
         self.decoder = ...
 
@@ -66,7 +66,7 @@ class VAE(npfl138.TrainableModule):
         # is the second half of the output of the encoder passed through `torch.exp`.
 
         # TODO: Sample `z` from a Normal distribution with mean `z_mean` and
-        # standard deviation `z_sd`. Start by creating corresponding
+        # standard deviation `z_sd`. Start by creating the corresponding
         # distribution `torch.distributions.Normal(...)` and then run the
         # `rsample()` method. The `rsample()` method performs sampling using
         # the reparametrization trick, or fails when it is not supported
@@ -77,16 +77,16 @@ class VAE(npfl138.TrainableModule):
         # TODO: Compute `reconstruction_loss` using binary classification loss from `torch.nn.functional`.
         reconstruction_loss = ...
 
-        # TODO: Compute `latent_loss` as a mean of KL divergences of suitable distributions.
-        # Note that PyTorch offers `torch.distributions.kl.kl_divergence` computing
-        # the exact KL divergence of two given distributions.
+        # TODO: Compute `latent_loss` as the mean of KL divergences of suitable distributions.
+        # Note that PyTorch offers `torch.distributions.kl.kl_divergence` for computing
+        # the exact KL divergence between two given distributions.
         latent_loss = ...
 
-        # TODO: Compute `loss` as a sum of the `reconstruction_loss` (multiplied by the number
-        # of pixels in an image) and the `latent_loss` (multiplied by self._z_dim).
+        # TODO: Compute `loss` as the sum of `reconstruction_loss` (multiplied by the number
+        # of pixels in an image) and `latent_loss` (multiplied by self._z_dim).
         loss = ...
 
-        # TODO: Perform a single step of the `self.optimizer` (both encoder and
+        # TODO: Perform a single step of `self.optimizer` (both encoder and
         # decoder parameters should be updated).
         ...
 
@@ -104,7 +104,7 @@ class VAE(npfl138.TrainableModule):
 
             # Generate GRIDxGRID interpolated images.
             if self._z_dim == 2:
-                # Use 2D grid of Z values for interpolated images.
+                # Use a 2D grid of Z values for interpolated images.
                 starts = torch.stack([-2 * torch.ones(GRID), torch.linspace(-2., 2., GRID)], -1)
                 ends = torch.stack([2 * torch.ones(GRID), torch.linspace(-2., 2., GRID)], -1)
             else:

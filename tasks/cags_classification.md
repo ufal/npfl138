@@ -2,7 +2,7 @@
 #### Date: Deadline: Apr 01, 22:00
 #### Points: 4 points+5 bonus
 
-The goal of this assignment is to use a pretrained model, for example the
+The goal of this assignment is to use a pretrained model, for example
 EfficientNetV2-B0, to achieve the best accuracy in CAGS classification.
 
 The [CAGS dataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/cags) consists
@@ -31,4 +31,4 @@ achieving at least _93%_ test set accuracy gets 4 points; the remaining
 
 You may want to start with the
 [cags_classification.py](https://github.com/ufal/npfl138/tree/master/labs/05/cags_classification.py)
-template which generates the test set annotation in the required format.
+template which generates the test set annotations in the required format.

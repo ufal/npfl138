@@ -9,7 +9,7 @@ pass through a 2D convolutional layer. Start with the
 [cnn_manual.py](https://github.com/ufal/npfl138/tree/master/labs/05/cnn_manual.py)
 template, which constructs a series of 2D convolutional layers with ReLU
 activation and `valid` padding, specified in the `args.cnn` option.
-The `args.cnn` contains comma-separated layer specifications in the format
+`args.cnn` contains comma-separated layer specifications in the format
 `channels-kernel_size-stride`.
 
 In this assignment, we use the `channels_last` (`NHWC`) format; therefore,
@@ -18,12 +18,12 @@ kernel has shape `[kernel_height, kernel_width, in_channels, out_channels]`.
 These shapes are consistent with the course slides, but are different from the
 native PyTorch format.
 
-Of course, you cannot use any PyTorch convolutional operation (including
+Of course, you cannot use any PyTorch convolutional operations (including
 `torch.nn.{Fold/Unfold}` and `torch.nn.functional.{fold/unfold}`;
 `torch.Tensor.unfold` is fine) nor the `.backward()` for gradient computation.
 Instead, implement convolution and gradient computations using matrix
 multiplication and other basic operations (element-wise multiplication,
-summation, etc; if you want, you can read about
+summation, etc.; if you want, you can read about
 [torch.einsum](https://docs.pytorch.org/docs/stable/generated/torch.einsum.html)).
 
 To make debugging easier, the template supports a `--verify` option, which

@@ -12,5 +12,5 @@
 #### Lecture assignment: reading_comprehension
 
 - Transformer architecture [[Attention Is All You Need](https://arxiv.org/abs/1706.03762)]
-- _ELMO [[Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, Luke Zettlemoyer: Deep contextualized word representations](https://arxiv.org/abs/1802.05365)]_
+- _ELMo [[Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, Luke Zettlemoyer: Deep contextualized word representations](https://arxiv.org/abs/1802.05365)]_
 - BERT [[BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)]

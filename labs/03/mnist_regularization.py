@@ -24,7 +24,7 @@ parser.add_argument("--weight_decay", default=0, type=float, help="Weight decay 
 
 class Dataset(npfl138.TransformedDataset):
     def transform(self, example):
-        image = example["image"]  # a torch.Tensor with torch.uint8 values in [0, 255] range
+        image = example["image"]  # a torch.Tensor with torch.uint8 values in the [0, 255] range
         image = image.to(torch.float32) / 255  # image converted to float32 and rescaled to [0, 1]
         label = example["label"]  # a torch.Tensor with a single integer representing the label
         return image, label  # return an (input, target) pair
@@ -42,7 +42,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
     dev = torch.utils.data.DataLoader(Dataset(mnist.dev), batch_size=args.batch_size)
 
     # TODO: Incorporate dropout to the model below. Namely, add a `torch.nn.Dropout`
-    # layer with `args.dropout` rate after the `Flatten` layer and after each
+    # layer with rate `args.dropout` after the `Flatten` layer and after each
     # `Linear` hidden layer (but not after the output `Linear` layer).
 
     model = torch.nn.Sequential()
@@ -56,7 +56,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
     # Wrap the model in the TrainableModule.
     model = npfl138.TrainableModule(model)
 
-    # TODO: Create a `torch.optim.AdamW`, using the default learning rate,
+    # TODO: Create `torch.optim.AdamW`, using the default learning rate,
     # and specify weight decay of strength `args.weight_decay`.
     #
     # However, the bias parameters should not be decayed. To achieve this,

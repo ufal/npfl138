@@ -51,7 +51,7 @@ def bboxes_iou(xs: torch.Tensor, ys: torch.Tensor) -> torch.Tensor:
 
 
 def bboxes_to_rcnn(anchors: torch.Tensor, bboxes: torch.Tensor) -> torch.Tensor:
-    """Convert `bboxes` to a R-CNN-like representation relative to `anchors`.
+    """Convert `bboxes` to an R-CNN-like representation relative to `anchors`.
 
     The `anchors` and `bboxes` are arrays of four-tuples (top, left, bottom, right);
     you can use the TOP, LEFT, BOTTOM, RIGHT constants as indices of the
@@ -64,7 +64,7 @@ def bboxes_to_rcnn(anchors: torch.Tensor, bboxes: torch.Tensor) -> torch.Tensor:
     - log(bbox_width / anchor_width)
 
     If the `anchors.shape` is `[anchors_len, 4]` and `bboxes.shape` is `[anchors_len, 4]`,
-    the output shape is `[anchors_len, 4]`.
+    then the output shape is `[anchors_len, 4]`.
     """
     # TODO: Implement according to the docstring.
     raise NotImplementedError()
@@ -74,7 +74,7 @@ def bboxes_from_rcnn(anchors: torch.Tensor, rcnns: torch.Tensor) -> torch.Tensor
     """Convert R-CNN-like representation relative to `anchor` to a `bbox`.
 
     If the `anchors.shape` is `[anchors_len, 4]` and `rcnns.shape` is `[anchors_len, 4]`,
-    the output shape is `[anchors_len, 4]`.
+    then the output shape is `[anchors_len, 4]`.
     """
     # TODO: Implement according to the docstring.
     raise NotImplementedError()
@@ -100,7 +100,7 @@ def bboxes_training(
       `(center_y, center_x, height, width)` representing the gold bbox of
       a chosen object using parametrization of R-CNN; zeros if no gold object
       was assigned to the anchor
-    If the `anchors` shape is `[anchors_len, 4]`, the `anchor_classes` shape
+    If the `anchors` shape is `[anchors_len, 4]`, then the `anchor_classes` shape
     is `[anchors_len]` and the `anchor_bboxes` shape is `[anchors_len, 4]`.
 
     Algorithm:

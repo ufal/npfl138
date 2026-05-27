@@ -2,10 +2,10 @@
 #### Date: Deadline: Apr 22, 22:00
 #### Points: 4 points+5 bonus
 
-This assignment is a competition task in speech recognition area. Specifically,
+This assignment is a competition task in the speech recognition area. Specifically,
 your goal is to predict a sequence of letters given a spoken utterance.
-We will be using Czech recordings from the [Common Voice](https://commonvoice.mozilla.org/),
-with input sound waves passed through the usual preprocessing: computing
+We will be using Czech recordings from the [Common Voice](https://commonvoice.mozilla.org/) dataset,
+with input sound waves passed through the usual preprocessing – computing
 [Mel-frequency cepstral coefficients (MFCCs)](https://en.wikipedia.org/wiki/Mel-frequency_cepstrum).
 The dataset can be loaded by the [CommonVoiceCs](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/common_voice_cs/)
 class, which downloads it when necessary (note that it has 200MB, so it might take a while).
@@ -13,20 +13,20 @@ Furthermore, you can listen to the
 [development portion of the dataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/demos/common_voice_cs_dev.html).
 Lastly, the whole dataset is available for
 [download in MP3 format](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/datasets/common_voice_cs_mp3.tar)
-(but you are not expected to download that, only if you would like to perform some
+(but you are not expected to download it, only if you would like to perform some
 custom preprocessing). See the documentation of the dataset to see how the
 original preprocessing can be performed.
 
-Additional following data can be utilized in this assignment:
+The following additional data can be utilized in this assignment:
 - You can use any _unannotated_ text data (Wikipedia, Czech National Corpus, …),
   and also any pre-trained word embeddings or language models (assuming they
-  were trained on plain texts).
+  were trained on plain text).
 - You can use any _unannotated_ speech data.
 
 The task is a [_competition_](https://ufal.mff.cuni.cz/courses/npfl138/2526-summer#competitions).
 The evaluation is performed by computing the edit distance to the gold letter
-sequence, normalized by its length (a corresponding metric
-`EditDistanceMetric` is provided by [CommonVoiceCs](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/common_voice_cs/).
+sequence, normalized by its length (a corresponding `EditDistanceMetric`
+metric is provided by [CommonVoiceCs](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/common_voice_cs/)).
 Everyone who submits a solution with at most 45% test set edit distance
 gets 4 points; the remaining 5 bonus points are distributed
 depending on the relative ordering of your solutions. You can evaluate the predictions as usual using the
