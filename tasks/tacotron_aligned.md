@@ -3,9 +3,9 @@
 #### Points: 1 points
 #### Tests: tacotron_aligned_tests
 
-Extend your solution to the `tacotron` assignment to include also the alignment
-loss between the whole mel spectrogram and input text, implemented by using
-the `torch.nn.CTCLoss`.
+Extend your solution to the `tacotron` assignment to also include the alignment
+loss between the whole mel spectrogram and the input text, implemented by using
+`torch.nn.CTCLoss`.
 
 Start with the [tacotron_aligned.py](https://github.com/ufal/npfl138/tree/master/labs/14/tacotron_aligned.py)
 template, which contains just one more TODO comment compared to the

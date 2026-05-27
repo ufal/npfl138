@@ -19,5 +19,5 @@ your agent in ReCodEx using the provided environment only.**
 Your goal is to reach an average return of 475 during 100 evaluation episodes.
 
 During evaluation in ReCodEx, two different random seeds will be employed, and
-you need to reach the required return on all of them. Time limit for each test
+you need to reach the required return on both of them. Time limit for each test
 is 5 minutes.

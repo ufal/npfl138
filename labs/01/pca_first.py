@@ -44,8 +44,8 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
     mean = ...
 
     # TODO: Compute the covariance matrix. The covariance matrix is
-    #   (data - mean)^T @ (data - mean) / data.shape[0]
-    # where transpose can be computed using `torch.transpose` or `torch.t` and
+    #   (data - mean)^T @ (data - mean) / data.shape[0],
+    # where transposition can be computed using `torch.transpose` or `torch.t` and
     # matrix multiplication using either Python operator @ or `torch.matmul`.
     cov = ...
 
@@ -63,7 +63,7 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
         #    The matrix-vector multiplication can be computed as regular matrix multiplication
         #    or using `torch.mv`.
         # 2. s = l2_norm(v)
-        #    The l2_norm can be computed using for example `torch.linalg.vector_norm`.
+        #    The L2 norm can be computed using for example `torch.linalg.vector_norm`.
         # 3. v = v / s
         ...
 

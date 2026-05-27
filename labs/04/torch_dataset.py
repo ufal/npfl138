@@ -30,11 +30,11 @@ class ManualDataset(torch.utils.data.Dataset):
         self._augmentation_fn = augmentation_fn
 
     def __len__(self) -> int:
-        # TODO: Return the length of the dataset; you can use `len` on the `self._dataset`.
+        # TODO: Return the length of the dataset; you can use `len` on `self._dataset`.
         ...
 
     def __getitem__(self, index: int) -> tuple[torch.Tensor, torch.Tensor]:
-        # TODO: Start by indexing the `self._dataset` with `index` to get
+        # TODO: Start by indexing `self._dataset` with `index` to get
         # the `index`-th example. It is a dictionary with keys "image" and "label".
         # Return an (image, label)` pair, where
         # - the original image needs to be converted to `torch.float32`, divided
@@ -43,20 +43,20 @@ class ManualDataset(torch.utils.data.Dataset):
         ...
 
 
-# We can also make our life slightly easier by using the `npfl138.TransformedDataset`.
+# We can also make our life slightly easier by using `npfl138.TransformedDataset`.
 class TransformedDataset(npfl138.TransformedDataset):
     def __init__(self, dataset: CIFAR10.Dataset, augmentation_fn=None) -> None:
         super().__init__(dataset)
         self._augmentation_fn = augmentation_fn
 
     def transform(self, example: dict[str, torch.Tensor]) -> tuple[torch.Tensor, torch.Tensor]:
-        # TODO: Here the `example` is already the selected example from the underlying
-        # dataset; you now only need to process it as in the `ManualDataset`, so
+        # TODO: Here `example` is already the selected example from the underlying
+        # dataset; you now only need to process it as in `ManualDataset`, so
         # (1) convert to `torch.float32`, (2) divide by 255, and (3) apply the
-        # `self._augmentation_fn` if it is not `None`; finally, return (image, label) pair.
+        # `self._augmentation_fn` if it is not `None`; finally, return an (image, label) pair.
         ...
 
-    # The `npfl138.TransformedDataset` also allows us to define an additional batch-wise transformation
+    # `npfl138.TransformedDataset` also allows us to define an additional batch-wise transformation
     # `transform_batch`, which is applied to the whole batch after collating it from individual examples.
     # However, the dataloader must be then created by either:
     # - using the `npfl138.TransformedDataset.dataloader` method, or
@@ -100,7 +100,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
         # Construct a sequence of augmentation transformations from `torchvision.transforms.v2`.
         augmentation_fn = v2.Compose([
             # TODO: Add the following transformations:
-            # - first create a `v2.RandomResize` that scales the image to
+            # - first create `v2.RandomResize` that scales the image to
             #   random size in range [28, 36],
             # - then add `v2.Pad` that pads the image with 4 pixels on each side,
             # - then add `v2.RandomCrop` that chooses a random crop of size 32x32,
@@ -111,7 +111,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
     else:
         augmentation_fn = None
 
-    # We now create the dataset; we use both the `ManualDataset` and the `TransformedDataset`,
+    # We now create the dataset; we use both `ManualDataset` and `TransformedDataset`,
     # but in practice you would use only one of them.
     train = ManualDataset(cifar.train, augmentation_fn)
     dev = TransformedDataset(cifar.dev)
@@ -124,7 +124,7 @@ def main(args: argparse.Namespace) -> dict[str, float]:
         print(f"Saved first {GRID * GRID} training imaged to logs/{TAG}")
 
     # We now create the `torch.utils.data.DataLoader` instances. For the `train` dataset,
-    # we create it manually, for `dev` we use the `TransformedDataset.dataloader`.
+    # we create it manually, for `dev` we use `TransformedDataset.dataloader`.
     train = torch.utils.data.DataLoader(
         train, batch_size=args.batch_size, shuffle=True,
         num_workers=args.dataloader_workers, persistent_workers=args.dataloader_workers > 0)

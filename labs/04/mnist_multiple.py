@@ -29,9 +29,9 @@ class DatasetOfPairs(torch.utils.data.Dataset):
         return ...
 
     def __getitem__(self, index: int) -> tuple[tuple[torch.Tensor, torch.Tensor], tuple[torch.Tensor, torch.Tensor]]:
-        # TODO: Given an `index`, generate an example composed of two input examples.
+        # TODO: Given `index`, generate an example composed of two input examples.
         # Notably, considering examples `self._dataset[2 * index]` and `self._dataset[2 * index + 1]`,
-        # each being a dictionary with keys "image" and "label", return a pair `(input, output)` with
+        # each being a dictionary with keys "image" and "label", return an `(input, output)` pair with
         # - `input` being a pair of images, each converted to `torch.float32` and divided by 255,
         # - `output` being a pair of labels.
         return ...
@@ -62,10 +62,11 @@ class Model(npfl138.TrainableModule):
         #   - concatenating the two 200-dimensional image feature vectors,
         #   - processing them using another 200-neuron ReLU linear layer,
         #   - computing one output using a linear layer and the **sigmoid** activation;
-        # - then, classify the computed representation FV of the first image using
-        #   a linear layer into 10 classes;
-        # - then, classify the computed representation FV of the second image using
-        #   the same layer (identical, i.e., with shared weights) into 10 classes;
+        # - then, classify the computed representation feature vector of the first
+        #   image using a linear layer into 10 classes;
+        # - then, classify the computed representation feature vector of the second
+        #   image using the same layer (identical, i.e., with shared weights) into
+        #   10 classes;
         # - finally, compute _indirect comparison_, a tensor of bools indicating
         #   whether the first digit is greater than the second by comparing the
         #   most probable digits predicted by the above two outputs.
@@ -84,8 +85,8 @@ class Model(npfl138.TrainableModule):
         digit_1_true, digit_2_true = y_true
 
         # TODO: Compute the required losses using their implementations from `torch.nn`.
-        # Note that the `direct_comparison_pred` is really a probability (sigmoid was applied),
-        # while the `digit_1_pred` and `digit_2_pred` are logits of 10-class classification.
+        # Note that `direct_comparison_pred` is really a probability (sigmoid was applied),
+        # while `digit_1_pred` and `digit_2_pred` are logits of a 10-class classification.
         direct_comparison_loss = ...
         digit_1_loss = ...
         digit_2_loss = ...
@@ -93,12 +94,12 @@ class Model(npfl138.TrainableModule):
         return direct_comparison_loss + digit_1_loss + digit_2_loss
 
     def compute_metrics(self, y_pred, y_true, *inputs):
-        # The `compute_metrics` can override metric computation for the model. We start by
-        # unpacking the multiple outputs of the model and the multiple targets.
+        # The `compute_metrics` method can override metric computation for the model. We start
+        # by unpacking the multiple outputs of the model and the multiple targets.
         direct_comparison_pred, digit_1_pred, digit_2_pred, indirect_comparison_pred = y_pred
         digit_1_true, digit_2_true = y_true
 
-        # TODO: Update two metrics -- the `direct_comparison` and the `indirect_comparison`.
+        # TODO: Update two metrics -- `direct_comparison` and `indirect_comparison`.
         self.metrics["direct_comparison"].update(...)
         self.metrics["indirect_comparison"].update(...)
 

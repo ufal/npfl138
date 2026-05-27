@@ -29,7 +29,7 @@ def main(args: argparse.Namespace) -> None:
     logdir = npfl138.format_logdir("logs/{file-}{timestamp}{-config}", **vars(args))
 
     # Load the data. The individual examples are dictionaries with the keys:
-    # - "image", a `[3, SIZE, SIZE]` tensor of `torch.uint8` values in [0-255] range,
+    # - "image", a `[3, SIZE, SIZE]` tensor of `torch.uint8` values in the [0-255] range,
     # - "classes", a `[num_digits]` PyTorch vector with classes of image digits,
     # - "bboxes", a `[num_digits, 4]` PyTorch vector with bounding boxes of image digits.
     # The `decode_on_demand` argument can be set to `True` to save memory and decode

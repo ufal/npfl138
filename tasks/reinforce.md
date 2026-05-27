@@ -13,7 +13,7 @@ properties:
 - `reset() → new_state, info`: starts a new episode, returning the new
   state and additional environment-specific information
 - `step(action) → new_state, reward, terminated, truncated, info`: performs the
-  chosen action in the environment, returning the new state, obtained reward,
+  chosen action in the environment, returning the new state, the obtained reward,
   boolean flags indicating a terminal state and episode truncation, and
   additional environment-specific information
 
@@ -31,5 +31,5 @@ Start with the [reinforce.py](https://github.com/ufal/npfl138/tree/master/labs/1
 template, which provides a simple network implementation in PyTorch.
 
 During evaluation in ReCodEx, two different random seeds will be employed, and
-you need to reach the required return on all of them. Time limit for each test
+you need to reach the required return on both of them. Time limit for each test
 is 5 minutes.

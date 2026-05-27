@@ -31,7 +31,7 @@ def main(env: npfl138.rl_utils.EvaluationEnv, args: argparse.Namespace) -> None:
         while True:
             state, done = env.reset(start_evaluation=True)[0], False
             while not done:
-                # TODO: Choose a greedy action.
+                # TODO: Choose the greedy action.
                 action = ...
                 state, reward, terminated, truncated, _ = env.step(action)
                 done = terminated or truncated

@@ -6,15 +6,15 @@
 
 The goal of this exercise is to familiarize yourself with Python, NumPy and the ReCodEx
 submission system. Start with the
-[numpy_entropy.py](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy.py).
+[numpy_entropy.py](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy.py) template.
 
 Load a file specified in `args.data_path`, whose lines consist of data points of our
 dataset, and load a file specified in `args.model_path`, which describes a model probability distribution,
-with each line being a tab-separated pair of _(data point, probability)_.
+with each line being a tab-separated _(data point, probability)_ pair.
 
 Then compute the following quantities using NumPy, and print them each on
 a separate line rounded on two decimal places (or `inf` for positive infinity,
-which happens when an element of data distribution has zero probability
+which happens when an element of a data distribution has zero probability
 under the model distribution):
 - entropy _H(data distribution)_
 - cross-entropy _H(data distribution, model distribution)_
@@ -39,12 +39,12 @@ KL divergence: inf nats
 ```
 
 3. This test uses data available only in ReCodEx. They are analogous
-   to the [numpy_entropy_data_3.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_data_3.txt)
+   to [numpy_entropy_data_3.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_data_3.txt)
    and [numpy_entropy_model_3.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_model_3.txt)
    but are generated with a different random seed.
 
 4. This test uses data available only in ReCodEx. They are analogous
-   to the [numpy_entropy_data_4.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_data_4.txt)
+   to [numpy_entropy_data_4.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_data_4.txt)
    and [numpy_entropy_model_4.txt](https://github.com/ufal/npfl138/tree/master/labs/01/numpy_entropy_model_4.txt)
    but are generated with a different random seed.
 #### Tests End:

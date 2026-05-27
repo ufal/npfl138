@@ -25,15 +25,16 @@ class Convolution:
     def __init__(
         self, channels: int, kernel_size: int, stride: int, input_shape: list[int], verify: bool,
     ) -> None:
-        # Create a convolutional layer with the given arguments and given input shape.
-        # Note that we use NHWC format, so the MNIST images have shape [28, 28, 1].
+        # Create a convolutional layer with the given arguments and the given input shape.
+        # Note that we use the NHWC format, so the MNIST images have shape [28, 28, 1].
         self._channels = channels
         self._kernel_size = kernel_size
         self._stride = stride
         self._verify = verify
 
         # Here the kernel and bias variables are created, the kernel has shape
-        # [kernel_height, kernel_width, input_channels, output_channels], bias [output_channels].
+        # [kernel_height, kernel_width, input_channels, output_channels],
+        # bias has shape [output_channels].
         self._kernel = torch.nn.Parameter(torch.randn(kernel_size, kernel_size, input_shape[2], channels) * 0.1)
         self._bias = torch.nn.Parameter(torch.zeros(channels))
 
@@ -47,7 +48,7 @@ class Convolution:
         # iterate through the kernel size.
         output = ...
 
-        # If requested, verify that `output` contains a correct value.
+        # If requested, verify that `output` contains the correct value.
         if self._verify:
             reference = torch.relu(torch.nn.functional.conv2d(
                 inputs.movedim(-1, 1), self._kernel.permute(3, 2, 0, 1), self._bias, self._stride)).movedim(1, -1)
@@ -152,7 +153,7 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
     # Do not compute gradients in this assignment.
     torch.set_grad_enabled(False)
 
-    # Load data, using only 5 000 training images.
+    # Load data, using only 5,000 training images.
     mnist = MNIST(sizes={"train": 5_000})
 
     # Create the model.

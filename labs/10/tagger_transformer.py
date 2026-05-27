@@ -40,7 +40,7 @@ class Dataset(npfl138.TransformedDataset):
         word_ids, tag_ids = zip(*batch)
         # TODO(tagger_we): Combine `word_ids` into a single tensor, padding shorter
         # sequences to length of the longest sequence in the batch with zeros
-        # using `torch.nn.utils.rnn.pad_sequence` with `batch_first=True` argument.
+        # using `torch.nn.utils.rnn.pad_sequence` with the `batch_first=True` argument.
         word_ids = ...
         # TODO(tagger_we): Process `tag_ids` analogously to `word_ids`.
         tag_ids = ...
@@ -64,9 +64,9 @@ class Model(npfl138.TrainableModule):
         def __init__(self, dim: int, heads: int) -> None:
             super().__init__()
             self.dim, self.heads = dim, heads
-            # TODO: Create weight matrices W_Q, W_K, W_V, and W_O; each a module parameter
-            # `torch.nn.Parameter` of shape `[dim, dim]`. The weights should be initialized using
-            # the `torch.nn.init.xavier_uniform_` in the same order the matrices are listed above.
+            # TODO: Create weight matrices W_Q, W_K, W_V, and W_O; each a `torch.nn.Parameter`
+            # module parameter of shape `[dim, dim]`. The weights should be initialized using
+            # `torch.nn.init.xavier_uniform_` in the same order the matrices are listed above.
             raise NotImplementedError()
 
         def forward(self, inputs: torch.Tensor, mask: torch.Tensor) -> torch.Tensor:
@@ -80,10 +80,10 @@ class Model(npfl138.TrainableModule):
             # TODO: Continue by computing the self-attention weights as Q @ K^T,
             # normalizing by the square root of `dim // heads`.
 
-            # TODO: Apply the softmax, but including a suitable mask ignoring all padding words.
+            # TODO: Apply softmax, but including a suitable mask ignoring all padding words.
             # The original `mask` is a bool matrix of shape `[batch_size, max_sentence_len]`
             # indicating which words are valid (nonzero value) or padding (zero value).
-            # To mask an input to softmax, replace it by -1e9 (theoretically we should use
+            # To mask an input to softmax, replace it by `-1e9` (theoretically we should use
             # minus infinity, but `torch.exp(-1e9)` is also zero because of limited precision).
 
             # TODO: Finally,
@@ -97,12 +97,12 @@ class Model(npfl138.TrainableModule):
     class PositionalEmbedding(torch.nn.Module):
         def forward(self, inputs: torch.Tensor) -> torch.Tensor:
             # TODO: Compute the sinusoidal positional embeddings. Assuming the embeddings have
-            # a shape `[max_sentence_len, dim]` with `dim` even, and for `0 <= i < dim/2`:
+            # shape `[max_sentence_len, dim]` with `dim` even, and for `0 <= i < dim/2`:
             # - the value on index `[pos, i]` should be
             #     `sin(pos / 10_000 ** (2 * i / dim))`
             # - the value on index `[pos, dim/2 + i]` should be
             #     `cos(pos / 10_000 ** (2 * i / dim))`
-            # - the `0 <= pos < max_sentence_len` is the sentence index.
+            # - `0 <= pos < max_sentence_len` is the sentence index.
             # This order is the same as in the visualization on the slides, but
             # different from the original paper where `sin` and `cos` interleave.
             raise NotImplementedError()
@@ -114,7 +114,7 @@ class Model(npfl138.TrainableModule):
             # - the positional embedding layer;
             # - the required number of transformer layers, each consisting of
             #   - a layer normalization and a self-attention layer followed by a dropout layer,
-            #   - a layer normalization and a FFN layer followed by a dropout layer.
+            #   - a layer normalization and an FFN layer followed by a dropout layer.
             # During ReCodEx evaluation, the order of layer creation is not important,
             # but if you want to get the same results as on the course website, create
             # the layers in the order they are called in the `forward` method.
@@ -122,10 +122,10 @@ class Model(npfl138.TrainableModule):
         def forward(self, inputs: torch.Tensor, mask: torch.Tensor) -> torch.Tensor:
             # TODO: First compute the positional embeddings.
 
-            # TODO: Add the positional embeddings to the `inputs` and then
+            # TODO: Add the positional embeddings to `inputs` and then
             # perform the given number of transformer layers, composed of
             # - a self-attention sub-layer, followed by
-            # - a FFN sub-layer.
+            # - an FFN sub-layer.
             # In each sub-layer, pass the input through LayerNorm, then compute
             # the corresponding operation, apply dropout, and finally add this result
             # to the original sub-layer input. Note that the given `mask` should be
@@ -135,7 +135,7 @@ class Model(npfl138.TrainableModule):
     def __init__(self, args: argparse.Namespace, train: MorphoDataset.Dataset) -> None:
         super().__init__()
 
-        # Create all needed layers.
+        # Create all the needed layers.
         # TODO(tagger_we): Create a `torch.nn.Embedding` layer, embedding the word ids
         # from `train.words.string_vocab` to dimensionality `args.we_dim`.
         self._word_embedding = ...
@@ -149,14 +149,14 @@ class Model(npfl138.TrainableModule):
         self._output_layer = ...
 
     def forward(self, word_ids: torch.Tensor) -> torch.Tensor:
-        # TODO(tagger_we): Start by embedding the `word_ids` using the word embedding layer.
+        # TODO(tagger_we): Start by embedding `word_ids` using the word embedding layer.
         hidden = ...
 
         # TODO: Process the embedded words through the transformer. As the second argument,
         # pass the attention mask `word_ids != MorphoDataset.PAD`.
         hidden = ...
 
-        # TODO(tagger_we): Pass `hidden` through the output layer. Such an output has a shape
+        # TODO(tagger_we): Pass `hidden` through the output layer. Such an output has shape
         # `[batch_size, sequence_length, num_tags]`, but the loss and the metric expect
         # the `num_tags` dimension to be in front (`[batch_size, num_tags, sequence_length]`),
         # so you need to reorder the dimensions.

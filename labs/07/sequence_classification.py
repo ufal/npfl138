@@ -25,7 +25,7 @@ parser.add_argument("--train_sequences", default=10_000, type=int, help="Number 
 # If you add more arguments, ReCodEx will keep them with your default values.
 
 
-# Dataset for generating sequences of random integers in the range [0, sequence_dim - 1],
+# Dataset for generating sequences of random integers in the [0, sequence_dim - 1] range,
 # with labels indicating the parity of the sum of the integers in the sequence.
 class ParitySequences:
     def __init__(self, sequences_num: int, sequence_length: int, sequence_dim: int, seed: int) -> None:
@@ -60,11 +60,11 @@ class Model(npfl138.TrainableModule):
         ...
 
         # TODO: If `args.hidden_layer` is nonzero, the result of the RNN should be processed
-        # by a fully connected layer with `args.hidden_layer` units and ReLU activation.
+        # by a fully connected layer with `args.hidden_layer` units and a ReLU activation.
         ...
 
         # TODO: The predictions are generated using a fully connected output layer
-        # with one output and sigmoid activation.
+        # with one output and a sigmoid activation.
         ...
 
     def forward(self, inputs: torch.Tensor) -> torch.Tensor:

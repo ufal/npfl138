@@ -27,34 +27,34 @@ class Agent:
     def __init__(self, env: npfl138.rl_utils.EvaluationEnv, args: argparse.Namespace) -> None:
         # TODO: Create a suitable model of the policy. Note that the shape
         # of the observations is available in `env.observation_space.shape`
-        # and the number of actions in `env.action_space.n`.
+        # and the number of actions is available in `env.action_space.n`.
         #
-        # Apart from the policy network defined in `reinforce` assignment, you
-        # also need a value network for computing the baseline, returning
+        # Apart from the policy network defined in the `reinforce` assignment,
+        # you also need a value network for computing the baseline, returning
         # a single output with no activation.
         #
-        # Using Adam optimizer for both models is a good default.
+        # Using the Adam optimizer for both models is a good default.
         raise NotImplementedError()
 
-    # The `npfl138.rl_utils.typed_torch_function` automatically converts input arguments
-    # to PyTorch tensors of given type, and converts the result to a NumPy array.
+    # The `npfl138.rl_utils.typed_torch_function` decorator automatically converts input arguments
+    # to PyTorch tensors of the given type, and converts the result to a NumPy array.
     @npfl138.rl_utils.typed_torch_function(device, torch.float32, torch.int64, torch.float32)
     def train(self, states: torch.Tensor, actions: torch.Tensor, returns: torch.Tensor) -> None:
         # TODO: Perform training.
         # You should:
         # - compute the predicted baseline using the baseline model,
-        # - train the policy model, using `returns` - `predicted_baseline` as
-        #   advantage estimate,
+        # - train the policy model, using `returns - predicted_baseline` as
+        #   the advantage estimate,
         # - train the baseline model to predict `returns`.
         #
-        # Note that predicting returns in 0-500 range is challenging for the network, given
+        # Note that predicting returns in the 0–500 range is challenging for the network, given
         # that the default initialization tries to keep variance -- it might be helpful for
         # the network if you predict returns in a smaller range.
         raise NotImplementedError()
 
     @npfl138.rl_utils.typed_torch_function(device, torch.float32)
     def predict(self, states: torch.Tensor) -> np.ndarray:
-        # TODO(reinforce): Define the prediction method returning policy probabilities.
+        # TODO(reinforce): Define the prediction method returning the policy probabilities.
         raise NotImplementedError()
 
 
@@ -74,9 +74,9 @@ def main(env: npfl138.rl_utils.EvaluationEnv, args: argparse.Namespace) -> None:
             states, actions, rewards = [], [], []
             state, done = env.reset()[0], False
             while not done:
-                # TODO(reinforce): Choose `action` according to probabilities
-                # distribution (see `np.random.choice`), which you
-                # can compute using `agent.predict` and current `state`.
+                # TODO: Choose `action` according to the distribution
+                # of probabilities (see `np.random.choice`), which you
+                # can compute using `agent.predict` and the current `state`.
                 action = ...
 
                 next_state, reward, terminated, truncated, _ = env.step(action)
@@ -88,10 +88,10 @@ def main(env: npfl138.rl_utils.EvaluationEnv, args: argparse.Namespace) -> None:
 
                 state = next_state
 
-            # TODO(reinforce): Compute returns by summing rewards.
+            # TODO(reinforce): Compute returns by summing the rewards.
             ...
 
-            # TODO(reinforce): Append states, actions and returns to the training batch.
+            # TODO(reinforce): Extend the training batch with the states, actions and returns.
             ...
 
         # TODO(reinforce): Train using the generated batch.
@@ -101,7 +101,7 @@ def main(env: npfl138.rl_utils.EvaluationEnv, args: argparse.Namespace) -> None:
     while True:
         state, done = env.reset(start_evaluation=True)[0], False
         while not done:
-            # TODO(reinforce): Choose a greedy action.
+            # TODO(reinforce): Choose the greedy action.
             action = ...
             state, reward, terminated, truncated, _ = env.step(action)
             done = terminated or truncated

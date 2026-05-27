@@ -12,7 +12,7 @@ play it interactively using `python3 -m npfl138.envs.cart_pole_pixels_interactiv
 
 To pass the assignment, you need to reach an average return of 400 in 100
 evaluation episodes. During evaluation in ReCodEx, two different random seeds
-will be employed, and you need to reach the required return on all of them. Time
+will be employed, and you need to reach the required return on both of them. Time
 limit for each test is 10 minutes.
 
 You can train the model locally and submit the already pretrained

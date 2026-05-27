@@ -8,10 +8,10 @@ This exercise should teach you to use different optimizers, learning rates,
 and learning rate decays from [torch.optim](https://docs.pytorch.org/docs/stable/optim.html). Your goal is to modify the
 [mnist_training.py](https://github.com/ufal/npfl138/tree/master/labs/02/mnist_training.py)
 template and implement the following:
-- Using specified optimizer (either `SGD` or `Adam`).
+- Using the specified optimizer (either `SGD` or `Adam`).
 - Optionally using momentum for the `SGD` optimizer.
-- Using specified learning rate for the optimizer.
-- Optionally use a given learning rate schedule. The schedule can be either
+- Using the specified learning rate for the optimizer.
+- Optionally use the given learning rate schedule. The schedule can be either
   `linear`, `exponential`, or `cosine`. If a schedule is specified, you also
   get a final learning rate, and you should gradually decrease the learning rate
   during the training to reach the final learning rate just after the training

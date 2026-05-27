@@ -7,10 +7,10 @@ You will learn how to implement three regularization methods in this assignment.
 Start with the
 [mnist_regularization.py](https://github.com/ufal/npfl138/tree/master/labs/03/mnist_regularization.py)
 template and implement the following:
-- Allow using dropout with the rate `args.dropout`. Add a dropout layer after the
+- Allow using dropout with the `args.dropout` rate. Add a dropout layer after the
   first `Flatten` and also after all `Linear` hidden layers (but not after the
   output layer).
-- Allow using AdamW with the weight decay of strength `args.weight_decay`,
+- Allow using AdamW with weight decay of strength `args.weight_decay`,
   ensuring that weight decay is not applied to bias parameters.
 - Allow using label smoothing with weight `args.label_smoothing`.
 

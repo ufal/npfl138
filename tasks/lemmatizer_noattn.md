@@ -5,7 +5,7 @@
 #### Examples: lemmatizer_noattn_examples
 
 The goal of this assignment is to create a simple lemmatizer. For training
-and evaluation, we use the same dataset as in `tagger_we` loadable again
+and evaluation, we use the same dataset as in `tagger_we`, loadable again
 by the [MorphoDataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/morpho_dataset/)
 class using [Vocabulary](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/vocabulary/)
 to provide mappings between strings and integers.
@@ -13,8 +13,8 @@ to provide mappings between strings and integers.
 Your goal is to modify the
 [lemmatizer_noattn.py](https://github.com/ufal/npfl138/tree/master/labs/09/lemmatizer_noattn.py)
 template and implement the following:
-- Embed characters of source forms and run a bidirectional GRU encoder.
-- Embed characters of target lemmas.
+- Embed characters of the source forms and run a bidirectional GRU encoder.
+- Embed characters of the target lemmas.
 - Implement a training time decoder which uses gold target characters as inputs.
 - Implement an inference time decoder which uses previous predictions as inputs.
 - The initial state of both decoders is the output state of the corresponding

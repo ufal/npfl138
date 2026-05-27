@@ -61,7 +61,7 @@ Now assume we got $⇶G = \frac{∂L}{∂⇶R}$, which is of size $\big[\lceil\f
 - $\displaystyle \frac{∂L}{∂⇶K_{m,n}} = ∑_i ∑_j \textcolor{darkblue}{\frac{∂⇶R_{i,j}}{∂⇶K_{m,n}}} (⇶G_{i,j})^\T$
 
 ~~~
-  $\displaystyle \phantom{\frac{∂L}{∂⇶K_{m,n}}} = ∑_i ∑_j \textcolor{darkblue}{⇶I_{si+m,sj+n}} (⇶G_{i,j})^\T$
+  $\displaystyle \phantom{\frac{∂L}{∂⇶K_{m,n}}} = ∑_i ∑_j \textcolor{darkblue}{⇶I_{si+m,sj+n}} (⇶G_{i,j})^\T.$
 
 ---
 # Convolution – Backward Computation
@@ -78,7 +78,7 @@ Now assume we got $⇶G = \frac{∂L}{∂⇶R}$, which is of size $\big[\lceil\f
   $\displaystyle \phantom{\frac{∂L}{∂⇶I_{i',j'}}} = \textcolor{darkred}{∑_{m=0}^{k-1} ∑_{n=0}^{k-1} ⇶K_{m,n}} ⇶G_{i,j}$ for $i'=i+m$, $j'=j+n$
 
 ~~~
-  $\displaystyle \phantom{\frac{∂L}{∂⇶I_{i',j'}}} = \textcolor{darkred}{∑_{m=0}^{k-1} ∑_{n=0}^{k-1} ⇶K_{m,n}} ⇶G_{i'-m,j'-n}$
+  $\displaystyle \phantom{\frac{∂L}{∂⇶I_{i',j'}}} = \textcolor{darkred}{∑_{m=0}^{k-1} ∑_{n=0}^{k-1} ⇶K_{m,n}} ⇶G_{i'-m,j'-n}.$
 
 ---
 # Convolution – Backward Computation
@@ -104,7 +104,7 @@ section: Stride>1
 
 Finally, consider a stride $s>1$. During forward pass, we usually keep
 only the output values corresponding to the positions where the kernel
-was really used, so the output is approximately $s$-times smaller.
+was really used, so the output is approximately $s$ times smaller.
 
 ~~~
 However, we could also keep the output of the original size, but instead

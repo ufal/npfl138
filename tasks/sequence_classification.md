@@ -5,7 +5,7 @@
 #### Examples: sequence_classification_examples
 
 The goal of this assignment is to introduce recurrent neural networks, show
-their convergence speed, and illustrate exploding gradient issue. The network
+their convergence speed, and illustrate the exploding gradient issue. The network
 should process sequences of 50 small integers and compute parity for each prefix
 of the sequence. The inputs are either 0/1, or vectors with one-hot
 representation of small integer.
@@ -15,7 +15,7 @@ Your goal is to modify the
 template and implement the following:
 - Use the specified RNN type (`RNN`, `GRU`, and `LSTM`) and dimensionality.
 - Process the sequence using the required RNN.
-- Use additional hidden layer on the RNN outputs if requested.
+- Use an additional hidden layer on the RNN outputs if requested.
 - Implement gradient clipping if requested.
 
 In addition to submitting the task in ReCodEx, please also run the following

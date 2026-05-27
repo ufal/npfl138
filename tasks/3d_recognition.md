@@ -3,7 +3,7 @@
 #### Points: 3 points+4 bonus
 
 Your goal in this assignment is to perform 3D object recognition. The input
-is voxelized representation of an object, stored as a _3D grid_ of either empty
+is a voxelized representation of an object, stored as a _3D grid_ of either empty
 or occupied _voxels_, and your goal is to classify the object into one of
 10 classes. The data is available in two resolutions, either as
 [20×20×20 data](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/demos/modelnet20.html)

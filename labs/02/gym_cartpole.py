@@ -80,7 +80,7 @@ def main(args: argparse.Namespace) -> torch.nn.Module | None:
             raise ValueError("You must specify the number of epochs, either in the defaults or on the command line.")
 
         # Load the provided dataset. The `dataset.train` is a collection of 100 examples,
-        # each being a pair of (inputs, label), where:
+        # each being an (inputs, label) pair, where:
         # - `inputs` is a vector with `GymCartpoleDataset.FEATURES` floating point values,
         # - `label` is a gold 0/1 class index.
         dataset = GymCartpoleDataset()

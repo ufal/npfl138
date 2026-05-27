@@ -5,9 +5,9 @@
 **The template was updated on Fri May 8 (the printed marks were not separated
 by a space). Please re-download if you downloaded it before.**
 
-Tackle the **h**andwritten **o**ptical **m**usic **r**ecognition in this
+Tackle **h**andwritten **o**ptical **m**usic **r**ecognition in this
 assignment. The inputs are grayscale images of monophonic scores starting with
-a clef, key signature, and a time signature, followed by several staves. The
+a clef, a key signature, and a time signature, followed by several staves. The
 dataset ([demo here](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/demos/homr_train.html))
 is loadable using the [HOMRDataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/homr_dataset/)
 class, and is downloaded automatically if missing (note that it has ~500MB, so

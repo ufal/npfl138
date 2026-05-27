@@ -5,7 +5,7 @@
 
 In this assignment, you will implement a speech synthesis system based on the
 Tacotron 2 architecture, generating a mel spectrogram given an input text. To
-pass in ReCodEx, minor toy dataset is used.
+pass in ReCodEx, a minor toy dataset is used.
 
 Later in the examination period, there will be instructions for those who would
 like to create a working TTS system, describing how to train this implementation

@@ -34,7 +34,7 @@ class Model(torch.nn.Module):
 
         # TODO: Create the rest of the parameters:
         # - _W2, which is a parameter of size `[args.hidden_layer_size, MNIST.LABELS]`,
-        #   initialized to `torch.randn` value with standard deviation 0.1,
+        #   initialized to `torch.randn` with standard deviation 0.1,
         # - _b2, which is a parameter of size `[MNIST.LABELS]` initialized to zeros.
         self._W2 = ...
         self._b2 = ...
@@ -43,7 +43,7 @@ class Model(torch.nn.Module):
         # TODO: Define the computation of the network. Notably:
         # - start by casting the input uint8 images to float32 using `.to(torch.float32)`,
         # - then divide the tensor by 255 to normalize it to the `[0, 1]` range,
-        # - then reshape it to the shape `[inputs.shape[0], -1]`;
+        # - then reshape it to shape `[inputs.shape[0], -1]`;
         #   the -1 is a wildcard which is computed so that the number
         #   of elements before and after the reshape is preserved,
         # - then multiply it by `self._W1` and then add `self._b1`,
@@ -57,7 +57,7 @@ class Model(torch.nn.Module):
             # The batch contains
             # - batch["images"] with shape [?, MNIST.C, MNIST.H, MNIST.W]
             # - batch["labels"] with shape [?]
-            # Size of the batch is `self._args.batch_size`, except for the last, which
+            # Size of the batch is `self._args.batch_size`, except for the last one, which
             # might be smaller.
 
             # TODO: Start by moving the batch data to the device where the model is.
@@ -154,12 +154,12 @@ def main(args: argparse.Namespace) -> tuple[float, float]:
         # TODO: Run the `train_epoch` with `mnist.train` dataset.
         ...
 
-        # TODO: Evaluate the dev data using `evaluate` on `mnist.dev` dataset.
+        # TODO: Evaluate the dev data using `evaluate` on the `mnist.dev` dataset.
         dev_accuracy = ...
         print(f"Dev accuracy after epoch {epoch + 1} is {100 * dev_accuracy:.2f}", flush=True)
         writer.add_scalar("dev/accuracy", 100 * dev_accuracy, epoch + 1)
 
-    # TODO: Evaluate the test data using `evaluate` on `mnist.test` dataset.
+    # TODO: Evaluate the test data using `evaluate` on the `mnist.test` dataset.
     test_accuracy = ...
     print(f"Test accuracy after epoch {epoch + 1} is {100 * test_accuracy:.2f}", flush=True)
     writer.add_scalar("test/accuracy", 100 * test_accuracy, epoch + 1)

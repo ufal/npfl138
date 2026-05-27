@@ -3,8 +3,9 @@
 #### Points: 2 points
 
 Perform sentiment analysis on Czech Facebook data using a provided pre-trained
-Czech Electra model [`eleczech-lc-small`](https://huggingface.co/ufal/eleczech-lc-small).
-The dataset consists of pairs of _(document, label)_ and can be (down)loaded using the
+[`eleczech-lc-small`](https://huggingface.co/ufal/eleczech-lc-small)
+Czech Electra model.
+The dataset consists of _(document, label)_ pairs and can be (down)loaded using the
 [TextClassificationDataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/text_classification_dataset/)
 class.
 
@@ -22,6 +23,6 @@ the Electra model in order to achieve the required accuracy.
 You can start with the
 [sentiment_analysis.py](https://github.com/ufal/npfl138/tree/master/labs/10/sentiment_analysis.py)
 template, which among others loads the Electra Czech model and generates test
-set annotations in the required format. Note that
+set annotations in the required format. Note that the
 [example_transformers.py](https://github.com/ufal/npfl138/tree/master/labs/10/example_transformers.py)
 module illustrates the usage of both the Electra tokenizer and the Electra model.

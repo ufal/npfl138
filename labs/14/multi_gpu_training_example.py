@@ -32,7 +32,7 @@ def main(args: argparse.Namespace) -> None:
     npfl138.global_keras_initializers()
     torch.backends.cuda.matmul.allow_tf32 = bool(args.allow_tf32)
 
-    # Create a RoBeCzech or EfficientNetV2B0 model for benchmarking.
+    # Create a RobeCzech or an EfficientNetV2B0 model for benchmarking.
     if args.model == "robeczech":
         class Model(torch.nn.Module):
             def __init__(self):
@@ -71,7 +71,7 @@ def main(args: argparse.Namespace) -> None:
     # Compute the batch size for the current training, starting with `args.batch_size.`
     batch_size = args.batch_size
 
-    # To use DDP, several processes must be started. One possibility is to use `torch.distributed.run` module:
+    # To use DDP, several processes must be started. One possibility is to use the `torch.distributed.run` module:
     #   python3 -m torch.distributed.run --nproc-per-node=4 --rdzv-backend=c10d --rdzv-endpoint=localhost:0 multi_gpu_training_example.py --ddp
     # which starts 4 concurrent processes in a common process group.
 

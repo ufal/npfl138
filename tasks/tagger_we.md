@@ -5,8 +5,8 @@
 #### Examples: tagger_we_examples
 
 In this assignment you will create a simple part-of-speech tagger. For training
-and evaluation, we will use Czech dataset containing tokenized sentences, each
-word annotated by gold lemma and part-of-speech tag. The dataset can be loaded
+and evaluation, we will use a Czech dataset containing tokenized sentences, each
+word annotated by a gold lemma and a part-of-speech tag. The dataset can be loaded
 by the [MorphoDataset](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/datasets/morpho_dataset/)
 class and uses [Vocabulary](https://ufal.mff.cuni.cz/~straka/courses/npfl138/2526/docs/vocabulary/)
 to provide mappings between strings and integers.
@@ -14,9 +14,9 @@ to provide mappings between strings and integers.
 Your goal is to modify the
 [tagger_we.py](https://github.com/ufal/npfl138/tree/master/labs/07/tagger_we.py)
 template and implement the following:
-- Use specified RNN layer type (`GRU` and `LSTM`) and dimensionality.
+- Use the specified RNN layer type (`GRU` and `LSTM`) and dimensionality.
 - Create word embeddings for training vocabulary.
-- Process the sentences using bidirectional RNN.
+- Process the sentences using a bidirectional RNN.
 - Predict part-of-speech tags.
 Note that you need to properly handle sentences of different lengths in one
 batch.
