@@ -25,8 +25,8 @@ Everyone who submits a solution achieving at least _87%_ test set IoU gets
 4 points; the remaining 5 bonus points are distributed depending on the relative
 ordering of your solutions.
 
-You may want to start with the
+Start with the
 [cags_segmentation.py](https://github.com/ufal/npfl138/tree/master/labs/05/cags_segmentation.py)
-template, which generates the test set annotation in the required format—each
-mask should be encoded on a single line as a space separated sequence of
+template, which generates the test set annotation in the required format, each
+mask encoded on a single line as a space separated sequence of
 integers indicating the length of alternating runs of zeros and ones.
