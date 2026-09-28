@@ -73,7 +73,7 @@ class GAN(npfl138.TrainableModule):
 
         # TODO(gan): Train the generator:
         # - generate as many random latent samples as there are `images`, by a single call
-        #   to `self._z_prior.sample`;
+        #   to `self._z_prior().sample`;
         # - pass the samples through the generator;
         # - run discriminator on the generated images (keep it running in the training mode,
         #   even if not updating its parameters, we want to perform possible BatchNorm in it);
